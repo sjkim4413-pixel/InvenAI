@@ -3312,7 +3312,9 @@ id browser_actions_menu_item_icon
 id browser_actions_menu_item_text
 id browser_actions_menu_items
 id browser_actions_menu_view
+id btnCancelEdit
 id btnCancelSignup
+id btnSaveEdit
 id btnSubmitSignup
 id btn_inbound_back
 id btn_inventory_list_back
@@ -3399,6 +3401,8 @@ id endToStart
 id enterAlways
 id enterAlwaysCollapsed
 id escape
+id etEditLocation
+id etEditQuantity
 id etSignupCompany
 id etSignupId
 id etSignupPw
@@ -3782,7 +3786,6 @@ id r4ioovjhjrwo
 id r4ipni1r0ea
 id r4jf5oak69r
 id r4l77xft9o6h
-id r4l9zg4vojz2
 id r4mdxedjxyx5
 id r4pmca5blzyx
 id r4r1sc4cuc1d
@@ -4196,7 +4199,6 @@ id rf6loutie6bd
 id rf6mzrag5tcl
 id rf6v5codim2
 id rf757l1z7cwk
-id rf958hd6doy
 id rfbiarzx0k7r
 id rfbp64934nii
 id rfcew85tqus
@@ -4780,7 +4782,6 @@ id rvpcm246c3xi
 id rvq1zi084kc
 id rvq6l99husg
 id rvr5zkk72xae
-id rvrb7y2gol2l
 id rvte4vq43o1
 id rvvvv7svavpf
 id rvvvwcbtdzel
@@ -5045,6 +5046,8 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id tvEditItemName
+id tvEditTitle
 id unchecked
 id uniform
 id unlabeled
@@ -5229,6 +5232,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout dialog_edit_inventory
 layout dialog_signup
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity

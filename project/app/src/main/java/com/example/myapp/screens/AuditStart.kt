@@ -2,8 +2,9 @@ package com.example.myapp
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 
 class AuditStart : AppCompatActivity() {
@@ -51,13 +52,32 @@ class AuditStart : AppCompatActivity() {
 			MenuHelper.showMoreMenu(this)
 		}
 
-		val button1: View? = findViewById(R.id.rbn1juwucwum)
-		button1?.setOnClickListener {
+		// 1. 메인 [카메라로 실사 시작] 버튼 클릭 ➔ 카메라 촬영 화면 실행
+		findViewById<View>(R.id.roxu0u1g02kd)?.setOnClickListener {
 			startActivity(Intent(this, AiAuditCamera::class.java))
 		}
-		val button2: View? = findViewById(R.id.rgb1sqjwlxjm)
-		button2?.setOnClickListener {
-			startActivity(Intent(this, AiAuditCamera::class.java))
+
+		// 2. 구역 선택 버튼 (A구역 선택)
+		findViewById<View>(R.id.rbn1juwucwum)?.setOnClickListener {
+			Toast.makeText(this, "A구역 (A01~A05)이 실사 대상으로 선택되었습니다.", Toast.LENGTH_SHORT).show()
 		}
+
+		// 3. 개별 랙 선택 버튼 (A01~A05)
+		val rackClick = View.OnClickListener { v ->
+			val tag = when(v.id) {
+				R.id.rgb1sqjwlxjm -> "A01"
+				R.id.rj6alsyhivu -> "A02"
+				R.id.rtwmfq85qt5 -> "A03"
+				R.id.ru26cdip6k2 -> "A04"
+				R.id.r4wdp4899azj -> "A05"
+				else -> "랙"
+			}
+			Toast.makeText(this, "$tag 랙이 실사 대상으로 선택되었습니다.", Toast.LENGTH_SHORT).show()
+		}
+		findViewById<View>(R.id.rgb1sqjwlxjm)?.setOnClickListener(rackClick)
+		findViewById<View>(R.id.rj6alsyhivu)?.setOnClickListener(rackClick)
+		findViewById<View>(R.id.rtwmfq85qt5)?.setOnClickListener(rackClick)
+		findViewById<View>(R.id.ru26cdip6k2)?.setOnClickListener(rackClick)
+		findViewById<View>(R.id.r4wdp4899azj)?.setOnClickListener(rackClick)
 	}
 }

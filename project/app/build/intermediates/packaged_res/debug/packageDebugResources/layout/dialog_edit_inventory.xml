@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="#FFFFFF"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/tvEditTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="재고 및 위치 수정"
+        android:textColor="#0F172A"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="16dp" />
+
+    <!-- 상품명 -->
+    <TextView
+        android:id="@+id/tvEditItemName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="상품명"
+        android:textColor="#0F172A"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="12dp" />
+
+    <!-- 위치 입력 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="올바른 랙 위치"
+        android:textColor="#475569"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="4dp" />
+
+    <EditText
+        android:id="@+id/etEditLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="예: B구역 R05-3층"
+        android:textColor="#0F172A"
+        android:textColorHint="#94A3B8"
+        android:textSize="14sp"
+        android:background="@drawable/se2e8f0sw1cr12bffffff"
+        android:padding="12dp"
+        android:layout_marginBottom="12dp"
+        android:inputType="text" />
+
+    <!-- 수량 입력 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="재고 수량"
+        android:textColor="#475569"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="4dp" />
+
+    <EditText
+        android:id="@+id/etEditQuantity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="수량 입력"
+        android:textColor="#0F172A"
+        android:textColorHint="#94A3B8"
+        android:textSize="14sp"
+        android:background="@drawable/se2e8f0sw1cr12bffffff"
+        android:padding="12dp"
+        android:layout_marginBottom="20dp"
+        android:inputType="number" />
+
+    <!-- 버튼 영역 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnCancelEdit"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:text="취소"
+            android:textColor="#475569" />
+
+        <Button
+            android:id="@+id/btnSaveEdit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="#0D9488"
+            android:text="수정 및 정상화"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+</LinearLayout>

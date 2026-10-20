@@ -68,10 +68,14 @@ drawable sef4444sw1cr14bfef2f2
 drawable sef4444sw1cr4bfef2f2
 drawable sf59e0bsw1cr12bfffbeb
 drawable sffffffsw1cr14bffffff1a
+id btnCancelEdit
 id btnCancelSignup
+id btnSaveEdit
 id btnSubmitSignup
 id btn_inbound_back
 id btn_inventory_list_back
+id etEditLocation
+id etEditQuantity
 id etSignupCompany
 id etSignupId
 id etSignupPw
@@ -276,7 +280,6 @@ id r4ioovjhjrwo
 id r4ipni1r0ea
 id r4jf5oak69r
 id r4l77xft9o6h
-id r4l9zg4vojz2
 id r4mdxedjxyx5
 id r4pmca5blzyx
 id r4r1sc4cuc1d
@@ -685,7 +688,6 @@ id rf6loutie6bd
 id rf6mzrag5tcl
 id rf6v5codim2
 id rf757l1z7cwk
-id rf958hd6doy
 id rfbiarzx0k7r
 id rfbp64934nii
 id rfcew85tqus
@@ -1263,7 +1265,6 @@ id rvpcm246c3xi
 id rvq1zi084kc
 id rvq6l99husg
 id rvr5zkk72xae
-id rvrb7y2gol2l
 id rvte4vq43o1
 id rvvvv7svavpf
 id rvvvwcbtdzel
@@ -1418,6 +1419,8 @@ id rzvlo50g5vbl
 id rzw18ewq9upq
 id rzwrxwc424r
 id rzxbmf3ceeq
+id tvEditItemName
+id tvEditTitle
 layout activity_ai_analysis
 layout activity_ai_audit_camera
 layout activity_ai_audit_results
@@ -1445,6 +1448,7 @@ layout activity_scan_result
 layout activity_transfer
 layout activity_work_history
 layout bottom_sheet_more_menu
+layout dialog_edit_inventory
 layout dialog_signup
 string default_web_client_id
 string gcm_defaultSenderId

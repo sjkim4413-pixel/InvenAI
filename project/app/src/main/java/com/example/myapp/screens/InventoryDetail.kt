@@ -1,33 +1,135 @@
 package com.example.myapp
+
+import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.view.View
+import android.widget.TextView
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.google.firebase.firestore.ListenerRegistration
+import java.text.DecimalFormat
+
 class InventoryDetail : AppCompatActivity() {
+
+	private var itemCode: String = "M-100"
+	private var itemName: String = "무선 마우스 M-100"
+	private var location: String = "B구역 R05-3층"
+	private var quantity: Int = 120
+	private var status: String = "NORMAL"
+
+	private var inventoryListener: ListenerRegistration? = null
+
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_inventory_detail)
+
+		// Intent Extra 수신
+		itemCode = intent.getStringExtra("ITEM_CODE") ?: "M-100"
+		itemName = intent.getStringExtra("ITEM_NAME") ?: "무선 마우스 M-100"
+		location = intent.getStringExtra("LOCATION") ?: "B구역 R05-3층"
+		quantity = intent.getIntExtra("QUANTITY", 120)
+		status = intent.getStringExtra("STATUS") ?: "NORMAL"
+
+		// 이미지 바인딩
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/203wyjsf_expires_30_days.png").into(findViewById(R.id.ruk2l6hsjuh))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/6dzl2y2j_expires_30_days.png").into(findViewById(R.id.rlb7iitjpcch))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/bb3mu2es_expires_30_days.png").into(findViewById(R.id.r1vk1k6pain8j))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/6em8cmgw_expires_30_days.png").into(findViewById(R.id.rrbtmji7ayxp))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/ktgsdqrp_expires_30_days.png").into(findViewById(R.id.rf958hd6doy))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/wdnvw2ut_expires_30_days.png").into(findViewById(R.id.r74nucvcdsxa))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/23nnyjuu_expires_30_days.png").into(findViewById(R.id.rdnv3fthexra))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/mqzyo825_expires_30_days.png").into(findViewById(R.id.rel7zzvm5tt9))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/q9x50ewe_expires_30_days.png").into(findViewById(R.id.rfr3dgqydvgt))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/2w56ktx0_expires_30_days.png").into(findViewById(R.id.rjou5xvfm1e))
-		val button1: View = findViewById(R.id.rl1mtyqbucc)
-		button1.setOnClickListener {
-			println("Pressed")
+
+		// 1. 전달받은 실재 데이터 UI 바인딩
+		bindInventoryData()
+
+		// 2. 상단 뒤로가기 버튼
+		findViewById<View>(R.id.rlb7iitjpcch)?.setOnClickListener { finish() }
+
+		// 3. [재고 이동] 버튼 -> 랙 위치 변경 다이얼로그
+		val btnMove: View? = findViewById(R.id.rl1mtyqbucc)
+		btnMove?.setOnClickListener {
+			val currentItem = InventoryItem(itemCode, itemName, quantity, location, status)
+			EditInventoryDialog.show(this, currentItem) {
+				Toast.makeText(this, "재고 이동 요청이 처리되었습니다.", Toast.LENGTH_SHORT).show()
+			}
 		}
-		val button2: View = findViewById(R.id.r2ocdj4k8cly)
-		button2.setOnClickListener {
-			println("Pressed")
+
+		// 4. [수량 수정] 버튼 -> 수량/위치 변경 다이얼로그
+		val btnEditQty: View? = findViewById(R.id.r2ocdj4k8cly)
+		btnEditQty?.setOnClickListener {
+			val currentItem = InventoryItem(itemCode, itemName, quantity, location, status)
+			EditInventoryDialog.show(this, currentItem) {
+				Toast.makeText(this, "수치 수정 요청이 처리되었습니다.", Toast.LENGTH_SHORT).show()
+			}
 		}
-		val button3: View = findViewById(R.id.r4l9zg4vojz2)
-		button3.setOnClickListener {
-			println("Pressed")
+
+		// 5. 하단 네비게이션 바
+		findViewById<View>(R.id.r74nucvcdsxa)?.setOnClickListener {
+			val intent = Intent(this, HomeDashboard::class.java)
+			intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+			startActivity(intent)
+			finish()
 		}
+
+		findViewById<View>(R.id.rdnv3fthexra)?.setOnClickListener {
+			startActivity(Intent(this, InventoryList::class.java))
+			finish()
+		}
+
+		val openScanner = View.OnClickListener {
+			startActivity(Intent(this, BarcodeScanner::class.java))
+		}
+		findViewById<View>(R.id.rjou5xvfm1e)?.setOnClickListener(openScanner)
+		findViewById<View>(R.id.rc16atwgjkqv)?.setOnClickListener(openScanner)
+
+		findViewById<View>(R.id.rel7zzvm5tt9)?.setOnClickListener {
+			startActivity(Intent(this, WorkHistory::class.java))
+		}
+
+		findViewById<View>(R.id.rfr3dgqydvgt)?.setOnClickListener {
+			MenuHelper.showMoreMenu(this)
+		}
+	}
+
+	override fun onResume() {
+		super.onResume()
+		// Firestore 실시간 리스너 수신 ➔ 수량 및 위치 변경 시 실시간 UI 갱신
+		inventoryListener?.remove()
+		inventoryListener = InventoryManager.listenToRealtimeInventory { items ->
+			val targetItem = items.find { it.itemCode == itemCode }
+			if (targetItem != null) {
+				itemName = targetItem.itemName
+				location = targetItem.location
+				quantity = targetItem.quantity
+				status = targetItem.status
+				bindInventoryData()
+			}
+		}
+	}
+
+	override fun onPause() {
+		super.onPause()
+		inventoryListener?.remove()
+	}
+
+	/**
+	 * 시스템 등록 메타데이터 및 헤더 수치 실시간 동적 바인딩
+	 */
+	private fun bindInventoryData() {
+		val formatter = DecimalFormat("#,###")
+
+		// 헤더 영역
+		findViewById<TextView>(R.id.ryvd7x2osq1)?.text = itemName
+		findViewById<TextView>(R.id.rdqwy34t5qvs)?.text = "품목코드: $itemCode  ·  위치: $location"
+		findViewById<TextView>(R.id.rn47d4e68uol)?.text = if (status.equals("NORMAL", ignoreCase = true) || status == "정상") "정상 상태" else "이상 감지"
+
+		// 시스템 등록 메타데이터 영역 (수량 및 위치 실시간 동적 반영)
+		findViewById<TextView>(R.id.ris3q6gbf1sb)?.text = "${formatter.format(quantity)} 개" // 현재 수량
+		findViewById<TextView>(R.id.rdsxkthcwsfs)?.text = location                          // 구역 구분 / 위치
+		findViewById<TextView>(R.id.r1ck1uax9v6g)?.text = "랙: $location"                   // 랙 번호
+		findViewById<TextView>(R.id.rcpf8zg0hcvg)?.text = "PALLET-$itemCode"                 // 팔레트 ID
 	}
 }

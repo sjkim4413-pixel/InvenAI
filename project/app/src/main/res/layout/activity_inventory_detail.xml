@@ -509,35 +509,6 @@
 								/>
 							</LinearLayout>
 						</LinearLayout>
-						<LinearLayout
-							android:id="@+id/r4l9zg4vojz2"
-							android:layout_width="match_parent"
-							android:layout_height="wrap_content"
-							android:gravity="center"
-							android:background="@drawable/se2e8f0sw1cr14bffffff"
-							android:paddingVertical="16dp"
-							android:clickable="true"
-							android:focusable="true"
-							android:orientation="horizontal">
-							<com.google.android.material.imageview.ShapeableImageView
-								android:id="@+id/rf958hd6doy"
-								app:shapeAppearanceOverlay="@style/cr14"
-								android:layout_width="20dp"
-								android:layout_height="20dp"
-								android:layout_marginEnd="8dp"
-								android:src="@android:drawable/star_big_on"
-								android:scaleType="fitXY"
-							/>
-							<TextView
-								android:id="@+id/rvrb7y2gol2l"
-								android:textColor="#0F172A"
-								android:textSize="15sp"
-								android:textStyle="bold"
-								android:layout_height="wrap_content"
-								android:layout_width="wrap_content"
-								android:text="이력 및 AI 변동 예측 조회"
-							/>
-						</LinearLayout>
 					</LinearLayout>
 				</LinearLayout>
 			</LinearLayout>
@@ -668,10 +639,9 @@
 				<LinearLayout
 					android:id="@+id/rjjaeueeomyq"
 					android:layout_marginTop="-17dp"
-					android:layout_marginEnd="0dp"
-					android:layout_marginStart="0dp"
-					android:layout_width="match_parent"
+					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
+					android:layout_centerHorizontal="true"
 					android:gravity="center_horizontal"
 					android:clipChildren="false"
 					android:clipToPadding="false"
