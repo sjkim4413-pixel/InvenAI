@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.myapp">
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:usesCleartextTraffic="true"
+        android:icon="@android:drawable/star_big_on"
+        android:roundIcon="@android:drawable/star_big_on"
+        android:supportsRtl="true"
+        android:allowBackup="true"
+        android:label="MyApp"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+		<activity
+			android:name=".AiAnalysis"
+			android:exported="false" />
+		<activity
+			android:name=".AiAuditCamera"
+			android:exported="false" />
+		<activity
+			android:name=".AiAuditResults"
+			android:exported="false" />
+		<activity
+			android:name=".AnomalyInventory"
+			android:exported="false" />
+		<activity
+			android:name=".AuditResults"
+			android:exported="false" />
+		<activity
+			android:name=".AuditStart"
+			android:exported="false" />
+		<activity
+			android:name=".BarcodeScanner"
+			android:exported="false" />
+		<activity
+			android:name=".CameraCapture"
+			android:exported="false" />
+		<activity
+			android:name=".ConnectionComplete"
+			android:exported="false" />
+		<activity
+			android:name=".ConnectionProgress"
+			android:exported="false" />
+		<activity
+			android:name=".DataConnectionSelect"
+			android:exported="false" />
+		<activity
+			android:name=".DataConnectionSelect2"
+			android:exported="false" />
+		<activity
+			android:name=".DataConnectionSelect3"
+			android:exported="false" />
+		<activity
+			android:name=".ErpWmsConnection"
+			android:exported="false" />
+		<activity
+			android:name=".FileConnectionComplete"
+			android:exported="false" />
+		<activity
+			android:name=".FileUpload"
+			android:exported="false" />
+		<activity
+			android:name=".Frame1"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".HomeDashboard"
+			android:exported="false" />
+		<activity
+			android:name=".Inbound"
+			android:exported="false" />
+		<activity
+			android:name=".InventoryDetail"
+			android:exported="false" />
+		<activity
+			android:name=".InventoryList"
+			android:exported="false" />
+		<activity
+			android:name=".Outbound"
+			android:exported="false" />
+		<activity
+			android:name=".PhotoConfirmation"
+			android:exported="false" />
+		<activity
+			android:name=".ScanResult"
+			android:exported="false" />
+		<activity
+			android:name=".Transfer"
+			android:exported="false" />
+		<activity
+			android:name=".WorkHistory"
+			android:exported="false" />
+    </application>
+</manifest>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<style name="cr8">
+		<item name="cornerSize">8dp</item>
+	</style>
+<style name="cr20">
+		<item name="cornerSize">20dp</item>
+	</style>
+<style name="cr14">
+		<item name="cornerSize">14dp</item>
+	</style>
+<style name="cr29">
+		<item name="cornerSize">29dp</item>
+	</style>
+<style name="cr18">
+		<item name="cornerSize">18dp</item>
+	</style>
+<style name="cr100">
+		<item name="cornerSize">100dp</item>
+	</style>
+<style name="cr12">
+		<item name="cornerSize">12dp</item>
+	</style>
+<style name="cr28">
+		<item name="cornerSize">28dp</item>
+	</style>
+<style name="cr16">
+		<item name="cornerSize">16dp</item>
+	</style>
+<style name="cr40">
+		<item name="cornerSize">40dp</item>
+	</style>
+<style name="cr11">
+		<item name="cornerSize">11dp</item>
+	</style>
+<style name="cr24">
+		<item name="cornerSize">24dp</item>
+	</style>
+<style name="cr10">
+		<item name="cornerSize">10dp</item>
+	</style>
+<style name="cr22">
+		<item name="cornerSize">22dp</item>
+	</style>
+</resources>
