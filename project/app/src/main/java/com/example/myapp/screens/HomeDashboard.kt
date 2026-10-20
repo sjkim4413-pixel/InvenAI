@@ -1,23 +1,14 @@
 package com.example.myapp
-
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import android.view.View
 import com.bumptech.glide.Glide
-import com.google.firebase.firestore.ListenerRegistration
-import java.text.DecimalFormat
 
 class HomeDashboard : AppCompatActivity() {
-
-	private var inventoryListener: ListenerRegistration? = null
-
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_home_dashboard)
-
-		// 이미지 로딩
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/ry5hvfbw_expires_30_days.png").into(findViewById(R.id.ry7p7pqvxka))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/j2ueo07z_expires_30_days.png").into(findViewById(R.id.rl6h0q4vuf7r))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/ghnv4git_expires_30_days.png").into(findViewById(R.id.rvivb4u3goq))
@@ -61,73 +52,28 @@ class HomeDashboard : AppCompatActivity() {
 		}
 
 		// 하단 네비게이션 바
+		// 1. 홈 버튼
 		findViewById<View>(R.id.rhm1gom7f5ja)?.setOnClickListener {
 			// 현재 메인 홈 화면
 		}
+		// 2. 재고 버튼
 		findViewById<View>(R.id.rs08jcmj2xlm)?.setOnClickListener {
 			startActivity(Intent(this, InventoryList::class.java))
 		}
-
+		// 3. 스캔 버튼 (중앙 플로팅 버튼 및 텍스트)
 		val openScanner = View.OnClickListener {
 			startActivity(Intent(this, BarcodeScanner::class.java))
 		}
 		findViewById<View>(R.id.rz27s8jtbjwo)?.setOnClickListener(openScanner)
 		findViewById<View>(R.id.rdkzl3gxfayl)?.setOnClickListener(openScanner)
 
+		// 4. 작업 버튼
 		findViewById<View>(R.id.rajx13mscno4)?.setOnClickListener {
 			startActivity(Intent(this, WorkHistory::class.java))
 		}
-
+		// 5. 더보기 버튼 (드롭바/바텀시트 메뉴)
 		findViewById<View>(R.id.r46r7crd2blu)?.setOnClickListener {
 			MenuHelper.showMoreMenu(this)
-		}
-	}
-
-	override fun onResume() {
-		super.onResume()
-		// Firestore 실시간 재고 요약 집계 연동 시작
-		setupRealtimeSummary()
-	}
-
-	override fun onPause() {
-		super.onPause()
-		inventoryListener?.remove()
-	}
-
-	/**
-	 * Firebase Cloud Firestore 실시간 재고 집계 수신 및 홈 화면 카드 수치 바인딩
-	 */
-	private fun setupRealtimeSummary() {
-		inventoryListener?.remove()
-
-		inventoryListener = InventoryManager.listenToRealtimeInventory { items ->
-			var totalQty = 0
-			var normalQty = 0
-			var anomalyQty = 0
-
-			for (item in items) {
-				totalQty += item.quantity
-				val isNormal = item.status.equals("NORMAL", ignoreCase = true) || item.status == "정상" || item.status.isEmpty()
-				if (isNormal) {
-					normalQty += item.quantity
-				} else {
-					anomalyQty += item.quantity
-				}
-			}
-
-			val formatter = DecimalFormat("#,###")
-			val strTotal = formatter.format(totalQty) + " 개"
-			val strNormal = formatter.format(normalQty) + " 개"
-			val strAnomaly = formatter.format(anomalyQty) + " 개"
-
-			runOnUiThread {
-				// 1. 전체 재고 수량
-				findViewById<TextView>(R.id.r8y8i9t5s33h)?.text = strTotal
-				// 2. 정상 재고 수량
-				findViewById<TextView>(R.id.rhfbnn8zu2se)?.text = strNormal
-				// 3. 이상 재고 수량
-				findViewById<TextView>(R.id.rs6kkinbc3pk)?.text = strAnomaly
-			}
 		}
 	}
 }
