@@ -40,15 +40,22 @@ object AnomalyManager {
             "createdAt" to FieldValue.serverTimestamp()
         )
 
+        // 1. anomalies 컬렉션에 기록
         db.collection("anomalies").document(anomalyId)
             .set(anomalyData)
             .addOnSuccessListener {
                 Log.d(TAG, "오적재 알림 Firestore 등록 성공: $anomalyId")
-                Toast.makeText(context, "🚨 적재자에게 오적재 조치 요청 알림이 발송되었습니다!\n[$itemName: $currentLocation ➔ $targetLocation]", Toast.LENGTH_LONG).show()
 
-                // FCM/소켓 푸시 알림 트리거
-                PushSocketManager.registerDeviceToken(context, loaderUserId, currentQaId)
-                onSuccess()
+                // 2. inventory 컬렉션의 해당 품목 상태도 ANOMALY로 동기화 업데이트하여 앱 화면에 즉시 노출
+                db.collection("inventory").document(itemCode)
+                    .update("status", "ANOMALY")
+                    .addOnCompleteListener {
+                        Toast.makeText(context, "🚨 적재자에게 오적재 조치 요청 알림이 발송되었습니다!\n[$itemName: $currentLocation ➔ $targetLocation]", Toast.LENGTH_LONG).show()
+
+                        // FCM/소켓 푸시 알림 트리거
+                        PushSocketManager.registerDeviceToken(context, loaderUserId, currentQaId)
+                        onSuccess()
+                    }
             }
             .addOnFailureListener { e ->
                 Log.e(TAG, "오적재 알림 발송 실패: ${e.message}")
@@ -61,6 +68,7 @@ object AnomalyManager {
     fun resolveMisplacement(
         context: Context,
         anomalyId: String,
+        itemCode: String = "",
         onSuccess: () -> Unit = {}
     ) {
         val db = FirebaseFirestore.getInstance()
@@ -73,8 +81,17 @@ object AnomalyManager {
             .update(updateMap)
             .addOnSuccessListener {
                 Log.d(TAG, "재적재 완료 처리 성공: $anomalyId")
-                Toast.makeText(context, "✅ 올바른 재적재가 완료되었습니다!\n검수자(QA)에게 알림이 전송되었습니다.", Toast.LENGTH_LONG).show()
-                onSuccess()
+                if (itemCode.isNotEmpty()) {
+                    db.collection("inventory").document(itemCode)
+                        .update("status", "PENDING_QA")
+                        .addOnCompleteListener {
+                            Toast.makeText(context, "✅ 올바른 재적재가 완료되었습니다!\n검수자(QA)에게 승인 요청이 전송되었습니다.", Toast.LENGTH_LONG).show()
+                            onSuccess()
+                        }
+                } else {
+                    Toast.makeText(context, "✅ 올바른 재적재가 완료되었습니다!", Toast.LENGTH_SHORT).show()
+                    onSuccess()
+                }
             }
             .addOnFailureListener { e ->
                 Log.w(TAG, "재적재 완료 처리 예외: ${e.message}")

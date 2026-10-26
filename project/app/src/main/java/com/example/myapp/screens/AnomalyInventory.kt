@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 
 class AnomalyInventory : AppCompatActivity() {
@@ -70,7 +71,7 @@ class AnomalyInventory : AppCompatActivity() {
 	}
 
 	/**
-	 * Firebase Cloud Firestore 실시간 이상 재고 수신 (버그 수정: 정상 항목 반환 오류 제거)
+	 * Firebase Cloud Firestore 실시간 이상 재고 수신
 	 */
 	private fun setupRealtimeAnomalies() {
 		inventoryListener = InventoryManager.listenToRealtimeInventory { items ->
@@ -78,7 +79,6 @@ class AnomalyInventory : AppCompatActivity() {
 			val anomalyItems = items.filter {
 				!it.status.equals("NORMAL", ignoreCase = true) && it.status != "정상"
 			}
-			// 수정: 비어있을 경우 전체 목록으로 분기되던 버그를 고치고, 순수 이상 항목만 전달
 			renderAnomalyList(anomalyItems)
 		}
 	}
@@ -239,6 +239,17 @@ class AnomalyInventory : AppCompatActivity() {
 						InventoryManager.addOrUpdateInventoryItem(
 							item = approvedItem,
 							onSuccess = {
+								// 승인 완료 시 anomalies 컬렉션에서도 해당 항목 삭제하여 DB 정정/정리
+								val db = FirebaseFirestore.getInstance()
+								db.collection("anomalies")
+									.whereEqualTo("itemCode", item.itemCode)
+									.get()
+									.addOnSuccessListener { querySnapshot ->
+										for (doc in querySnapshot.documents) {
+											db.collection("anomalies").document(doc.id).delete()
+										}
+									}
+
 								Toast.makeText(this@AnomalyInventory, "✅ 검수 승인 완료! 실제 수량($finalQty 개) 및 위치($finalLoc)가 DB에 최종 반영되었습니다.", Toast.LENGTH_LONG).show()
 							}
 						)
