@@ -1,7 +1,0 @@
-# ninja log v5
-2	362	8141851822784889	CMakeFiles/invenai_vision.dir/vision-processor.cpp.o	8f6ed7194af9bcc7
-363	570	8141851824625380	C:/Users/user/Downloads/codetea (2)/project/app/build/intermediates/cxx/Debug/2e2k71l1/obj/armeabi-v7a/libinvenai_vision.so	5f75aaeaad7e2c0c
-2	1582	8142477883754564	CMakeFiles/invenai_vision.dir/vision-processor.cpp.o	73e77a7ca24691cf
-1582	1880	8142477886479179	C:/Users/user/Downloads/codetea (2)/project/app/build/intermediates/cxx/Debug/2e2k71l1/obj/armeabi-v7a/libinvenai_vision.so	50d3a61bef7da9f9
-4	2184	8144242926731856	CMakeFiles/invenai_vision.dir/vision-processor.cpp.o	73e77a7ca24691cf
-2185	2562	8144242930253614	C:/Users/user/Downloads/codetea (2)/project/app/build/intermediates/cxx/Debug/2e2k71l1/obj/armeabi-v7a/libinvenai_vision.so	50d3a61bef7da9f9

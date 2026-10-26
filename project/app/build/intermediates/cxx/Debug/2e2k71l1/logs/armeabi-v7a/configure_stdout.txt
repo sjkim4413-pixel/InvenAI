@@ -1,3 +1,0 @@
--- Configuring done
--- Generating done
--- Build files have been written to: C:/Users/user/Downloads/codetea (2)/project/app/.cxx/Debug/2e2k71l1/armeabi-v7a

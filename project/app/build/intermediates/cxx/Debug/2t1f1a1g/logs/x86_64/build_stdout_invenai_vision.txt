@@ -1,2 +1,0 @@
-ninja: Entering directory `C:\Users\user\Downloads\codetea (2)\project\app\.cxx\Debug\2t1f1a1g\x86_64'
-[1/1] Linking CXX shared library "C:\Users\user\Downloads\codetea (2)\project\app\build\intermediates\cxx\Debug\2t1f1a1g\obj\x86_64\libinvenai_vision.so"
