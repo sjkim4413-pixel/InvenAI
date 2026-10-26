@@ -38,7 +38,7 @@ object SignUpDialog {
         }
 
         btnSubmit.setOnClickListener {
-            val company = etCompany.text.toString().trim()
+            val company = etCompany.text.toString().trim().uppercase()
             val id = etId.text.toString().trim()
             val pw = etPw.text.toString().trim()
             val pwConfirm = etPwConfirm.text.toString().trim()

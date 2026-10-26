@@ -74,7 +74,7 @@ class AnomalyInventory : AppCompatActivity() {
 	 * Firebase Cloud Firestore 실시간 이상 재고 수신
 	 */
 	private fun setupRealtimeAnomalies() {
-		inventoryListener = InventoryManager.listenToRealtimeInventory { items ->
+		inventoryListener = InventoryManager.listenToRealtimeInventory(this) { items ->
 			// 정상 처리되지 않은 항목들만 필터링 (ANOMALY 또는 PENDING_QA 상태)
 			val anomalyItems = items.filter {
 				!it.status.equals("NORMAL", ignoreCase = true) && it.status != "정상"
@@ -237,6 +237,7 @@ class AnomalyInventory : AppCompatActivity() {
 						)
 
 						InventoryManager.addOrUpdateInventoryItem(
+							context = this@AnomalyInventory,
 							item = approvedItem,
 							onSuccess = {
 								// 승인 완료 시 anomalies 컬렉션에서도 해당 항목 삭제하여 DB 정정/정리
@@ -264,9 +265,10 @@ class AnomalyInventory : AppCompatActivity() {
 					background = ContextCompat.getDrawable(this@AnomalyInventory, R.drawable.se2e8f0sw1cr8)
 					layoutParams = LinearLayout.LayoutParams(0, dpToPx(40), 1f)
 					setOnClickListener {
-						val rejectedItem = item.copy(status = "ANOMALY")
+						val rejectedItemCopy = item.copy(status = "ANOMALY")
 						InventoryManager.addOrUpdateInventoryItem(
-							item = rejectedItem,
+							context = this@AnomalyInventory,
+							item = rejectedItemCopy,
 							onSuccess = {
 								Toast.makeText(this@AnomalyInventory, "반려 처리되었습니다. 적재자에게 재조치가 요청됩니다.", Toast.LENGTH_SHORT).show()
 							}
@@ -330,6 +332,7 @@ class AnomalyInventory : AppCompatActivity() {
 							pendingQuantity = item.quantity
 						)
 						InventoryManager.addOrUpdateInventoryItem(
+							context = this@AnomalyInventory,
 							item = pendingItem,
 							onSuccess = {
 								Toast.makeText(this@AnomalyInventory, "✅ 올바른 재적재 완료! 검수자(QA)에게 승인 요청을 전송했습니다.", Toast.LENGTH_LONG).show()

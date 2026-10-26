@@ -105,7 +105,7 @@ class HomeDashboard : AppCompatActivity() {
 	private fun setupRealtimeSummary() {
 		inventoryListener?.remove()
 
-		inventoryListener = InventoryManager.listenToRealtimeInventory { items ->
+		inventoryListener = InventoryManager.listenToRealtimeInventory(this) { items ->
 			var totalQty = 0
 			var normalQty = 0
 			var anomalyQty = 0

@@ -103,7 +103,7 @@ class InventoryDetail : AppCompatActivity() {
 		super.onResume()
 		// Firestore 실시간 리스너 수신 ➔ 수량 및 위치 변경 시 실시간 UI 갱신
 		inventoryListener?.remove()
-		inventoryListener = InventoryManager.listenToRealtimeInventory { items ->
+		inventoryListener = InventoryManager.listenToRealtimeInventory(this) { items ->
 			val targetItem = items.find { it.itemCode == itemCode }
 			if (targetItem != null) {
 				itemName = targetItem.itemName

@@ -190,7 +190,7 @@ class InventoryList : AppCompatActivity() {
 	 * Firebase Cloud Firestore 실시간 재고 수신
 	 */
 	private fun setupRealtimeInventory() {
-		inventoryListener = InventoryManager.listenToRealtimeInventory { items ->
+		inventoryListener = InventoryManager.listenToRealtimeInventory(this) { items ->
 			currentItems = items
 			applyFilterAndSearch()
 		}

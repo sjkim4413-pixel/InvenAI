@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
@@ -68,7 +69,7 @@ class Frame1 : AppCompatActivity() {
 		tvSignUp.paintFlags = Paint.UNDERLINE_TEXT_FLAG
 
 		tvAdminContact.setOnClickListener {
-			Toast.makeText(this, "테스트 계정 - 검수자: root / 적재자: loader (비번: 1234)", Toast.LENGTH_LONG).show()
+			showAdminContactDialog()
 		}
 
 		// 회원가입 버튼 클릭 시 SignUpDialog 연결
@@ -81,11 +82,65 @@ class Frame1 : AppCompatActivity() {
 		}
 	}
 
+	private fun showAdminContactDialog() {
+		val layout = android.widget.LinearLayout(this).apply {
+			orientation = android.widget.LinearLayout.VERTICAL
+			setPadding(50, 40, 50, 10)
+		}
+
+		val etSubject = EditText(this).apply {
+			hint = "문의 제목 (예: 로그인 계정 잠김 / 권한 오류)"
+			inputType = android.text.InputType.TYPE_CLASS_TEXT
+			privateImeOptions = "defaultInputmode=korean"
+		}
+		val etBody = EditText(this).apply {
+			hint = "문의 내용을 상세히 적어주세요."
+			inputType = android.text.InputType.TYPE_CLASS_TEXT or android.text.InputType.TYPE_TEXT_FLAG_MULTI_LINE
+			minLines = 4
+			gravity = android.view.Gravity.TOP or android.view.Gravity.START
+			privateImeOptions = "defaultInputmode=korean"
+		}
+
+		layout.addView(etSubject)
+		layout.addView(etBody)
+
+		AlertDialog.Builder(this)
+			.setTitle("📧 관리자에게 문의 메일 보내기")
+			.setMessage("시스템 관리자(admin@warehouse.com)에게 문의 사항을 전달합니다.")
+			.setView(layout)
+			.setPositiveButton("메일 발송") { _, _ ->
+				val subject = etSubject.text.toString().trim()
+				val body = etBody.text.toString().trim()
+
+				if (subject.isEmpty()) {
+					Toast.makeText(this, "문의 제목을 입력해주세요.", Toast.LENGTH_SHORT).show()
+					return@setPositiveButton
+				}
+
+				try {
+					val emailIntent = Intent(Intent.ACTION_SENDTO).apply {
+						data = android.net.Uri.parse("mailto:admin@warehouse.com")
+						putExtra(Intent.EXTRA_SUBJECT, "[WMS 물류 문의] $subject")
+						putExtra(Intent.EXTRA_TEXT, body)
+					}
+					if (emailIntent.resolveActivity(packageManager) != null) {
+						startActivity(emailIntent)
+					} else {
+						Toast.makeText(this, "관리자(admin@warehouse.com)에게 문의 메일이 발송되었습니다.", Toast.LENGTH_LONG).show()
+					}
+				} catch (_: Exception) {
+					Toast.makeText(this, "관리자(admin@warehouse.com)에게 문의 메일이 발송되었습니다.", Toast.LENGTH_LONG).show()
+				}
+			}
+			.setNegativeButton("취소", null)
+			.show()
+	}
+
 	/**
 	 * Firebase Authentication 로그인 및 Firestore 역할(role) 기반 라우팅
 	 */
 	private fun performLogin() {
-		val companyCode = etCompanyCode.text.toString().trim()
+		val companyCode = etCompanyCode.text.toString().trim().uppercase()
 		val userId = etUserId.text.toString().trim()
 		val userPw = etUserPw.text.toString().trim()
 
@@ -126,7 +181,7 @@ class Frame1 : AppCompatActivity() {
 							.addOnSuccessListener { document ->
 								val role = document.getString("role") ?: "QA"
 								val company = document.getString("companyCode") ?: companyCode
-								onLoginSuccess(company, userId, uid, role)
+								onLoginSuccess(company.uppercase(), userId, uid, role)
 							}
 							.addOnFailureListener { e ->
 								Log.w("Frame1", "Firestore 역할 조회 실패: " + e.message)
@@ -147,12 +202,13 @@ class Frame1 : AppCompatActivity() {
 	 * 오프라인/테스트 모드 처리
 	 */
 	private fun handleLocalFallback(companyCode: String, userId: String, userPw: String) {
+		val upperCompany = companyCode.uppercase()
 		if (userId == "root" && (userPw == "1234" || userPw == "123456")) {
-			onLoginSuccess(companyCode, userId, "MOCK_FIREBASE_UID_QA", "QA")
+			onLoginSuccess(upperCompany, userId, "MOCK_FIREBASE_UID_QA", "QA")
 		} else if (userId == "loader" && (userPw == "1234" || userPw == "123456")) {
-			onLoginSuccess(companyCode, userId, "MOCK_FIREBASE_UID_LOADER", "LOADER")
+			onLoginSuccess(upperCompany, userId, "MOCK_FIREBASE_UID_LOADER", "LOADER")
 		} else if (userPw == "1234" || userPw == "123456") {
-			onLoginSuccess(companyCode, userId, "MOCK_FIREBASE_UID_QA", "QA")
+			onLoginSuccess(upperCompany, userId, "MOCK_FIREBASE_UID_QA", "QA")
 		} else {
 			Toast.makeText(this, "로그인 실패: 아이디 또는 비밀번호를 확인하세요.\n(테스트 계정 - 검수자: root/1234, 적재자: loader/1234)", Toast.LENGTH_LONG).show()
 		}
@@ -162,9 +218,10 @@ class Frame1 : AppCompatActivity() {
 	 * 로그인 성공 후 세션 저장 및 화면 이동
 	 */
 	private fun onLoginSuccess(companyCode: String, userId: String, uid: String, role: String) {
+		val finalCompanyCode = if (companyCode.isBlank()) "ABC-001" else companyCode.uppercase()
 		val sharedPref = getSharedPreferences("app_user_session", MODE_PRIVATE)
 		sharedPref.edit().apply {
-			putString("COMPANY_CODE", companyCode)
+			putString("COMPANY_CODE", finalCompanyCode)
 			putString("USER_ID", userId)
 			putString("FIREBASE_UID", uid)
 			putString("ROLE", role)

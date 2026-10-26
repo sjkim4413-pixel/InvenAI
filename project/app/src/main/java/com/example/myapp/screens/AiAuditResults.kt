@@ -142,7 +142,7 @@ class AiAuditResults : AppCompatActivity() {
 	 * Firestore 실시간 'inventory' 전산 데이터 수신 및 AI 실사 대조 결과 바인딩
 	 */
 	private fun setupRealtimeComparison() {
-		inventoryListener = InventoryManager.listenToRealtimeInventory { items ->
+		inventoryListener = InventoryManager.listenToRealtimeInventory(this) { items ->
 			renderSummaryAndDetails(items)
 		}
 	}
