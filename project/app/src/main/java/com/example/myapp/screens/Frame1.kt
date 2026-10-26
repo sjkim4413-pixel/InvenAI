@@ -41,6 +41,20 @@ class Frame1 : AppCompatActivity() {
 		etUserId = findViewById(R.id.rtduz0dht8w)
 		etUserPw = findViewById(R.id.r5suocwfrhze)
 
+		// 비밀번호 눈알(토글) 아이콘 클릭 리스너
+		val ivPasswordToggle = findViewById<View>(R.id.rzrod1igfm8o)
+		var isPasswordVisible = false
+		ivPasswordToggle?.setOnClickListener {
+			isPasswordVisible = !isPasswordVisible
+			val selection = etUserPw.selectionEnd
+			if (isPasswordVisible) {
+				etUserPw.transformationMethod = android.text.method.HideReturnsTransformationMethod.getInstance()
+			} else {
+				etUserPw.transformationMethod = android.text.method.PasswordTransformationMethod.getInstance()
+			}
+			etUserPw.setSelection(selection)
+		}
+
 		// 로그인 버튼
 		val btnLogin: View = findViewById(R.id.rlk8j1kj2j19)
 		btnLogin.setOnClickListener {

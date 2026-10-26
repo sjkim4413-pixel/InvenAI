@@ -225,6 +225,8 @@
 										android:layout_height="20dp"
 										android:src="@android:drawable/star_big_on"
 										android:scaleType="fitXY"
+										android:clickable="true"
+										android:focusable="true"
 									/>
 								</LinearLayout>
 							</LinearLayout>
