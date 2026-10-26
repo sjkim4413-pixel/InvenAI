@@ -66,6 +66,13 @@ dependencies {
     implementation("com.google.firebase:firebase-firestore")
     implementation("com.google.guava:guava:32.1.3-android")
 
+    // CameraX
+    implementation(libs.androidx.camera.core)
+    implementation(libs.androidx.camera.camera2)
+    implementation(libs.androidx.camera.lifecycle)
+    implementation(libs.androidx.camera.view)
+    implementation(libs.guava)
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
