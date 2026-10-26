@@ -10,7 +10,7 @@ class WorkHistory : AppCompatActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_work_history)
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/qcnqf3ev_expires_30_days.png").into(findViewById(R.id.rr145tdsfh3))
+		findViewById<View>(R.id.rr145tdsfh3)?.visibility = View.GONE
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/t77czne2_expires_30_days.png").into(findViewById(R.id.r3vtuuy6ybip))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/irtilrwz_expires_30_days.png").into(findViewById(R.id.rx9hjfq8hsit))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/7u67eh1p_expires_30_days.png").into(findViewById(R.id.rb1cli47q0dv))

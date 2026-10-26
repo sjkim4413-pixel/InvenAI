@@ -32,7 +32,7 @@ class Frame1 : AppCompatActivity() {
 		}
 
 		// 이미지 로딩
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/ta5zkcbg_expires_30_days.png").into(findViewById(R.id.rowjrgnftxv))
+		findViewById<View>(R.id.rowjrgnftxv)?.visibility = View.GONE
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/grx3xpqq_expires_30_days.png").into(findViewById(R.id.rrbh7yzzjhoo))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/3lfzq7rs_expires_30_days.png").into(findViewById(R.id.rzrod1igfm8o))
 

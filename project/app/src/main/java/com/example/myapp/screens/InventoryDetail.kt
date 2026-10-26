@@ -9,6 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.ListenerRegistration
 import java.text.DecimalFormat
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 class InventoryDetail : AppCompatActivity() {
 
@@ -17,6 +20,7 @@ class InventoryDetail : AppCompatActivity() {
 	private var location: String = "B구역 R05-3층"
 	private var quantity: Int = 120
 	private var status: String = "NORMAL"
+	private var updatedAtTimestamp: Long = System.currentTimeMillis() - (1000L * 60 * 60 * 2)
 
 	private var inventoryListener: ListenerRegistration? = null
 
@@ -30,9 +34,10 @@ class InventoryDetail : AppCompatActivity() {
 		location = intent.getStringExtra("LOCATION") ?: "B구역 R05-3층"
 		quantity = intent.getIntExtra("QUANTITY", 120)
 		status = intent.getStringExtra("STATUS") ?: "NORMAL"
+		updatedAtTimestamp = intent.getLongExtra("UPDATED_AT", System.currentTimeMillis() - (1000L * 60 * 60 * 2))
 
 		// 이미지 바인딩
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/203wyjsf_expires_30_days.png").into(findViewById(R.id.ruk2l6hsjuh))
+		findViewById<View>(R.id.ruk2l6hsjuh)?.visibility = View.GONE
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/6dzl2y2j_expires_30_days.png").into(findViewById(R.id.rlb7iitjpcch))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/bb3mu2es_expires_30_days.png").into(findViewById(R.id.r1vk1k6pain8j))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/6em8cmgw_expires_30_days.png").into(findViewById(R.id.rrbtmji7ayxp))
@@ -105,6 +110,9 @@ class InventoryDetail : AppCompatActivity() {
 				location = targetItem.location
 				quantity = targetItem.quantity
 				status = targetItem.status
+				if (targetItem.updatedAtTimestamp > 0) {
+					updatedAtTimestamp = targetItem.updatedAtTimestamp
+				}
 				bindInventoryData()
 			}
 		}
@@ -126,10 +134,47 @@ class InventoryDetail : AppCompatActivity() {
 		findViewById<TextView>(R.id.rdqwy34t5qvs)?.text = "품목코드: $itemCode  ·  위치: $location"
 		findViewById<TextView>(R.id.rn47d4e68uol)?.text = if (status.equals("NORMAL", ignoreCase = true) || status == "정상") "정상 상태" else "이상 감지"
 
-		// 시스템 등록 메타데이터 영역 (수량 및 위치 실시간 동적 반영)
+		// 상단 '최근 업데이트' 문구 동적 바인딩
+		findViewById<TextView>(R.id.rps4ujt3tdm9)?.text = "최근 업데이트: ${formatRelativeTime(updatedAtTimestamp)}"
+
+		// 시스템 등록 메타데이터 영역 (수량, 위치, 입고일, 이동일시 동적 반영)
 		findViewById<TextView>(R.id.ris3q6gbf1sb)?.text = "${formatter.format(quantity)} 개" // 현재 수량
 		findViewById<TextView>(R.id.rdsxkthcwsfs)?.text = location                          // 구역 구분 / 위치
 		findViewById<TextView>(R.id.r1ck1uax9v6g)?.text = "랙: $location"                   // 랙 번호
 		findViewById<TextView>(R.id.rcpf8zg0hcvg)?.text = "PALLET-$itemCode"                 // 팔레트 ID
+		findViewById<TextView>(R.id.r70y6844hxkc)?.text = formatDateOnly(updatedAtTimestamp - (1000L * 60 * 60 * 24 * 14)) // 최초 입고일
+		findViewById<TextView>(R.id.ruws7gcxkfxe)?.text = formatFullDateTime(updatedAtTimestamp) // 최근 이동일시
+	}
+
+	private fun formatRelativeTime(timestamp: Long): String {
+		val now = System.currentTimeMillis()
+		val diff = now - timestamp
+
+		if (diff <= 0) return "방금 전"
+
+		val seconds = diff / 1000
+		val minutes = seconds / 60
+		val hours = minutes / 60
+		val days = hours / 24
+		val months = days / 30
+
+		return when {
+			minutes < 1 -> "방금 전"
+			minutes < 60 -> "${minutes}분 전"
+			hours < 24 -> "${hours}시간 전"
+			days < 30 -> "${days}일 전"
+			months < 12 -> "${months}달 전"
+			else -> "${months / 12}년 전"
+		}
+	}
+
+	private fun formatDateOnly(timestamp: Long): String {
+		val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.KOREA)
+		return sdf.format(Date(timestamp))
+	}
+
+	private fun formatFullDateTime(timestamp: Long): String {
+		val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.KOREA)
+		return sdf.format(Date(timestamp))
 	}
 }

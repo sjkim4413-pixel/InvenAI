@@ -39,8 +39,12 @@ object InventoryManager {
                                 val status = doc.getString("status") ?: "NORMAL"
                                 val pendingQty = doc.getLong("pendingQuantity")?.toInt() ?: 0
                                 val pendingLoc = doc.getString("pendingLocation") ?: ""
+                                val updatedAtTs = doc.getTimestamp("updatedAt")?.toDate()?.time
+                                    ?: doc.getLong("updatedAtTimestamp")
+                                    ?: doc.getTimestamp("createdAt")?.toDate()?.time
+                                    ?: System.currentTimeMillis()
 
-                                item = InventoryItem(itemCode, itemName, quantity, location, status, pendingQty, pendingLoc)
+                                item = InventoryItem(itemCode, itemName, quantity, location, status, pendingQty, pendingLoc, updatedAtTs)
                             }
                             items.add(item)
                         }
@@ -65,6 +69,7 @@ object InventoryManager {
     ) {
         try {
             val db = FirebaseFirestore.getInstance()
+            val nowTs = System.currentTimeMillis()
             val itemMap = hashMapOf(
                 "itemCode" to item.itemCode,
                 "itemName" to item.itemName,
@@ -73,6 +78,7 @@ object InventoryManager {
                 "status" to item.status,
                 "pendingQuantity" to item.pendingQuantity,
                 "pendingLocation" to item.pendingLocation,
+                "updatedAtTimestamp" to nowTs,
                 "updatedAt" to FieldValue.serverTimestamp()
             )
 

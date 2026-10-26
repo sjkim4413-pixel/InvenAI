@@ -11,7 +11,7 @@ class AuditStart : AppCompatActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_audit_start)
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/duxv9i3h_expires_30_days.png").into(findViewById(R.id.rov44kvu00s))
+		findViewById<View>(R.id.rov44kvu00s)?.visibility = View.GONE
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/lyyd6k3q_expires_30_days.png").into(findViewById(R.id.r96weuqy0tyj))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/ovrqq02f_expires_30_days.png").into(findViewById(R.id.ry0z6jgfecc9))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/dqyrj138_expires_30_days.png").into(findViewById(R.id.ry0qbvc6ckr))

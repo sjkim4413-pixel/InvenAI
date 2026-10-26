@@ -14,7 +14,7 @@ class Inbound : AppCompatActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_inbound)
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/6xpw5puz_expires_30_days.png").into(findViewById(R.id.r2z29mgruyhb))
+		findViewById<View>(R.id.r2z29mgruyhb)?.visibility = View.GONE
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/8bmodns0_expires_30_days.png").into(findViewById(R.id.rz06v3snjqw))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/f6027umo_expires_30_days.png").into(findViewById(R.id.rz17npri7jm))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/p7etgoqn_expires_30_days.png").into(findViewById(R.id.r9vqbrvdq3ns))
@@ -73,5 +73,31 @@ class Inbound : AppCompatActivity() {
 		button2?.setOnClickListener { finish() }
 		val button3: View? = findViewById(R.id.rzf39icr5vo)
 		button3?.setOnClickListener { finish() }
+	}
+
+	override fun onResume() {
+		super.onResume()
+		// F-06 예외 처리: 네트워크 복구 시 대기열 알림 자동 재발송
+		F06OfflineQueueManager.flushPendingQueue(this) { alert ->
+			F06NotificationHelper.sendHeadsUpNotification(this, alert)
+		}
+
+		// F-06 적재자 딥링크 푸시 클릭 진입 시 팝업 표출
+		val openAlertId = intent.getStringExtra("OPEN_F06_ALERT_ID")
+		if (openAlertId != null) {
+			val loc = intent.getStringExtra("LOCATION") ?: "B구역 R05-3층"
+			val expId = intent.getStringExtra("EXPECTED_ID") ?: "M-100"
+			val currId = intent.getStringExtra("CURRENT_ID") ?: "BT-200"
+
+			val payload = MisplacementAlertPayload(
+				alertId = openAlertId,
+				location = loc,
+				expectedItemCode = expId,
+				currentItemCode = currId
+			)
+
+			intent.removeExtra("OPEN_F06_ALERT_ID")
+			F06AlertDeepLinkDialog.show(this, payload)
+		}
 	}
 }

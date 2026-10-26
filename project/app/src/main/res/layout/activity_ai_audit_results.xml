@@ -35,6 +35,7 @@
 					android:gravity="center_vertical"
 					android:paddingVertical="11dp"
 					android:paddingHorizontal="20dp"
+					android:visibility="gone"
 					android:orientation="horizontal">
 					<TextView
 						android:id="@+id/rzc5yysyrei"
@@ -43,7 +44,7 @@
 						android:textStyle="bold"
 						android:layout_height="wrap_content"
 						android:layout_width="wrap_content"
-						android:text="14:30"
+						android:text=""
 					/>
 					<View
 						android:layout_width="0dp"
@@ -315,12 +316,61 @@
 							/>
 						</LinearLayout>
 					</LinearLayout>
+					<!-- 현장 촬영 및 C++ Edge 보정 실사 사진 뷰어 카드 -->
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:background="@drawable/se2e8f0sw1cr12bffffff"
+						android:padding="16dp"
+						android:layout_marginBottom="16dp"
+						android:orientation="vertical">
+
+						<LinearLayout
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:gravity="center_vertical"
+							android:layout_marginBottom="12dp">
+
+							<TextView
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:text="📸 현장 촬영 및 Edge 보정 실사 사진"
+								android:textColor="#0F172A"
+								android:textSize="14sp"
+								android:textStyle="bold" />
+
+							<View
+								android:layout_width="0dp"
+								android:layout_height="0dp"
+								android:layout_weight="1" />
+
+							<TextView
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:text="Perspective Warped"
+								android:textColor="#0D9488"
+								android:textSize="11sp"
+								android:textStyle="bold" />
+						</LinearLayout>
+
+						<com.google.android.material.imageview.ShapeableImageView
+							android:id="@+id/ivAiCapturedPhoto"
+							app:shapeAppearanceOverlay="@style/cr12"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:maxHeight="380dp"
+							android:adjustViewBounds="true"
+							android:scaleType="fitCenter"
+							android:background="#F1F5F9"
+							android:src="@android:drawable/ic_menu_camera" />
+					</LinearLayout>
 					<LinearLayout
 						android:id="@+id/rbj9j4m6p85p"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						android:layout_marginBottom="16dp"
 						android:orientation="vertical">
+
 						<TextView
 							android:id="@+id/rvfiuxzg6a4"
 							android:textColor="#475569"
@@ -329,247 +379,14 @@
 							android:layout_marginBottom="12dp"
 							android:layout_height="wrap_content"
 							android:layout_width="wrap_content"
-							android:text="이상 발생 세부 정보"
-						/>
+							android:text="전산 대조 및 AI 실사 분석 세부 정보" />
+
+						<!-- 동적 Firestore 전산 대조 결과 카드 컨테이너 -->
 						<LinearLayout
-							android:id="@+id/raytdnww7t5l"
+							android:id="@+id/llAuditDetailContainer"
 							android:layout_width="match_parent"
 							android:layout_height="wrap_content"
-							android:background="@drawable/sef4444sw1cr12bfef2f2"
-							android:paddingVertical="14dp"
-							android:paddingRight="14dp"
-							android:layout_marginBottom="12dp"
-							android:orientation="vertical">
-							<LinearLayout
-								android:id="@+id/rpz1q7wom6k"
-								android:layout_width="match_parent"
-								android:layout_height="wrap_content"
-								android:gravity="center_vertical"
-								android:layout_marginBottom="8dp"
-								android:layout_marginStart="14dp"
-								android:orientation="horizontal">
-								<TextView
-									android:id="@+id/r6n8ta4jv308"
-									android:textColor="#0F172A"
-									android:textSize="15sp"
-									android:textStyle="bold"
-									android:layout_height="wrap_content"
-									android:layout_width="wrap_content"
-									android:text="A02-2단"
-								/>
-								<View
-									android:layout_width="0dp"
-									android:layout_height="0dp"
-									android:layout_weight="1"
-								 />
-								<LinearLayout
-									android:id="@+id/rnaqhn5r92g"
-									android:layout_width="wrap_content"
-									android:layout_height="wrap_content"
-									android:background="@drawable/cr4bef4444"
-									android:paddingVertical="1dp"
-									android:paddingHorizontal="6dp"
-									android:orientation="vertical">
-									<TextView
-										android:id="@+id/rjdkj26oyqkp"
-										android:textColor="#FFFFFF"
-										android:textSize="11sp"
-										android:textStyle="bold"
-										android:layout_height="wrap_content"
-										android:layout_width="wrap_content"
-										android:text="오입고 의심"
-									/>
-								</LinearLayout>
-							</LinearLayout>
-							<TextView
-								android:id="@+id/rml6dcql8wva"
-								android:textColor="#475569"
-								android:textSize="12sp"
-								android:layout_marginStart="14dp"
-								android:layout_height="wrap_content"
-								android:layout_width="wrap_content"
-								android:text="전산: 무선마우스 [P006] / 감지: 블루투스이어폰 [P011]"
-							/>
-						</LinearLayout>
-						<LinearLayout
-							android:id="@+id/r7flg6bkrpux"
-							android:layout_width="match_parent"
-							android:layout_height="wrap_content"
-							android:background="@drawable/sef4444sw1cr12bfef2f2"
-							android:paddingVertical="14dp"
-							android:paddingRight="14dp"
-							android:layout_marginBottom="12dp"
-							android:orientation="vertical">
-							<LinearLayout
-								android:id="@+id/r4c98b9c2687"
-								android:layout_width="match_parent"
-								android:layout_height="wrap_content"
-								android:gravity="center_vertical"
-								android:layout_marginBottom="8dp"
-								android:layout_marginStart="14dp"
-								android:orientation="horizontal">
-								<TextView
-									android:id="@+id/ra4dmb39qa3n"
-									android:textColor="#0F172A"
-									android:textSize="15sp"
-									android:textStyle="bold"
-									android:layout_height="wrap_content"
-									android:layout_width="wrap_content"
-									android:text="A03-3단"
-								/>
-								<View
-									android:layout_width="0dp"
-									android:layout_height="0dp"
-									android:layout_weight="1"
-								 />
-								<LinearLayout
-									android:id="@+id/r9wq9lxt5goc"
-									android:layout_width="wrap_content"
-									android:layout_height="wrap_content"
-									android:background="@drawable/cr4bef4444"
-									android:paddingVertical="1dp"
-									android:paddingHorizontal="6dp"
-									android:orientation="vertical">
-									<TextView
-										android:id="@+id/rk1ofdmdb9p"
-										android:textColor="#FFFFFF"
-										android:textSize="11sp"
-										android:textStyle="bold"
-										android:layout_height="wrap_content"
-										android:layout_width="wrap_content"
-										android:text="재고 누락 의심"
-									/>
-								</LinearLayout>
-							</LinearLayout>
-							<TextView
-								android:id="@+id/rmivbycif5w"
-								android:textColor="#475569"
-								android:textSize="12sp"
-								android:layout_marginStart="14dp"
-								android:layout_height="wrap_content"
-								android:layout_width="wrap_content"
-								android:text="전산에 등록된 상품 박스가 랙 상에서 감지되지 않음"
-							/>
-						</LinearLayout>
-						<LinearLayout
-							android:id="@+id/r31rrauwl59r"
-							android:layout_width="match_parent"
-							android:layout_height="wrap_content"
-							android:background="@drawable/se2e8f0sw1cr12bffffff"
-							android:paddingVertical="14dp"
-							android:paddingRight="14dp"
-							android:layout_marginBottom="12dp"
-							android:orientation="vertical">
-							<LinearLayout
-								android:id="@+id/rsw2xt7ilo5"
-								android:layout_width="match_parent"
-								android:layout_height="wrap_content"
-								android:gravity="center_vertical"
-								android:layout_marginBottom="8dp"
-								android:layout_marginStart="14dp"
-								android:orientation="horizontal">
-								<TextView
-									android:id="@+id/rsyjnxp2q559"
-									android:textColor="#475569"
-									android:textSize="15sp"
-									android:textStyle="bold"
-									android:layout_height="wrap_content"
-									android:layout_width="wrap_content"
-									android:text="A02-1단"
-								/>
-								<View
-									android:layout_width="0dp"
-									android:layout_height="0dp"
-									android:layout_weight="1"
-								 />
-								<LinearLayout
-									android:id="@+id/rmsyfxy0f9pb"
-									android:layout_width="wrap_content"
-									android:layout_height="wrap_content"
-									android:background="@drawable/s10b981sw1cr4becfdf5"
-									android:paddingVertical="1dp"
-									android:paddingHorizontal="6dp"
-									android:orientation="vertical">
-									<TextView
-										android:id="@+id/rw88onzafz"
-										android:textColor="#10B981"
-										android:textSize="11sp"
-										android:textStyle="bold"
-										android:layout_height="wrap_content"
-										android:layout_width="wrap_content"
-										android:text="정상 매칭"
-									/>
-								</LinearLayout>
-							</LinearLayout>
-							<TextView
-								android:id="@+id/rll5c5izc8l"
-								android:textColor="#94A3B8"
-								android:textSize="12sp"
-								android:layout_marginStart="14dp"
-								android:layout_height="wrap_content"
-								android:layout_width="wrap_content"
-								android:text="무선 충전 패드 [P015] · 수량 일치 (12개)"
-							/>
-						</LinearLayout>
-						<LinearLayout
-							android:id="@+id/rxqdt0i1gxn9"
-							android:layout_width="match_parent"
-							android:layout_height="wrap_content"
-							android:background="@drawable/se2e8f0sw1cr12bffffff"
-							android:paddingVertical="14dp"
-							android:paddingRight="14dp"
-							android:orientation="vertical">
-							<LinearLayout
-								android:id="@+id/rguaa0xq4npb"
-								android:layout_width="match_parent"
-								android:layout_height="wrap_content"
-								android:gravity="center_vertical"
-								android:layout_marginBottom="8dp"
-								android:layout_marginStart="14dp"
-								android:orientation="horizontal">
-								<TextView
-									android:id="@+id/rhv9gutxd01"
-									android:textColor="#475569"
-									android:textSize="15sp"
-									android:textStyle="bold"
-									android:layout_height="wrap_content"
-									android:layout_width="wrap_content"
-									android:text="A02-3단"
-								/>
-								<View
-									android:layout_width="0dp"
-									android:layout_height="0dp"
-									android:layout_weight="1"
-								 />
-								<LinearLayout
-									android:id="@+id/r95bp1hg0mys"
-									android:layout_width="wrap_content"
-									android:layout_height="wrap_content"
-									android:background="@drawable/s10b981sw1cr4becfdf5"
-									android:paddingVertical="1dp"
-									android:paddingHorizontal="6dp"
-									android:orientation="vertical">
-									<TextView
-										android:id="@+id/rtdmsk4l63cq"
-										android:textColor="#10B981"
-										android:textSize="11sp"
-										android:textStyle="bold"
-										android:layout_height="wrap_content"
-										android:layout_width="wrap_content"
-										android:text="정상 매칭"
-									/>
-								</LinearLayout>
-							</LinearLayout>
-							<TextView
-								android:id="@+id/rnz63kd3dqt"
-								android:textColor="#94A3B8"
-								android:textSize="12sp"
-								android:layout_marginStart="14dp"
-								android:layout_height="wrap_content"
-								android:layout_width="wrap_content"
-								android:text="기계식 키보드 [P022] · 수량 일치 (45개)"
-							/>
-						</LinearLayout>
+							android:orientation="vertical" />
 					</LinearLayout>
 					<LinearLayout
 						android:id="@+id/r5y6ijbz1p29"
@@ -749,10 +566,9 @@
 				<LinearLayout
 					android:id="@+id/rh1gho8lau9c"
 					android:layout_marginTop="-17dp"
-					android:layout_marginEnd="0dp"
-					android:layout_marginStart="0dp"
-					android:layout_width="match_parent"
+					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
+					android:layout_centerHorizontal="true"
 					android:gravity="center_horizontal"
 					android:clipChildren="false"
 					android:clipToPadding="false"

@@ -10,7 +10,7 @@ class Outbound : AppCompatActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_outbound)
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/21vxgrwm_expires_30_days.png").into(findViewById(R.id.ry7xnxvpctk))
+		findViewById<View>(R.id.ry7xnxvpctk)?.visibility = View.GONE
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/ylzyhmr5_expires_30_days.png").into(findViewById(R.id.rep2pggs7s9))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/uf2i3qat_expires_30_days.png").into(findViewById(R.id.r1v53u96tfpeh))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/928s3ddo_expires_30_days.png").into(findViewById(R.id.r6hug2nahgfo))

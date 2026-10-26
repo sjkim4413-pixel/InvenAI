@@ -10,7 +10,7 @@ class Transfer : AppCompatActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_transfer)
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/zpl49qbo_expires_30_days.png").into(findViewById(R.id.ryevfqtfn7dn))
+		findViewById<View>(R.id.ryevfqtfn7dn)?.visibility = View.GONE
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/v7budixr_expires_30_days.png").into(findViewById(R.id.rf757l1z7cwk))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/hd3p86tr_expires_30_days.png").into(findViewById(R.id.ro46eqkipxtc))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/uxav5byw_expires_30_days.png").into(findViewById(R.id.r2nps7iriax2))

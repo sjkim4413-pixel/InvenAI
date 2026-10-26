@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="#000000">
+
+	<!-- 1. CameraX 실시간 프리뷰 뷰파인더 -->
+	<androidx.camera.view.PreviewView
+		android:id="@+id/viewFinder"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent" />
+
+	<!-- 2. 반투명 딤(Dim) 처리 (가운데 뚫린 효과를 위해 전체를 덮음) -->
+	<View
+		android:id="@+id/dimOverlay"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="#80000000" />
+
+	<!-- 3. AR 가이드라인 (랙 비율에 맞춘 중앙 타겟 영역) -->
+	<View
+		android:id="@+id/arGuideBox"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		app:layout_constraintWidth_percent="0.8"
+		app:layout_constraintDimensionRatio="3:4"
+		android:background="@drawable/ar_guide_border"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent" />
+
+	<!-- 4. 조도 경고 플래시 아이콘 (기본 숨김) -->
+	<ImageView
+		android:id="@+id/ivLowLightWarning"
+		android:layout_width="48dp"
+		android:layout_height="48dp"
+		android:src="@android:drawable/ic_dialog_alert"
+		android:visibility="gone"
+		app:layout_constraintBottom_toTopOf="@id/arGuideBox"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		android:layout_marginBottom="16dp" />
+
+	<!-- 5. 하단 셔터 버튼 및 닫기 버튼 영역 -->
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:gravity="center"
+		android:padding="24dp"
+		app:layout_constraintBottom_toBottomOf="parent">
+
+		<ImageButton
+			android:id="@+id/btnCloseCamera"
+			android:layout_width="48dp"
+			android:layout_height="48dp"
+			android:background="?android:attr/selectableItemBackgroundBorderless"
+			android:src="@android:drawable/ic_menu_close_clear_cancel"
+			android:layout_marginEnd="40dp" />
+
+		<ImageButton
+			android:id="@+id/btnShutter"
+			android:layout_width="80dp"
+			android:layout_height="80dp"
+			android:background="@android:drawable/btn_radio"
+			android:contentDescription="촬영" />
+	</LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

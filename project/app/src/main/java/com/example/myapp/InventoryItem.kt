@@ -7,5 +7,6 @@ data class InventoryItem(
     val location: String = "",
     val status: String = "NORMAL", // "NORMAL", "ANOMALY", "PENDING_QA"
     val pendingQuantity: Int = 0,
-    val pendingLocation: String = ""
+    val pendingLocation: String = "",
+    val updatedAtTimestamp: Long = System.currentTimeMillis()
 )

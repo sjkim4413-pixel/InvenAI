@@ -20,13 +20,15 @@ class InventoryList : AppCompatActivity() {
 
 	private var inventoryListener: ListenerRegistration? = null
 	private var currentItems: List<InventoryItem> = emptyList()
+	private var selectedTagFilter: String = "ALL" // "ALL", "A_ZONE", "B_ZONE", "NORMAL"
+	private var currentSearchQuery: String = ""
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_inventory_list)
 
 		// 상단 이미지/아이콘 로딩
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/4jibd1jn_expires_30_days.png").into(findViewById(R.id.rmkfwrpy51p))
+		findViewById<View>(R.id.rmkfwrpy51p)?.visibility = View.GONE
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/ke7kqco6_expires_30_days.png").into(findViewById(R.id.rp3vtwhd9m2q))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/w0fng0rw_expires_30_days.png").into(findViewById(R.id.rk3okepp5ox))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/ct5z84en_expires_30_days.png").into(findViewById(R.id.rxq6bb0gaxh))
@@ -34,12 +36,13 @@ class InventoryList : AppCompatActivity() {
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/mchitgku_expires_30_days.png").into(findViewById(R.id.rt87e4hkgdz))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/hzpl9gub_expires_30_days.png").into(findViewById(R.id.rbuk0ip58a9q))
 
-		// 검색어 입력 Listener
+		// 검색어 입력 Listener (한글 및 모바일 키보드 호환)
 		val etSearch: EditText? = findViewById(R.id.rzgh3zmtlhx)
 		etSearch?.addTextChangedListener(object : TextWatcher {
 			override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 			override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-				filterInventory(s.toString().trim())
+				currentSearchQuery = s.toString().trim()
+				applyFilterAndSearch()
 			}
 			override fun afterTextChanged(s: Editable?) {}
 		})
@@ -70,33 +73,126 @@ class InventoryList : AppCompatActivity() {
 			MenuHelper.showMoreMenu(this)
 		}
 
+		// 검색창 아래 필터 태그 칩 기능 구현
+		setupTagChipListeners()
+
 		// Cloud Firestore 실시간 재고 바인딩
 		setupRealtimeInventory()
 	}
 
 	/**
-	 * Firebase Cloud Firestore 실시간 재고 수신 및 동적 카드 바인딩
+	 * 필터 태그 칩 클릭 이벤트 구현 ([전체 창고], [A구역], [B구역], [정상])
 	 */
-	private fun setupRealtimeInventory() {
-		inventoryListener = InventoryManager.listenToRealtimeInventory { items ->
-			currentItems = items
-			renderInventoryList(items)
+	private fun setupTagChipListeners() {
+		val btnTagAll: View? = findViewById(R.id.rcsp34d582jh)
+		val btnTagA: View? = findViewById(R.id.ra0ithaorus4)
+		val btnTagB: View? = findViewById(R.id.revxqonyr1am)
+		val btnTagNormal: View? = findViewById(R.id.r7osm9qpd5he)
+
+		btnTagAll?.setOnClickListener {
+			selectedTagFilter = "ALL"
+			updateTagChipStyles(R.id.rcsp34d582jh)
+			applyFilterAndSearch()
+		}
+
+		btnTagA?.setOnClickListener {
+			selectedTagFilter = "A_ZONE"
+			updateTagChipStyles(R.id.ra0ithaorus4)
+			applyFilterAndSearch()
+		}
+
+		btnTagB?.setOnClickListener {
+			selectedTagFilter = "B_ZONE"
+			updateTagChipStyles(R.id.revxqonyr1am)
+			applyFilterAndSearch()
+		}
+
+		btnTagNormal?.setOnClickListener {
+			selectedTagFilter = "NORMAL"
+			updateTagChipStyles(R.id.r7osm9qpd5he)
+			applyFilterAndSearch()
 		}
 	}
 
 	/**
-	 * 검색어 필터링
+	 * 선택된 태그 칩 스타일 하이라이트 변경
 	 */
-	private fun filterInventory(query: String) {
-		if (query.isEmpty()) {
-			renderInventoryList(currentItems)
-		} else {
-			val filtered = currentItems.filter {
-				it.itemName.contains(query, ignoreCase = true) ||
-				it.itemCode.contains(query, ignoreCase = true) ||
-				it.location.contains(query, ignoreCase = true)
+	private fun updateTagChipStyles(selectedId: Int) {
+		val btnTagAll: View? = findViewById(R.id.rcsp34d582jh)
+		val btnTagA: View? = findViewById(R.id.ra0ithaorus4)
+		val btnTagB: View? = findViewById(R.id.revxqonyr1am)
+		val btnTagNormal: View? = findViewById(R.id.r7osm9qpd5he)
+
+		val tvAll: TextView? = findViewById(R.id.rmzk6ugrumd)
+		val tvA: TextView? = findViewById(R.id.rd3p87bdx95a)
+		val tvB: TextView? = findViewById(R.id.r0oro1j125toe)
+		val tvNormal: TextView? = findViewById(R.id.rpxlzzrxv1al)
+
+		// 초기화
+		btnTagAll?.background = ContextCompat.getDrawable(this, R.drawable.se2e8f0sw1cr100bf8fafc)
+		btnTagA?.background = ContextCompat.getDrawable(this, R.drawable.se2e8f0sw1cr100bf8fafc)
+		btnTagB?.background = ContextCompat.getDrawable(this, R.drawable.se2e8f0sw1cr100bf8fafc)
+		btnTagNormal?.background = ContextCompat.getDrawable(this, R.drawable.se2e8f0sw1cr100bf8fafc)
+
+		tvAll?.setTextColor(Color.parseColor("#475569"))
+		tvA?.setTextColor(Color.parseColor("#475569"))
+		tvB?.setTextColor(Color.parseColor("#475569"))
+		tvNormal?.setTextColor(Color.parseColor("#475569"))
+
+		// 선택된 태그 하이라이트 (Teal background, White text)
+		when (selectedId) {
+			R.id.rcsp34d582jh -> {
+				btnTagAll?.background = ContextCompat.getDrawable(this, R.drawable.cr100b0d9488)
+				tvAll?.setTextColor(Color.WHITE)
 			}
-			renderInventoryList(filtered)
+			R.id.ra0ithaorus4 -> {
+				btnTagA?.background = ContextCompat.getDrawable(this, R.drawable.cr100b0d9488)
+				tvA?.setTextColor(Color.WHITE)
+			}
+			R.id.revxqonyr1am -> {
+				btnTagB?.background = ContextCompat.getDrawable(this, R.drawable.cr100b0d9488)
+				tvB?.setTextColor(Color.WHITE)
+			}
+			R.id.r7osm9qpd5he -> {
+				btnTagNormal?.background = ContextCompat.getDrawable(this, R.drawable.cr100b0d9488)
+				tvNormal?.setTextColor(Color.WHITE)
+			}
+		}
+	}
+
+	/**
+	 * 태그 필터와 검색어를 조합하여 최종 결과 필터링
+	 */
+	private fun applyFilterAndSearch() {
+		var filtered = currentItems
+
+		// 1. 태그 필터 적용
+		filtered = when (selectedTagFilter) {
+			"A_ZONE" -> filtered.filter { it.location.contains("A구역", ignoreCase = true) || it.location.contains("A-", ignoreCase = true) || it.location.contains("A", ignoreCase = true) }
+			"B_ZONE" -> filtered.filter { it.location.contains("B구역", ignoreCase = true) || it.location.contains("B-", ignoreCase = true) || it.location.contains("B", ignoreCase = true) }
+			"NORMAL" -> filtered.filter { it.status.equals("NORMAL", ignoreCase = true) || it.status == "정상" }
+			else -> filtered
+		}
+
+		// 2. 검색어 필터 적용
+		if (currentSearchQuery.isNotEmpty()) {
+			filtered = filtered.filter {
+				it.itemName.contains(currentSearchQuery, ignoreCase = true) ||
+				it.itemCode.contains(currentSearchQuery, ignoreCase = true) ||
+				it.location.contains(currentSearchQuery, ignoreCase = true)
+			}
+		}
+
+		renderInventoryList(filtered)
+	}
+
+	/**
+	 * Firebase Cloud Firestore 실시간 재고 수신
+	 */
+	private fun setupRealtimeInventory() {
+		inventoryListener = InventoryManager.listenToRealtimeInventory { items ->
+			currentItems = items
+			applyFilterAndSearch()
 		}
 	}
 
@@ -105,11 +201,11 @@ class InventoryList : AppCompatActivity() {
 	 */
 	private fun renderInventoryList(items: List<InventoryItem>) {
 		val container = findViewById<LinearLayout>(R.id.r0dvle802is6) ?: return
-		container.removeAllViews() // 기존 고정 하드코딩 카드 삭제
+		container.removeAllViews()
 
 		if (items.isEmpty()) {
 			val emptyView = TextView(this).apply {
-				text = "등록된 재고 데이터가 없습니다.\n(Firebase 'inventory' 컬렉션을 확인하세요)"
+				text = "조건에 해당하는 재고 데이터가 없습니다."
 				setTextColor(Color.parseColor("#94A3B8"))
 				textSize = 14f
 				gravity = Gravity.CENTER
@@ -231,6 +327,7 @@ class InventoryList : AppCompatActivity() {
 				putExtra("LOCATION", item.location)
 				putExtra("QUANTITY", item.quantity)
 				putExtra("STATUS", item.status)
+				putExtra("UPDATED_AT", item.updatedAtTimestamp)
 			}
 			startActivity(intent)
 		}

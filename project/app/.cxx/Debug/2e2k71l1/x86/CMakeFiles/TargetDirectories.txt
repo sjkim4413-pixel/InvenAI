@@ -1,0 +1,3 @@
+C:/Users/user/Downloads/codetea (2)/project/app/.cxx/Debug/2e2k71l1/x86/CMakeFiles/invenai_vision.dir
+C:/Users/user/Downloads/codetea (2)/project/app/.cxx/Debug/2e2k71l1/x86/CMakeFiles/edit_cache.dir
+C:/Users/user/Downloads/codetea (2)/project/app/.cxx/Debug/2e2k71l1/x86/CMakeFiles/rebuild_cache.dir

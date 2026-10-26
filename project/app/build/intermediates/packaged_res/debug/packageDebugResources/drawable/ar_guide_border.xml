@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- 안쪽은 카메라 화면이 보이도록 완전 투명하게 처리 -->
+    <solid android:color="#00000000" />
+
+    <!-- 바깥 테두리 선은 빨간색(#FF0000), 두께는 3dp로 설정 -->
+    <stroke
+        android:width="3dp"
+        android:color="#FF0000" />
+
+    <!-- 박스 모서리를 살짝 둥글게 -->
+    <corners android:radius="12dp" />
+</shape>

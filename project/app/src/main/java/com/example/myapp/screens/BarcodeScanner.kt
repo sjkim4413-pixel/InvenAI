@@ -9,7 +9,7 @@ class BarcodeScanner : AppCompatActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_barcode_scanner)
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/wohcfqzp_expires_30_days.png").into(findViewById(R.id.r2dw5neub3vq))
+		findViewById<View>(R.id.r2dw5neub3vq)?.visibility = View.GONE
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/4g5fvela_expires_30_days.png").into(findViewById(R.id.rvhf4gydald))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/xspowcky_expires_30_days.png").into(findViewById(R.id.r59zx6vv10kf))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/p6wb0j9e_expires_30_days.png").into(findViewById(R.id.r59l3mzf1vkl))

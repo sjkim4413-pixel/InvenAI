@@ -48,6 +48,7 @@
         android:background="@drawable/se2e8f0sw1cr12bffffff"
         android:padding="12dp"
         android:layout_marginBottom="12dp"
+        android:privateImeOptions="defaultInputmode=korean"
         android:inputType="text" />
 
     <!-- 수량 입력 -->

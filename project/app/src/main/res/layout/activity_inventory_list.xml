@@ -51,7 +51,7 @@
 									android:textStyle="bold"
 									android:layout_height="wrap_content"
 									android:layout_width="wrap_content"
-									android:text="14:30"
+									android:text=""
 								/>
 								<View
 									android:layout_width="0dp"
@@ -123,10 +123,12 @@
 									/>
 									<EditText
 										android:inputType="text"
-										android:hint="상품명, 상품코드, 팔레트 ID 검색"
+										android:privateImeOptions="defaultInputmode=korean"
+										android:hint="상품명, 코드, 랙 위치 검색"
 										android:background="@null"
 										android:id="@+id/rzgh3zmtlhx"
-										android:textColor="#94A3B8"
+										android:textColor="#0F172A"
+										android:textColorHint="#94A3B8"
 										android:textSize="14sp"
 										android:layout_marginEnd="4dp"
 										android:layout_width="0dp"
@@ -211,7 +213,7 @@
 											android:textStyle="bold"
 											android:layout_height="wrap_content"
 											android:layout_width="wrap_content"
-											android:text="랙 전체"
+											android:text="B구역"
 										/>
 									</LinearLayout>
 									<LinearLayout

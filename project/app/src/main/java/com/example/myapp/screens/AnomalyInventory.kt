@@ -28,7 +28,7 @@ class AnomalyInventory : AppCompatActivity() {
 		val sharedPref = getSharedPreferences("app_user_session", MODE_PRIVATE)
 		userRole = sharedPref.getString("ROLE", "QA") ?: "QA"
 
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/ca2uyjlh_expires_30_days.png").into(findViewById(R.id.rvr5zkk72xae))
+		findViewById<View>(R.id.rvr5zkk72xae)?.visibility = View.GONE
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/jn2255fo_expires_30_days.png").into(findViewById(R.id.r4dlso48svyt))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/tz57phta_expires_30_days.png").into(findViewById(R.id.rp42d4osxz4h))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/piax8y50_expires_30_days.png").into(findViewById(R.id.reyi6z9lj9u))

@@ -39,8 +39,7 @@ object OrderSyncManager {
                 }
 
                 override fun onFailure(call: Call<List<OrderResponse>>, t: Throwable) {
-                    Log.e(TAG, "Network error: " + t.message + ". Falling back to local DB cache.")
-                    Toast.makeText(context, "네트워크 통신 단절. 로컬 DB 캐시 데이터를 불러옵니다.", Toast.LENGTH_SHORT).show()
+                    Log.w(TAG, "Network offline or server unreachable: " + t.message + ". Falling back to local SQLite DB cache.")
                     val cachedOrders = dbHelper.getCachedOrders()
                     onResult(cachedOrders, false)
                 }

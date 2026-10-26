@@ -1,0 +1,2 @@
+ninja: Entering directory `C:\Users\user\Downloads\codetea (2)\project\app\.cxx\Debug\2t1f1a1g\arm64-v8a'
+ninja: no work to do.

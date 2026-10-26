@@ -1,0 +1,7 @@
+[
+{
+  "directory": "C:/Users/user/Downloads/codetea (2)/project/app/.cxx/Debug/2z2w1jf5/x86_64",
+  "command": "C:\\Users\\user\\AppData\\Local\\Android\\Sdk\\ndk\\25.1.8937393\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe --target=x86_64-none-linux-android24 --sysroot=C:/Users/user/AppData/Local/Android/Sdk/ndk/25.1.8937393/toolchains/llvm/prebuilt/windows-x86_64/sysroot -Dinvenai_vision_EXPORTS -isystem \"C:/Users/user/Downloads/codetea (2)/project/opencv-4.14.0-android-sdk/OpenCV-android-sdk/sdk/native/jni/include\" -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++17 -fno-limit-debug-info  -fPIC -o CMakeFiles\\invenai_vision.dir\\vision-processor.cpp.o -c \"C:\\Users\\user\\Downloads\\codetea (2)\\project\\app\\src\\main\\cpp\\vision-processor.cpp\"",
+  "file": "C:\\Users\\user\\Downloads\\codetea (2)\\project\\app\\src\\main\\cpp\\vision-processor.cpp"
+}
+]
