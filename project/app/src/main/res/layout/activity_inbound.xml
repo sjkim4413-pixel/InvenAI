@@ -88,6 +88,25 @@
 						android:layout_width="wrap_content"
 						android:text="신규 상품 입고"
 					/>
+					<View
+						android:layout_width="0dp"
+						android:layout_height="0dp"
+						android:layout_weight="1"
+					/>
+					<TextView
+						android:id="@+id/btnTopBarcodeScan"
+						android:textColor="#FFFFFF"
+						android:textSize="12sp"
+						android:textStyle="bold"
+						android:background="@drawable/cr10b0d9488"
+						android:paddingVertical="8dp"
+						android:paddingHorizontal="14dp"
+						android:clickable="true"
+						android:focusable="true"
+						android:layout_height="wrap_content"
+						android:layout_width="wrap_content"
+						android:text="📷 바코드 스캔"
+					/>
 				</LinearLayout>
 				<LinearLayout
 					android:id="@+id/rf6mzrag5tcl"
@@ -500,6 +519,7 @@
 							/>
 							<EditText
 								android:inputType="text"
+								android:privateImeOptions="defaultInputmode=korean"
 								android:hint="추천 랙: B구역 R05-3층 (유사 재고 인접)"
 								android:background="@null"
 								android:id="@+id/r9d214a21z9"

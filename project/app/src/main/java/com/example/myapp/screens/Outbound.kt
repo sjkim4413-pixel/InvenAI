@@ -4,9 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import android.view.View
+import android.widget.TextView
+import android.widget.Toast
 import com.bumptech.glide.Glide
 
 class Outbound : AppCompatActivity() {
+	private var isInspected: Boolean = false
+
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_outbound)
@@ -25,35 +29,58 @@ class Outbound : AppCompatActivity() {
 		// 상단 뒤로가기 버튼
 		findViewById<View>(R.id.rep2pggs7s9)?.setOnClickListener { finish() }
 
+		// 품목 카드 클릭 시 검수 완료 토글
+		val inspectionCard = findViewById<View>(R.id.r5igq6j590t8)
+		inspectionCard?.setOnClickListener {
+			isInspected = !isInspected
+			val progressText = findViewById<TextView>(R.id.r7xhv0u114x)
+			if (isInspected) {
+				progressText?.text = "3 / 3 완료 (100%)"
+				Toast.makeText(this, "모든 출고 품목 검수가 완료되었습니다.", Toast.LENGTH_SHORT).show()
+			} else {
+				progressText?.text = "1 / 3 완료 (33%)"
+				Toast.makeText(this, "검수가 해제되었습니다.", Toast.LENGTH_SHORT).show()
+			}
+		}
+
 		// 하단 네비게이션 바
-		// 1. 홈
 		findViewById<View>(R.id.rupecyf80hng)?.setOnClickListener {
 			val intent = Intent(this, HomeDashboard::class.java)
 			intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
 			startActivity(intent)
 			finish()
 		}
-		// 2. 재고
 		findViewById<View>(R.id.rjw1ckivpyn)?.setOnClickListener {
 			startActivity(Intent(this, InventoryList::class.java))
 		}
-		// 3. 스캔
 		val openScanner = View.OnClickListener {
 			startActivity(Intent(this, BarcodeScanner::class.java))
 		}
 		findViewById<View>(R.id.rh36zxy9qo29)?.setOnClickListener(openScanner)
 		findViewById<View>(R.id.rql1c1xivai)?.setOnClickListener(openScanner)
-
-		// 4. 작업
 		findViewById<View>(R.id.r54ce1bp910u)?.setOnClickListener {
 			startActivity(Intent(this, WorkHistory::class.java))
 		}
-		// 5. 더보기 (드롭바/바텀시트 메뉴)
 		findViewById<View>(R.id.rd76lyutvd04)?.setOnClickListener {
 			MenuHelper.showMoreMenu(this)
 		}
 
+		// 출고 완료 처리 버튼
 		val button1: View? = findViewById(R.id.rgctjrpsbkzw)
-		button1?.setOnClickListener { finish() }
+		button1?.setOnClickListener {
+			val outboundItem = InventoryItem(
+				itemCode = "M-100",
+				itemName = "무선 마우스 M-100",
+				quantity = 0,
+				location = "A구역 R01-1층",
+				status = "OUTBOUND_COMPLETE"
+			)
+			InventoryManager.addOrUpdateInventoryItem(outboundItem, {
+				Toast.makeText(this, "출고 지시 검수 및 출고 완료 처리가 완료되었습니다.", Toast.LENGTH_SHORT).show()
+				finish()
+			}, { err ->
+				Toast.makeText(this, "출고 처리 실패: $err", Toast.LENGTH_SHORT).show()
+			})
+		}
 	}
 }

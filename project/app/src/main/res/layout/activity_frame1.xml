@@ -134,6 +134,7 @@
 								/>
 								<EditText
 									android:inputType="text"
+									android:privateImeOptions="defaultInputmode=korean"
 									android:hint="ABC-001"
 									android:id="@+id/rmm3ibea01dh"
 									android:textColor="#0F172A"
@@ -166,6 +167,7 @@
 								/>
 								<EditText
 									android:inputType="text"
+									android:privateImeOptions="defaultInputmode=korean"
 									android:hint="사번 또는 아이디 입력"
 									android:id="@+id/rtduz0dht8w"
 									android:textColor="#0F172A"

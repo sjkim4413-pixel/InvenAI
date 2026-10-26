@@ -36,6 +36,7 @@
         android:background="@drawable/se2e8f0sw1cr12bffffff"
         android:padding="12dp"
         android:layout_marginBottom="12dp"
+        android:privateImeOptions="defaultInputmode=korean"
         android:inputType="text" />
 
     <!-- 아이디 / 사번 -->
@@ -59,6 +60,7 @@
         android:background="@drawable/se2e8f0sw1cr12bffffff"
         android:padding="12dp"
         android:layout_marginBottom="12dp"
+        android:privateImeOptions="defaultInputmode=korean"
         android:inputType="text" />
 
     <!-- 비밀번호 -->
