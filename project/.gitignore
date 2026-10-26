@@ -1,7 +1,7 @@
 # Gradle files
 .gradle/
 /app/build/
-
+/app/.cxx/
 # OpenCV SDK
 opencv-4.14.0-android-sdk.zip
 opencv-4.14.0-android-sdk/
