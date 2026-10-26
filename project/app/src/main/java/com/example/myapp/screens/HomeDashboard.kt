@@ -212,7 +212,7 @@ class HomeDashboard : AppCompatActivity() {
 		}
 
 		val tvSubtitle = TextView(this).apply {
-			text = "위치: ${item.location}  ·  수량: ${item.quantity}개"
+			text = "위치: ${item.location}  ·  수량: ${item.quantity}개  ·  작업자: ${item.userId}"
 			setTextColor(Color.parseColor("#475569"))
 			textSize = 11f
 		}

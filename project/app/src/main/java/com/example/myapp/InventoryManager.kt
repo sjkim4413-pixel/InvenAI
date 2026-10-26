@@ -2,6 +2,7 @@ package com.example.myapp
 
 import android.content.Context
 import android.util.Log
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
@@ -15,7 +16,24 @@ object InventoryManager {
         if (context == null) return "ABC-001"
         val prefs = context.getSharedPreferences("app_user_session", Context.MODE_PRIVATE)
         val code = prefs.getString("COMPANY_CODE", "ABC-001") ?: "ABC-001"
-        return if (code.isBlank() || code == "DEFAULT") "ABC-001" else code
+        return if (code.isBlank() || code == "DEFAULT") "ABC-001" else code.trim().uppercase()
+    }
+
+    private fun getCurrentUserId(context: Context?): String {
+        if (context != null) {
+            val prefs = context.getSharedPreferences("app_user_session", Context.MODE_PRIVATE)
+            val userId = prefs.getString("USER_ID", "") ?: ""
+            if (userId.isNotBlank()) return userId
+        }
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        if (currentUser != null) {
+            val email = currentUser.email
+            if (!email.isNullOrEmpty()) {
+                return email.substringBefore("@")
+            }
+            return currentUser.uid.takeLast(6)
+        }
+        return "관리자"
     }
 
     // 1. 실시간 재고 데이터 수신 (오버로드: Context 없음)
@@ -32,6 +50,7 @@ object InventoryManager {
     ): ListenerRegistration? {
         return try {
             val companyCode = getCompanyCode(context)
+            val activeUserId = getCurrentUserId(context)
             val db = FirebaseFirestore.getInstance()
             db.collection(COLLECTION_NAME)
                 .addSnapshotListener { snapshot, error ->
@@ -44,9 +63,6 @@ object InventoryManager {
                         val items = mutableListOf<InventoryItem>()
                         for (doc in snapshot.documents) {
                             val actualCompany = doc.getString("companyCode") ?: ""
-                            // 엄격한 회사별 분리 필터링:
-                            // 1. 로그인한 코드가 "ABC-001"인 경우: "ABC-001"이거나 companyCode가 없는 레거시 데이터 허용
-                            // 2. 다른 회사 코드로 로그인한 경우: 정확히 일치하는 companyCode 데이터만 허용
                             val matches = if (companyCode == "ABC-001") {
                                 actualCompany == "ABC-001" || actualCompany.isEmpty()
                             } else {
@@ -70,18 +86,23 @@ object InventoryManager {
                                 val status = doc.getString("status") ?: "NORMAL"
                                 val pendingQty = doc.getLong("pendingQuantity")?.toInt() ?: 0
                                 val pendingLoc = doc.getString("pendingLocation") ?: ""
+                                var userId = doc.getString("userId") ?: doc.getString("user") ?: ""
+                                if (userId.isBlank() || userId == "시스템") userId = activeUserId
                                 val updatedAtTs = doc.getTimestamp("updatedAt")?.toDate()?.time
                                     ?: doc.getLong("updatedAtTimestamp")
                                     ?: doc.getTimestamp("createdAt")?.toDate()?.time
                                     ?: System.currentTimeMillis()
 
-                                item = InventoryItem(itemCode, itemName, quantity, location, status, pendingQty, pendingLoc, updatedAtTs)
+                                item = InventoryItem(itemCode, itemName, quantity, location, status, pendingQty, pendingLoc, updatedAtTs, userId)
+                            } else if (item.userId.isBlank() || item.userId == "시스템") {
+                                val userId = doc.getString("userId") ?: activeUserId
+                                item = item.copy(userId = if (userId.isBlank() || userId == "시스템") activeUserId else userId)
                             }
                             items.add(item)
                         }
 
                         if (items.isEmpty()) {
-                            seedDefaultInventory(db, companyCode) { seeded ->
+                            seedDefaultInventory(db, companyCode, activeUserId) { seeded ->
                                 onUpdate(seeded)
                             }
                         } else {
@@ -89,7 +110,7 @@ object InventoryManager {
                             onUpdate(items)
                         }
                     } else {
-                        seedDefaultInventory(db, companyCode) { seeded ->
+                        seedDefaultInventory(db, companyCode, activeUserId) { seeded ->
                             onUpdate(seeded)
                         }
                     }
@@ -100,13 +121,13 @@ object InventoryManager {
         }
     }
 
-    private fun seedDefaultInventory(db: FirebaseFirestore, companyCode: String, onSeeded: (List<InventoryItem>) -> Unit) {
+    private fun seedDefaultInventory(db: FirebaseFirestore, companyCode: String, currentUserId: String, onSeeded: (List<InventoryItem>) -> Unit) {
         val now = System.currentTimeMillis()
         val defaultItems = listOf(
-            InventoryItem("M-100", "무선 마우스 M-100", 120, "B구역 R05-3층", "NORMAL", updatedAtTimestamp = now - 300000),
-            InventoryItem("BT-200", "블루투스 이어폰 BT-200", 50, "A구역 R01-1층 (오적재 감지)", "ANOMALY", updatedAtTimestamp = now - 2100000),
-            InventoryItem("MC-300", "고속 C타입 멀티 충전기", 80, "A03-3단", "PENDING_QA", updatedAtTimestamp = now - 10800000),
-            InventoryItem("KB-400", "기계식 키보드 K-90", 200, "A04-1단", "NORMAL", updatedAtTimestamp = now - 172800000)
+            InventoryItem("M-100", "무선 마우스 M-100", 120, "B구역 R05-3층", "NORMAL", updatedAtTimestamp = now - 300000, userId = currentUserId),
+            InventoryItem("BT-200", "블루투스 이어폰 BT-200", 50, "A구역 R01-1층 (오적재 감지)", "ANOMALY", updatedAtTimestamp = now - 2100000, userId = currentUserId),
+            InventoryItem("MC-300", "고속 C타입 멀티 충전기", 80, "A03-3단", "PENDING_QA", updatedAtTimestamp = now - 10800000, userId = currentUserId),
+            InventoryItem("KB-400", "기계식 키보드 K-90", 200, "A04-1단", "NORMAL", updatedAtTimestamp = now - 172800000, userId = currentUserId)
         )
 
         for (item in defaultItems) {
@@ -119,6 +140,7 @@ object InventoryManager {
                 "status" to item.status,
                 "pendingQuantity" to item.pendingQuantity,
                 "pendingLocation" to item.pendingLocation,
+                "userId" to currentUserId,
                 "updatedAtTimestamp" to item.updatedAtTimestamp,
                 "updatedAt" to FieldValue.serverTimestamp()
             )
@@ -136,7 +158,7 @@ object InventoryManager {
         addOrUpdateInventoryItem(null, item, onSuccess, onFailure)
     }
 
-    // 2-1. 재고 항목 추가 또는 업데이트 (Context 있음 - companyCode 태그 저장)
+    // 2-1. 재고 항목 추가 또는 업데이트 (Context 있음 - companyCode 및 userId 태그 저장)
     fun addOrUpdateInventoryItem(
         context: Context?,
         item: InventoryItem,
@@ -145,6 +167,9 @@ object InventoryManager {
     ) {
         try {
             val companyCode = getCompanyCode(context)
+            val currentUserId = getCurrentUserId(context)
+            val assignedUserId = if (item.userId.isNotEmpty() && item.userId != "시스템") item.userId else currentUserId
+
             val db = FirebaseFirestore.getInstance()
             val nowTs = System.currentTimeMillis()
             val itemMap = hashMapOf(
@@ -156,6 +181,7 @@ object InventoryManager {
                 "status" to item.status,
                 "pendingQuantity" to item.pendingQuantity,
                 "pendingLocation" to item.pendingLocation,
+                "userId" to assignedUserId,
                 "updatedAtTimestamp" to nowTs,
                 "updatedAt" to FieldValue.serverTimestamp()
             )
@@ -164,7 +190,7 @@ object InventoryManager {
             db.collection(COLLECTION_NAME).document("${companyCode}_${item.itemCode}")
                 .set(itemMap)
                 .addOnSuccessListener {
-                    Log.d(TAG, "Inventory item updated successfully for company [$companyCode]: ${item.itemCode}")
+                    Log.d(TAG, "Inventory item updated successfully for company [$companyCode] by user [$assignedUserId]: ${item.itemCode}")
                     onSuccess()
                 }
                 .addOnFailureListener { e ->
