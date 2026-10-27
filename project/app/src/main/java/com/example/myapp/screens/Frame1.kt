@@ -176,12 +176,26 @@ class Frame1 : AppCompatActivity() {
 							return@addOnCompleteListener
 						}
 
-						// Firestore에서 사용자 역할(role) 조회
+						// Firestore에서 사용자 역할 및 가입 시 정보 조회 후 엄격 검증
 						db.collection("users").document(uid).get()
 							.addOnSuccessListener { document ->
 								val role = document.getString("role") ?: "QA"
-								val company = document.getString("companyCode") ?: companyCode
-								onLoginSuccess(company.uppercase(), userId, uid, role)
+								val registeredCompany = (document.getString("companyCode") ?: "").uppercase()
+								val registeredId = document.getString("employeeId") ?: userId
+
+								if (registeredCompany.isNotEmpty() && registeredCompany != companyCode) {
+									Toast.makeText(this, "입력하신 사업장 코드[$companyCode]가 가입된 정보[$registeredCompany]와 일치하지 않습니다.", Toast.LENGTH_LONG).show()
+									auth.signOut()
+									return@addOnSuccessListener
+								}
+
+								if (registeredId.isNotEmpty() && registeredId != userId) {
+									Toast.makeText(this, "입력하신 아이디[$userId]가 가입된 정보[$registeredId]와 일치하지 않습니다.", Toast.LENGTH_LONG).show()
+									auth.signOut()
+									return@addOnSuccessListener
+								}
+
+								onLoginSuccess(registeredCompany.ifEmpty { companyCode }, userId, uid, role)
 							}
 							.addOnFailureListener { e ->
 								Log.w("Frame1", "Firestore 역할 조회 실패: " + e.message)
@@ -252,8 +266,8 @@ class Frame1 : AppCompatActivity() {
 	 */
 	private fun routeUserByRole(role: String) {
 		val intent = if (role == "LOADER") {
-			// 적재자용 메인 화면 (Inbound)
-			Intent(this, Inbound::class.java)
+			// 적재자용 메인 화면 (LoaderHomeDashboard)
+			Intent(this, LoaderHomeDashboard::class.java)
 		} else {
 			// 검수자용 메인 대시보드 화면 (HomeDashboard)
 			Intent(this, HomeDashboard::class.java)

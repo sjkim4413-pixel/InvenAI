@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8FAFC"
+    android:orientation="vertical">
+
+    <!-- Top Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#0F172A"
+        android:paddingVertical="18dp"
+        android:paddingHorizontal="20dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="📦 적재자 전용 작업 대시보드"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+            />
+            <TextView
+                android:id="@+id/tvLoaderUserSession"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="사업장: ABC-001 | 사번: loader"
+                android:textColor="#94A3B8"
+                android:textSize="12sp"
+            />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btnLogoutLoader"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/cr8bf8fafc"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="6dp"
+            android:text="로그아웃"
+            android:textColor="#EF4444"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:clickable="true"
+            android:focusable="true"
+        />
+    </LinearLayout>
+
+    <!-- Scrollable Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:padding="20dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Anomaly Alert / Status Card (Always visible) -->
+            <LinearLayout
+                android:id="@+id/cardActiveAlert"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="#F0FDFA"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="16dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/tvAlertTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="✅ 오적재 조치 현황: 정상"
+                    android:textColor="#0D9488"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                />
+                <TextView
+                    android:id="@+id/tvAlertContent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="현재 접수된 오적재 조치 요청이 없습니다."
+                    android:textColor="#475569"
+                    android:textSize="13sp"
+                />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:text="현장 핵심 업무 메뉴"
+                android:textColor="#0F172A"
+                android:textSize="16sp"
+                android:textStyle="bold"
+            />
+
+            <!-- Menu Card 1: 신규 상품 입고 -->
+            <LinearLayout
+                android:id="@+id/cardInbound"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/se2e8f0sw1cr16bffffff"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📥 신규 상품 입고 등록"
+                        android:textColor="#0F172A"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                    />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="신규 입고 물류 바코드 스캔 및 적재 위치 지정"
+                        android:textColor="#64748B"
+                        android:textSize="12sp"
+                    />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Menu Card 3: 재고 위치 이동 -->
+            <LinearLayout
+                android:id="@+id/cardTransfer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/se2e8f0sw1cr16bffffff"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🔄 재고 위치 이동"
+                        android:textColor="#0F172A"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                    />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="창고 내 물류 이동 및 목적지 랙 변경"
+                        android:textColor="#64748B"
+                        android:textSize="12sp"
+                    />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Menu Card 4: 오적재 관리 -->
+            <LinearLayout
+                android:id="@+id/cardAnomaly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/se2e8f0sw1cr16bffffff"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🚨 이상 재고 / 오적재 조치"
+                        android:textColor="#0F172A"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                    />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="검수자 요청 오적재 재조치 및 승인 요청"
+                        android:textColor="#64748B"
+                        android:textSize="12sp"
+                    />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Menu Card 5: 작업 이력 -->
+            <LinearLayout
+                android:id="@+id/cardWorkHistory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/se2e8f0sw1cr16bffffff"
+                android:clickable="true"
+                android:focusable="true"
+                android:padding="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📋 작업 이력 및 알림"
+                        android:textColor="#0F172A"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                    />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="현장 작업 로그 및 푸시 알림 전체 조회"
+                        android:textColor="#64748B"
+                        android:textSize="12sp"
+                    />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:padding="12dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btnScanBarcode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#0D9488"
+            android:text="📷 바코드 스캔하기"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+        />
+    </LinearLayout>
+
+</LinearLayout>

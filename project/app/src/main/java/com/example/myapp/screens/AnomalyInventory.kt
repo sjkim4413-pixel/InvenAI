@@ -71,13 +71,15 @@ class AnomalyInventory : AppCompatActivity() {
 	}
 
 	/**
-	 * Firebase Cloud Firestore 실시간 이상 재고 수신
+	 * Firebase Cloud Firestore 실시간 이상 재고 수신 (출고 완료 및 0개 수량 항목 제외)
 	 */
 	private fun setupRealtimeAnomalies() {
 		inventoryListener = InventoryManager.listenToRealtimeInventory(this) { items ->
-			// 정상 처리되지 않은 항목들만 필터링 (ANOMALY 또는 PENDING_QA 상태)
 			val anomalyItems = items.filter {
-				!it.status.equals("NORMAL", ignoreCase = true) && it.status != "정상"
+				!it.status.equals("NORMAL", ignoreCase = true) &&
+				!it.status.equals("OUTBOUND_COMPLETE", ignoreCase = true) &&
+				it.status != "정상" &&
+				it.quantity > 0
 			}
 			renderAnomalyList(anomalyItems)
 		}
@@ -146,8 +148,15 @@ class AnomalyInventory : AppCompatActivity() {
 			)
 		}
 
+		val locText = buildString {
+			append("📍 현재 위치: ").append(item.location)
+			if (item.targetLocation.isNotEmpty()) {
+				append("\n🎯 목표 위치: ").append(item.targetLocation)
+			}
+		}
+
 		val tvLoc = TextView(this).apply {
-			text = "📍 현재: " + item.location
+			text = locText
 			setTextColor(Color.parseColor("#0F172A"))
 			textSize = 13f
 			typeface = Typeface.DEFAULT_BOLD
@@ -213,7 +222,7 @@ class AnomalyInventory : AppCompatActivity() {
 		if (isQA) {
 			// === [검수자 QA 모드 버튼] ===
 			if (isPendingQA) {
-				// 적재자가 요청한 수량/위치를 검수자가 최종 확인하고 DB에 반영
+				// 적재자가 요청한 수량/위치를 검수자가 최종 확인하고 DB에 반영 (승인 시 작업 이력 로그 남김)
 				val btnApprove = Button(this).apply {
 					text = "✅ 최종 승인 및 DB 반영"
 					setTextColor(Color.WHITE)
@@ -224,7 +233,6 @@ class AnomalyInventory : AppCompatActivity() {
 						setMargins(0, 0, dpToPx(6), 0)
 					}
 					setOnClickListener {
-						// 최종 승인 시 적재자가 요청한 수량과 위치를 실제 DB 수량/위치로 확정하고 정상(NORMAL) 상태로 저장
 						val finalLoc = if (item.pendingLocation.isNotEmpty()) item.pendingLocation else item.location
 						val finalQty = if (item.pendingQuantity > 0) item.pendingQuantity else item.quantity
 
@@ -233,14 +241,15 @@ class AnomalyInventory : AppCompatActivity() {
 							location = finalLoc,
 							status = "NORMAL",
 							pendingQuantity = 0,
-							pendingLocation = ""
+							pendingLocation = "",
+							relocationDone = false,
+							updatedAtTimestamp = System.currentTimeMillis() // 승인 시각 갱신으로 작업 이력 로그에 반영
 						)
 
 						InventoryManager.addOrUpdateInventoryItem(
 							context = this@AnomalyInventory,
 							item = approvedItem,
 							onSuccess = {
-								// 승인 완료 시 anomalies 컬렉션에서도 해당 항목 삭제하여 DB 정정/정리
 								val db = FirebaseFirestore.getInstance()
 								db.collection("anomalies")
 									.whereEqualTo("itemCode", item.itemCode)
@@ -279,7 +288,6 @@ class AnomalyInventory : AppCompatActivity() {
 				buttonBar.addView(btnApprove)
 				buttonBar.addView(btnReject)
 			} else {
-				// 아직 적재자가 조치하지 않은 오적재 항목
 				val btnNotify = Button(this).apply {
 					text = "🚨 적재자에게 조치 알림 재발송"
 					setTextColor(Color.WHITE)
@@ -293,7 +301,7 @@ class AnomalyInventory : AppCompatActivity() {
 							itemCode = item.itemCode,
 							itemName = item.itemName,
 							currentLocation = item.location,
-							targetLocation = "B구역 R05-3층",
+							targetLocation = if (item.targetLocation.isNotEmpty()) item.targetLocation else "B구역 R05-3층",
 							quantity = item.quantity,
 							loaderUserId = "loader"
 						)
@@ -315,46 +323,93 @@ class AnomalyInventory : AppCompatActivity() {
 				}
 				buttonBar.addView(tvWaiting)
 			} else {
-				// 적재자가 올바르게 재적재하거나 수량/위치를 수정하고 검수자에게 승인을 요청함
-				val btnRequestComplete = Button(this).apply {
-					text = "재적재 완료 (검수자 승인 요청)"
-					setTextColor(Color.parseColor("#475569"))
-					textSize = 12f
+				val hasEdited = item.pendingLocation.isNotEmpty() || item.pendingQuantity > 0
+				val isRelocationDone = item.relocationDone
+
+				// 1. [수정] 버튼 (항상 활성화)
+				val btnEdit = Button(this).apply {
+					text = "수정"
+					setTextColor(Color.parseColor("#0D9488"))
+					textSize = 11f
 					typeface = Typeface.DEFAULT_BOLD
-					background = ContextCompat.getDrawable(this@AnomalyInventory, R.drawable.se2e8f0sw1cr8)
+					background = ContextCompat.getDrawable(this@AnomalyInventory, R.drawable.cr100bf0fdfa)
 					layoutParams = LinearLayout.LayoutParams(0, dpToPx(40), 1f).apply {
-						setMargins(0, 0, dpToPx(6), 0)
+						setMargins(0, 0, dpToPx(4), 0)
 					}
 					setOnClickListener {
-						val pendingItem = item.copy(
-							status = "PENDING_QA",
-							pendingLocation = item.location,
-							pendingQuantity = item.quantity
+						EditInventoryDialog.showForEditOnly(this@AnomalyInventory, item) {
+							// 수정 저장 콜백
+						}
+					}
+				}
+
+				// 2. [재적재 완료] 버튼 (수정을 하거나 위치가 잡히면 활성화)
+				val btnRelocationDone = Button(this).apply {
+					text = if (isRelocationDone) "재적재 완료됨" else "재적재 완료"
+					// 활성화 시 선명한 청록색(Teal) 테마, 비활성화 시 회색 톤
+					setTextColor(if (hasEdited || item.targetLocation.isNotEmpty()) Color.parseColor("#0D9488") else Color.parseColor("#94A3B8"))
+					textSize = 11f
+					typeface = Typeface.DEFAULT_BOLD
+					background = ContextCompat.getDrawable(
+						this@AnomalyInventory,
+						if (hasEdited || item.targetLocation.isNotEmpty()) R.drawable.cr100bf0fdfa else R.drawable.se2e8f0sw1cr8
+					)
+					layoutParams = LinearLayout.LayoutParams(0, dpToPx(40), 1f).apply {
+						setMargins(0, 0, dpToPx(4), 0)
+					}
+					val canComplete = hasEdited || item.targetLocation.isNotEmpty()
+					isEnabled = canComplete
+					alpha = if (canComplete) 1.0f else 0.5f
+
+					setOnClickListener {
+						val relocatedItem = item.copy(
+							location = if (item.pendingLocation.isNotEmpty()) item.pendingLocation else if (item.targetLocation.isNotEmpty()) item.targetLocation else item.location,
+							relocationDone = true
 						)
 						InventoryManager.addOrUpdateInventoryItem(
 							context = this@AnomalyInventory,
-							item = pendingItem,
+							item = relocatedItem,
 							onSuccess = {
-								Toast.makeText(this@AnomalyInventory, "✅ 올바른 재적재 완료! 검수자(QA)에게 승인 요청을 전송했습니다.", Toast.LENGTH_LONG).show()
+								Toast.makeText(this@AnomalyInventory, "✅ 재적재가 완료되었습니다. 이제 [승인 요청] 버튼을 눌러주세요.", Toast.LENGTH_SHORT).show()
 							}
 						)
 					}
 				}
 
-				val btnEdit = Button(this).apply {
-					text = "수량/위치 수정 및 승인 요청"
+				// 3. [승인 요청] 버튼 (재적재 완료가 되어야만 활성화)
+				val btnSubmitApproval = Button(this).apply {
+					text = "승인 요청"
 					setTextColor(Color.WHITE)
-					textSize = 12f
+					textSize = 11f
 					typeface = Typeface.DEFAULT_BOLD
-					background = ContextCompat.getDrawable(this@AnomalyInventory, R.drawable.cr8b0d9488)
+					background = ContextCompat.getDrawable(
+						this@AnomalyInventory,
+						if (isRelocationDone) R.drawable.cr8b0d9488 else R.drawable.se2e8f0sw1cr8
+					)
 					layoutParams = LinearLayout.LayoutParams(0, dpToPx(40), 1f)
+					isEnabled = isRelocationDone
+					alpha = if (isRelocationDone) 1.0f else 0.5f
+
 					setOnClickListener {
-						EditInventoryDialog.show(this@AnomalyInventory, item)
+						val pendingItem = item.copy(
+							status = "PENDING_QA",
+							pendingLocation = if (item.pendingLocation.isNotEmpty()) item.pendingLocation else if (item.targetLocation.isNotEmpty()) item.targetLocation else item.location,
+							pendingQuantity = item.quantity,
+							relocationDone = true
+						)
+						InventoryManager.addOrUpdateInventoryItem(
+							context = this@AnomalyInventory,
+							item = pendingItem,
+							onSuccess = {
+								Toast.makeText(this@AnomalyInventory, "✅ 검수자(QA)에게 승인 요청을 전송했습니다.", Toast.LENGTH_LONG).show()
+							}
+						)
 					}
 				}
 
-				buttonBar.addView(btnRequestComplete)
 				buttonBar.addView(btnEdit)
+				buttonBar.addView(btnRelocationDone)
+				buttonBar.addView(btnSubmitApproval)
 			}
 		}
 

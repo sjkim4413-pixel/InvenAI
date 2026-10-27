@@ -74,6 +74,9 @@
 			android:name=".HomeDashboard"
 			android:exported="false" />
 		<activity
+			android:name=".LoaderHomeDashboard"
+			android:exported="false" />
+		<activity
 			android:name=".Inbound"
 			android:exported="false" />
 		<activity

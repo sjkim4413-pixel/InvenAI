@@ -226,62 +226,6 @@
 						</LinearLayout>
 					</LinearLayout>
 					<LinearLayout
-						android:id="@+id/r567i067ooi3"
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content"
-						android:gravity="center_vertical"
-						android:paddingHorizontal="4dp"
-						android:layout_marginBottom="20dp"
-						android:orientation="horizontal">
-						<LinearLayout
-							android:id="@+id/r22xipeqhzwb"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:gravity="center_vertical"
-							android:layout_marginEnd="12dp"
-							android:orientation="horizontal">
-							<ImageView
-								android:id="@+id/rgp6rugrpw18"
-								android:layout_width="8dp"
-								android:layout_height="8dp"
-								android:layout_marginEnd="6dp"
-								android:src="@android:drawable/star_big_on"
-								android:scaleType="fitXY"
-							/>
-							<TextView
-								android:id="@+id/rmjlahtvlrnh"
-								android:textColor="#475569"
-								android:textSize="13sp"
-								android:layout_height="wrap_content"
-								android:layout_width="wrap_content"
-								android:text="입고 예정: 156"
-							/>
-						</LinearLayout>
-						<LinearLayout
-							android:id="@+id/r41k6bsxqnas"
-							android:layout_width="wrap_content"
-							android:layout_height="wrap_content"
-							android:gravity="center_vertical"
-							android:orientation="horizontal">
-							<ImageView
-								android:id="@+id/rj5jh5v0bjop"
-								android:layout_width="8dp"
-								android:layout_height="8dp"
-								android:layout_marginEnd="6dp"
-								android:src="@android:drawable/star_big_on"
-								android:scaleType="fitXY"
-							/>
-							<TextView
-								android:id="@+id/ra3h5o34igv"
-								android:textColor="#475569"
-								android:textSize="13sp"
-								android:layout_height="wrap_content"
-								android:layout_width="wrap_content"
-								android:text="출고 예정: 89"
-							/>
-						</LinearLayout>
-					</LinearLayout>
-					<LinearLayout
 						android:id="@+id/rg4twd46k6hb"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
@@ -310,7 +254,7 @@
 								android:layout_marginBottom="10dp"
 								android:orientation="horizontal">
 								<LinearLayout
-									android:id="@+id/ror0ls8e8rs"
+									android:id="@+id/r58m6zkpupi8"
 									android:layout_width="0dp"
 									android:layout_height="wrap_content"
 									android:layout_weight="1"
@@ -318,6 +262,34 @@
 									android:paddingVertical="13dp"
 									android:paddingLeft="16dp"
 									android:layout_marginEnd="10dp"
+									android:orientation="vertical">
+									<com.google.android.material.imageview.ShapeableImageView
+										android:id="@+id/r98ojsxh1t6i"
+										app:shapeAppearanceOverlay="@style/cr20"
+										android:layout_width="40dp"
+										android:layout_height="40dp"
+										android:layout_marginBottom="10dp"
+										android:src="@android:drawable/star_big_on"
+										android:scaleType="fitXY"
+									/>
+									<TextView
+										android:id="@+id/rgvw5eanmufi"
+										android:textColor="#0F172A"
+										android:textSize="14sp"
+										android:textStyle="bold"
+										android:layout_height="wrap_content"
+										android:layout_width="wrap_content"
+										android:text="AI 재고 실사"
+									/>
+								</LinearLayout>
+								<LinearLayout
+									android:id="@+id/ror0ls8e8rs"
+									android:layout_width="0dp"
+									android:layout_height="wrap_content"
+									android:layout_weight="1"
+									android:background="@drawable/se2e8f0sw1cr16bffffff"
+									android:paddingVertical="13dp"
+									android:paddingLeft="16dp"
 									android:orientation="vertical">
 									<com.google.android.material.imageview.ShapeableImageView
 										android:id="@+id/rab39btppni9"
@@ -336,34 +308,6 @@
 										android:layout_height="wrap_content"
 										android:layout_width="wrap_content"
 										android:text="입고 등록"
-									/>
-								</LinearLayout>
-								<LinearLayout
-									android:id="@+id/rw3dpgqgpg3r"
-									android:layout_width="0dp"
-									android:layout_height="wrap_content"
-									android:layout_weight="1"
-									android:background="@drawable/se2e8f0sw1cr16bffffff"
-									android:paddingVertical="13dp"
-									android:paddingLeft="16dp"
-									android:orientation="vertical">
-									<com.google.android.material.imageview.ShapeableImageView
-										android:id="@+id/r0s0w7txmc16"
-										app:shapeAppearanceOverlay="@style/cr20"
-										android:layout_width="40dp"
-										android:layout_height="40dp"
-										android:layout_marginBottom="10dp"
-										android:src="@android:drawable/star_big_on"
-										android:scaleType="fitXY"
-									/>
-									<TextView
-										android:id="@+id/r8iz7ah2nyyc"
-										android:textColor="#0F172A"
-										android:textSize="14sp"
-										android:textStyle="bold"
-										android:layout_height="wrap_content"
-										android:layout_width="wrap_content"
-										android:text="출고 지시"
 									/>
 								</LinearLayout>
 							</LinearLayout>
@@ -404,41 +348,6 @@
 									/>
 								</LinearLayout>
 								<LinearLayout
-									android:id="@+id/r58m6zkpupi8"
-									android:layout_width="0dp"
-									android:layout_height="wrap_content"
-									android:layout_weight="1"
-									android:background="@drawable/se2e8f0sw1cr16bffffff"
-									android:paddingVertical="13dp"
-									android:paddingLeft="16dp"
-									android:orientation="vertical">
-									<com.google.android.material.imageview.ShapeableImageView
-										android:id="@+id/r98ojsxh1t6i"
-										app:shapeAppearanceOverlay="@style/cr20"
-										android:layout_width="40dp"
-										android:layout_height="40dp"
-										android:layout_marginBottom="10dp"
-										android:src="@android:drawable/star_big_on"
-										android:scaleType="fitXY"
-									/>
-									<TextView
-										android:id="@+id/rgvw5eanmufi"
-										android:textColor="#0F172A"
-										android:textSize="14sp"
-										android:textStyle="bold"
-										android:layout_height="wrap_content"
-										android:layout_width="wrap_content"
-										android:text="AI 재고 실사"
-									/>
-								</LinearLayout>
-							</LinearLayout>
-							<LinearLayout
-								android:id="@+id/r9cgawdni3m4"
-								android:layout_width="match_parent"
-								android:layout_height="wrap_content"
-								android:gravity="center_vertical"
-								android:orientation="horizontal">
-								<LinearLayout
 									android:id="@+id/rcgbksuzw3mr"
 									android:layout_width="0dp"
 									android:layout_height="wrap_content"
@@ -446,7 +355,6 @@
 									android:background="@drawable/se2e8f0sw1cr16bffffff"
 									android:paddingVertical="13dp"
 									android:paddingLeft="16dp"
-									android:layout_marginEnd="10dp"
 									android:orientation="vertical">
 									<com.google.android.material.imageview.ShapeableImageView
 										android:id="@+id/re5c8ey5f249"
@@ -467,6 +375,13 @@
 										android:text="재고 조회"
 									/>
 								</LinearLayout>
+							</LinearLayout>
+							<LinearLayout
+								android:id="@+id/r9cgawdni3m4"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:gravity="center_vertical"
+								android:orientation="horizontal">
 								<LinearLayout
 									android:id="@+id/r0da5dco3z0cj"
 									android:layout_width="0dp"
@@ -474,6 +389,7 @@
 									android:layout_weight="1"
 									android:background="@drawable/se2e8f0sw1cr16bffffff"
 									android:paddingVertical="13dp"
+									android:layout_marginEnd="10dp"
 									android:orientation="vertical">
 									<com.google.android.material.imageview.ShapeableImageView
 										android:id="@+id/r6lzdd9oqzfl"
@@ -496,6 +412,12 @@
 										android:text="이상 재고 대응"
 									/>
 								</LinearLayout>
+								<View
+									android:layout_width="0dp"
+									android:layout_height="0dp"
+									android:layout_weight="1"
+									android:layout_marginStart="10dp"
+								/>
 							</LinearLayout>
 						</LinearLayout>
 					</LinearLayout>
