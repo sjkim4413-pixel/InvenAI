@@ -97,5 +97,11 @@
 		<activity
 			android:name=".WorkHistory"
 			android:exported="false" />
+            <activity
+            android:name=".WarehousePhotos"
+            android:exported="false" />
+        <activity
+            android:name=".overlay.OverlayActivity"
+            android:exported="false" />
     </application>
 </manifest>

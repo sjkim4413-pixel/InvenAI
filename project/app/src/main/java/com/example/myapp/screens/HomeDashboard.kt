@@ -51,7 +51,7 @@ class HomeDashboard : AppCompatActivity() {
 			startActivity(Intent(this, Transfer::class.java))
 		}
 		findViewById<View>(R.id.r58m6zkpupi8)?.setOnClickListener {
-			startActivity(Intent(this, AuditStart::class.java))
+			startActivity(Intent(this, WarehousePhotos::class.java))
 		}
 		findViewById<View>(R.id.rcgbksuzw3mr)?.setOnClickListener {
 			startActivity(Intent(this, InventoryList::class.java))
