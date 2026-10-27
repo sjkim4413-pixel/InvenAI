@@ -22,6 +22,7 @@ class WorkHistory : AppCompatActivity() {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_work_history)
 		findViewById<View>(R.id.rr145tdsfh3)?.visibility = View.GONE
+		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/v7budixr_expires_30_days.png").into(findViewById(R.id.r3vtuuy6ybip))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/irtilrwz_expires_30_days.png").into(findViewById(R.id.rx9hjfq8hsit))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/7u67eh1p_expires_30_days.png").into(findViewById(R.id.rb1cli47q0dv))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/t485xuic_expires_30_days.png").into(findViewById(R.id.r6q9ucayn5ik))
@@ -90,13 +91,20 @@ class WorkHistory : AppCompatActivity() {
 	private fun setupRealtimeLogs() {
 		inventoryListener?.remove()
 		inventoryListener = InventoryManager.listenToRealtimeInventory(this) { items ->
+			// 실시간 탭 배지 카운트 계산
+			val totalHistoryCount = items.size
+			val alertCount = items.count { !it.status.equals("NORMAL", ignoreCase = true) && !it.status.equals("OUTBOUND_COMPLETE", ignoreCase = true) && it.status != "정상" && it.quantity > 0 }
+
+			findViewById<TextView>(R.id.rbq34ofcj2hc)?.text = totalHistoryCount.toString()
+			findViewById<TextView>(R.id.rarm785mvw3j)?.text = alertCount.toString()
+
 			val container = findViewById<LinearLayout>(R.id.rxbx6tajr89a) ?: return@listenToRealtimeInventory
 			container.removeAllViews()
 
 			val filteredItems = if (currentTab == "HISTORY") {
 				items.sortedByDescending { it.updatedAtTimestamp }
 			} else {
-				items.filter { !it.status.equals("NORMAL", ignoreCase = true) && it.status != "정상" }
+				items.filter { !it.status.equals("NORMAL", ignoreCase = true) && !it.status.equals("OUTBOUND_COMPLETE", ignoreCase = true) && it.status != "정상" && it.quantity > 0 }
 					.sortedByDescending { it.updatedAtTimestamp }
 			}
 
@@ -153,7 +161,13 @@ class WorkHistory : AppCompatActivity() {
 		}
 
 		val tvTitle = TextView(this).apply {
-			text = "${item.itemName} (${if (isNormal) "입고/재고 정상 처리" else "이상/오적재 발생"})"
+			val actionDesc = when {
+				item.status.equals("PENDING_QA", ignoreCase = true) -> "재고 위치 이동 (검수 대기)"
+				item.status.equals("ANOMALY", ignoreCase = true) -> "이상/오적재 발생"
+				item.status.equals("OUTBOUND_COMPLETE", ignoreCase = true) -> "출고 완료"
+				else -> "입고/재고 정상 처리"
+			}
+			text = "${item.itemName} ($actionDesc)"
 			setTextColor(Color.parseColor("#0F172A"))
 			textSize = 13f
 			typeface = Typeface.DEFAULT_BOLD
@@ -168,7 +182,7 @@ class WorkHistory : AppCompatActivity() {
 		textLayout.addView(tvTitle)
 		textLayout.addView(tvSubtitle)
 
-		val tvTime = TextView(this).apply {
+		val tVTime = TextView(this).apply {
 			text = formatRelativeTime(item.updatedAtTimestamp)
 			setTextColor(Color.parseColor("#94A3B8"))
 			textSize = 11f
@@ -176,7 +190,7 @@ class WorkHistory : AppCompatActivity() {
 
 		card.addView(statusDot)
 		card.addView(textLayout)
-		card.addView(tvTime)
+		card.addView(tVTime)
 
 		return card
 	}

@@ -26,10 +26,7 @@ class HomeDashboard : AppCompatActivity() {
 		findViewById<View>(R.id.ry7p7pqvxka)?.visibility = View.GONE
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/j2ueo07z_expires_30_days.png").into(findViewById(R.id.rl6h0q4vuf7r))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/ghnv4git_expires_30_days.png").into(findViewById(R.id.rvivb4u3goq))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/8bv0wi1p_expires_30_days.png").into(findViewById(R.id.rgp6rugrpw18))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/qhg90uym_expires_30_days.png").into(findViewById(R.id.rj5jh5v0bjop))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/geoetad2_expires_30_days.png").into(findViewById(R.id.rab39btppni9))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/pkzd3d2y_expires_30_days.png").into(findViewById(R.id.r0s0w7txmc16))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/d6kmecjr_expires_30_days.png").into(findViewById(R.id.rpwoat3ganbb))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/kw244s3t_expires_30_days.png").into(findViewById(R.id.r98ojsxh1t6i))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/79z16sz3_expires_30_days.png").into(findViewById(R.id.re5c8ey5f249))
@@ -43,9 +40,6 @@ class HomeDashboard : AppCompatActivity() {
 		// 신속 현장 작업 버튼 연결
 		findViewById<View>(R.id.ror0ls8e8rs)?.setOnClickListener {
 			startActivity(Intent(this, Inbound::class.java))
-		}
-		findViewById<View>(R.id.rw3dpgqgpg3r)?.setOnClickListener {
-			startActivity(Intent(this, Outbound::class.java))
 		}
 		findViewById<View>(R.id.r5nn11xsmxdh)?.setOnClickListener {
 			startActivity(Intent(this, Transfer::class.java))
@@ -205,7 +199,13 @@ class HomeDashboard : AppCompatActivity() {
 		}
 
 		val tvTitle = TextView(this).apply {
-			text = "${item.itemName} (${if (isNormal) "입고/재고 정상" else "이상/오적재 감지"})"
+			val actionDesc = when {
+				item.status.equals("PENDING_QA", ignoreCase = true) -> "재고 위치 이동 (검수 대기)"
+				item.status.equals("ANOMALY", ignoreCase = true) -> "이상/오적재 발생"
+				item.status.equals("OUTBOUND_COMPLETE", ignoreCase = true) -> "출고 완료"
+				else -> "입고/재고 정상 처리"
+			}
+			text = "${item.itemName} ($actionDesc)"
 			setTextColor(Color.parseColor("#0F172A"))
 			textSize = 13f
 			typeface = Typeface.DEFAULT_BOLD

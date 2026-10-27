@@ -29,6 +29,7 @@ class InventoryList : AppCompatActivity() {
 
 		// 상단 이미지/아이콘 로딩
 		findViewById<View>(R.id.rmkfwrpy51p)?.visibility = View.GONE
+		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/v7budixr_expires_30_days.png").into(findViewById(R.id.btn_inventory_list_back))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/ke7kqco6_expires_30_days.png").into(findViewById(R.id.rp3vtwhd9m2q))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/w0fng0rw_expires_30_days.png").into(findViewById(R.id.rk3okepp5ox))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/ct5z84en_expires_30_days.png").into(findViewById(R.id.rxq6bb0gaxh))
@@ -46,29 +47,30 @@ class InventoryList : AppCompatActivity() {
 			}
 			override fun afterTextChanged(s: Editable?) {}
 		})
-
 		// 상단 뒤로가기 버튼
 		findViewById<View>(R.id.btn_inventory_list_back)?.setOnClickListener { finish() }
 		findViewById<View>(R.id.rp3vtwhd9m2q)?.setOnClickListener { finish() }
 
-		// 하단 네비게이션 바
+		// 하단 네비게이션 바 버튼 연결
+		// 1. 홈 버튼
 		findViewById<View>(R.id.rk3okepp5ox)?.setOnClickListener {
 			val intent = Intent(this, HomeDashboard::class.java)
 			intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
 			startActivity(intent)
 			finish()
 		}
-
+		// 2. 스캔 버튼
 		val openScanner = View.OnClickListener {
 			startActivity(Intent(this, BarcodeScanner::class.java))
 		}
 		findViewById<View>(R.id.rbuk0ip58a9q)?.setOnClickListener(openScanner)
 		findViewById<View>(R.id.rklc2x3n6g)?.setOnClickListener(openScanner)
 
+		// 3. 작업 버튼
 		findViewById<View>(R.id.rjqojvr7z0xr)?.setOnClickListener {
 			startActivity(Intent(this, WorkHistory::class.java))
 		}
-
+		// 4. 더보기 버튼 (드롭바/바텀시트 메뉴)
 		findViewById<View>(R.id.rnw6p4q6bcle)?.setOnClickListener {
 			MenuHelper.showMoreMenu(this)
 		}

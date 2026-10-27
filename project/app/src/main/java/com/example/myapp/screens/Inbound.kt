@@ -21,6 +21,7 @@ class Inbound : AppCompatActivity() {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_inbound)
 		findViewById<View>(R.id.r2z29mgruyhb)?.visibility = View.GONE
+		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/v7budixr_expires_30_days.png").into(findViewById(R.id.btn_inbound_back))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/8bmodns0_expires_30_days.png").into(findViewById(R.id.rz06v3snjqw))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/f6027umo_expires_30_days.png").into(findViewById(R.id.rz17npri7jm))
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/p7etgoqn_expires_30_days.png").into(findViewById(R.id.r9vqbrvdq3ns))
@@ -158,10 +159,12 @@ class Inbound : AppCompatActivity() {
 		val inputName = EditText(this).apply {
 			hint = "상품명 (예: 무선 키보드 K-90)"
 			setText(currentItemName)
+			inputType = android.text.InputType.TYPE_CLASS_TEXT
 		}
 		val inputSku = EditText(this).apply {
 			hint = "SKU / 바코드 번호 (예: SKU-99821)"
 			setText(currentItemSku)
+			inputType = android.text.InputType.TYPE_CLASS_TEXT
 		}
 
 		layout.addView(inputName)

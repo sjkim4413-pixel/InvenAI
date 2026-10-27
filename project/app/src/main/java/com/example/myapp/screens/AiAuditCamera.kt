@@ -1,6 +1,5 @@
 package com.example.myapp
 
-import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -28,6 +27,7 @@ class AiAuditCamera : AppCompatActivity() {
 
 	private var orientationEventListener: android.view.OrientationEventListener? = null
 	private var devicePhysicalRotation: Int = 0
+	private var targetRackId: String = "B구역 R05"
 
 	// 1. 카메라 권한 요청
 	private val requestPermissionLauncher = registerForActivityResult(
@@ -44,6 +44,8 @@ class AiAuditCamera : AppCompatActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_ai_audit_camera)
+
+		targetRackId = intent.getStringExtra("TARGET_RACK_ID") ?: "B구역 R05"
 
 		// 가속도 센서를 통해 폰을 가로로 눕혔는지/세웠는지 물리적 방향 실시간 감지
 		orientationEventListener = object : android.view.OrientationEventListener(this) {
@@ -73,10 +75,10 @@ class AiAuditCamera : AppCompatActivity() {
 		}
 
 		// 권한 확인 및 카메라 실행
-		if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
+		if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED) {
 			startCamera()
 		} else {
-			requestPermissionLauncher.launch(Manifest.permission.CAMERA)
+			requestPermissionLauncher.launch(android.Manifest.permission.CAMERA)
 		}
 	}
 
@@ -171,7 +173,7 @@ class AiAuditCamera : AppCompatActivity() {
 			ContextCompat.getMainExecutor(this),
 			object : ImageCapture.OnImageCapturedCallback() {
 				override fun onCaptureSuccess(image: ImageProxy) {
-					val buffer:ByteBuffer = image.planes[0].buffer
+					val buffer: ByteBuffer = image.planes[0].buffer
 					val bytes = ByteArray(buffer.remaining())
 					buffer.get(bytes)
 					val rotation = image.imageInfo.rotationDegrees
@@ -182,7 +184,9 @@ class AiAuditCamera : AppCompatActivity() {
 					if (processedBytes != null) {
 						CapturedPhotoHolder.photoBytes = processedBytes
 
-						val intent = Intent(this@AiAuditCamera, AiAuditResults::class.java)
+						val intent = Intent(this@AiAuditCamera, AiAuditResults::class.java).apply {
+							putExtra("TARGET_RACK_ID", targetRackId)
+						}
 						startActivity(intent)
 						finish()
 					} else {
