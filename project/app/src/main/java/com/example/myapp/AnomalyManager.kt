@@ -8,11 +8,18 @@ import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 
-// 검수자(QA)와 적재자(LOADER) 간의 오적재 감지 및 실시간 처리 매니저
+// 검수자(QA)와 적재자(LOADER) 간의 오적재 감지 및 실시간 처리 매니저 (사업장 코드별 스코프 지원)
 object AnomalyManager {
     private const val TAG = "AnomalyManager"
 
-    // 1. 검수자(QA): AI/카메라 감지 오적재 알림을 Firestore 및 적재자에게 발송
+    private fun getCompanyCode(context: Context?): String {
+        if (context == null) return "ABC-001"
+        val prefs = context.getSharedPreferences("app_user_session", Context.MODE_PRIVATE)
+        val code = prefs.getString("COMPANY_CODE", "ABC-001") ?: "ABC-001"
+        return if (code.isBlank() || code == "DEFAULT") "ABC-001" else code.trim().uppercase()
+    }
+
+    // 1. 검수자(QA): 동일 회사 코드를 가진 적재자들에게만 오적재 알림 발송 및 targetLocation 반영
     fun sendMisplacementAlert(
         context: Context,
         itemCode: String,
@@ -26,33 +33,39 @@ object AnomalyManager {
         val db = FirebaseFirestore.getInstance()
         val currentQaId = FirebaseAuth.getInstance().currentUser?.uid ?: "QA_ADMIN"
         val anomalyId = "ANO_" + System.currentTimeMillis()
+        val companyCode = getCompanyCode(context)
 
         val anomalyData = hashMapOf(
             "anomalyId" to anomalyId,
+            "companyCode" to companyCode, // 동일 회사 코드(companyCode) 스코프 부여
             "itemCode" to itemCode,
             "itemName" to itemName,
-            "currentLocation" to currentLocation, // 오적재되어 있는 위치
-            "targetLocation" to targetLocation,   // 올바른 적재 대상 위치
+            "currentLocation" to currentLocation,
+            "targetLocation" to targetLocation,
             "quantity" to quantity,
-            "status" to "ALERTED",                 // ALERTED(알림발송) -> RESOLVED(재적재완료)
+            "status" to "ALERTED",
             "qaUserId" to currentQaId,
             "loaderUserId" to loaderUserId,
             "createdAt" to FieldValue.serverTimestamp()
         )
 
-        // 1. anomalies 컬렉션에 기록
+        // 1. anomalies 컬렉션에 기록 (companyCode 포함)
         db.collection("anomalies").document(anomalyId)
             .set(anomalyData)
             .addOnSuccessListener {
-                Log.d(TAG, "오적재 알림 Firestore 등록 성공: $anomalyId")
+                Log.d(TAG, "오적재 알림 Firestore 등록 성공: $anomalyId (Company: $companyCode)")
 
-                // 2. inventory 컬렉션의 해당 품목 상태도 ANOMALY로 동기화 업데이트하여 앱 화면에 즉시 노출
-                db.collection("inventory").document(itemCode)
-                    .update("status", "ANOMALY")
+                // 2. inventory 컬렉션의 해당 품목 상태를 ANOMALY로, targetLocation을 반영하여 동기화 업데이트
+                db.collection("inventory").document("${companyCode}_${itemCode}")
+                    .update(
+                        mapOf(
+                            "status" to "ANOMALY",
+                            "targetLocation" to targetLocation
+                        )
+                    )
                     .addOnCompleteListener {
-                        Toast.makeText(context, "🚨 적재자에게 오적재 조치 요청 알림이 발송되었습니다!\n[$itemName: $currentLocation ➔ $targetLocation]", Toast.LENGTH_LONG).show()
+                        Toast.makeText(context, "🚨 동일 사업장($companyCode) 적재자들에게 오적재 조치 요청 알림이 발송되었습니다!\n[$itemName: $currentLocation ➔ $targetLocation]", Toast.LENGTH_LONG).show()
 
-                        // FCM/소켓 푸시 알림 트리거
                         PushSocketManager.registerDeviceToken(context, loaderUserId, currentQaId)
                         onSuccess()
                     }
@@ -76,13 +89,14 @@ object AnomalyManager {
             "status" to "RESOLVED",
             "resolvedAt" to FieldValue.serverTimestamp()
         )
+        val companyCode = getCompanyCode(context)
 
         db.collection("anomalies").document(anomalyId)
             .update(updateMap)
             .addOnSuccessListener {
                 Log.d(TAG, "재적재 완료 처리 성공: $anomalyId")
                 if (itemCode.isNotEmpty()) {
-                    db.collection("inventory").document(itemCode)
+                    db.collection("inventory").document("${companyCode}_${itemCode}")
                         .update("status", "PENDING_QA")
                         .addOnCompleteListener {
                             Toast.makeText(context, "✅ 올바른 재적재가 완료되었습니다!\n검수자(QA)에게 승인 요청이 전송되었습니다.", Toast.LENGTH_LONG).show()
@@ -100,13 +114,16 @@ object AnomalyManager {
             }
     }
 
-    // 3. 실시간 오적재 내역 리스너
+    // 3. 실시간 오적재 내역 리스너 (companyCode 기준 필터링)
     fun listenToAnomalies(
+        context: Context?,
         onUpdate: (List<Map<String, Any>>) -> Unit
     ): ListenerRegistration? {
         return try {
+            val companyCode = getCompanyCode(context)
             val db = FirebaseFirestore.getInstance()
             db.collection("anomalies")
+                .whereEqualTo("companyCode", companyCode)
                 .whereEqualTo("status", "ALERTED")
                 .addSnapshotListener { snapshot, error ->
                     if (error != null) {

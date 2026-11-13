@@ -522,7 +522,7 @@ class Frame1 : AppCompatActivity() {
 
 		val intent =
 			if (role == "LOADER") {
-				Intent(this, Inbound::class.java)
+				Intent(this, LoaderHomeDashboard::class.java)
 			} else {
 				Intent(this, HomeDashboard::class.java)
 			}
