@@ -29,14 +29,14 @@ Java_com_example_myapp_EdgeVisionManager_getOpenCVVersion(JNIEnv* env, jobject /
 }
 
 extern "C" JNIEXPORT jbyteArray JNICALL
-Java_com_example_myapp_EdgeVisionManager_processFrameNative(JNIEnv* env, jobject /* this */, jbyteArray photoBytes) {
+Java_com_example_myapp_EdgeVisionManager_processFrameNative(JNIEnv* env, jobject /* this */, jbyteArray photoBytes) try {
     jsize len = env->GetArrayLength(photoBytes);
     if (len == 0) return nullptr;
 
-    jbyte* buffer = env->GetByteArrayElements(photoBytes, nullptr);
-    std::vector<uchar> imgData(buffer, buffer + len);
-    cv::Mat src = cv::imdecode(imgData, cv::IMREAD_COLOR);
-    env->ReleaseByteArrayElements(photoBytes, buffer, JNI_ABORT);
+    std::vector<uchar> imgData(len);
+    env->GetByteArrayRegion(photoBytes, 0, len, reinterpret_cast<jbyte*>(imgData.data()));
+    if (env->ExceptionCheck()) return nullptr;
+    cv::Mat src = cv::imdecode(imgData, cv::IMREAD_COLOR | cv::IMREAD_IGNORE_ORIENTATION);
 
     if (src.empty()) return nullptr;
 
@@ -66,16 +66,19 @@ Java_com_example_myapp_EdgeVisionManager_processFrameNative(JNIEnv* env, jobject
         return cv::contourArea(a) > cv::contourArea(b);
     });
 
-    std::vector<cv::Point2f> approx;
+    std::vector<cv::Point> approx;
     std::vector<cv::Point2f> srcPts;
 
+    // A package face is also rectangular. Limit correction to a contour
+    // covering most of the frame so surrounding rack positions are preserved.
+    const double minRackArea = static_cast<double>(src.cols) * src.rows * 0.8;
     for (const auto& contour : contours) {
-        if (cv::contourArea(contour) < 5000) break;
+        if (cv::contourArea(contour) < minRackArea) break;
         double peri = cv::arcLength(contour, true);
         cv::approxPolyDP(contour, approx, 0.04 * peri, true);
 
-        if (approx.size() == 4) {
-            srcPts = approx;
+        if (approx.size() == 4 && cv::isContourConvex(approx) && cv::contourArea(approx) >= minRackArea) {
+            srcPts.assign(approx.begin(), approx.end());
             break;
         }
     }
@@ -96,32 +99,14 @@ Java_com_example_myapp_EdgeVisionManager_processFrameNative(JNIEnv* env, jobject
         float heightB = cv::norm(srcPts[0] - srcPts[3]); // 좌측 변 길이
         destHeight = std::max(heightA, heightB);
 
-        float ratio = destWidth / destHeight;
-        if (ratio < 0.3f || ratio > 3.0f) {
-            LOGD("Extreme distortion detected (ratio: %f). Falling back.", ratio);
-            srcPts.clear(); // 극단적 비율일 경우 오인식으로 간주하여 강제 폴백
-        } else {
-            LOGD("Dynamic contour matched. Width: %f, Height: %f", destWidth, destHeight);
+        if (destWidth < 64.0f || destHeight < 64.0f ||
+            destWidth < 0.3f * destHeight || destWidth > 3.0f * destHeight ||
+            !cv::isContourConvex(srcPts)) {
+            return photoBytes;
         }
     }
 
-    // 4. 모서리 탐색 실패 또는 극단적 왜곡 시 중앙 AR 가이드 고정 영역으로 폴백
-    if (srcPts.empty()) {
-        LOGD("Falling back to fixed center guide.");
-        int width = src.cols;
-        int height = src.rows;
-        destWidth = width * 0.8f;
-        destHeight = destWidth * (4.0f / 3.0f); // 3:4 고정 비율
-
-        float startX = (width - destWidth) / 2.0f;
-        float startY = (height - destHeight) / 2.0f;
-        srcPts = {
-                cv::Point2f(startX, startY),
-                cv::Point2f(startX + destWidth, startY),
-                cv::Point2f(startX + destWidth, startY + destHeight),
-                cv::Point2f(startX, startY + destHeight)
-        };
-    }
+    if (srcPts.empty()) return photoBytes;
 
     dstPts = {
             cv::Point2f(0, 0),
@@ -137,10 +122,16 @@ Java_com_example_myapp_EdgeVisionManager_processFrameNative(JNIEnv* env, jobject
 
     // 6. 변환된 이미지를 JPEG 바이트 배열로 인코딩하여 반환
     std::vector<uchar> outBuffer;
-    cv::imencode(".jpg", warped, outBuffer);
+    if (!cv::imencode(".jpg", warped, outBuffer, {cv::IMWRITE_JPEG_QUALITY, 95})) {
+        return photoBytes;
+    }
 
     jbyteArray result = env->NewByteArray(outBuffer.size());
+    if (result == nullptr) return nullptr;
     env->SetByteArrayRegion(result, 0, outBuffer.size(), (jbyte*)outBuffer.data());
 
     return result;
+} catch (const cv::Exception& error) {
+    LOGD("Image preprocessing failed: %s", error.what());
+    return nullptr;
 }

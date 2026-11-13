@@ -73,8 +73,8 @@
 						android:layout_width="40dp"
 						android:layout_height="40dp"
 						android:layout_marginEnd="12dp"
-						android:src="@android:drawable/star_big_on"
-						android:scaleType="fitXY"
+						android:src="@drawable/ic_inven_back"
+						android:scaleType="fitCenter"
 					/>
 					<TextView
 						android:id="@+id/r7pa06dp2nsd"
@@ -465,8 +465,8 @@
 									android:layout_width="20dp"
 									android:layout_height="20dp"
 									android:layout_marginEnd="8dp"
-									android:src="@android:drawable/star_big_on"
-									android:scaleType="fitXY"
+									android:src="@drawable/ic_inven_transfer"
+									android:scaleType="fitCenter"
 								/>
 								<TextView
 									android:id="@+id/rm7mz22ub3en"
@@ -495,8 +495,8 @@
 									android:layout_width="20dp"
 									android:layout_height="20dp"
 									android:layout_marginEnd="8dp"
-									android:src="@android:drawable/star_big_on"
-									android:scaleType="fitXY"
+									android:src="@drawable/ic_inven_edit"
+									android:scaleType="fitCenter"
 								/>
 								<TextView
 									android:id="@+id/ro38hyiv593k"
@@ -532,15 +532,21 @@
 						android:background="#FFFFFF"
 						android:paddingHorizontal="12dp"
 						android:orientation="horizontal">
-						<ImageView
+						<TextView
 							android:id="@+id/r74nucvcdsxa"
 							android:layout_width="0dp"
 							android:layout_height="52dp"
 							android:layout_weight="1"
 							android:layout_marginVertical="12dp"
 							android:layout_marginEnd="44dp"
-							android:src="@android:drawable/star_big_on"
-							android:scaleType="fitXY"
+							android:gravity="center"
+							android:paddingVertical="5dp"
+							android:drawableTop="@drawable/ic_inven_home"
+							android:drawableTint="#475569"
+							android:drawablePadding="3dp"
+							android:text="홈"
+							android:textSize="11sp"
+							android:textColor="#475569"
 						/>
 						<LinearLayout
 							android:id="@+id/r0olzfvqm9oyj"
@@ -557,8 +563,9 @@
 								android:layout_width="22dp"
 								android:layout_height="22dp"
 								android:layout_marginBottom="4dp"
-								android:src="@android:drawable/star_big_on"
-								android:scaleType="fitXY"
+								android:src="@drawable/ic_inven_inventory"
+								android:tint="#475569"
+								android:scaleType="fitCenter"
 							/>
 							<TextView
 								android:id="@+id/rvw7roo577d"
@@ -596,8 +603,9 @@
 								android:layout_width="22dp"
 								android:layout_height="22dp"
 								android:layout_marginBottom="4dp"
-								android:src="@android:drawable/star_big_on"
-								android:scaleType="fitXY"
+								android:src="@drawable/ic_inven_work"
+								android:tint="#475569"
+								android:scaleType="fitCenter"
 							/>
 							<TextView
 								android:id="@+id/r8e6xkjfuivb"
@@ -622,8 +630,9 @@
 								android:layout_width="22dp"
 								android:layout_height="22dp"
 								android:layout_marginBottom="4dp"
-								android:src="@android:drawable/star_big_on"
-								android:scaleType="fitXY"
+								android:src="@drawable/ic_inven_more"
+								android:tint="#475569"
+								android:scaleType="fitCenter"
 							/>
 							<TextView
 								android:id="@+id/rcirquxygdn"
@@ -652,8 +661,9 @@
 						app:shapeAppearanceOverlay="@style/cr29"
 						android:layout_width="58dp"
 						android:layout_height="58dp"
-						android:src="@android:drawable/star_big_on"
-						android:scaleType="fitXY"
+						android:src="@drawable/ic_inven_scan_fab"
+						android:contentDescription="바코드 스캔"
+						android:scaleType="fitCenter"
 					/>
 				</LinearLayout>
 			</RelativeLayout>

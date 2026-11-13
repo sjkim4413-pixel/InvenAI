@@ -96,8 +96,8 @@
 						app:shapeAppearanceOverlay="@style/cr18"
 						android:layout_width="36dp"
 						android:layout_height="36dp"
-						android:src="@android:drawable/star_big_on"
-						android:scaleType="fitXY"
+						android:src="@drawable/ic_inven_back"
+						android:scaleType="fitCenter"
 					/>
 				</LinearLayout>
 				<ImageView
@@ -184,8 +184,8 @@
 						app:shapeAppearanceOverlay="@style/cr24"
 						android:layout_width="48dp"
 						android:layout_height="48dp"
-						android:src="@android:drawable/star_big_on"
-						android:scaleType="fitXY"
+						android:src="@drawable/ic_inven_camera"
+						android:scaleType="fitCenter"
 					/>
 					<View
 						android:layout_width="0dp"

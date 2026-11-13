@@ -1,0 +1,527 @@
+{
+  "version": 1,
+  "catalog_id": "SIMULATED_AI_IMAGE_ERP",
+  "data_source": "SIMULATED_AI_IMAGE_ERP",
+  "identity_scope": "synthetic_visual_packaging_group_per_annotated_position",
+  "products": [
+    {
+      "sku": "SIM-AI01-P01",
+      "description": "보라색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI01-P02",
+      "description": "투명 서랍형 수납용품",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI01-P03",
+      "description": "남색 COMFORT 상자",
+      "aliases": [
+        [
+          "COMFORT"
+        ]
+      ]
+    },
+    {
+      "sku": "SIM-AI01-P04",
+      "description": "금색 제품이 보이는 붉은 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI01-P05",
+      "description": "분홍색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI01-P06",
+      "description": "파란색과 흰색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI01-P07",
+      "description": "흰색 상자와 황갈색 측면 포장",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI01-P08",
+      "description": "밝은 파란색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI01-P09",
+      "description": "랩으로 감싼 파란색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI01-P10",
+      "description": "주황색 그림이 있는 검정 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI01-P11",
+      "description": "분홍색과 흰색 병 포장",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI01-P12",
+      "description": "황록색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI01-P13",
+      "description": "파란색 상자와 흰색 물류 라벨",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI01-P14",
+      "description": "빨간 병이 보이는 흰색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI01-P15",
+      "description": "분홍색 무늬의 회색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI01-P16",
+      "description": "밝은 파란색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI01-P17",
+      "description": "파란색과 크림색 혼합 포장",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI01-P18",
+      "description": "손잡이가 있는 파란색 용기 포장",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI01-P19",
+      "description": "분홍색과 흰색 병 포장",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI01-P20",
+      "description": "빨간 병이 보이는 흰색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI02-P01",
+      "description": "민트색과 하늘색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI02-P02",
+      "description": "회분홍색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI02-P03",
+      "description": "대형 갈색 골판지 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI02-P04",
+      "description": "초록색과 파란색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI02-P05",
+      "description": "초록색 그림이 있는 갈색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI02-P06",
+      "description": "빨간 띠가 있는 흰색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI02-P07",
+      "description": "노란 무늬가 있는 흰색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI02-P08",
+      "description": "남색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI02-P09",
+      "description": "초록색과 주황색 혼합 포장",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI02-P10",
+      "description": "파란색과 흰색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI02-P11",
+      "description": "분홍색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI02-P12",
+      "description": "초록색과 흰색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI02-P13",
+      "description": "붉은색 소형 진열 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI02-P14",
+      "description": "갈색 소형 진열 상자 왼쪽",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI02-P15",
+      "description": "갈색 소형 진열 상자 오른쪽",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI02-P16",
+      "description": "주황색 소형 진열 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI02-P17",
+      "description": "붉은색 소형 진열 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI02-P18",
+      "description": "주황색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI02-P19",
+      "description": "검은 띠가 있는 회색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI02-P20",
+      "description": "금색 병이 보이는 베이지색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI02-P21",
+      "description": "검은색 상자와 베이지색 제품 그림",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P01",
+      "description": "흰색 병이 보이는 남색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P02",
+      "description": "연두색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P03",
+      "description": "민트색과 하늘색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P04",
+      "description": "회분홍색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P05",
+      "description": "대형 갈색 골판지 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P06",
+      "description": "초록색과 파란색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P07",
+      "description": "청록색과 흰색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P08",
+      "description": "진한 초록색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P09",
+      "description": "회색과 흰색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P10",
+      "description": "노란색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P11",
+      "description": "초록색 그림이 있는 갈색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P12",
+      "description": "빨간 띠가 있는 흰색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P13",
+      "description": "노란 무늬가 있는 흰색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P14",
+      "description": "남색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P15",
+      "description": "검은색과 갈색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P16",
+      "description": "보라색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P17",
+      "description": "주황색과 흰색 낮은 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P18",
+      "description": "하늘색과 주황색 그림의 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P19",
+      "description": "초록색과 주황색 혼합 포장",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P20",
+      "description": "파란색과 흰색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P21",
+      "description": "분홍색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P22",
+      "description": "초록색과 흰색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P23",
+      "description": "회색과 흰색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P24",
+      "description": "노란 그림이 있는 보라색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P25",
+      "description": "붉은색 소형 진열 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P26",
+      "description": "초록색 소형 진열 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P27",
+      "description": "붉은색 소형 진열 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P28",
+      "description": "갈색 소형 진열 상자 왼쪽",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P29",
+      "description": "갈색 소형 진열 상자 오른쪽",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P30",
+      "description": "주황색 소형 진열 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P31",
+      "description": "붉은색 소형 진열 상자 왼쪽",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P32",
+      "description": "붉은색 소형 진열 상자 오른쪽",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P33",
+      "description": "갈색 소형 진열 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P34",
+      "description": "노란색 소형 진열 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P35",
+      "description": "연두색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P36",
+      "description": "파란색과 빨간색 혼합 포장",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P37",
+      "description": "주황색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P38",
+      "description": "검은 띠가 있는 회색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P39",
+      "description": "금색 병이 보이는 베이지색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P40",
+      "description": "검은색 상자와 베이지색 제품 그림",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P41",
+      "description": "베이지색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI03-P42",
+      "description": "옅은 파란색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI04-P01",
+      "description": "서랍형 제품 그림이 있는 흰색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI04-P02",
+      "description": "랩으로 감싼 파란색 용기 포장",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI04-P03",
+      "description": "연두색 띠가 있는 검정 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI04-P04",
+      "description": "갈색 띠가 있는 주황색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI04-P05",
+      "description": "노란색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI04-P06",
+      "description": "주황색 무늬가 있는 흰색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI04-P07",
+      "description": "흰색 라벨이 붙은 청록색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI04-P08",
+      "description": "보라색과 흰색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI04-P09",
+      "description": "원형 조리기구 그림이 있는 흰색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI04-P10",
+      "description": "빨간색과 흰색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI04-P11",
+      "description": "조리기구 그림이 있는 흰색과 빨간색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI04-P12",
+      "description": "하늘색 그림이 있는 흰색 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI04-P13",
+      "description": "청록색 소형 진열 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI04-P14",
+      "description": "분홍색 소형 진열 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI04-P15",
+      "description": "초록색과 베이지색 소형 진열 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI04-P16",
+      "description": "갈색 소형 진열 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI04-P17",
+      "description": "파란색 MEDIHEAL 진열 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI04-P18",
+      "description": "흰색 병 그림이 있는 검정 MEDIHEAL 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI04-P19",
+      "description": "연두색 제품 그림이 있는 남색 MEDIHEAL 상자",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-AI04-P20",
+      "description": "밝은 분홍색 상자",
+      "aliases": []
+    }
+  ]
+}

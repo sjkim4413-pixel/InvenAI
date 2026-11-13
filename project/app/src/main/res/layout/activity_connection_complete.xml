@@ -71,8 +71,8 @@
 						android:layout_width="80dp"
 						android:layout_height="80dp"
 						android:layout_marginBottom="32dp"
-						android:src="@android:drawable/star_big_on"
-						android:scaleType="fitXY"
+						android:src="@drawable/ic_inven_check_circle"
+						android:scaleType="fitCenter"
 					/>
 					<LinearLayout
 						android:id="@+id/rfbiarzx0k7r"

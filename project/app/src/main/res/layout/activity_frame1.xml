@@ -80,8 +80,8 @@
 								android:layout_width="64dp"
 								android:layout_height="64dp"
 								android:layout_marginBottom="12dp"
-								android:src="@android:drawable/star_big_on"
-								android:scaleType="fitXY"
+								android:src="@drawable/ic_inven_app_mark"
+								android:scaleType="fitCenter"
 							/>
 							<LinearLayout
 								android:id="@+id/rpd5pzg65jga"
@@ -223,8 +223,8 @@
 										app:shapeAppearanceOverlay="@style/cr12"
 										android:layout_width="20dp"
 										android:layout_height="20dp"
-										android:src="@android:drawable/star_big_on"
-										android:scaleType="fitXY"
+										android:src="@drawable/ic_inven_eye"
+										android:scaleType="fitCenter"
 										android:clickable="true"
 										android:focusable="true"
 									/>

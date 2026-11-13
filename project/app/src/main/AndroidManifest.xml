@@ -14,6 +14,12 @@
         android:allowBackup="true"
         android:label="MyApp"
         android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
+        <activity
+            android:name="com.example.myapp.overlay.OverlayActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.example.myapp.screens.WarehousePhotos"
+            android:exported="false" />
 		<activity
 			android:name=".AiAnalysis"
 			android:exported="false" />
@@ -74,9 +80,6 @@
 			android:name=".HomeDashboard"
 			android:exported="false" />
 		<activity
-			android:name=".LoaderHomeDashboard"
-			android:exported="false" />
-		<activity
 			android:name=".Inbound"
 			android:exported="false" />
 		<activity
@@ -100,5 +103,7 @@
 		<activity
 			android:name=".WorkHistory"
 			android:exported="false" />
+
+        <activity android:name="com.example.myapp.WarehousePhotos" android:exported="false" />
     </application>
 </manifest>

@@ -4,9 +4,21 @@ plugins {
     id("com.google.gms.google-services")
 }
 
+val auditTestAssets = layout.buildDirectory.dir("generated/auditTestAssets")
+val syncAuditTestImages by tasks.registering(Sync::class) {
+    from(rootProject.layout.projectDirectory.dir("test_image_ai")) {
+        include("*.png")
+        into("audit_test_images")
+    }
+    into(auditTestAssets)
+}
+
 android {
     namespace = "com.example.myapp"
     compileSdk = 34
+    sourceSets.named("main") {
+        assets.srcDir(auditTestAssets)
+    }
 
     defaultConfig {
         applicationId = "com.example.myapp"
@@ -46,6 +58,10 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+}
+
+tasks.named("preBuild") {
+    dependsOn(syncAuditTestImages)
 }
 
 dependencies {

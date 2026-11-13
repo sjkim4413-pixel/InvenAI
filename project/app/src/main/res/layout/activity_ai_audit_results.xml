@@ -74,8 +74,8 @@
 						android:layout_width="40dp"
 						android:layout_height="40dp"
 						android:layout_marginEnd="8dp"
-						android:src="@android:drawable/star_big_on"
-						android:scaleType="fitXY"
+						android:src="@drawable/ic_inven_back"
+						android:scaleType="fitCenter"
 					/>
 					<TextView
 						android:id="@+id/r5fazbt3ldx8"
@@ -86,141 +86,6 @@
 						android:layout_width="wrap_content"
 						android:text="AI 실사 결과 상세"
 					/>
-				</LinearLayout>
-				<LinearLayout
-					android:id="@+id/r681ewaxdk8i"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:background="#FFFFFF"
-					android:paddingVertical="16dp"
-					android:paddingRight="16dp"
-					android:orientation="vertical">
-					<TextView
-						android:id="@+id/rmwf2enss7sk"
-						android:textColor="#0F172A"
-						android:textSize="14sp"
-						android:textStyle="bold"
-						android:layout_marginBottom="12dp"
-						android:layout_marginStart="16dp"
-						android:layout_height="wrap_content"
-						android:layout_width="wrap_content"
-						android:text="검사 진행 단계 완료"
-					/>
-					<LinearLayout
-						android:id="@+id/r388mfgwaxfj"
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content"
-						android:gravity="center_vertical"
-						android:layout_marginStart="16dp"
-						android:orientation="horizontal">
-						<LinearLayout
-							android:id="@+id/rlla67mbg0lc"
-							android:layout_width="0dp"
-							android:layout_height="wrap_content"
-							android:layout_weight="1"
-							android:gravity="center_vertical"
-							android:layout_marginEnd="47dp"
-							android:orientation="horizontal">
-							<com.google.android.material.imageview.ShapeableImageView
-								android:id="@+id/rs6psw8xg03l"
-								app:shapeAppearanceOverlay="@style/cr8"
-								android:layout_width="16dp"
-								android:layout_height="16dp"
-								android:layout_marginEnd="4dp"
-								android:src="@android:drawable/star_big_on"
-								android:scaleType="fitXY"
-							/>
-							<TextView
-								android:id="@+id/rjpaukus14w"
-								android:textColor="#0D9488"
-								android:textSize="12sp"
-								android:textStyle="bold"
-								android:layout_height="wrap_content"
-								android:layout_width="wrap_content"
-								android:text="랙확인"
-							/>
-						</LinearLayout>
-						<LinearLayout
-							android:id="@+id/r9wl4u26aw3t"
-							android:layout_width="0dp"
-							android:layout_height="wrap_content"
-							android:layout_weight="1"
-							android:gravity="center_vertical"
-							android:layout_marginEnd="47dp"
-							android:orientation="horizontal">
-							<com.google.android.material.imageview.ShapeableImageView
-								android:id="@+id/rjt4y2gmsgjf"
-								app:shapeAppearanceOverlay="@style/cr8"
-								android:layout_width="16dp"
-								android:layout_height="16dp"
-								android:layout_marginEnd="4dp"
-								android:src="@android:drawable/star_big_on"
-								android:scaleType="fitXY"
-							/>
-							<TextView
-								android:id="@+id/r24b6wemlvcc"
-								android:textColor="#0D9488"
-								android:textSize="12sp"
-								android:textStyle="bold"
-								android:layout_height="wrap_content"
-								android:layout_width="wrap_content"
-								android:text="ID인식"
-							/>
-						</LinearLayout>
-						<LinearLayout
-							android:id="@+id/rlciakdaz1k"
-							android:layout_width="0dp"
-							android:layout_height="wrap_content"
-							android:layout_weight="1"
-							android:gravity="center_vertical"
-							android:layout_marginEnd="47dp"
-							android:orientation="horizontal">
-							<com.google.android.material.imageview.ShapeableImageView
-								android:id="@+id/rl54k66oqeuj"
-								app:shapeAppearanceOverlay="@style/cr8"
-								android:layout_width="16dp"
-								android:layout_height="16dp"
-								android:layout_marginEnd="4dp"
-								android:src="@android:drawable/star_big_on"
-								android:scaleType="fitXY"
-							/>
-							<TextView
-								android:id="@+id/ryhepld0gq9"
-								android:textColor="#0D9488"
-								android:textSize="12sp"
-								android:textStyle="bold"
-								android:layout_height="wrap_content"
-								android:layout_width="wrap_content"
-								android:text="전산대조"
-							/>
-						</LinearLayout>
-						<LinearLayout
-							android:id="@+id/r8n70r7xgnv"
-							android:layout_width="0dp"
-							android:layout_height="wrap_content"
-							android:layout_weight="1"
-							android:gravity="center_vertical"
-							android:orientation="horizontal">
-							<com.google.android.material.imageview.ShapeableImageView
-								android:id="@+id/rktb3cut3f88"
-								app:shapeAppearanceOverlay="@style/cr8"
-								android:layout_width="16dp"
-								android:layout_height="16dp"
-								android:layout_marginEnd="4dp"
-								android:src="@android:drawable/star_big_on"
-								android:scaleType="fitXY"
-							/>
-							<TextView
-								android:id="@+id/rybab4jj92rp"
-								android:textColor="#0D9488"
-								android:textSize="12sp"
-								android:textStyle="bold"
-								android:layout_height="wrap_content"
-								android:layout_width="wrap_content"
-								android:text="이상감지"
-							/>
-						</LinearLayout>
-					</LinearLayout>
 				</LinearLayout>
 				<LinearLayout
 					android:id="@+id/r83d9yzqrcyd"
@@ -251,7 +116,7 @@
 								android:layout_marginBottom="2dp"
 								android:layout_height="wrap_content"
 								android:layout_width="wrap_content"
-								android:text="총 검사 구역"
+								android:text="대조 결과"
 							/>
 							<TextView
 								android:id="@+id/rcmltsyaqay"
@@ -260,7 +125,7 @@
 								android:textStyle="bold"
 								android:layout_height="wrap_content"
 								android:layout_width="wrap_content"
-								android:text="6개 단"
+								android:text="—"
 							/>
 						</LinearLayout>
 						<LinearLayout
@@ -277,7 +142,7 @@
 								android:layout_marginBottom="2dp"
 								android:layout_height="wrap_content"
 								android:layout_width="wrap_content"
-								android:text="정상 일치"
+								android:text="상품·위치 일치"
 							/>
 							<TextView
 								android:id="@+id/r1o3adrmw6zi"
@@ -286,7 +151,7 @@
 								android:textStyle="bold"
 								android:layout_height="wrap_content"
 								android:layout_width="wrap_content"
-								android:text="4개 단"
+								android:text="—"
 							/>
 						</LinearLayout>
 						<LinearLayout
@@ -303,7 +168,7 @@
 								android:layout_marginBottom="2dp"
 								android:layout_height="wrap_content"
 								android:layout_width="wrap_content"
-								android:text="이상 발견"
+							android:text="확인 필요"
 							/>
 							<TextView
 								android:id="@+id/rd1claoa9qi"
@@ -312,12 +177,12 @@
 								android:textStyle="bold"
 								android:layout_height="wrap_content"
 								android:layout_width="wrap_content"
-								android:text="2개 단"
+								android:text="—"
 							/>
 						</LinearLayout>
 					</LinearLayout>
-					<!-- 현장 촬영 및 C++ Edge 보정 실사 사진 뷰어 카드 -->
 					<LinearLayout
+						android:id="@+id/auditPhotoPanel"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						android:background="@drawable/se2e8f0sw1cr12bffffff"
@@ -325,44 +190,33 @@
 						android:layout_marginBottom="16dp"
 						android:orientation="vertical">
 
-						<LinearLayout
+						<TextView
 							android:layout_width="match_parent"
 							android:layout_height="wrap_content"
-							android:gravity="center_vertical"
-							android:layout_marginBottom="12dp">
+							android:layout_marginBottom="8dp"
+							android:text="실사 사진"
+							android:textColor="#0F172A"
+							android:textSize="14sp"
+							android:textStyle="bold" />
 
-							<TextView
-								android:layout_width="wrap_content"
-								android:layout_height="wrap_content"
-								android:text="📸 현장 촬영 및 Edge 보정 실사 사진"
-								android:textColor="#0F172A"
-								android:textSize="14sp"
-								android:textStyle="bold" />
-
-							<View
-								android:layout_width="0dp"
-								android:layout_height="0dp"
-								android:layout_weight="1" />
-
-							<TextView
-								android:layout_width="wrap_content"
-								android:layout_height="wrap_content"
-								android:text="Perspective Warped"
-								android:textColor="#0D9488"
-								android:textSize="11sp"
-								android:textStyle="bold" />
-						</LinearLayout>
-
-						<com.google.android.material.imageview.ShapeableImageView
+						<com.example.myapp.AuditPhotoView
 							android:id="@+id/ivAiCapturedPhoto"
 							app:shapeAppearanceOverlay="@style/cr12"
 							android:layout_width="match_parent"
-							android:layout_height="wrap_content"
-							android:maxHeight="380dp"
-							android:adjustViewBounds="true"
+							android:layout_height="280dp"
+							android:contentDescription="적재물 탐지 위치가 표시되는 실사 사진"
 							android:scaleType="fitCenter"
-							android:background="#F1F5F9"
-							android:src="@android:drawable/ic_menu_camera" />
+							android:background="#F1F5F9" />
+
+						<TextView
+							android:id="@+id/auditPhotoLegend"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_marginTop="8dp"
+							android:text="초록 상품 일치 · 빨강 이상 · 주황 확인 보류\n테두리를 누르면 위치, OCR 글자, ERP 대조 근거를 볼 수 있습니다."
+							android:textColor="#475569"
+							android:textSize="12sp"
+							android:visibility="gone" />
 					</LinearLayout>
 					<LinearLayout
 						android:id="@+id/rbj9j4m6p85p"
@@ -381,7 +235,7 @@
 							android:layout_width="wrap_content"
 							android:text="전산 대조 및 AI 실사 분석 세부 정보" />
 
-						<!-- 동적 Firestore 전산 대조 결과 카드 컨테이너 -->
+						<!-- ERP 대조 결과 카드 컨테이너 -->
 						<LinearLayout
 							android:id="@+id/llAuditDetailContainer"
 							android:layout_width="match_parent"
@@ -460,15 +314,21 @@
 						android:background="#FFFFFF"
 						android:paddingHorizontal="12dp"
 						android:orientation="horizontal">
-						<ImageView
+						<TextView
 							android:id="@+id/rte7pemp4q98"
 							android:layout_width="0dp"
 							android:layout_height="52dp"
 							android:layout_weight="1"
 							android:layout_marginVertical="12dp"
 							android:layout_marginEnd="44dp"
-							android:src="@android:drawable/star_big_on"
-							android:scaleType="fitXY"
+							android:gravity="center"
+							android:paddingVertical="5dp"
+							android:drawableTop="@drawable/ic_inven_home"
+							android:drawableTint="#475569"
+							android:drawablePadding="3dp"
+							android:text="홈"
+							android:textSize="11sp"
+							android:textColor="#475569"
 						/>
 						<LinearLayout
 							android:id="@+id/rklq2ru6dpxi"
@@ -485,8 +345,9 @@
 								android:layout_width="22dp"
 								android:layout_height="22dp"
 								android:layout_marginBottom="4dp"
-								android:src="@android:drawable/star_big_on"
-								android:scaleType="fitXY"
+								android:src="@drawable/ic_inven_inventory"
+								android:tint="#475569"
+								android:scaleType="fitCenter"
 							/>
 							<TextView
 								android:id="@+id/ryvxya3g6po"
@@ -523,8 +384,9 @@
 								android:layout_width="22dp"
 								android:layout_height="22dp"
 								android:layout_marginBottom="4dp"
-								android:src="@android:drawable/star_big_on"
-								android:scaleType="fitXY"
+								android:src="@drawable/ic_inven_work"
+								android:tint="#475569"
+								android:scaleType="fitCenter"
 							/>
 							<TextView
 								android:id="@+id/r8xbpleuglq5"
@@ -549,8 +411,9 @@
 								android:layout_width="22dp"
 								android:layout_height="22dp"
 								android:layout_marginBottom="4dp"
-								android:src="@android:drawable/star_big_on"
-								android:scaleType="fitXY"
+								android:src="@drawable/ic_inven_more"
+								android:tint="#475569"
+								android:scaleType="fitCenter"
 							/>
 							<TextView
 								android:id="@+id/rxq4elqwihsm"
@@ -578,8 +441,9 @@
 						app:shapeAppearanceOverlay="@style/cr29"
 						android:layout_width="58dp"
 						android:layout_height="58dp"
-						android:src="@android:drawable/star_big_on"
-						android:scaleType="fitXY"
+						android:src="@drawable/ic_inven_scan_fab"
+						android:contentDescription="바코드 스캔"
+						android:scaleType="fitCenter"
 					/>
 				</LinearLayout>
 			</RelativeLayout>

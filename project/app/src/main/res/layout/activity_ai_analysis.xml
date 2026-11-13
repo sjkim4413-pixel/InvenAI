@@ -66,8 +66,8 @@
 						android:layout_width="80dp"
 						android:layout_height="80dp"
 						android:layout_marginBottom="32dp"
-						android:src="@android:drawable/star_big_on"
-						android:scaleType="fitXY"
+						android:src="@drawable/ic_inven_audit"
+						android:scaleType="fitCenter"
 					/>
 					<LinearLayout
 						android:id="@+id/r8ieptv5xn0v"
@@ -117,8 +117,8 @@
 								android:layout_width="22dp"
 								android:layout_height="22dp"
 								android:layout_marginEnd="12dp"
-								android:src="@android:drawable/star_big_on"
-								android:scaleType="fitXY"
+								android:src="@drawable/ic_inven_pin"
+								android:scaleType="fitCenter"
 							/>
 							<TextView
 								android:id="@+id/rfguc6477ph"
@@ -143,8 +143,8 @@
 								android:layout_width="22dp"
 								android:layout_height="22dp"
 								android:layout_marginEnd="12dp"
-								android:src="@android:drawable/star_big_on"
-								android:scaleType="fitXY"
+								android:src="@drawable/ic_inven_barcode"
+								android:scaleType="fitCenter"
 							/>
 							<TextView
 								android:id="@+id/r0q0u57sx5lyf"
@@ -169,8 +169,8 @@
 								android:layout_width="22dp"
 								android:layout_height="22dp"
 								android:layout_marginEnd="12dp"
-								android:src="@android:drawable/star_big_on"
-								android:scaleType="fitXY"
+								android:src="@drawable/ic_inven_layers"
+								android:scaleType="fitCenter"
 							/>
 							<TextView
 								android:id="@+id/rorz98dxnyx"
@@ -195,8 +195,8 @@
 								android:layout_width="22dp"
 								android:layout_height="22dp"
 								android:layout_marginEnd="12dp"
-								android:src="@android:drawable/star_big_on"
-								android:scaleType="fitXY"
+								android:src="@drawable/ic_inven_link"
+								android:scaleType="fitCenter"
 							/>
 							<TextView
 								android:id="@+id/rl38djr03zcc"

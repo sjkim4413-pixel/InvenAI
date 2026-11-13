@@ -8,7 +8,6 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
-import com.bumptech.glide.Glide
 
 class Inbound : AppCompatActivity() {
 	private var currentQuantity: Int = 50
@@ -21,18 +20,6 @@ class Inbound : AppCompatActivity() {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_inbound)
 		findViewById<View>(R.id.r2z29mgruyhb)?.visibility = View.GONE
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/v7budixr_expires_30_days.png").into(findViewById(R.id.btn_inbound_back))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/8bmodns0_expires_30_days.png").into(findViewById(R.id.rz06v3snjqw))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/f6027umo_expires_30_days.png").into(findViewById(R.id.rz17npri7jm))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/p7etgoqn_expires_30_days.png").into(findViewById(R.id.r9vqbrvdq3ns))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/2g5xjdzd_expires_30_days.png").into(findViewById(R.id.r5fn4vu8h1zv))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/t5a5ea4r_expires_30_days.png").into(findViewById(R.id.r5brvw8zo9fb))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/22vgv3xf_expires_30_days.png").into(findViewById(R.id.r7cgzthr5y5s))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/5guhpod6_expires_30_days.png").into(findViewById(R.id.rk8n6y9k570b))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/d5uup5ix_expires_30_days.png").into(findViewById(R.id.rwd9isb2oxqe))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/d2334nnp_expires_30_days.png").into(findViewById(R.id.r46gl7w0vf2j))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/exmdfbsn_expires_30_days.png").into(findViewById(R.id.rsf672vle6zd))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/nasp7wvc_expires_30_days.png").into(findViewById(R.id.r8gqcrdwn809))
 
 		// Intent로 전달받은 스캔 정보 확인
 		val scanName = intent.getStringExtra("SCANNED_ITEM_NAME")
@@ -159,12 +146,10 @@ class Inbound : AppCompatActivity() {
 		val inputName = EditText(this).apply {
 			hint = "상품명 (예: 무선 키보드 K-90)"
 			setText(currentItemName)
-			inputType = android.text.InputType.TYPE_CLASS_TEXT
 		}
 		val inputSku = EditText(this).apply {
 			hint = "SKU / 바코드 번호 (예: SKU-99821)"
 			setText(currentItemSku)
-			inputType = android.text.InputType.TYPE_CLASS_TEXT
 		}
 
 		layout.addView(inputName)

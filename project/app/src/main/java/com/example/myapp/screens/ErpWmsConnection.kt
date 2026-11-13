@@ -13,7 +13,6 @@ class ErpWmsConnection : AppCompatActivity() {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_erp_wms_connection)
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/5npv6fq1_expires_30_days.png").into(findViewById(R.id.r19yzeoke5nu))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/iyolqgmj_expires_30_days.png").into(findViewById(R.id.r2lp9y0mkyrk))
 
 		// 상단 뒤로가기 버튼
 		findViewById<View>(R.id.r2lp9y0mkyrk)?.setOnClickListener { finish() }

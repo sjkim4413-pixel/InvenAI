@@ -83,8 +83,8 @@
 								android:id="@+id/r2lp9y0mkyrk"
 								android:layout_width="24dp"
 								android:layout_height="24dp"
-								android:src="@android:drawable/star_big_on"
-								android:scaleType="fitXY"
+								android:src="@drawable/ic_inven_back"
+								android:scaleType="fitCenter"
 							/>
 							<View
 								android:layout_width="0dp"

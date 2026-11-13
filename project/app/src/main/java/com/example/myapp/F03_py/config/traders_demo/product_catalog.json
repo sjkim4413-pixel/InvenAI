@@ -1,0 +1,101 @@
+{
+  "version": 1,
+  "catalog_id": "TRADERS_SIMULATED_PRODUCT_FAMILIES_V1",
+  "data_source": "SIMULATED_TRADERS_ERP",
+  "identity_scope": "Virtual visible packaging families; not manufacturer SKU or barcode verification",
+  "products": [
+    {
+      "sku": "SIM-TRD-001",
+      "description": "LG TROMM 표기 상단 포장 묶음",
+      "aliases": [
+        [
+          "LG",
+          "TROMM"
+        ]
+      ]
+    },
+    {
+      "sku": "SIM-TRD-002",
+      "description": "MICROWAVE 표기 초록색 포장 묶음",
+      "aliases": [
+        [
+          "MICROWAVE"
+        ]
+      ]
+    },
+    {
+      "sku": "SIM-TRD-003",
+      "description": "A4 COPY PAPER 표기 포장 묶음",
+      "aliases": [
+        [
+          "COPY PAPER"
+        ]
+      ]
+    },
+    {
+      "sku": "SIM-TRD-004",
+      "description": "BLACK+DECKER 표기 조리기구 포장 묶음",
+      "aliases": [
+        [
+          "BLACK",
+          "DECKER"
+        ]
+      ]
+    },
+    {
+      "sku": "SIM-TRD-005",
+      "description": "상단 흰색 포장 묶음",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-TRD-006",
+      "description": "중단 왼쪽 분홍색 포장 묶음",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-TRD-007",
+      "description": "Scotch-Brite Clean Cut 표기 포장 묶음",
+      "aliases": [
+        [
+          "SCOTCH",
+          "BRITE",
+          "CLEAN CUT TAPE CLEANER"
+        ]
+      ]
+    },
+    {
+      "sku": "SIM-TRD-008",
+      "description": "주황색 캐니스터 표기 포장 묶음",
+      "aliases": [
+        [
+          "GLASSLOCK"
+        ]
+      ]
+    },
+    {
+      "sku": "SIM-TRD-009",
+      "description": "상단 오른쪽 분홍색 포장 묶음",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-TRD-010",
+      "description": "하단 파란색 용기 포장 묶음",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-TRD-011",
+      "description": "상단 은색 포장 묶음",
+      "aliases": []
+    },
+    {
+      "sku": "SIM-TRD-012",
+      "description": "COMFORT KITCHEN MAT 표기 포장 묶음",
+      "aliases": [
+        [
+          "COMFORT",
+          "KITCHEN MAT"
+        ]
+      ]
+    }
+  ]
+}

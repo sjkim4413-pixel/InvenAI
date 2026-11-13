@@ -6,3 +6,22 @@
 opencv-4.14.0-android-sdk.zip
 opencv-4.14.0-android-sdk/
 
+
+# Local Android configuration and build outputs
+/.idea/
+/local.properties
+/app/google-services.json
+*.jks
+*.keystore
+
+# Local Python environments and audit data
+.venv/
+__pycache__/
+.pytest_cache/
+*.py[cod]
+.env
+.env.*
+audit_uploads/
+audit_demo_runtime/
+/test_photos/
+/app/src/main/java/com/example/myapp/test_image/

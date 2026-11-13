@@ -97,8 +97,8 @@
 						app:shapeAppearanceOverlay="@style/cr18"
 						android:layout_width="36dp"
 						android:layout_height="36dp"
-						android:src="@android:drawable/star_big_on"
-						android:scaleType="fitXY"
+						android:src="@drawable/ic_inven_back"
+						android:scaleType="fitCenter"
 					/>
 				</LinearLayout>
 				<ImageView
@@ -200,8 +200,8 @@
 							android:layout_width="18dp"
 							android:layout_height="18dp"
 							android:layout_marginEnd="8dp"
-							android:src="@android:drawable/star_big_on"
-							android:scaleType="fitXY"
+							android:src="@drawable/ic_inven_flash"
+							android:scaleType="fitCenter"
 						/>
 						<TextView
 							android:id="@+id/rugo98clv47p"
@@ -235,8 +235,8 @@
 							android:layout_width="16dp"
 							android:layout_height="16dp"
 							android:layout_marginEnd="6dp"
-							android:src="@android:drawable/star_big_on"
-							android:scaleType="fitXY"
+							android:src="@drawable/ic_inven_keyboard"
+							android:scaleType="fitCenter"
 						/>
 						<TextView
 							android:id="@+id/robivtxvzpo"

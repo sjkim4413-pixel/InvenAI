@@ -15,8 +15,6 @@ class ScanResult : AppCompatActivity() {
 
 		// 이미지 로딩
 		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/a6r81hrn_expires_30_days.png").into(findViewById(R.id.rs501264yjoh))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/huika3vs_expires_30_days.png").into(findViewById(R.id.rtyhqvwzh9v))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/4jf0l1ha_expires_30_days.png").into(findViewById(R.id.rehogsrtzjtt))
 
 		val targetLocation = intent.getStringExtra("TARGET_LOCATION") ?: "B구역 R05-3층"
 		val scannedLocation = intent.getStringExtra("SCANNED_LOCATION") ?: "B구역 R05-3층"

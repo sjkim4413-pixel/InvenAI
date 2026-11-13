@@ -1,0 +1,182 @@
+{
+  "version": 1,
+  "data_source": "SIMULATED_TRADERS_ERP",
+  "company_code": "SIMULATED-TRADERS",
+  "warehouse_id": 1,
+  "verification_scope": "simulated_visible_bundle_in_manually_reviewed_photo_region",
+  "note": "Virtual slots, not real warehouse rack numbers. Map contains no expected products.",
+  "images": [
+    {
+      "sha256": [
+        "73aa453ee6635266d974cee748a3efd9117c333b7271c5d543c51b7eadc1671b",
+        "61289a1bc462bbc79188cc48c01744ea095dffc1bbd1e857d1de20e4d99a712c"
+      ],
+      "width": 3060,
+      "height": 4080,
+      "regions": [
+        {
+          "rack": "SIM-SLOT-01",
+          "floor": 1,
+          "bbox": [
+            0.12499999999999999,
+            0.03,
+            0.34500000000000003,
+            0.25
+          ],
+          "observation_unit": "visible_packaging_bundle"
+        },
+        {
+          "rack": "SIM-SLOT-02",
+          "floor": 1,
+          "bbox": [
+            0.585,
+            0.23500000000000001,
+            0.865,
+            0.44
+          ],
+          "observation_unit": "visible_packaging_bundle"
+        },
+        {
+          "rack": "SIM-SLOT-03",
+          "floor": 1,
+          "bbox": [
+            0.605,
+            0.445,
+            0.9,
+            0.605
+          ],
+          "observation_unit": "visible_packaging_bundle"
+        },
+        {
+          "rack": "SIM-SLOT-04",
+          "floor": 1,
+          "bbox": [
+            0.33999999999999997,
+            0.775,
+            0.635,
+            0.965
+          ],
+          "observation_unit": "visible_packaging_bundle"
+        }
+      ]
+    },
+    {
+      "sha256": [
+        "c0c810b8eb22ea1d7c4c235560937f967bdb105b6f1c8d5fe83f9fba850b04cb",
+        "d7753fe11a8926ed8944f66700dbd103bc0d80517233dc0b1e67a987634dda56"
+      ],
+      "width": 1932,
+      "height": 2576,
+      "regions": [
+        {
+          "rack": "SIM-SLOT-05",
+          "floor": 1,
+          "bbox": [
+            0.26,
+            0.025,
+            0.54,
+            0.19
+          ],
+          "observation_unit": "visible_packaging_bundle"
+        },
+        {
+          "rack": "SIM-SLOT-06",
+          "floor": 1,
+          "bbox": [
+            0.24000000000000002,
+            0.195,
+            0.5700000000000001,
+            0.405
+          ],
+          "observation_unit": "visible_packaging_bundle"
+        }
+      ]
+    },
+    {
+      "sha256": [
+        "38ee202d40a77c5673afc50a3559a793a85c6b9a96b549b312d18f6bc50b5a54",
+        "5f78b152a5d49347c5f1964664e17c40e82a1a8b56990d87360154914acb4e9d"
+      ],
+      "width": 3000,
+      "height": 4000,
+      "regions": [
+        {
+          "rack": "SIM-SLOT-07",
+          "floor": 1,
+          "bbox": [
+            0.57,
+            0.615,
+            1,
+            0.985
+          ],
+          "observation_unit": "visible_packaging_bundle"
+        },
+        {
+          "rack": "SIM-SLOT-08",
+          "floor": 1,
+          "bbox": [
+            0.095,
+            0.165,
+            0.55,
+            0.41000000000000003
+          ],
+          "observation_unit": "visible_packaging_bundle"
+        },
+        {
+          "rack": "SIM-SLOT-12",
+          "floor": 1,
+          "bbox": [
+            0.030000000000000002,
+            0.6649999999999999,
+            0.34,
+            0.975
+          ],
+          "observation_unit": "visible_packaging_bundle"
+        }
+      ]
+    },
+    {
+      "sha256": [
+        "f4c420f2e585952f0db7814b91e4ac353e7d4efa2319c94cf8c720fd6573d7ac",
+        "4e079efb0800e7074f9eba30a8a668ea5c08501a52a769478f53c035541155b7"
+      ],
+      "width": 1050,
+      "height": 1400,
+      "regions": [
+        {
+          "rack": "SIM-SLOT-09",
+          "floor": 1,
+          "bbox": [
+            0.73,
+            0.10500000000000001,
+            0.97,
+            0.27
+          ],
+          "observation_unit": "visible_packaging_bundle"
+        },
+        {
+          "rack": "SIM-SLOT-10",
+          "floor": 1,
+          "bbox": [
+            0.33999999999999997,
+            0.5549999999999999,
+            0.55,
+            0.75
+          ],
+          "observation_unit": "visible_packaging_bundle"
+        },
+        {
+          "rack": "SIM-SLOT-11",
+          "floor": 1,
+          "bbox": [
+            0.2,
+            0.11500000000000002,
+            0.42500000000000004,
+            0.28500000000000003
+          ],
+          "observation_unit": "visible_packaging_bundle"
+        }
+      ]
+    }
+  ]
+}

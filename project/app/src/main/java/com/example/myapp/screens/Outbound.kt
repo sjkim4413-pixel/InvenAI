@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
-import com.bumptech.glide.Glide
 
 class Outbound : AppCompatActivity() {
 	private var isInspected: Boolean = false
@@ -15,16 +14,6 @@ class Outbound : AppCompatActivity() {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_outbound)
 		findViewById<View>(R.id.ry7xnxvpctk)?.visibility = View.GONE
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/ylzyhmr5_expires_30_days.png").into(findViewById(R.id.rep2pggs7s9))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/uf2i3qat_expires_30_days.png").into(findViewById(R.id.r1v53u96tfpeh))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/928s3ddo_expires_30_days.png").into(findViewById(R.id.r6hug2nahgfo))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/zduxlzsl_expires_30_days.png").into(findViewById(R.id.r5lof4r5ar9x))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/gmf49ujy_expires_30_days.png").into(findViewById(R.id.rd65dghpoomg))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/kyue1ixv_expires_30_days.png").into(findViewById(R.id.rupecyf80hng))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/hh47k4vd_expires_30_days.png").into(findViewById(R.id.rekv9uq0l63))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/m0mp5or3_expires_30_days.png").into(findViewById(R.id.rzc8j53k4txk))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/9efpj0fw_expires_30_days.png").into(findViewById(R.id.r5uucu5qjq35))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/coe3bpvz_expires_30_days.png").into(findViewById(R.id.rh36zxy9qo29))
 
 		// 상단 뒤로가기 버튼
 		findViewById<View>(R.id.rep2pggs7s9)?.setOnClickListener { finish() }

@@ -6,7 +6,6 @@ import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
 import com.google.firebase.firestore.ListenerRegistration
 import java.text.DecimalFormat
 import java.text.SimpleDateFormat
@@ -38,14 +37,6 @@ class InventoryDetail : AppCompatActivity() {
 
 		// 이미지 바인딩
 		findViewById<View>(R.id.ruk2l6hsjuh)?.visibility = View.GONE
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/6dzl2y2j_expires_30_days.png").into(findViewById(R.id.rlb7iitjpcch))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/bb3mu2es_expires_30_days.png").into(findViewById(R.id.r1vk1k6pain8j))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/6em8cmgw_expires_30_days.png").into(findViewById(R.id.rrbtmji7ayxp))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/wdnvw2ut_expires_30_days.png").into(findViewById(R.id.r74nucvcdsxa))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/23nnyjuu_expires_30_days.png").into(findViewById(R.id.rdnv3fthexra))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/mqzyo825_expires_30_days.png").into(findViewById(R.id.rel7zzvm5tt9))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/q9x50ewe_expires_30_days.png").into(findViewById(R.id.rfr3dgqydvgt))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/2w56ktx0_expires_30_days.png").into(findViewById(R.id.rjou5xvfm1e))
 
 		// 1. 전달받은 실재 데이터 UI 바인딩
 		bindInventoryData()

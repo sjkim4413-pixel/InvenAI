@@ -64,8 +64,8 @@
 						android:id="@+id/r9ewee5t9u94"
 						android:layout_width="24dp"
 						android:layout_height="24dp"
-						android:src="@android:drawable/star_big_on"
-						android:scaleType="fitXY"
+						android:src="@drawable/ic_inven_back"
+						android:scaleType="fitCenter"
 					/>
 					<View
 						android:layout_width="0dp"
@@ -152,8 +152,8 @@
 						android:layout_width="48dp"
 						android:layout_height="48dp"
 						android:layout_marginEnd="16dp"
-						android:src="@android:drawable/star_big_on"
-						android:scaleType="fitXY"
+						android:src="@drawable/ic_inven_link"
+						android:scaleType="fitCenter"
 					/>
 					<LinearLayout
 						android:id="@+id/rt10gmzxf5s8"
@@ -224,8 +224,8 @@
 							android:layout_width="25dp"
 							android:layout_height="25dp"
 							android:layout_marginEnd="11dp"
-							android:src="@android:drawable/star_big_on"
-							android:scaleType="fitXY"
+							android:src="@drawable/ic_inven_chevron_right"
+							android:scaleType="fitCenter"
 						/>
 					</LinearLayout>
 				</LinearLayout>
@@ -243,8 +243,8 @@
 						android:layout_width="48dp"
 						android:layout_height="48dp"
 						android:layout_marginEnd="16dp"
-						android:src="@android:drawable/star_big_on"
-						android:scaleType="fitXY"
+						android:src="@drawable/ic_inven_file"
+						android:scaleType="fitCenter"
 					/>
 					<LinearLayout
 						android:id="@+id/r6ilgd08vm5v"

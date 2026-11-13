@@ -1,62 +1,50 @@
 package com.example.myapp
 
 import android.content.Intent
-import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
-import android.view.Gravity
 import android.view.View
-import android.widget.ImageView
+import android.widget.Button
+import android.widget.CheckBox
+import android.widget.ProgressBar
 import android.widget.LinearLayout
+import android.widget.ScrollView
 import android.widget.TextView
-import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
-import com.google.firebase.firestore.FieldValue
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ListenerRegistration
+import com.google.gson.GsonBuilder
 
 class AiAuditResults : AppCompatActivity() {
 
-	private var inventoryListener: ListenerRegistration? = null
+	private lateinit var viewModel: AuditResultViewModel
+	private lateinit var photoView: AuditPhotoView
+	private var targetRackId: String = "B구역 R05"
+	private var ocrTokens = emptyList<F03OcrToken>()
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_ai_audit_results)
 
-		val targetRackId = intent.getStringExtra("TARGET_RACK_ID") ?: "B구역 R05"
+		targetRackId = intent.getStringExtra("TARGET_RACK_ID") ?: "B구역 R05"
 
 		// 상단 및 하단 배경 Glide 로드
 		findViewById<View>(R.id.r92jaxcy3c4)?.visibility = View.GONE
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/lxazxxpk_expires_30_days.png").into(findViewById(R.id.r3qa1ncjec6t))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/87expjfj_expires_30_days.png").into(findViewById(R.id.rs6psw8xg03l))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/qmh90k2b_expires_30_days.png").into(findViewById(R.id.rjt4y2gmsgjf))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/e9gzahm3_expires_30_days.png").into(findViewById(R.id.rl54k66oqeuj))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/obbizl46_expires_30_days.png").into(findViewById(R.id.rktb3cut3f88))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/dqo0yxnb_expires_30_days.png").into(findViewById(R.id.rte7pemp4q98))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/fvw57hul_expires_30_days.png").into(findViewById(R.id.r9hjk1laagf4))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/4k7aazjx_expires_30_days.png").into(findViewById(R.id.re4xglprgpaq))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/x5hjnz9j_expires_30_days.png").into(findViewById(R.id.rh7vg1bgh24r))
 
-		// 카메라로 촬영하고 C++ Edge 보정을 마친 실사 사진 수신 및 뷰어 바인딩 (가로/세로 오리엔테이션 대응)
-		val photoBytes = CapturedPhotoHolder.getAndClear() ?: intent.getByteArrayExtra("CAPTURED_PHOTO")
-		val ivPhoto = findViewById<ImageView>(R.id.ivAiCapturedPhoto)
-		if (photoBytes != null && ivPhoto != null) {
-			val bitmap = BitmapFactory.decodeByteArray(photoBytes, 0, photoBytes.size)
-			if (bitmap != null) {
-				if (bitmap.width > bitmap.height) {
-					ivPhoto.scaleType = ImageView.ScaleType.FIT_CENTER
-					ivPhoto.adjustViewBounds = true
-				} else {
-					ivPhoto.scaleType = ImageView.ScaleType.CENTER_CROP
-				}
-				ivPhoto.setImageBitmap(bitmap)
-			}
-		} else if (ivPhoto != null) {
-			Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/uzofup9p_expires_30_days.png").into(ivPhoto)
+		viewModel = ViewModelProvider(this)[AuditResultViewModel::class.java]
+		viewModel.open(CapturedPhotoHolder.getAndClear(), savedInstanceState?.getString("uploadedFilename"),
+			savedInstanceState?.getString("warehouseCode"), intent.getBooleanExtra(EXTRA_TEST_RACK_LABELS, false))
+		photoView = findViewById(R.id.ivAiCapturedPhoto)
+		val photo = viewModel.photoBytes
+		if (photo != null) {
+			Glide.with(this).asBitmap().load(photo).fitCenter().into(photoView)
+		} else {
+			findViewById<View>(R.id.auditPhotoPanel).visibility = View.GONE
 		}
+		photoView.onMarkClick = { mark -> showPositionDetails(mark.position, mark.detection) }
 
 		// 상단 뒤로가기
 		findViewById<View>(R.id.r3qa1ncjec6t)?.setOnClickListener { finish() }
@@ -71,31 +59,7 @@ class AiAuditResults : AppCompatActivity() {
 			finish()
 		}
 
-		// 2. F-06: [🚨 오적재 알림 발송] 버튼 클릭
-		val btnSendAlert: View? = findViewById(R.id.r0e5j960n87jp)
-		btnSendAlert?.setOnClickListener {
-			val payload = MisplacementAlertPayload(
-				alertId = "F06_" + System.currentTimeMillis(),
-				location = targetRackId,
-				expectedItemCode = "M-100",
-				currentItemCode = "BT-200",
-				photoUrl = "https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/uzofup9p_expires_30_days.png"
-			)
-
-			F06NotificationHelper.dispatchAlert(this, payload) {
-				AnomalyManager.sendMisplacementAlert(
-					context = this,
-					itemCode = "M-100",
-					itemName = "무선 마우스 M-100",
-					currentLocation = "$targetRackId (오적재)",
-					targetLocation = targetRackId,
-					quantity = 50,
-					loaderUserId = "loader"
-				) {
-					finish()
-				}
-			}
-		}
+		findViewById<View>(R.id.r0e5j960n87jp)?.visibility = View.GONE
 
 		// 하단 네비게이션 바 연결
 		findViewById<View>(R.id.rte7pemp4q98)?.setOnClickListener {
@@ -130,159 +94,297 @@ class AiAuditResults : AppCompatActivity() {
 		findViewById<View>(R.id.rza5cxscdic)?.setOnClickListener(openMore)
 		findViewById<View>(R.id.rh7vg1bgh24r)?.setOnClickListener(openMore)
 
-		// 랙별 실사 완료 기록 저장 (rack_audits)
-		val sharedPref = getSharedPreferences("app_user_session", MODE_PRIVATE)
-		val companyCode = sharedPref.getString("COMPANY_CODE", "ABC-001") ?: "ABC-001"
-		val userId = sharedPref.getString("USER_ID", "loader") ?: "loader"
-		val db = FirebaseFirestore.getInstance()
-		val auditRecord = hashMapOf(
-			"companyCode" to companyCode,
-			"rackId" to targetRackId,
-			"auditStatus" to "AUDITED",
-			"auditedAt" to FieldValue.serverTimestamp(),
-			"auditedBy" to userId
-		)
-		db.collection("rack_audits").document("${companyCode}_$targetRackId")
-			.set(auditRecord)
-
-		// 실시간 Firestore 전산 데이터 바인딩 (선택된 랙 기준)
-		setupRealtimeComparison(targetRackId)
-	}
-
-	override fun onDestroy() {
-		super.onDestroy()
-		inventoryListener?.remove()
-	}
-
-	/**
-	 * Firestore 실시간 'inventory' 전산 데이터 수신 및 AI 실사 대조 결과 바인딩 (특정 랙 기준 필터링)
-	 */
-	private fun setupRealtimeComparison(targetRackId: String) {
-		inventoryListener = InventoryManager.listenToRealtimeInventory(this) { items ->
-			val rackItems = items.filter {
-				it.rackId.equals(targetRackId, ignoreCase = true) || it.location.contains(targetRackId, ignoreCase = true)
+		viewModel.state.observe(this) { state ->
+			when (state) {
+				AuditResultState.Loading -> showMessage(
+					"사진을 분석하고 ERP와 대조 중입니다.", retry = false, loading = true
+				)
+				is AuditResultState.Failure -> showMessage(state.message, state.canRetry)
+				is AuditResultState.WarehouseRequired -> showWarehouseSelection(state.warehouses)
+				is AuditResultState.Ready -> renderComparison(state.result)
 			}
-			renderSummaryAndDetails(rackItems, targetRackId)
 		}
 	}
 
-	/**
-	 * 전산 데이터 기반 요약 수치 및 세부 대조 결과 카드 동적 바인딩
-	 */
-	private fun renderSummaryAndDetails(items: List<InventoryItem>, targetRackId: String) {
-		val displayItems = if (items.isNotEmpty()) items else listOf(
-			InventoryItem("M-100", "무선 마우스 M-100", 120, "$targetRackId-1단", "NORMAL", warehouse = "제1물류센터", zone = targetRackId.substringBefore(" "), rack = targetRackId.substringAfter(" "), tier = "1단", rackId = targetRackId),
-			InventoryItem("BT-200", "블루투스 이어폰 BT-200", 50, "$targetRackId-2단 (오적재 감지)", "ANOMALY", warehouse = "제1물류센터", zone = targetRackId.substringBefore(" "), rack = targetRackId.substringAfter(" "), tier = "2단", rackId = targetRackId)
-		)
+	override fun onSaveInstanceState(outState: Bundle) {
+		super.onSaveInstanceState(outState)
+		outState.putString("uploadedFilename", viewModel.uploadedFilename)
+		outState.putString("warehouseCode", viewModel.warehouseCode)
+	}
 
-		// 타이틀에 대상 랙 표시 반영
-		val tvTitleHeader = findViewById<TextView>(R.id.r5fazbt3ldx8)
-		tvTitleHeader?.text = "실사: [$targetRackId]"
+	private fun showWarehouseSelection(warehouses: List<String>) {
+		showMessage("사진을 찍은 창고를 선택해주세요.", retry = false)
+		val container = findViewById<LinearLayout>(R.id.llAuditDetailContainer)
+		addAction(container, "실제 창고 선택") {
+			AlertDialog.Builder(this)
+				.setTitle("실제 창고 선택")
+				.setItems(warehouses.toTypedArray()) { _, index -> viewModel.selectWarehouse(warehouses[index]) }
+				.setNegativeButton("취소", null)
+				.show()
+		}
+	}
 
-		// 1. 요약 수치 바인딩
-		val totalCount = displayItems.size
-		val normalCount = displayItems.count { it.status.equals("NORMAL", ignoreCase = true) || it.status == "정상" }
-		val anomalyCount = totalCount - normalCount
-
-		findViewById<TextView>(R.id.rcmltsyaqay)?.text = "${totalCount}개 단"
-		findViewById<TextView>(R.id.r1o3adrmw6zi)?.text = "${normalCount}개 단"
-		findViewById<TextView>(R.id.rd1claoa9qi)?.text = "${anomalyCount}개 단"
-
-		// 2. 동적 전산 대조 결과 카드 바인딩
-		val container = findViewById<LinearLayout>(R.id.llAuditDetailContainer) ?: return
+	private fun showMessage(message: String, retry: Boolean, loading: Boolean = false) {
+		photoView.showMarks(emptyList())
+		findViewById<View>(R.id.auditPhotoLegend).visibility = View.GONE
+		setSummary("—", "—", "—")
+		val container = findViewById<LinearLayout>(R.id.llAuditDetailContainer)
 		container.removeAllViews()
+		if (loading) container.addView(ProgressBar(this))
+		container.addView(TextView(this).apply { text = message })
+		if (retry) addAction(container, "다시 시도") { viewModel.requestComparison() }
+	}
 
-		for (item in displayItems) {
-			val card = createComparisonCard(item)
-			container.addView(card)
+	private fun setSummary(total: String, verified: String, review: String) {
+		findViewById<TextView>(R.id.rcmltsyaqay).text = total
+		findViewById<TextView>(R.id.r1o3adrmw6zi).text = verified
+		findViewById<TextView>(R.id.rd1claoa9qi).text = review
+	}
+
+	private fun renderComparison(result: F03AnalyzeAndCompareResponse) {
+		val rows = result.results.orEmpty()
+		ocrTokens = result.ocrTokens.orEmpty()
+		val testRackLabels = result.verificationScope == "test_rack_label_as_item_code"
+		val verified = rows.count { it.isMatch }
+		val anomalies = rows.count { it.isConfirmedAnomaly }
+		findViewById<TextView>(R.id.rlbdvoyreobi).text = if (testRackLabels) "테스트 라벨 일치" else "상품·위치 일치"
+		setSummary("${rows.size}건", "${verified}건", "${rows.size - verified}건")
+
+		val marks = result.photoMarks()
+		photoView.showMarks(marks)
+		findViewById<TextView>(R.id.auditPhotoLegend).apply {
+			visibility = if (marks.isEmpty()) View.GONE else View.VISIBLE
+			if (testRackLabels) text = "초록 테스트 라벨 일치 · 주황 확인 필요\n테두리를 누르면 OCR 대조 근거를 볼 수 있습니다."
+		}
+
+		val container = findViewById<LinearLayout>(R.id.llAuditDetailContainer)
+		container.removeAllViews()
+		val source = if (result.erpComparisonAvailable == false) {
+			"Firestore 조회 실패 · ERP 대조 보류"
+		} else when (result.dataSource) {
+			"FIRESTORE_TEST_ERP" -> "Firestore · ${result.erpWarehouse ?: "테스트 창고"}"
+			"FIRESTORE_UNAVAILABLE" -> "Firestore 조회 실패 · ERP 대조 보류"
+			"FIREBASE_READ_ONLY" -> result.erpWarehouse?.let { "Firestore · $it" } ?: "Firestore · 확인된 창고 없음"
+			"LOCAL_TEST_ERP", "SIMULATED_AI_IMAGE_ERP", "SIMULATED_TRADERS_ERP" -> "서버 테스트 CSV"
+			else -> result.dataSource ?: "확인되지 않음"
+		}
+		val ocrState = when (result.ocrStatus) {
+			"completed" -> "OCR 완료"
+			"partial_limit" -> "OCR 일부 완료"
+			null -> if (result.ocrTokens == null) "OCR 상태 미제공" else "OCR 결과"
+			else -> "OCR 상태 확인 필요"
+		}
+		val ocrIdentified = rows.count { (it.ocrMaxConfidence ?: 0.0) > 0.0 }
+		val visualCandidates = rows.count { !it.visualMatches.isNullOrEmpty() }
+		val visualMatches = rows.count { it.isVerifiedMatch && it.identityMethod == "TEST_PACKAGING_APPEARANCE" }
+		container.addView(TextView(this).apply {
+			text = buildString {
+				appendLine("ERP 출처 · $source")
+				if (testRackLabels) {
+					appendLine("$ocrState · 읽은 글자 ${ocrTokens.size}개 · 테스트 라벨 일치 ${verified}곳")
+					appendLine("내장 테스트 이미지 · 랙 라벨을 테스트용 상품 코드로 대조")
+				} else {
+					appendLine("$ocrState · 읽은 글자 ${ocrTokens.size}개 · OCR 상품 후보 ${ocrIdentified}곳")
+				}
+				if (result.visualStatus == "completed") {
+					appendLine("테스트 포장 외관 · 후보 ${visualCandidates}곳 · ERP 위치 일치 ${visualMatches}곳")
+				}
+				append("이상 ${anomalies}건 · 수동 확인 ${rows.size - verified - anomalies}건")
+			}
+			setPadding(0, 0, 0, dpToPx(10))
+		})
+		if (ocrTokens.isNotEmpty()) addAction(container, "OCR로 읽은 글자 보기") {
+			showTextDialog("OCR로 읽은 글자", ocrTokens.joinToString("\n", transform = ::ocrLabel), copy = true)
+		}
+		addAction(container, "같은 사진 다시 대조") { viewModel.requestComparison() }
+		addAction(container, "대조 결과 JSON") {
+			val json = GsonBuilder().setPrettyPrinting().create().toJson(result)
+			showTextDialog("F03·F04 대조 결과", json)
+		}
+		addAction(container, "대조 결과 CSV") {
+			val csv = buildString {
+				appendLine("Rack,Floor,ExpectedProducts,ObservedProduct,DetectionCandidates,F04Status,OCRConfidence,IdentityMethod,VisualCandidates")
+				for (row in rows) {
+					appendLine(listOf(
+						row.rack, row.floor, row.erpProductIds.orEmpty().joinToString(" / "),
+						row.aiProductId, row.yoloCandidates, statusLabel(row), row.ocrMaxConfidence, row.identityMethod,
+						row.visualMatches.orEmpty().joinToString(" / ") { it.sku }
+					).joinToString(",") { value -> "\"${value?.toString().orEmpty().replace("\"", "\"\"")}\"" })
+				}
+			}
+			showTextDialog("대조 결과 CSV", csv, copy = true)
+		}
+
+		val sortedRows = rows.sortedBy { row ->
+			when {
+				row.isConfirmedAnomaly -> 0
+				row.isMatch -> 2
+				else -> 1
+			}
+		}
+		val positions = LinearLayout(this).apply { orientation = LinearLayout.VERTICAL }
+		val filter = CheckBox(this).apply {
+			text = "확인 필요한 결과만 보기"
+			isChecked = viewModel.reviewOnly
+			isEnabled = rows.isNotEmpty()
+			setOnCheckedChangeListener { _, checked ->
+				viewModel.reviewOnly = checked
+				renderPositions(positions, sortedRows)
+			}
+		}
+		container.addView(filter)
+		container.addView(positions)
+		renderPositions(positions, sortedRows)
+	}
+
+	private fun renderPositions(container: LinearLayout, rows: List<F03ComparedPosition>) {
+		container.removeAllViews()
+		val visible = if (viewModel.reviewOnly) rows.filterNot { it.isMatch } else rows
+		if (visible.isEmpty()) {
+			container.addView(TextView(this).apply {
+				text = if (rows.isEmpty()) "대조 가능한 위치가 없습니다." else "확인이 필요한 결과가 없습니다."
+			})
+		}
+		for (row in visible) container.addView(createComparisonCard(row))
+	}
+
+	private fun addAction(container: LinearLayout, label: String, action: () -> Unit) {
+		container.addView(Button(this).apply {
+			text = label
+			setTextColor(Color.WHITE)
+			background = ContextCompat.getDrawable(this@AiAuditResults, R.drawable.cr8b0d9488)
+			layoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dpToPx(46)).apply {
+				setMargins(0, 0, 0, dpToPx(10))
+			}
+			setOnClickListener { action() }
+		})
+	}
+
+	private fun showTextDialog(title: String, contents: String, copy: Boolean = false) {
+		val scroll = ScrollView(this).apply {
+			setPadding(dpToPx(16), dpToPx(12), dpToPx(16), dpToPx(12))
+			addView(TextView(this@AiAuditResults).apply {
+				text = contents
+				typeface = Typeface.MONOSPACE
+				textSize = 12f
+			})
+		}
+		val dialog = AlertDialog.Builder(this).setTitle(title).setView(scroll).setNegativeButton("닫기", null)
+		if (copy) dialog.setPositiveButton("클립보드에 복사") { _, _ ->
+			val clipboard = getSystemService(CLIPBOARD_SERVICE) as android.content.ClipboardManager
+			clipboard.setPrimaryClip(android.content.ClipData.newPlainText(title, contents))
+		}
+		dialog.show()
+	}
+
+	private fun statusLabel(row: F03ComparedPosition): String = when {
+		row.testLabelMatch -> "테스트 라벨 일치"
+		row.isVerifiedMatch && row.identityMethod == "TEST_PACKAGING_APPEARANCE" -> "테스트 외관·위치 일치"
+		row.productLocationVerified && row.quantityVerified == false -> "상품·위치 일치"
+		row.isVerifiedMatch -> "정상 일치"
+		row.f04StatusCode == 2 -> "오적재"
+		row.f04StatusCode == 3 -> "누락"
+		row.f04StatusCode == 4 -> "미등록"
+		else -> when (row.reviewStatus) {
+			"위치매핑_확인필요", "실제창고위치_확인필요" -> "ERP 위치 연결 필요"
+			"ERP위치없음_확인필요" -> "ERP 위치 등록 확인"
+			"ERP조회실패_확인필요" -> "ERP 조회 실패"
+			"ERP데이터_확인필요" -> "ERP 재고 데이터 확인"
+			"YOLO탐지_OCR미인식_재확인", "실제상품코드_미확인" -> "상품 코드 미확인"
+			"전산재고_미탐지_재확인" -> "사진에서 적재물 미탐지"
+			"제품ID일치_추가검증필요", "실제상품코드_추가검증필요" -> "상품 후보 추가 확인"
+			"미등록_또는_오적재의심" -> "상품 코드 불일치 후보"
+			else -> "수동 확인"
 		}
 	}
 
-	/**
-	 * 단일 전산 대조 결과 카드 동적 생성
-	 */
-	private fun createComparisonCard(item: InventoryItem): View {
-		val isNormal = item.status.equals("NORMAL", ignoreCase = true) || item.status == "정상"
-		val isPending = item.status.equals("PENDING_QA", ignoreCase = true) || item.status.equals("WAITING_REVERIFICATION", ignoreCase = true)
+	private fun positionLabel(row: F03ComparedPosition): String =
+		row.locationLabel ?: row.floor?.let { "${row.rack} ${it}단" } ?: "위치 확인 필요"
 
-		val card = LinearLayout(this).apply {
-			orientation = LinearLayout.VERTICAL
-			setPadding(dpToPx(14), dpToPx(14), dpToPx(14), dpToPx(14))
-			background = ContextCompat.getDrawable(
-				this@AiAuditResults,
-				if (isNormal) R.drawable.se2e8f0sw1cr12bffffff
-				else if (isPending) R.drawable.se2e8f0sw1cr10bf8fafc
-				else R.drawable.sef4444sw1cr12bfef2f2
-			)
-			val params = LinearLayout.LayoutParams(
-				LinearLayout.LayoutParams.MATCH_PARENT,
-				LinearLayout.LayoutParams.WRAP_CONTENT
-			)
-			params.setMargins(0, 0, 0, dpToPx(12))
-			layoutParams = params
+	private fun productLabels(codes: List<String>, names: Map<String, String>?): String =
+		codes.filter { it.isNotBlank() }.joinToString(" / ") { code ->
+			val name = names?.get(code)
+			if (name.isNullOrBlank() || name == code) code else "$name ($code)"
 		}
 
-		// 헤더 (로케이션 랙 위치 + 상태 배지)
-		val headerLayout = LinearLayout(this).apply {
-			orientation = LinearLayout.HORIZONTAL
-			gravity = Gravity.CENTER_VERTICAL
-			val params = LinearLayout.LayoutParams(
-				LinearLayout.LayoutParams.MATCH_PARENT,
-				LinearLayout.LayoutParams.WRAP_CONTENT
-			)
-			params.setMargins(0, 0, 0, dpToPx(8))
-			layoutParams = params
-		}
-
-		val tvLocation = TextView(this).apply {
-			text = item.location.ifEmpty { "위치 미지정" }
-			setTextColor(Color.parseColor("#0F172A"))
-			textSize = 15f
-			typeface = Typeface.DEFAULT_BOLD
-			layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
-		}
-
-		val tvBadge = TextView(this).apply {
-			text = if (isNormal) "정상 매칭" else if (isPending) "재검증 대기" else "오적재 의심"
-			setTextColor(
-				if (isNormal) Color.parseColor("#10B981")
-				else if (isPending) Color.parseColor("#0D9488")
-				else Color.WHITE
-			)
-			textSize = 11f
-			typeface = Typeface.DEFAULT_BOLD
-			setPadding(dpToPx(6), dpToPx(2), dpToPx(6), dpToPx(2))
-			background = ContextCompat.getDrawable(
-				this@AiAuditResults,
-				if (isNormal) R.drawable.s10b981sw1cr4becfdf5
-				else if (isPending) R.drawable.cr100bf0fdfa
-				else R.drawable.cr4bef4444
-			)
-		}
-
-		headerLayout.addView(tvLocation)
-		headerLayout.addView(tvBadge)
-
-		// 상세 대조 정보 텍스트
-		val tvDetail = TextView(this).apply {
-			text = if (isNormal) {
-				"전산 품목: ${item.itemName} [${item.itemCode}]  ·  수량 일치 (${item.quantity}개)"
-			} else if (isPending) {
-				"전산 품목: ${item.itemName} [${item.itemCode}]  ·  적재자 시정 완료 (재검증 대기)"
+	private fun showPositionDetails(row: F03ComparedPosition?, detection: F03Detection? = null) {
+		val title = row?.let { "${positionLabel(it)} · ${statusLabel(it)}" } ?: "위치 확인 필요"
+		val observed = row?.let { productLabels(it.aiProductIds ?: listOf(it.aiProductId.orEmpty()), it.productNames) }.orEmpty()
+		val details = buildString {
+			if (row == null || !row.locationVerified) {
+				appendLine("사진 속 적재물을 ERP의 랙·단 한 곳에 연결하지 못했습니다. 위치별 상품 대조를 보류했습니다.")
+				if (observed.isNotBlank()) appendLine("사진에서 판독한 상품 후보 · $observed")
 			} else {
-				"전산 품목: ${item.itemName} [${item.itemCode}]  ·  위치 불일치 (${item.location})"
+				if (detection != null && !detection.locationVerified) {
+					appendLine("표시된 랙·단은 후보 위치입니다. 테두리가 위치 경계를 벗어납니다.")
+				}
+				val expected = productLabels(row.erpProductIds.orEmpty(), row.productNames).ifBlank {
+					if (row.reviewStatus == "ERP조회실패_확인필요") "조회 실패" else "등록 정보 없음"
+				}
+				if (row.identityMethod == "TEST_RACK_LABEL") {
+					appendLine("전산 테스트 코드 · $expected")
+					appendLine("사진에서 읽은 테스트 코드 · ${observed.ifBlank { "미확인" }}")
+				} else {
+					appendLine("ERP 등록 상품 · $expected")
+					appendLine("사진에서 식별한 상품 · ${observed.ifBlank { "미확인" }}")
+				}
+				if (row.identityMethod == "OCR_PRODUCT_CODE") appendLine("상품 식별 · 사진 속 상품 코드 OCR")
+				if (row.locationMethod == "ocr_rack_label") appendLine("위치 연결 · 사진 속 랙·단 라벨 OCR")
+				appendLine("ERP 대조 · ${statusLabel(row)}")
+				if (row.productLocationVerified && row.quantityVerified == false) appendLine("수량은 별도 확인이 필요합니다.")
 			}
-			setTextColor(Color.parseColor("#475569"))
-			textSize = 12f
+			if (row != null) {
+				appendLine("적재물 후보 · ${row.yoloCandidates}개")
+				for (match in row.visualMatches.orEmpty()) {
+					appendLine("포장 외관 후보 · ${match.sku} · 위치가 맞는 포장 특징 ${match.inliers}개")
+				}
+				row.reviewReasons.orEmpty().forEach { appendLine(it) }
+			}
+			if (detection != null) {
+				if (detection.source == "registered_appearance") appendLine("포장 무늬와 색상으로 위치 확인")
+				else detection.confidence?.let { appendLine("탐지 신뢰도 · ${(it * 100).toInt()}%") }
+			}
+			val ids = (row?.ocrTokenIds ?: detection?.ocrTokenIds).orEmpty().toSet()
+			val evidence = ocrTokens.filter { it.id in ids }
+			appendLine()
+			appendLine("이 영역에서 OCR로 읽은 글자")
+			if (evidence.isEmpty()) appendLine("표시할 판독 글자가 없습니다.")
+			for (token in evidence) {
+				appendLine(ocrLabel(token))
+			}
 		}
+		showTextDialog(title, details)
+	}
 
-		card.addView(headerLayout)
-		card.addView(tvDetail)
+	private fun ocrLabel(token: F03OcrToken): String {
+		val kind = when (token.kind) {
+			"product" -> "상품 후보"
+			"location_label" -> "랙 라벨 형태"
+			else -> "기타 글자"
+		}
+		return "${token.text} · $kind · ${(token.confidence * 100).toInt()}%"
+	}
 
-		return card
+	private fun createComparisonCard(row: F03ComparedPosition): View {
+		val backgroundId = when {
+			row.isMatch -> R.drawable.s10b981sw1cr12becfdf5
+			row.isConfirmedAnomaly -> R.drawable.sef4444sw1cr12bfef2f2
+			else -> R.drawable.sf59e0bsw1cr12bfffbeb
+		}
+		return TextView(this).apply {
+			text = "${positionLabel(row)} · ${statusLabel(row)}\n탐지 후보 ${row.yoloCandidates}개 · 상세 보기"
+			setPadding(dpToPx(14), dpToPx(12), dpToPx(14), dpToPx(12))
+			setTextColor(Color.parseColor("#0F172A"))
+			background = ContextCompat.getDrawable(this@AiAuditResults, backgroundId)
+			layoutParams = LinearLayout.LayoutParams(
+				LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT
+			).apply { setMargins(0, 0, 0, dpToPx(10)) }
+			setOnClickListener { showPositionDetails(row) }
+		}
 	}
 
 	private fun dpToPx(dp: Int): Int {
 		return (dp * resources.displayMetrics.density).toInt()
 	}
+
 }
