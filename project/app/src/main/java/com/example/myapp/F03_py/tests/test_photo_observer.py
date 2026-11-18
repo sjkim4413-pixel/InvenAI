@@ -5,13 +5,15 @@ import json
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 from types import SimpleNamespace
 import numpy as np
 from PIL import Image
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
 from f03_catalog import AuditConfigError, load_catalog, load_locations, match_catalog, resolve_regions
-from f03_photo_observer import observation_row, observe_photo, read_image
+from f03_live_ocr import product_evidence
+from f03_photo_observer import observation_row, observe_photo, read_image, read_shelf_evidence
 
 
 class PhotoObserver(unittest.TestCase):
@@ -107,6 +109,25 @@ class PhotoObserver(unittest.TestCase):
         self.assertEqual(result['ocr_status'],'completed')
         self.assertEqual(result['results'][0]['recognized_product_ids'],['ERP123'])
         self.assertFalse(result['results'][0]['verification_passed'])
+
+    def test_shelf_ocr_requires_agreement_on_both_text_and_physical_label(self):
+        sku = {'id': 't1', 'text': 'SKU AA-123', 'confidence': .99, 'bbox': [.2,.2,.3,.3]}
+
+        def reread(second):
+            artwork = {False: sku, True: second}
+
+            def capture(reader, image, box, tokens, *, binarize, **kwargs):
+                tokens.append(artwork[binarize])
+
+            with patch('f03_photo_observer.read_region', side_effect=capture):
+                return read_shelf_evidence(None, None, [0.,0.,1.,1.],
+                                           lambda tokens: product_evidence(tokens, ()), lambda item: item['sku'])
+
+        accepted, = reread({**sku, 'confidence': .91})
+        self.assertEqual(accepted['confidence'], .91)
+        self.assertTrue(accepted['confirmed_reread'])
+        self.assertIsNone(reread({**sku, 'text': 'SKU AA-125'}))
+        self.assertIsNone(reread({**sku, 'bbox': [.5,.2,.6,.3]}))
 
 
 if __name__=='__main__': unittest.main()

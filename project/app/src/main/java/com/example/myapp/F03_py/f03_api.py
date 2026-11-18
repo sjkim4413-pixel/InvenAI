@@ -29,7 +29,7 @@ from ivenai_erp_matcher import ERPDataError, ERP_FILE, load_erp
 BASE_DIR=Path(__file__).resolve().parent
 MAX_UPLOAD_BYTES=16*1024*1024
 MAX_IMAGE_PIXELS=24_000_000
-PIPELINE_VERSION='2026-11-13.26'
+PIPELINE_VERSION='2026-11-17.35'
 AuditMode=Literal['live','simulation','test_rack_labels']
 app=FastAPI(title='IvenAI F03 API',version='2.0.0')
 app.state.upload_dir=Path(os.environ.get('IVENAI_UPLOAD_DIR',str(BASE_DIR/'audit_uploads')))

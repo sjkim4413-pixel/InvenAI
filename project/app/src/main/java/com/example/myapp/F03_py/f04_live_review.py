@@ -1,5 +1,6 @@
 """Actual product/location review with explicit provenance and unknown quantity."""
 from f03_codes import structured_code
+from f03_live_ocr import is_load_fragment as is_fragment
 from f03_live_ocr import OCR_THRESHOLD, pallet_ocr_box, product_evidence, product_label_area, rack_label_evidence, read_location_regions, same_label, under_load, visible_location
 from f03_verification import covered_fraction
 
@@ -22,23 +23,6 @@ def identify_codes(codes,snapshot,registry):
     return identified,unregistered
 
 
-def is_fragment(detection,anchor,rack_labels):
-    if detection['id']==anchor['id'] or detection.get('detection_stable') is not False:
-        return False
-    part,whole=detection['bbox'],anchor['bbox']
-    if any(under_load(label['bbox'],part) and not under_load(label['bbox'],whole) for label in rack_labels):
-        return False
-    inside=covered_fraction(part,whole)
-    share=covered_fraction(whole,part)
-    if detection['confidence']<.30 and inside>=.75 and share<=.45:
-        return True
-    # A nested single-scale box that follows an edge of the whole load is
-    # another view of part of that load, rather than a second whole pallet.
-    spans=((part[2]-part[0])/(whole[2]-whole[0]),(part[3]-part[1])/(whole[3]-whole[1]))
-    return ((inside>=.95 and share<=.60 and max(spans)>=.85)
-            or (detection['confidence']<.40 and inside>=.88 and share<=.55 and max(spans)>=.90))
-
-
 def is_printed_sticker_duplicate(detection,anchor,rack_labels,sticker):
     if detection['id']==anchor['id'] or anchor['confidence']<.75:
         return False
@@ -48,9 +32,50 @@ def is_printed_sticker_duplicate(detection,anchor,rack_labels,sticker):
         return False
     inside=covered_fraction(part,whole)
     share=covered_fraction(whole,part)
-    return ((inside>=.90 and share<=.66 and detection['confidence']+.15<=anchor['confidence'])
+    nested_or_wide=((inside>=.90 and share<=.66 and detection['confidence']+.15<=anchor['confidence'])
             or (detection['confidence']<.30 and not detection['detection_stable']
                 and share>=.85 and inside>=.45))
+    if nested_or_wide:
+        return True
+    # A weak crop can cover the bottom of an independently corroborated load
+    # and run down to its beam sticker. Keep boxes that continue past the beam.
+    horizontal=min(part[2],whole[2])-max(part[0],whole[0])
+    return (detection['confidence']<.35 and .60<=inside and share<=.55
+            and horizontal>=.95*(part[2]-part[0])
+            and whole[1]<=part[1]<whole[3]<part[3]<=sticker['bbox'][3]
+            and under_load(sticker['bbox'],part,printed_sticker=True)
+            and sum(p['confidence']>=.45 for p in anchor.get('scale_predictions',()))>=2)
+
+
+def weak_containing_duplicate(anchor,others,sticker,rack_labels,evidence,tokens,registered,codes):
+    """Resolve one wider, single-read prediction of the same labeled load."""
+    if (evidence['sku'] not in registered or not sticker or sticker['confidence']<.85 or anchor['confidence']<.65
+            or sum(p['confidence']>=.5 for p in anchor.get('scale_predictions',()))<2
+            or covered_fraction(evidence['bbox'],anchor['bbox'])<.95):
+        return None
+    conflicts=[d for d in others if covered_fraction(evidence['bbox'],d['bbox'])>=.5]
+    if len(conflicts)!=1:
+        return None
+    wider,=conflicts
+    if (wider.get('detection_stable') is not False or wider['confidence']>=.4
+            or len(wider.get('scale_predictions',()))!=1):
+        return None
+    box,outer=anchor['bbox'],wider['bbox']
+    horizontal=min(box[2],outer[2])-max(box[0],outer[0])
+    if (covered_fraction(box,outer)<.95 or covered_fraction(outer,box)<.45
+            or horizontal<.85*(outer[2]-outer[0])
+            or not under_load(sticker['bbox'],outer)
+            or any(not same_label(label,sticker) and
+                   (under_load(label['bbox'],outer) or covered_fraction(label['bbox'],outer)>=.5)
+                   for label in rack_labels)):
+        return None
+    search_box=pallet_ocr_box(outer)
+    nearby=[token for token in tokens if covered_fraction(token['bbox'],search_box)>=.5]
+    if (any(not same_label(other,evidence) or other['sku']!=evidence['sku']
+            for other in product_evidence(nearby,registered))
+            or any(covered_fraction(code['bbox'],search_box)>=.5 for code in codes)):
+        return None
+    return wider
 
 
 def review_live(raw,codes,snapshot,positions,regions,registry,*,test_item_codes=None,printed_stickers=False):
@@ -62,7 +87,8 @@ def review_live(raw,codes,snapshot,positions,regions,registry,*,test_item_codes=
     rack_labels=list(rack_label_evidence(tokens))
     rack_token_ids={token_id for label in rack_labels for token_id in label['ocr_token_ids']}
     positions_by_id={p['position_id']:p for p in positions}
-    regions=[*regions,*read_location_regions(raw,positions,regions,test_rack_labels=testing,printed_stickers=testing and printed_stickers)]
+    regions=[*regions,*read_location_regions(raw,positions,regions,test_rack_labels=testing,
+                                             printed_stickers=testing and printed_stickers,registered=registered)]
     rows,assigned=[],set()
     for region in regions:
         position=positions_by_id.get(region['position_id'])
@@ -86,15 +112,29 @@ def review_live(raw,codes,snapshot,positions,regions,registry,*,test_item_codes=
         ids=sorted({e['sku'] for e in ocr+barcode})
         test_detection_consensus=testing and region.get('test_detection_consensus')
         object_verified=(len(loads)==1 and loads[0].get('detection_stable') is True
-                         and (loads[0]['confidence']>=.5 or test_detection_consensus)
+                         and (loads[0]['confidence']>=.5 or test_detection_consensus
+                              or region.get('two_label_detection'))
                          and str(loads[0].get('class_name','')).lower()!='partial')
         supported_ocr,supported_barcode=[],[]
+        containing_duplicates={}
         if object_verified:
-            detected_box=loads[0]['bbox']
-            other_boxes=[d['bbox'] for d in raw['detections'] if d['id']!=loads[0]['id'] and d['id'] not in fragments]
+            verified_load,=loads
+            detected_box=verified_load['bbox']
+            others=[d for d in raw['detections'] if d['id']!=verified_load['id'] and d['id'] not in fragments]
+            other_boxes=[d['bbox'] for d in others]
             for evidence in ocr:
-                if evidence['confidence']>=OCR_THRESHOLD and not evidence.get('confusable_skus'):
+                if (evidence['confidence']>=OCR_THRESHOLD and not evidence.get('confusable_skus')
+                        and not evidence.get('requires_separator_reread')):
                     area=product_label_area(evidence['bbox'],detected_box,box,other_boxes)
+                    if area is None and len(ids)==1:
+                        duplicate=weak_containing_duplicate(verified_load,others,sticker,rack_labels,evidence,
+                                                            tokens,registered,codes)
+                        if duplicate:
+                            recovered=product_label_area(evidence['bbox'],detected_box,box,
+                                                         [d['bbox'] for d in others if d is not duplicate])
+                            if recovered=='load':
+                                area=recovered
+                                containing_duplicates[duplicate['id']]=duplicate
                     if area:
                         evidence['evidence_area']=area
                         supported_ocr.append(evidence)
@@ -102,6 +142,9 @@ def review_live(raw,codes,snapshot,positions,regions,registry,*,test_item_codes=
                 area=product_label_area(evidence['bbox'],detected_box,box,other_boxes)
                 if area:supported_barcode.append({**evidence,'evidence_area':area})
         identity_verified=len(ids)==1 and bool(supported_ocr or supported_barcode)
+        if identity_verified and containing_duplicates:
+            fragments.update(containing_duplicates)
+            detections.extend(d for d in containing_duplicates.values() if d not in detections)
         expected=[p['sku'] for p in position['items']]
         matching_items=[p for p in position['items'] if identity_verified and p['sku']==ids[0]]
         empty=bool(matching_items and all(p['quantity']==0 for p in matching_items))
@@ -110,7 +153,11 @@ def review_live(raw,codes,snapshot,positions,regions,registry,*,test_item_codes=
         reasons=[]
         if location_label and location_label.get('normalized_text'):
             reasons.append(f"위치 라벨 OCR 보정 · {location_label['text']} → {location_label['normalized_text']}")
-        if any(e.get('confusable_skus') for e in ocr):
+        if region.get('two_label_detection'):
+            reasons.append('여러 탐지 입력에서 적재물과 랙 라벨 위치가 확인됐고 상품 라벨을 재판독했습니다.')
+        if any(e.get('requires_separator_reread') for e in ocr):
+            reasons.append('상품 코드의 구분 기호를 다시 읽어야 합니다.')
+        if any(e.get('confusable_skus') and not e.get('requires_separator_reread') for e in ocr):
             reasons.append('상품 코드에 0/O 또는 5/S로 읽힐 수 있는 글자가 있어 확인이 필요합니다.')
         if not ids:reasons.append('적재물에서 상품 코드나 등록된 바코드를 확인하지 못했습니다.')
         elif len(ids)>1:reasons.append('서로 다른 상품 코드가 보여 추가 확인이 필요합니다.')

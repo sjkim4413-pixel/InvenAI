@@ -17,6 +17,41 @@ def record(**changes):
 
 
 class LiveInventory(unittest.TestCase):
+    def test_low_detector_scores_need_two_spatial_views_and_an_independently_reread_sku(self):
+        snapshot=build_snapshot('ABC-001',[('one',record())])
+        positions=warehouse_view(snapshot,'제1물류센터')
+        box=[.18,.20,.60,.60]
+        load={'id':'d1','bbox':box,'confidence':.29,'detection_stable':True,
+              'scale_predictions':[{'bbox':box,'confidence':.29,'scale':640},
+                                   {'bbox':[.20,.20,.59,.61],'confidence':.27,'scale':1280}]}
+        rack={'id':'r','text':'R08-1F','confidence':.93,'bbox':[.32,.62,.44,.65]}
+        sku={'id':'s','text':'SKU BT-200','confidence':.93,'bbox':[.32,.38,.44,.41],
+             'confirmed_reread':True}
+
+        def approved(detections, tokens):
+            result=review_live({'detections':detections,'ocr_tokens':tokens},[],snapshot,positions,[],{})
+            return any(row['product_location_verified'] for row in result['results'])
+
+        self.assertTrue(approved([load],[rack,sku]))
+        self.assertFalse(approved([load],[rack,{**sku,'confirmed_reread':False}]))
+        self.assertFalse(approved([{**load,'scale_predictions':load['scale_predictions'][:1]}],[rack,sku]))
+        extra={**load,'id':'d2','bbox':[.22,.23,.54,.57],'detection_stable':False}
+        self.assertFalse(approved([load,extra],[rack,sku]))
+        self.assertFalse(approved([load],[rack]))
+
+    def test_weak_box_extending_to_the_same_shelf_sticker_is_a_fragment(self):
+        anchor={'id':'load','bbox':[.20,.20,.65,.36],'confidence':.86,'detection_stable':True,
+                'scale_predictions':[{'confidence':.86},{'confidence':.49}]}
+        fragment={'id':'lower','bbox':[.36,.26,.65,.41],'confidence':.32,'detection_stable':True}
+        sticker={'bbox':[.40,.406,.50,.422]}
+        self.assertTrue(is_printed_sticker_duplicate(fragment,anchor,[sticker],sticker))
+        next_sticker={'bbox':[.53,.398,.61,.414]}
+        self.assertFalse(is_printed_sticker_duplicate(fragment,anchor,[sticker,next_sticker],sticker))
+        self.assertFalse(is_printed_sticker_duplicate(
+            {**fragment,'bbox':[.36,.26,.65,.435]},anchor,[sticker],sticker))
+        self.assertFalse(is_printed_sticker_duplicate(
+            fragment,{**anchor,'scale_predictions':[{'confidence':.86}]},[sticker],sticker))
+
     def test_printed_sticker_deduplicates_nested_boxes_without_hiding_another_label(self):
         anchor={'id':'whole','bbox':[.10,.20,.53,.36],'confidence':.87,'detection_stable':True}
         nested={'id':'nested','bbox':[.28,.20,.53,.28],'confidence':.64,'detection_stable':True}
@@ -200,6 +235,43 @@ class LiveInventory(unittest.TestCase):
         self.assertEqual({m['sku'] for m in found},{'BT-201','BT201'})
         tokens[1]['bbox']=[.50,.3,.53,.33]
         self.assertNotIn('BT-201',{m['sku'] for m in product_evidence(tokens,{'BT-201'})})
+
+    def test_missing_sku_separator_requires_exact_ocr_on_the_same_sticker(self):
+        box=[.2,.3,.4,.34]
+        compact={'id':'first','text':'SKU HPY301','confidence':.91,'bbox':box,'confirmed_reread':True}
+        exact={'id':'second','text':'SKU HPY-301','confidence':.99,'bbox':box}
+        joined={**compact,'text':'SKUHPY301'}
+        for ambiguous in (compact,joined):
+            with self.subTest(text=ambiguous['text']):
+                provisional,=product_evidence([ambiguous],{'HPY-301'})
+                self.assertEqual(provisional['sku'],'HPY301')
+                self.assertEqual(provisional['separator_candidates'],['HPY-301'])
+                self.assertTrue(provisional['requires_separator_reread'])
+
+                distinct={**exact,'bbox':[.5,.3,.7,.34]}
+                self.assertEqual({e['sku'] for e in product_evidence([ambiguous,distinct],{'HPY-301'})},
+                                 {'HPY301','HPY-301'})
+                self.assertEqual([e['sku'] for e in product_evidence([ambiguous,exact],{'HPY-301'})],
+                                 ['HPY-301'])
+
+        competing=product_evidence([compact,exact],{'HPY-301','HPY.301'})
+        self.assertEqual(competing[0]['separator_candidates'],['HPY-301','HPY.301'])
+        exact_ids={e['sku'] for e in product_evidence([compact,exact],{'HPY-301','HPY301'})}
+        self.assertEqual(exact_ids,{'HPY301','HPY-301'})
+        self.assertEqual([e['sku'] for e in product_evidence([joined],{'SKUHPY301','HPY-301'})],['SKUHPY301'])
+        self.assertFalse(product_evidence([{**compact,'text':'HPY301'}],{'HPY-301'}))
+
+    def test_only_compact_sku_is_not_an_unregistered_product_verdict(self):
+        raw,_,_,_,regions=self.fixture()
+        snapshot=build_snapshot('ABC-001',[('here',record(itemCode='HPY-301'))])
+        positions=warehouse_view(snapshot,'제1물류센터')
+        box=[.2,.3,.4,.34]
+        raw['ocr_tokens']=[{'id':'first','text':'SKU HPY301','confidence':.91,'bbox':box,'confirmed_reread':True}]
+        row,=review_live(raw,[],snapshot,positions,regions,{})['results']
+        self.assertEqual(row['f04_status'],'MANUAL_REVIEW_REQUIRED')
+        raw['ocr_tokens'].append({'id':'second','text':'SKU HPY-301','confidence':.99,'bbox':box})
+        row,=review_live(raw,[],snapshot,positions,regions,{})['results']
+        self.assertEqual(row['f04_status'],'PRODUCT_LOCATION_MATCH')
 
     def test_pallet_sku_uses_its_own_rack_and_rejects_a_neighboring_load(self):
         raw,_,_,_,_=self.fixture()

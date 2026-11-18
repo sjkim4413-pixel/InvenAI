@@ -1,16 +1,20 @@
 """Actual pixel evidence for whole-aisle photos, without inferred rack numbers."""
+from collections import defaultdict
 from pathlib import Path
 import re
 import cv2
 import numpy as np
 from f03_catalog import load_catalog, load_locations, match_catalog, resolve_regions
+from f03_live_inventory import position_id
 from f03_live_ocr import (
     OCR_THRESHOLD, pallet_ocr_box, product_evidence, rack_label_evidence, rack_labels_under_load,
     rack_readings, same_label, test_rack_detection_supported, under_load,
 )
 from f03_verification import covered_fraction, spatially_verified
 from f03_multiscale_detection import (
-    DETECTION_SCALES, FUSION_IOU, box_iou, crop_predictions, detect_objects, fuse_predictions, retry_empty_regions,
+    DETECTION_SCALES, FUSION_IOU, PERSPECTIVE_EXTENSION_SOURCE, PERSPECTIVE_MIN_CONFIDENCE,
+    PERSPECTIVE_RETRY_SOURCE, box_iou, crop_predictions, detect_objects, fuse_predictions, perspective_consensus,
+    perspective_extension_consensus, perspective_rack_predictions, retry_empty_regions, supports_load_extension,
 )
 
 OCR_MAX_REGIONS = 50
@@ -23,7 +27,9 @@ REFLECTED_ADJUSTED_SCALES = (*DETECTION_SCALES, 1536)
 MAX_RACK_LOCAL_VIEWS = 24
 RACK_RECOVERY_SOURCES = ('rack_label_tile_retry','rack_label_reflected_retry','rack_label_local_retry')
 CONFUSABLE_SKU_RUN = re.compile(r'[0-9OS]{2,}')
+COMPACT_SKU = re.compile(r'[A-Z]{2,16}[0-9]{2,16}')
 RACK_LABEL = re.compile(r'[A-Z][0-9]{2}-[1-9][0-9]*F(?:-[0-9]{2})?')
+INCOMPLETE_RACK_LABEL = re.compile(r'[A-Z][A-Z0-9]{2,12}\s*[F층단]\s*[-_]\s*(?:[LR]|[0-9OSI]{1,3})')
 
 
 def read_image(path):
@@ -130,6 +136,49 @@ def recover_live_labels(reader, image, detections, tokens, *, rack_only=False):
         read_region(reader,image,area,tokens,enhance=True)
 
 
+def recover_missing_beam_labels(reader, image, detections, tokens):
+    """Read the pixels of a sticker that the initial pallet crop may clip."""
+    anchors = [d['bbox'] for d in sorted(detections, key=lambda d: d['confidence'], reverse=True)
+               if d.get('detection_stable') is True and d['confidence'] >= .50]
+    pending = [box for box in anchors if min(box[2]-box[0],box[3]-box[1]) >= .035
+               and not rack_labels_under_load(rack_label_evidence(tokens),box)]
+    for box in pending[:OCR_MAX_ANCHORED_REREADS]:
+        left, top, right, bottom = box
+        height = bottom-top
+        pad_x = .045*(right-left)
+        strip = [max(0.,left-pad_x), bottom-min(.036,.20*height),
+                 min(1.,right+pad_x), min(1.,pallet_ocr_box(box)[3]+min(.035,.30*height))]
+        views = []
+        for binary in (False, True):
+            reread = []
+            read_region(reader,image,strip,reread,enhance=True,binarize=binary,zoom_limit=3.)
+            labels = [label for label in rack_label_evidence(reread)
+                      if [anchor for anchor in anchors if under_load(label['bbox'],anchor)] == [box]]
+            if len(labels) != 1:
+                break
+            label, = labels
+            codes = {position_id(parts) for parts,_ in rack_readings(label['text'])}
+            views.append((reread,label,codes))
+        if len(views) != 2:
+            continue
+        first, second = views
+        if not same_label(first[1],second[1]):
+            continue
+        shared = first[2] & second[2]
+        chosen = next((view for view in views if len(shared)==1 and view[2]==shared),None)
+        # Preserve a repeated literal OCR reading for the later warehouse
+        # lookup to disambiguate numeric-looking letters.
+        if chosen is None and first[1]['text']==second[1]['text']:
+            chosen = first
+        if chosen is None:
+            continue
+        source, label, _ = chosen
+        confidence = min(first[1]['confidence'],second[1]['confidence'])
+        for token in source:
+            if token['id'] in label['ocr_token_ids']:
+                tokens.append({**token,'id':f't{len(tokens)+1}','confidence':min(token['confidence'],confidence)})
+
+
 def label_crop(image, box, *, padding_ratio=.25):
     height, width = image.shape[:2]
     x1,y1,x2,y2=box
@@ -181,7 +230,35 @@ def rack_label_recognition_views(gray,bounds,tight):
         yield cv2.resize(source,(2*w,2*h),interpolation=cv2.INTER_CUBIC),[0,2*w,0,2*h]
 
 
-def reread_weak_rack_labels(reader,image,tokens,detections=()):
+def rack_pixel_rereads(reader,image,label,*,padding_x,padding_y,binarize=False):
+    left,top,right,bottom=label['bbox']
+    dx,dy=(right-left)*padding_x,(bottom-top)*padding_y
+    crop=[max(0.,left-dx),max(0.,top-dy),min(1.,right+dx),min(1.,bottom+dy)]
+    tokens=[]
+    read_region(reader,image,crop,tokens,enhance=True,binarize=binarize,zoom_limit=3.)
+    return [(token,{position_id(parts) for parts,_ in rack_readings(token['text'])})
+            for token in tokens if token['confidence']>=OCR_THRESHOLD and same_label(token,label)]
+
+
+def reread_incomplete_rack_label(reader,image,label):
+    """Recover a malformed reading only when two pixel rereads agree on one complete code."""
+    first=rack_pixel_rereads(reader,image,label,padding_x=0.,padding_y=0.)
+    second=rack_pixel_rereads(reader,image,label,padding_x=.08,padding_y=.23,binarize=True)
+    first_codes={code for _,codes in first for code in codes}
+    second_codes={code for _,codes in second for code in codes}
+    agreed=first_codes & second_codes
+    if len(agreed)!=1:
+        return None
+    code,=agreed
+    exact=[token for token,codes in first+second if codes=={code}]
+    if not exact:
+        return None
+    strength=min(max(token['confidence'] for token,codes in group if code in codes)
+                 for group in (first,second))
+    return {**max(exact,key=lambda token:token['confidence']),'confidence':strength}
+
+
+def reread_weak_rack_labels(reader,image,tokens,detections=(),*,printed_stickers=False):
     known=list(rack_label_evidence(tokens))
     weak_labels=sorted(
         (t for t in tokens if t['confidence']<OCR_THRESHOLD and any(rack_readings(t['text']))),
@@ -218,18 +295,102 @@ def reread_weak_rack_labels(reader,image,tokens,detections=()):
     anchors=[d['bbox'] for d in detections if d.get('detection_stable') is True
              and (d['confidence']>=.5 or test_rack_detection_supported(d))]
     extra=[]
-    for label in weak_labels:
+    incomplete=[token for token in tokens if INCOMPLETE_RACK_LABEL.fullmatch(token['text'].strip().upper())
+                and not any(rack_readings(token['text']))]
+    incomplete.sort(key=lambda token:token['confidence'],reverse=True)
+    for label in sorted(weak_labels+incomplete,key=lambda token:token['confidence'],reverse=True):
         if len(extra)>=OCR_MAX_ANCHORED_REREADS:
             break
-        if any(same_label(label,other) for other in known+visited+extra):
+        if any(same_label(label,other) for other in known+extra):
             continue
-        if sum(under_load(label['bbox'],box) for box in anchors)!=1:
+        supporting_loads=[box for box in anchors if under_load(
+            label['bbox'],box,printed_sticker=printed_stickers)]
+        if len(supporting_loads)!=1:
             continue
         extra.append(label)
         original=[parts for parts,_ in rack_readings(label['text'])]
-        candidate=recognize_rack_label_box(reader,image,label,original)
+        if original:
+            candidate=None
+            if not any(same_label(label,other) for other in visited):
+                candidate=recognize_rack_label_box(reader,image,label,original)
+            if not candidate:
+                original_codes={position_id(parts) for parts in original}
+                pixel_reads=rack_pixel_rereads(reader,image,label,padding_x=.08,padding_y=.23)
+                agreeing=[token for token,codes in pixel_reads if original_codes.intersection(codes)]
+                candidate=max(agreeing,key=lambda token:token['confidence'],default=None)
+        else:
+            candidate=reread_incomplete_rack_label(reader,image,label)
+            if not candidate:
+                # The first OCR box can clip a stroke. A second box of the
+                # same sticker still needs two complete reads and one load.
+                alternate=next((token for token in incomplete
+                                if token['bbox']!=label['bbox'] and same_label(token,label)
+                                and [box for box in anchors if under_load(
+                                    token['bbox'],box,printed_sticker=printed_stickers)]==supporting_loads),None)
+                if alternate:
+                    candidate=reread_incomplete_rack_label(reader,image,alternate)
         if candidate:
             tokens.append({**candidate,'id':f't{len(tokens)+1}'})
+
+
+def reread_unresolved_live_labels(reader, image, tokens):
+    """Recover clipped characters from the same photographed label in two views."""
+    legible_racks = list(rack_label_evidence(tokens))
+    legible_products = [item for item in product_evidence(tokens, ())
+                        if item.get('explicit_sku_label') and item['confidence'] >= OCR_THRESHOLD
+                        and any(char.isdigit() for char in item['sku'])]
+    pending = []
+    for token in tokens:
+        text = token['text'].strip().upper()
+        if INCOMPLETE_RACK_LABEL.fullmatch(text) and not any(rack_readings(text)):
+            if not any(same_label(token, rack) for rack in legible_racks):
+                pending.append((token, True))
+        elif (token['confidence'] < OCR_THRESHOLD and 'SKU' in text
+              and any(char.isdigit() for char in text)
+              and not any(same_label(token, item) for item in legible_products)):
+            pending.append((token, False))
+    attempted = []
+    for token, is_rack in sorted(pending,key=lambda entry:entry[0]['confidence'],reverse=True):
+        if len(attempted) >= OCR_MAX_LABEL_REREADS:
+            break
+        if any(same_label(token, prior) for prior in attempted):
+            continue
+        attempted.append(token)
+        readings = {}
+        crops = [label_crop(image,token['bbox'],padding_ratio=padding) for padding in (.22,.50)]
+        if not is_rack:
+            # Another OCR view can enclose the strokes at the edges of the
+            # same sticker even when its original text was unreadable.
+            alternate = next((part for part in sorted(tokens,key=lambda part:part['confidence'],reverse=True)
+                              if part['bbox']!=token['bbox'] and same_label(part,token)
+                              and covered_fraction(token['bbox'],part['bbox'])>=.95
+                              and covered_fraction(part['bbox'],token['bbox'])<.90),None)
+            if alternate:
+                crops.append(label_crop(image,alternate['bbox'],padding_ratio=.22))
+        for crop in crops:
+            for binary in (False,True):
+                local = []
+                read_region(reader,image,crop,local,enhance=True,binarize=binary,zoom_limit=3.)
+                if is_rack:
+                    evidence = [(item['text'].strip().upper(),item) for item in rack_label_evidence(local)]
+                else:
+                    evidence = [(item['sku'],item) for item in product_evidence(local,())
+                                if item.get('explicit_sku_label') and any(char.isdigit() for char in item['sku'])]
+                for code,item in evidence:
+                    if item['confidence'] >= OCR_THRESHOLD and same_label(token,item):
+                        readings.setdefault(code, []).append((binary,local,item))
+        agreeing = [reads for reads in readings.values() if {item[0] for item in reads} == {False,True}]
+        if len(agreeing) != 1:
+            continue
+        reads, = agreeing
+        _, source, evidence = max(reads,key=lambda item:item[2]['confidence'])
+        strength = min(max(item[2]['confidence'] for item in reads if item[0]==binary)
+                       for binary in (False,True))
+        for part in source:
+            if part['id'] in evidence['ocr_token_ids']:
+                tokens.append({**part,'id':f't{len(tokens)+1}',
+                               'confidence':min(part['confidence'],strength),
+                               'confirmed_reread':True})
 
 
 def local_rack_view(label,labels):
@@ -388,6 +549,206 @@ def rack_view_predictions(model,image,tile,scales,labels,*,view_name):
             yield linked[0],{**candidate,'view':(view_name,*tile,candidate['scale'])}
 
 
+def retry_oblique_rack_detections(model, image, detections, tokens):
+    """Retry a missed live load only where separate labels have been read."""
+    products = [item for item in product_evidence(tokens, ()) if item['confidence'] >= OCR_THRESHOLD
+                and item.get('explicit_sku_label') and item.get('confirmed_reread')]
+    if not products:
+        return
+    labels = list(rack_label_evidence(tokens))
+    pending = []
+    for label in sorted(labels, key=lambda label: label['confidence'], reverse=True):
+        if label['confidence'] < .85:
+            break
+        if any(same_label(label, other) for other in pending) or any(
+                detection['detection_stable'] and under_load(label['bbox'], detection['bbox'])
+                for detection in detections):
+            continue
+        a, b, c, _ = label['bbox']
+        if any(0 < b-sku['bbox'][3] <= .40
+               and min(c, sku['bbox'][2])-max(a, sku['bbox'][0]) >= .50*(c-a) for sku in products):
+            pending.append(label)
+    if not pending:
+        return
+
+    proposals = defaultdict(list)
+    for prediction in perspective_rack_predictions(model, image):
+        if prediction['confidence'] < PERSPECTIVE_MIN_CONFIDENCE:
+            continue
+        box = prediction['bbox']
+        linked = rack_labels_under_load(labels, box)
+        if len(linked) != 1 or not any(covered_fraction(item['bbox'], box) >= .95 for item in products):
+            continue
+        for label in pending:
+            if same_label(label, linked[0]) and under_load(label['bbox'], box):
+                proposals[label['id']].append(prediction)
+    for predictions in proposals.values():
+        supported = [d for d in fuse_predictions(predictions, view_key='view')
+                     if perspective_consensus(p['view'] for p in d['scale_predictions'])]
+        if len(supported) == 1:
+            candidate, = supported
+            if not any(box_iou(candidate['bbox'], d['bbox']) >= .50 for d in detections):
+                detections.append({**candidate, 'id': f'd{len(detections)+1}', 'source': PERSPECTIVE_RETRY_SOURCE})
+
+
+def corroborate_load_label(reader, image, label, *, rack=False):
+    """Read two renderings of the original label and preserve the weaker score."""
+    padding = .35 if rack else .12
+    crop = label_crop(image, label['bbox'], padding_ratio=padding)
+    if rack:
+        expected = {position_id(parts) for parts, _ in rack_readings(label['text'])}
+    reads = []
+    for binary in (False, True):
+        tokens = []
+        read_region(reader, image, crop, tokens, enhance=True, binarize=binary, zoom_limit=3.)
+        evidence = rack_label_evidence(tokens) if rack else product_evidence(tokens, ())
+        candidates = [item for item in evidence if same_label(item, label) and item['confidence'] >= .85]
+        if rack:
+            if not candidates or any(not expected.intersection(
+                    position_id(parts) for parts, _ in rack_readings(item['text'])) for item in candidates):
+                return []
+        elif not candidates or any(item['sku'] != label['sku'] or not item.get('explicit_sku_label')
+                                   for item in candidates):
+            return []
+        reads.append((tokens, max(candidates, key=lambda item: item['confidence'])))
+    source, accepted = reads[0]
+    confidence = min(accepted['confidence'], reads[1][1]['confidence'])
+    return [{**t, 'confidence': min(t['confidence'], confidence), 'confirmed_reread': True}
+            for t in source if t['id'] in accepted['ocr_token_ids']]
+
+
+def extend_partial_loads(model, reader, image, detections, tokens):
+    """Recover a shortened box only with corroboration from the original image."""
+    products = [item for item in product_evidence(tokens, ()) if item.get('explicit_sku_label')
+                and item['confidence'] >= .85]
+    if not products:
+        return
+    labels = list(rack_label_evidence(tokens))
+    native = [d for d in detections if .25 <= d['confidence'] < .50 and not d.get('source')
+              and not any(rack_labels_under_load(labels, p['bbox'])
+                          for p in d.get('scale_predictions') or (d,))]
+    pending = {}
+    for label in sorted(labels, key=lambda label: label['confidence'], reverse=True):
+        if any(same_label(label, entry[0]) for entry in pending.values()) or any(
+                d['detection_stable'] and under_load(label['bbox'], d['bbox']) for d in detections):
+            continue
+        l, t, r, _ = label['bbox']
+        center = (l+r)/2
+        parts = [d for d in native if d['bbox'][0] < center < d['bbox'][2] and 0 < t-d['bbox'][3] <= .20
+                 and any(0 < t-item['bbox'][3] <= .40 and d['bbox'][1] < item['bbox'][1]
+                         and covered_fraction(item['bbox'], [d['bbox'][0],d['bbox'][1],d['bbox'][2],t]) >= .80
+                         for item in products)]
+        if parts:
+            pending[label['id']] = (label, parts, [])
+    if not pending:
+        return
+    for prediction in perspective_rack_predictions(model, image, extended=True):
+        if prediction['confidence'] < PERSPECTIVE_MIN_CONFIDENCE:
+            continue
+        box = prediction['bbox']
+        linked = rack_labels_under_load(labels, box)
+        if len(linked) != 1 or not any(covered_fraction(item['bbox'], box) >= .95 for item in products):
+            continue
+        for label, parts, proposals in pending.values():
+            if same_label(label, linked[0]) and under_load(label['bbox'], box) and any(
+                    supports_load_extension(part, box) for part in parts):
+                proposals.append(prediction)
+
+    for label, parts, proposals in pending.values():
+        supported = [d for d in fuse_predictions(proposals, view_key='view')
+                     if perspective_extension_consensus(d['scale_predictions'])]
+        if len(supported) != 1:
+            continue
+        candidate, = supported
+        box = candidate['bbox']
+        native_parts = [part for part in parts if supports_load_extension(part, box)]
+        local_products = [item for item in products if covered_fraction(item['bbox'], box) >= .95]
+        item = max(local_products, key=lambda item: item['confidence'])
+        if len(native_parts) != 1 or any(not same_label(item, other) for other in local_products):
+            continue
+        part, = native_parts
+        if part not in detections or any(d is not part and box_iou(box,d['bbox']) >= FUSION_IOU for d in detections):
+            continue
+        rack_reads = [] if label['confidence'] >= .85 else corroborate_load_label(reader, image, label, rack=True)
+        if label['confidence'] < .85 and not rack_reads:
+            continue
+        sku_reads = [] if item.get('confirmed_reread') else corroborate_load_label(reader, image, item)
+        if not (item.get('confirmed_reread') or sku_reads):
+            continue
+        for token in rack_reads + sku_reads:
+            tokens.append({**token, 'id': f't{len(tokens)+1}'})
+        native_support = {key: part[key] for key in ('bbox', 'confidence', 'scale_predictions')}
+        detections[detections.index(part)] = {**candidate, 'id': part['id'], 'source': PERSPECTIVE_EXTENSION_SOURCE,
+                                              'native_support': native_support}
+
+
+def read_shelf_evidence(reader, image, region, extract, key):
+    reads = []
+    for binary in (False, True):
+        tokens = []
+        read_region(reader, image, region, tokens, enhance=True, binarize=binary, zoom_limit=3.)
+        qualified = [item for item in extract(tokens) if item['confidence'] >= .85]
+        if len({key(item) for item in qualified}) != 1:
+            return None
+        item = max(qualified, key=lambda item: item['confidence'])
+        if any(not same_label(item, other) for other in qualified):
+            return None
+        reads.append((tokens, item))
+    source, first = reads[0]
+    second = reads[1][1]
+    if key(first) != key(second) or not same_label(first, second):
+        return None
+    confidence = min(first['confidence'], second['confidence'])
+    return [{**t, 'confidence': min(t['confidence'], confidence), 'confirmed_reread': True}
+            for t in source if t['id'] in first['ocr_token_ids']]
+
+
+def reread_shallow_shelf(reader, image, label, labels):
+    rack = None
+    for padding in (.35, .65):
+        rack = read_shelf_evidence(
+            reader, image, label_crop(image, label['bbox'], padding_ratio=padding),
+            lambda tokens: (item for item in rack_label_evidence(tokens) if same_label(item, label)),
+            lambda item: item['text'].strip().upper(),
+        )
+        if rack:
+            break
+    if not rack:
+        return None
+    a, b, c, d = label['bbox']
+    width, height = c-a, d-b
+    center = (a+c)/2
+    top = max((other['bbox'][3] for other in labels
+               if other['bbox'][3] < b-max(.035, 2*height)
+               and abs(center-(other['bbox'][0]+other['bbox'][2])/2) <= .80*width),
+              default=max(0., b-min(.26, 9*height)))
+    region = [max(0., a-.55*width), top+.15*height, min(1., c+.55*width), b-.10*height]
+    if region[3] <= region[1]:
+        return None
+    product = read_shelf_evidence(
+        reader, image, region,
+        lambda tokens: (item for item in product_evidence(tokens, ()) if item.get('explicit_sku_label')),
+        lambda item: item['sku'],
+    )
+    return rack + product if product else []
+
+
+def recover_unmapped_shelf_labels(reader, image, detections, tokens):
+    """Reread raw labels in narrow areas where the load detector has no anchor."""
+    labels = []
+    for label in sorted(rack_label_evidence(tokens), key=lambda item: item['confidence'], reverse=True):
+        if not any(same_label(label, seen) for seen in labels):
+            labels.append(label)
+    pending = [label for label in labels if not any(
+        d['detection_stable'] and under_load(label['bbox'], d['bbox']) for d in detections)]
+    pending = pending[:OCR_MAX_RECOVERY_LOADS]
+    if not pending or len(labels) < 2:
+        return
+    for label in pending:
+        for token in reread_shallow_shelf(reader, image, label, labels) or ():
+            tokens.append({**token, 'id': f't{len(tokens)+1}'})
+
+
 def reread_confusable_skus(reader, image, detections, tokens):
     """Require two OCR reads of the original label crop to agree."""
     suspects = []
@@ -398,7 +759,9 @@ def reread_confusable_skus(reader, image, detections, tokens):
         local = [token for token in tokens if covered_fraction(token['bbox'],area)>=.95]
         for evidence in product_evidence(local,()):
             digit_runs = CONFUSABLE_SKU_RUN.findall(evidence['sku'])
-            if any('O' in run or 'S' in run for run in digit_runs):
+            if (any('O' in run or 'S' in run for run in digit_runs)
+                    or evidence.get('joined_sku_prefix')
+                    or (evidence.get('explicit_sku_label') and COMPACT_SKU.fullmatch(evidence['sku']))):
                 suspects.append(evidence)
     seen = []
     for suspect in sorted(suspects,key=lambda entry:entry['confidence'],reverse=True):
@@ -516,7 +879,10 @@ def observe_photo(image_path, image, rack_number, models, model_path, *, catalog
         if printed_stickers:
             read_printed_rack_stickers(reader,image,tokens)
         recover_live_labels(reader,ocr_image,detections,tokens,rack_only=printed_stickers)
-        reread_weak_rack_labels(reader,image,tokens,detections)
+        reread_weak_rack_labels(reader,image,tokens,detections,printed_stickers=printed_stickers)
+        if not catalog.get('test_rack_labels'):
+            recover_missing_beam_labels(reader,image,detections,tokens)
+            reread_unresolved_live_labels(reader,image,tokens)
         retry_rack_detections(model,image,detections,tokens,test_rack_labels=catalog.get('test_rack_labels',False),
                               printed_stickers=printed_stickers)
         if not printed_stickers:
@@ -524,6 +890,10 @@ def observe_photo(image_path, image, rack_number, models, model_path, *, catalog
                 if detection.get('source') in RACK_RECOVERY_SOURCES:
                     read_region(reader,image,pallet_ocr_box(detection['bbox']),tokens,enhance=True)
             reread_confusable_skus(reader,image,detections,tokens)
+        if not catalog.get('test_rack_labels'):
+            retry_oblique_rack_detections(model, image, detections, tokens)
+            extend_partial_loads(model, reader, image, detections, tokens)
+            recover_unmapped_shelf_labels(reader, image, detections, tokens)
     all_boxes = [d['bbox'] for d in detections]
     for detection in detections:
         local = [t for t in tokens if covered_fraction(t['bbox'], detection['bbox']) >= .95]

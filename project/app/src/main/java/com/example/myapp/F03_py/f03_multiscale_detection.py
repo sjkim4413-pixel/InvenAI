@@ -11,6 +11,10 @@ FUSION_IOU = .55
 MAX_REGION_RETRIES = 12
 MIRROR_RETRY_SCALE = 1536
 MIRROR_BANDS = ((0., .66), (.33, 1.))
+PERSPECTIVE_RETRY_SOURCE = 'rack_label_perspective_retry'
+PERSPECTIVE_EXTENSION_SOURCE = 'rack_label_perspective_extension'
+PERSPECTIVE_SOURCES = (PERSPECTIVE_RETRY_SOURCE, PERSPECTIVE_EXTENSION_SOURCE)
+PERSPECTIVE_MIN_CONFIDENCE = .30
 
 
 def box_iou(a, b):
@@ -58,6 +62,70 @@ def predict_boxes(model, image, scale, *, nms_iou=.30):
         if bounds[2] <= bounds[0] or bounds[3] <= bounds[1]: continue
         predictions.append({'bbox': bounds, 'confidence': confidence, 'scale': scale})
     return predictions
+
+
+def perspective_consensus(views):
+    families = {view[0] for view in views}
+    return 'contrast' in families and len(families) >= 3
+
+
+def perspective_extension_consensus(predictions):
+    strong_views = {p['view'][0] for p in predictions if p['confidence'] >= .65}
+    return len(strong_views) >= 2 or len({p['view'][0] for p in predictions}) >= 3
+
+
+def supports_load_extension(part, full):
+    """Require the original box to cover the same sides and most of the upper load."""
+    for prediction in part.get('scale_predictions') or (part,):
+        box = prediction['bbox']
+        horizontal = min(box[2], full[2]) - max(box[0], full[0])
+        if (horizontal >= .80*max(box[2]-box[0], full[2]-full[0]) and box[3] < full[3]
+                and covered_fraction(box, full) >= .85 and box_iou(box, full) >= .45):
+            return True
+    return False
+
+
+def perspective_rack_predictions(model, image, *, extended=False):
+    """Keep original and rectified detector evidence in the same coordinates."""
+    import cv2
+    import numpy as np
+
+    height, width = image.shape[:2]
+    lab = cv2.cvtColor(image, cv2.COLOR_BGR2LAB)
+    lab[:, :, 0] = cv2.createCLAHE(clipLimit=2., tileGridSize=(12, 12)).apply(lab[:, :, 0])
+    contrast = cv2.cvtColor(lab, cv2.COLOR_LAB2BGR)
+    scales = (960, 1024, 1152, 1280) if extended else (960, 1408)
+    if not extended:
+        for scale in scales:
+            for prediction in predict_boxes(model, contrast, scale, nms_iou=.55):
+                yield {**prediction, 'view': ('contrast', scale)}
+
+    frame = np.float32([[0, 0], [width, 0], [width, height], [0, height]])
+    for direction in ('left', 'right'):
+        for fraction in ((.37, .42) if extended else (.17, .30)):
+            inset = height*fraction
+            target = ([[0, inset], [width, 0], [width, height], [0, height-inset]] if direction == 'left'
+                      else [[0, 0], [width, inset], [width, height-inset], [0, height]])
+            matrix = cv2.getPerspectiveTransform(frame, np.float32(target))
+            inverse = np.linalg.inv(matrix)
+            rectified = cv2.warpPerspective(contrast, matrix, (width, height), borderMode=cv2.BORDER_REPLICATE)
+            for reflected in ((False, True) if extended else (False,)):
+                view = rectified[:, ::-1].copy() if reflected else rectified
+                for scale in scales:
+                    for prediction in predict_boxes(model, view, scale, nms_iou=.55):
+                        a, b, c, d = prediction['bbox']
+                        if reflected:
+                            a, c = 1-c, 1-a
+                        polygon = np.float32([[[a*width, b*height], [c*width, b*height],
+                                               [c*width, d*height], [a*width, d*height]]])
+                        corners = cv2.perspectiveTransform(polygon, inverse)[0]
+                        left, top = corners.min(axis=0)
+                        right, bottom = corners.max(axis=0)
+                        bounds = [max(0., float(left/width)), max(0., float(top/height)),
+                                  min(1., float(right/width)), min(1., float(bottom/height))]
+                        if bounds[2] > bounds[0] and bounds[3] > bounds[1]:
+                            yield {**prediction, 'bbox': bounds,
+                                   'view': (f'{direction}-{fraction}', scale, reflected)}
 
 
 def detect_objects(model, image):
