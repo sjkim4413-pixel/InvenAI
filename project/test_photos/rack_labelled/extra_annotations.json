@@ -1,0 +1,555 @@
+[
+  {
+    "image": "QAE_rack_labels.png",
+    "imageSha256": "81428e4cbc26878232d2ecb23b17da1e8fd041b68dbe190b84fafed4bf4c51c4",
+    "sourcePhoto": "KakaoTalk_20261103_153240227_01.jpg",
+    "sourceSha256": "81f93907168956b785aad76bf65069d52b1cc2b2eb95fbb46d0451beb689538f",
+    "width": 1650,
+    "height": 2200,
+    "description": "가전제품 정면 진열",
+    "rows": [
+      {
+        "rack": "QAE01-5F-01",
+        "itemCode": "SIM-QAE01-5F-01",
+        "expectedItemCode": "SIM-QAE01-5F-01",
+        "expectedStatus": "TEST_RACK_LABEL_MATCH",
+        "rackBBox": [
+          0.160606,
+          0.375455,
+          0.315758,
+          0.393182
+        ],
+        "loadBBox": [
+          0.102857,
+          0.242857,
+          0.371429,
+          0.352143
+        ],
+        "description": "흰색 쿠쿠 포장 묶음",
+        "partialAtImageEdge": false
+      },
+      {
+        "rack": "QAE02-5F-01",
+        "itemCode": "SIM-QAE02-5F-01",
+        "expectedItemCode": "SIM-QAE02-5F-01",
+        "expectedStatus": "TEST_RACK_LABEL_MATCH",
+        "rackBBox": [
+          0.451515,
+          0.375455,
+          0.606667,
+          0.393182
+        ],
+        "loadBBox": [
+          0.404762,
+          0.217143,
+          0.653333,
+          0.35
+        ],
+        "description": "흰색 생활가전 포장 묶음",
+        "partialAtImageEdge": false
+      },
+      {
+        "rack": "QAE02-5F-02",
+        "itemCode": "SIM-QAE02-5F-02",
+        "expectedItemCode": "SIM-QAE02-5F-02",
+        "expectedStatus": "TEST_RACK_LABEL_MATCH",
+        "rackBBox": [
+          0.765455,
+          0.375455,
+          0.920606,
+          0.393182
+        ],
+        "loadBBox": [
+          0.710476,
+          0.243571,
+          0.959048,
+          0.35
+        ],
+        "description": "공구 장난감 포장 묶음",
+        "partialAtImageEdge": false
+      },
+      {
+        "rack": "QAE01-4F-01",
+        "itemCode": "SIM-QAE01-4F-01",
+        "expectedItemCode": "SIM-QAE01-4F-01",
+        "expectedStatus": "TEST_RACK_LABEL_MATCH",
+        "rackBBox": [
+          0.165455,
+          0.551818,
+          0.320606,
+          0.569545
+        ],
+        "loadBBox": [
+          0.150476,
+          0.451429,
+          0.371429,
+          0.523571
+        ],
+        "description": "필립스 토스터 포장 묶음",
+        "partialAtImageEdge": false
+      },
+      {
+        "rack": "QAE02-4F-01",
+        "itemCode": "SIM-QAE02-4F-01",
+        "expectedItemCode": "SIM-QAE02-4F-01",
+        "expectedStatus": "TEST_RACK_LABEL_MATCH",
+        "rackBBox": [
+          0.464848,
+          0.551818,
+          0.62,
+          0.569545
+        ],
+        "loadBBox": [
+          0.411429,
+          0.400714,
+          0.677143,
+          0.523571
+        ],
+        "description": "블랙앤데커 전기그릴 포장 묶음",
+        "partialAtImageEdge": false
+      },
+      {
+        "rack": "QAE02-4F-02",
+        "itemCode": "SIM-QAE02-4F-02",
+        "expectedItemCode": "SIM-QAE02-4F-02",
+        "expectedStatus": "TEST_RACK_LABEL_MATCH",
+        "rackBBox": [
+          0.765455,
+          0.551818,
+          0.920606,
+          0.569545
+        ],
+        "loadBBox": [
+          0.712381,
+          0.401429,
+          0.968571,
+          0.523571
+        ],
+        "description": "분홍색 미용기기 포장 묶음",
+        "partialAtImageEdge": false
+      },
+      {
+        "rack": "QAE01-3F-01",
+        "itemCode": "SIM-QAE01-3F-01",
+        "expectedItemCode": "SIM-QAE01-3F-01",
+        "expectedStatus": "TEST_RACK_LABEL_MATCH",
+        "rackBBox": [
+          0.227273,
+          0.664545,
+          0.382424,
+          0.682273
+        ],
+        "loadBBox": [
+          0.228571,
+          0.578571,
+          0.375238,
+          0.660714
+        ],
+        "description": "흰색 토스터 포장 묶음",
+        "partialAtImageEdge": false
+      },
+      {
+        "rack": "QAE02-3F-01",
+        "itemCode": "SIM-QAE02-3F-01",
+        "expectedItemCode": "SIM-QAE02-3F-01",
+        "expectedStatus": "TEST_RACK_LABEL_MATCH",
+        "rackBBox": [
+          0.46,
+          0.664545,
+          0.615152,
+          0.682273
+        ],
+        "loadBBox": [
+          0.401905,
+          0.604286,
+          0.677143,
+          0.660714
+        ],
+        "description": "테팔 차 포트 포장 묶음",
+        "partialAtImageEdge": false
+      },
+      {
+        "rack": "QAE02-3F-02",
+        "itemCode": "SIM-QAE02-3F-02",
+        "expectedItemCode": "SIM-QAE02-3F-02",
+        "expectedStatus": "TEST_RACK_LABEL_MATCH",
+        "rackBBox": [
+          0.765455,
+          0.664545,
+          0.920606,
+          0.682273
+        ],
+        "loadBBox": [
+          0.713333,
+          0.574286,
+          0.992381,
+          0.660714
+        ],
+        "description": "필립스 전기주전자 포장 묶음",
+        "partialAtImageEdge": false
+      },
+      {
+        "rack": "QAE01-1F-01",
+        "itemCode": "SIM-QAE01-1F-01",
+        "expectedItemCode": "SIM-QAE01-1F-01",
+        "expectedStatus": "TEST_RACK_LABEL_MATCH",
+        "rackBBox": [
+          0.155758,
+          0.959091,
+          0.310909,
+          0.976818
+        ],
+        "loadBBox": [
+          0.107619,
+          0.797143,
+          0.368571,
+          0.95
+        ],
+        "description": "블랙앤데커 믹서기 포장 묶음",
+        "partialAtImageEdge": false
+      },
+      {
+        "rack": "QAE02-1F-01",
+        "itemCode": "SIM-QAE02-1F-01",
+        "expectedItemCode": "SIM-QAE02-1F-01",
+        "expectedStatus": "TEST_RACK_LABEL_MATCH",
+        "rackBBox": [
+          0.46,
+          0.959091,
+          0.615152,
+          0.976818
+        ],
+        "loadBBox": [
+          0.400952,
+          0.797857,
+          0.675238,
+          0.95
+        ],
+        "description": "필립스 녹색 믹서기 포장 묶음",
+        "partialAtImageEdge": false
+      },
+      {
+        "rack": "QAE02-1F-02",
+        "itemCode": "SIM-QAE02-1F-02",
+        "expectedItemCode": "SIM-QAE02-1F-02",
+        "expectedStatus": "TEST_RACK_LABEL_MATCH",
+        "rackBBox": [
+          0.784848,
+          0.959091,
+          0.94,
+          0.976818
+        ],
+        "loadBBox": [
+          0.711429,
+          0.807143,
+          0.995238,
+          0.953571
+        ],
+        "description": "주황색 전기주전자 포장 묶음",
+        "partialAtImageEdge": false
+      }
+    ]
+  },
+  {
+    "image": "QAF_rack_labels.png",
+    "imageSha256": "6f7177b21e1ec22b8b4a6426fa76bd3c4f401734c64ee472c0143b229e4516f8",
+    "sourcePhoto": "KakaoTalk_20261103_153240227_10.jpg",
+    "sourceSha256": "5e2d0722f2b035ce34f098ff9baed01abe92e1f7ef2cbbce9e41e51ef106f629",
+    "width": 2200,
+    "height": 1650,
+    "description": "장난감 정면 진열",
+    "rows": [
+      {
+        "rack": "QAF01-2F-01",
+        "itemCode": "SIM-QAF01-2F-01",
+        "expectedItemCode": "SIM-QAF01-2F-01",
+        "expectedStatus": "TEST_RACK_LABEL_MATCH",
+        "rackBBox": [
+          0.074545,
+          0.310303,
+          0.19,
+          0.333939
+        ],
+        "loadBBox": [
+          0.03,
+          0.075238,
+          0.242143,
+          0.3
+        ],
+        "description": "공구 놀이 세트",
+        "partialAtImageEdge": false
+      },
+      {
+        "rack": "QAF01-2F-02",
+        "itemCode": "SIM-QAF01-2F-02",
+        "expectedItemCode": "SIM-QAF01-2F-02",
+        "expectedStatus": "TEST_RACK_LABEL_MATCH",
+        "rackBBox": [
+          0.313636,
+          0.310303,
+          0.429091,
+          0.333939
+        ],
+        "loadBBox": [
+          0.247143,
+          0.146667,
+          0.482857,
+          0.299048
+        ],
+        "description": "뽑기 놀이 장난감",
+        "partialAtImageEdge": false
+      },
+      {
+        "rack": "QAF02-2F-01",
+        "itemCode": "SIM-QAF02-2F-01",
+        "expectedItemCode": "SIM-QAF02-2F-01",
+        "expectedStatus": "TEST_RACK_LABEL_MATCH",
+        "rackBBox": [
+          0.567273,
+          0.305455,
+          0.682727,
+          0.329091
+        ],
+        "loadBBox": [
+          0.515714,
+          0.058095,
+          0.760714,
+          0.290476
+        ],
+        "description": "주차장 놀이 세트",
+        "partialAtImageEdge": false
+      },
+      {
+        "rack": "QAF02-2F-02",
+        "itemCode": "SIM-QAF02-2F-02",
+        "expectedItemCode": "SIM-QAF02-2F-02",
+        "expectedStatus": "TEST_RACK_LABEL_MATCH",
+        "rackBBox": [
+          0.778182,
+          0.305455,
+          0.893636,
+          0.329091
+        ],
+        "loadBBox": [
+          0.749286,
+          0.084762,
+          0.914286,
+          0.289524
+        ],
+        "description": "워터 놀이 세트",
+        "partialAtImageEdge": false
+      },
+      {
+        "rack": "QAF01-1F-01",
+        "itemCode": "SIM-QAF01-1F-01",
+        "expectedItemCode": "SIM-QAF01-1F-01",
+        "expectedStatus": "TEST_RACK_LABEL_MATCH",
+        "rackBBox": [
+          0.045909,
+          0.746667,
+          0.161364,
+          0.770303
+        ],
+        "loadBBox": [
+          0.0,
+          0.380952,
+          0.206429,
+          0.737143
+        ],
+        "description": "분홍색 생일 놀이 세트",
+        "partialAtImageEdge": true
+      },
+      {
+        "rack": "QAF01-1F-02",
+        "itemCode": "SIM-QAF01-1F-02",
+        "expectedItemCode": "SIM-QAF01-1F-02",
+        "expectedStatus": "TEST_RACK_LABEL_MATCH",
+        "rackBBox": [
+          0.217273,
+          0.746667,
+          0.332727,
+          0.770303
+        ],
+        "loadBBox": [
+          0.197857,
+          0.393333,
+          0.345714,
+          0.737143
+        ],
+        "description": "사파리 동물 알 장난감",
+        "partialAtImageEdge": false
+      },
+      {
+        "rack": "QAF01-1F-03",
+        "itemCode": "SIM-QAF01-1F-03",
+        "expectedItemCode": "SIM-QAF01-1F-03",
+        "expectedStatus": "TEST_RACK_LABEL_MATCH",
+        "rackBBox": [
+          0.356364,
+          0.746667,
+          0.471818,
+          0.770303
+        ],
+        "loadBBox": [
+          0.34,
+          0.385714,
+          0.486429,
+          0.73619
+        ],
+        "description": "바다 동물 알 장난감",
+        "partialAtImageEdge": false
+      },
+      {
+        "rack": "QAF02-1F-01",
+        "itemCode": "SIM-QAF02-1F-01",
+        "expectedItemCode": "SIM-QAF02-1F-01",
+        "expectedStatus": "TEST_RACK_LABEL_MATCH",
+        "rackBBox": [
+          0.56,
+          0.746667,
+          0.675455,
+          0.770303
+        ],
+        "loadBBox": [
+          0.524286,
+          0.385714,
+          0.719286,
+          0.735238
+        ],
+        "description": "트럭 자동차 놀이 세트",
+        "partialAtImageEdge": false
+      },
+      {
+        "rack": "QAF02-1F-02",
+        "itemCode": "SIM-QAF02-1F-02",
+        "expectedItemCode": "SIM-QAF02-1F-02",
+        "expectedStatus": "TEST_RACK_LABEL_MATCH",
+        "rackBBox": [
+          0.713636,
+          0.746667,
+          0.829091,
+          0.770303
+        ],
+        "loadBBox": [
+          0.712857,
+          0.424762,
+          0.861429,
+          0.73619
+        ],
+        "description": "아기 인형 놀이 세트",
+        "partialAtImageEdge": false
+      },
+      {
+        "rack": "QAF02-1F-03",
+        "itemCode": "SIM-QAF02-1F-03",
+        "expectedItemCode": "SIM-QAF02-1F-03",
+        "expectedStatus": "TEST_RACK_LABEL_MATCH",
+        "rackBBox": [
+          0.870909,
+          0.746667,
+          0.986364,
+          0.770303
+        ],
+        "loadBBox": [
+          0.802143,
+          0.345714,
+          1.0,
+          0.737143
+        ],
+        "description": "인형의 집 놀이 세트",
+        "partialAtImageEdge": true
+      }
+    ]
+  },
+  {
+    "image": "QAG_rack_labels.png",
+    "imageSha256": "81ca235cefe448f638941eb577e2da951996d854a0c18d3bd944804d7ce2dca8",
+    "sourcePhoto": "KakaoTalk_20261103_153240227_13.jpg",
+    "sourceSha256": "af7dfa20d612c3b74c0e805e7ca2fb0b5d1d95d2b2f8ecee895c82e9cea9eeda",
+    "width": 2200,
+    "height": 1650,
+    "description": "비스듬한 포장 팔레트",
+    "rows": [
+      {
+        "rack": "QAG01-2F-01",
+        "itemCode": "SIM-QAG01-2F-01",
+        "expectedItemCode": "SIM-QAG01-2F-01",
+        "expectedStatus": "TEST_RACK_LABEL_MATCH",
+        "rackBBox": [
+          0.241364,
+          0.86303,
+          0.359091,
+          0.886667
+        ],
+        "loadBBox": [
+          0.105714,
+          0.161905,
+          0.441429,
+          0.76381
+        ],
+        "description": "흰색 식품 포장 팔레트",
+        "partialAtImageEdge": false
+      },
+      {
+        "rack": "QAG01-2F-02",
+        "itemCode": "SIM-QAG01-2F-02",
+        "expectedItemCode": "SIM-QAG01-2F-02",
+        "expectedStatus": "TEST_RACK_LABEL_MATCH",
+        "rackBBox": [
+          0.541364,
+          0.86303,
+          0.659091,
+          0.886667
+        ],
+        "loadBBox": [
+          0.428571,
+          0.398095,
+          0.71,
+          0.79619
+        ],
+        "description": "녹색 식품 포장 팔레트",
+        "partialAtImageEdge": false
+      },
+      {
+        "rack": "QAG02-2F-01",
+        "itemCode": "SIM-QAG02-2F-01",
+        "expectedItemCode": "SIM-QAG02-2F-01",
+        "expectedStatus": "TEST_RACK_LABEL_MATCH",
+        "rackBBox": [
+          0.741364,
+          0.86303,
+          0.859091,
+          0.886667
+        ],
+        "loadBBox": [
+          0.691429,
+          0.538095,
+          0.882143,
+          0.818095
+        ],
+        "description": "보라색 포장 팔레트",
+        "partialAtImageEdge": false
+      },
+      {
+        "rack": "QAG02-2F-02",
+        "itemCode": "SIM-QAG02-2F-02",
+        "expectedItemCode": "SIM-QAG02-2F-02",
+        "expectedStatus": "TEST_RACK_LABEL_MATCH",
+        "rackBBox": [
+          0.876818,
+          0.870303,
+          0.994545,
+          0.893939
+        ],
+        "loadBBox": [
+          0.831429,
+          0.522857,
+          0.978571,
+          0.82381
+        ],
+        "description": "흰색 포장 팔레트",
+        "partialAtImageEdge": false
+      }
+    ]
+  }
+]

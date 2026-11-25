@@ -1,0 +1,69 @@
+{
+  "apk": "D:\\AI\\Project\\TeamProject\\InvenAI\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+  "apk_sha256": "6d020ce09c14a3389f8832c15de1780e25dd30495aa28f3c09a63dda5a99ef1e",
+  "photos": [
+    {
+      "name": "276ec63e-e08f-4915-b585-582e9529bdaa.png",
+      "sha256": "84a830553e3b86a7d8c361703da3635d5bd1d15f6d624e8816e53472fd285135",
+      "bytes": 2754586
+    },
+    {
+      "name": "31940782-2973-4e71-9765-5ba1d3d0b20b.png",
+      "sha256": "4cf6f1c804e771a1216e6546b05125510d101a1e64f43b30fc0b5566a40e106b",
+      "bytes": 2516422
+    },
+    {
+      "name": "7be725d7-e159-47a9-884d-1535aace4a93.png",
+      "sha256": "f596e9c1934bfa15a77d2d335e3433380dfd1bfb92f464a3be6a50eb15a1749b",
+      "bytes": 3017211
+    },
+    {
+      "name": "QAA_rack_labels.png",
+      "sha256": "8fee2ab6b1ee3916ac7f2b6df07b756f7184773920c22c938577be634056f29f",
+      "bytes": 2042032
+    },
+    {
+      "name": "QAB_rack_labels.png",
+      "sha256": "653730e9b97762f4fc049d773de0d26cfb4f640c07ec53ade453290c9af93f82",
+      "bytes": 1920303
+    },
+    {
+      "name": "QAC_rack_labels.png",
+      "sha256": "7329e9dd4c3be633d24ef0e79117f568f651a023695dc9d57d2178e23dd54911",
+      "bytes": 1714778
+    },
+    {
+      "name": "QAD_closeup_rack_labels.png",
+      "sha256": "6e3454f3e4bd35ee69188b27d57511fc3077b8843747c16b8008a11bc90b73e9",
+      "bytes": 16246237
+    },
+    {
+      "name": "QAD_rack_labels.png",
+      "sha256": "628fb84c543e886cbe56f049774e6c391af2fed5236ef946c8f0033f91b096c8",
+      "bytes": 14791854
+    },
+    {
+      "name": "QAE_rack_labels.png",
+      "sha256": "a98cd15ffaaf5dac971ebe39a713191931153a3b4a5472d109abba69e2998d17",
+      "bytes": 5425955
+    },
+    {
+      "name": "QAF_rack_labels.png",
+      "sha256": "c631d626cb3bdbbe9ec271a2a76fd7c25d9ffd772f6c6d5c6a37405398ad2195",
+      "bytes": 5143814
+    },
+    {
+      "name": "QAG_rack_labels.png",
+      "sha256": "17972a67dc11aef93c8a60ab87c34b39dc4df92e7cd56f4c20d41f2890095bab",
+      "bytes": 4792672
+    },
+    {
+      "name": "e05d73dd-61e1-44e0-84c3-30e214ce27b3.png",
+      "sha256": "11fef04a67b2245ba6b246ca5064e83db53395b7eb47abe2768d12a3a5bc4d30",
+      "bytes": 2752789
+    }
+  ],
+  "total_photos": 12,
+  "registered_labelled_photos": 8,
+  "new_labelled_photos": 3
+}

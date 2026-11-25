@@ -1,0 +1,105 @@
+{
+  "pipeline_version": "2026-11-19.37",
+  "model_name": "shelf_v37",
+  "architecture": "YOLOv8n",
+  "classes": {
+    "0": "load"
+  },
+  "weights": "runs/detect/shelf_v37/weights/best.pt",
+  "sha256": "c94bf8cca79b945db6ec03fed46a898eb29d81803c422226eb88851578a901cf",
+  "role": "Auxiliary detector for unresolved shelf groups with independently reread SKU and rack evidence",
+  "additional_training": {
+    "train_crops": 30,
+    "validation_crops": 4,
+    "validation_objects": 14,
+    "train_groups": [
+      "cosmetics-aisle-153220001",
+      "packaged-goods-aisle",
+      "pet-food-aisle-153333499",
+      "storage-bag-aisle-153431134"
+    ],
+    "validation_groups": [
+      "toy-aisle"
+    ],
+    "excluded_capture_batches": [
+      "153240227",
+      "153410664"
+    ],
+    "group_and_duplicate_audit": {
+      "ready_for_training": true,
+      "counts": {
+        "train": 30,
+        "val": 4,
+        "test": 0
+      },
+      "errors": []
+    },
+    "dataset_reproduction": {
+      "image_and_label_files": 68,
+      "different_files": 0
+    },
+    "selection": "Best checkpoint on grouped validation data; best epoch 20, early stop at epoch 36",
+    "validation_metrics": {
+      "precision": 0.679,
+      "recall": 0.571,
+      "mAP50": 0.587,
+      "mAP50_95": 0.302
+    },
+    "checkpoint_lineage_sha256": [
+      "b84feb41505a0af6a9a47e393bda08a13103ac428b4d1fed4cd1a320f491c446",
+      "27d475ee7ed737c89d9b9601a0329c2933e5a846acf424f0c0aeecb07484b422",
+      "5631b5d04c264a2ea9cc65c0ce6d0c2209292a1580347c5b6b21264cf24da0ec",
+      "c94bf8cca79b945db6ec03fed46a898eb29d81803c422226eb88851578a901cf"
+    ]
+  },
+  "regression_evaluation": {
+    "description": "Same repeatedly used synthetic-label regression photos; not a new field holdout",
+    "photos": 3,
+    "stock_positions": 11,
+    "empty_positions": 1,
+    "baseline": {
+      "correct": 8,
+      "correct_with_bbox": 8,
+      "stocks": 11,
+      "wrong_automatic": 0,
+      "empty_cells": 1,
+      "empty_label_read": 0,
+      "empty_false_detection": 0,
+      "empty_automatic": 0,
+      "load_detected_iou50": 8,
+      "rack_read": 11,
+      "sku_read": 11,
+      "both_read": 11,
+      "location_linked": 8
+    },
+    "after": {
+      "correct": 9,
+      "correct_with_bbox": 9,
+      "stocks": 11,
+      "wrong_automatic": 0,
+      "empty_cells": 1,
+      "empty_label_read": 0,
+      "empty_false_detection": 0,
+      "empty_automatic": 0,
+      "load_detected_iou50": 9,
+      "rack_read": 11,
+      "sku_read": 11,
+      "both_read": 11,
+      "location_linked": 9
+    },
+    "baseline_pipeline": "2026-11-17.35",
+    "automatic_match_rate_before": 0.7272727272727273,
+    "automatic_match_rate_after": 0.8181818181818182,
+    "source_manifest_sha256": "2a002468f309fb652fb18183d4e02beb550caf3a62c4039a5cb43a87333aff67"
+  },
+  "tests": {
+    "backend_unit_tests": 109,
+    "failures": 0
+  },
+  "limitations": [
+    "Only three synthetic-label regression scenes; rates do not establish real warehouse accuracy.",
+    "Two occupied shelf positions remain manual review cases.",
+    "Quantity is not inferred or verified.",
+    "Capture exclusions apply to this additional fine tuning, not a claim about all historical base pretraining."
+  ]
+}

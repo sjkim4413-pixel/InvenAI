@@ -3,6 +3,7 @@ from f03_codes import structured_code
 from f03_live_ocr import is_load_fragment as is_fragment
 from f03_live_ocr import OCR_THRESHOLD, pallet_ocr_box, product_evidence, product_label_area, rack_label_evidence, read_location_regions, same_label, under_load, visible_location
 from f03_verification import covered_fraction
+from f03_live_ocr import test_group_relation
 
 
 def identify_codes(codes,snapshot,registry):
@@ -101,6 +102,15 @@ def review_live(raw,codes,snapshot,positions,regions,registry,*,test_item_codes=
             is_fragment(d,anchor,rack_labels) or
             (testing and printed_stickers and is_printed_sticker_duplicate(d,anchor,rack_labels,sticker))
         )}
+        excluded=set()
+        if testing and anchor and sticker:
+            for detection in detections:
+                relation=test_group_relation(detection,anchor,sticker,rack_labels)
+                if relation=='contained_part': fragments.add(detection['id'])
+                elif relation in ('outside_group','crosses_shelf_sign'): excluded.add(detection['id'])
+            fragments.update(region.get('test_group_fragment_ids',[]))
+            fragments.difference_update(excluded)
+            detections=[d for d in detections if d['id'] not in excluded]
         loads=[d for d in detections if d['id'] not in fragments]
         pallet_box=pallet_ocr_box(loads[0]['bbox']) if len(loads)==1 else box
         local_tokens=[t for t in tokens if covered_fraction(t['bbox'],box)>=.75
@@ -181,7 +191,8 @@ def review_live(raw,codes,snapshot,positions,regions,registry,*,test_item_codes=
         if location_label:token_ids=list(dict.fromkeys(token_ids+location_label['ocr_token_ids']))
         row={'rack':position['rack'],'floor':position['floor'],'zone':position['zone'],'side':position['side'],
             'position_id':position['position_id'],'location_label':position['source_location'],'location_bbox':box,
-            'erp_product_ids':expected,'ai_product_ids':ids,'ai_product_id':','.join(ids),
+            'erp_product_ids':expected,'erp_inventory_ids':[item['document_id'] for item in position['items'] if item.get('document_id')],
+            'ai_product_ids':ids,'ai_product_id':','.join(ids),
             'yolo_candidates':len(detections),'review_status':status,'verification_passed':False,
             'product_location_verified':match,'product_identity_verified':identity_verified,
             'location_verified':True,'location_method':region.get('confirmation_method','operator_confirmed'),
@@ -195,6 +206,7 @@ def review_live(raw,codes,snapshot,positions,regions,registry,*,test_item_codes=
             'verified_detection_id':loads[0]['id'] if identity_verified else None,
             'fragment_detection_ids':sorted(fragments) if identity_verified else [],
             'review_reasons':reasons,'f04_status_code':code,'f04_status':decision}
+        if excluded: row['excluded_group_candidate_ids']=sorted(excluded)
         if testing:
             expected_code=test_item_codes.get(position['position_id'])
             observed=None
@@ -247,6 +259,31 @@ def review_live(raw,codes,snapshot,positions,regions,registry,*,test_item_codes=
             'detection_ids':[detection['id']] if detection else [],
             'review_reasons':reasons,
             'f04_status_code':5,'f04_status':'MANUAL_REVIEW_REQUIRED'})
+    unmapped=[]
+    if testing:
+        # One row per authoritative test position. Raw detector candidates are
+        # diagnostics, not additional inventory positions; missing ERP positions
+        # must remain in the denominator rather than silently disappearing.
+        unmapped=[row for row in rows if not row.get('position_id') and row['detection_ids']]
+        localized={}
+        for row in rows:
+            if row.get('position_id'): localized.setdefault(row['position_id'],[]).append(row)
+        expected_rows=[]
+        for position in positions:
+            found=localized.get(position['position_id'],[])
+            if len(found)==1:
+                expected_rows.append(found[0]);continue
+            expected_code=test_item_codes.get(position['position_id'])
+            expected_rows.append(dict(rack=position['rack'],floor=position['floor'],zone=position['zone'],side=position['side'],
+                position_id=position['position_id'],location_label=position['source_location'],location_bbox=None,
+                erp_product_ids=[expected_code] if expected_code else [],ai_product_ids=[],ai_product_id='',
+                yolo_candidates=0,review_status='테스트 라벨·적재물 미확인',verification_passed=False,
+                product_location_verified=False,product_identity_verified=False,location_verified=False,
+                location_method='unverified',identity_method=None,quantity_verified=False,ocr_max_confidence=0.,
+                product_matches=[],ocr_token_ids=[],detection_ids=[],fragment_detection_ids=[],verified_detection_id=None,
+                test_label_match=False,f04_status_code=5,f04_status='MANUAL_REVIEW_REQUIRED',
+                review_reasons=['전산에 등록된 테스트 위치입니다. 라벨 판독과 적재물 탐지를 함께 확인하지 못했습니다.']))
+        rows=expected_rows
     for row in rows:
         codes_in_row=set(row['erp_product_ids']+row['ai_product_ids'])
         row['product_names']={sku:names[sku] for sku in sorted(codes_in_row) if names.get(sku)}
@@ -256,4 +293,6 @@ def review_live(raw,codes,snapshot,positions,regions,registry,*,test_item_codes=
             'registered_code_observations':identified,'unregistered_codes':unregistered,
             'inventory_issues':snapshot['issues'],'inventory_source_count':snapshot['source_count'],
             'inventory_snapshot_complete':snapshot['complete'],'inventory_revision':snapshot['revision'],
-            'verification_scope':'test_rack_label_as_item_code' if testing else 'read_product_code_and_verified_location_quantity_unverified'}
+            'verification_scope':'test_rack_label_as_item_code' if testing else 'read_product_code_and_verified_location_quantity_unverified',
+            **({'unmapped_observations':unmapped,'summary_basis':'all_registered_test_positions',
+                'expected_position_count':len(positions)} if testing else {})}

@@ -1,0 +1,1535 @@
+{
+  "status": "compared",
+  "rack": "TEST_REGIONS",
+  "total_positions": 3,
+  "results": [
+    {
+      "rack": "QAC02",
+      "floor": 5,
+      "side": "01",
+      "zone": null,
+      "position_id": "-/QAC02/5/01",
+      "location_label": "QAC02-5F-01",
+      "location_bbox": [
+        0.015,
+        0.15,
+        0.344,
+        0.935
+      ],
+      "erp_product_ids": [
+        "HPX-111"
+      ],
+      "ai_product_ids": [
+        "HPX-222"
+      ],
+      "ai_product_id": "HPX-222",
+      "product_names": {
+        "HPX-111": "흰색 가전 포장 묶음",
+        "HPX-222": "갈색 가전 포장 묶음",
+        "HPX-333": "연녹색 가전 포장 묶음"
+      },
+      "ocr_max_confidence": 0.9748412579961689,
+      "yolo_candidates": 0,
+      "review_status": "비교 테스트 오적재",
+      "review_reasons": [
+        "F05 검증용으로 사람이 표시한 위치 영역입니다. YOLO 탐지 성능을 측정하지 않습니다.",
+        "위치는 사전 표시 영역을 사용하고, 상품 코드는 원본·대비 보정 영상에서 각각 읽습니다.",
+        "합성 비교 사진이며 수량은 확인하지 않습니다.",
+        "위치 라벨 OCR은 불충분하여 사람이 표시한 테스트 위치를 사용했습니다."
+      ],
+      "location_verified": true,
+      "location_method": "human_annotated_test_region",
+      "location_label_ocr_confirmed": false,
+      "verification_passed": false,
+      "product_location_verified": false,
+      "product_identity_verified": false,
+      "test_product_identity_verified": true,
+      "test_product_location_match": false,
+      "quantity_verified": false,
+      "observed_quantity": null,
+      "expected_quantity": 1,
+      "identity_method": "TEST_REGION_OCR_PRODUCT_CODE",
+      "detection_ids": [
+        "test-region-1"
+      ],
+      "verified_detection_id": "test-region-1",
+      "fragment_detection_ids": [],
+      "product_matches": [],
+      "ocr_token_ids": [
+        "region1-read1-t1",
+        "region1-read1-t2",
+        "region1-read1-t3",
+        "region1-read1-t4",
+        "region1-read1-t5",
+        "region1-read1-t6",
+        "region1-read1-t7",
+        "region1-read1-t8",
+        "region1-read1-t9",
+        "region1-read2-t1",
+        "region1-read2-t2",
+        "region1-read2-t3",
+        "region1-read2-t4",
+        "region1-read2-t5",
+        "region1-read2-t6",
+        "region1-read2-t7",
+        "region1-read2-t8",
+        "region1-read2-t9",
+        "region1-read2-t10",
+        "region1-read2-t11",
+        "region1-read2-t12"
+      ],
+      "f04_status_code": 2,
+      "f04_status": "TEST_PRODUCT_MISPLACED"
+    },
+    {
+      "rack": "QAC02",
+      "floor": 5,
+      "side": "02",
+      "zone": null,
+      "position_id": "-/QAC02/5/02",
+      "location_label": "QAC02-5F-02",
+      "location_bbox": [
+        0.345,
+        0.15,
+        0.67,
+        0.935
+      ],
+      "erp_product_ids": [
+        "HPX-222"
+      ],
+      "ai_product_ids": [
+        "HPX-111"
+      ],
+      "ai_product_id": "HPX-111",
+      "product_names": {
+        "HPX-111": "흰색 가전 포장 묶음",
+        "HPX-222": "갈색 가전 포장 묶음",
+        "HPX-333": "연녹색 가전 포장 묶음"
+      },
+      "ocr_max_confidence": 0.9939569603816927,
+      "yolo_candidates": 0,
+      "review_status": "비교 테스트 오적재",
+      "review_reasons": [
+        "F05 검증용으로 사람이 표시한 위치 영역입니다. YOLO 탐지 성능을 측정하지 않습니다.",
+        "위치는 사전 표시 영역을 사용하고, 상품 코드는 원본·대비 보정 영상에서 각각 읽습니다.",
+        "합성 비교 사진이며 수량은 확인하지 않습니다.",
+        "위치 라벨 OCR은 불충분하여 사람이 표시한 테스트 위치를 사용했습니다."
+      ],
+      "location_verified": true,
+      "location_method": "human_annotated_test_region",
+      "location_label_ocr_confirmed": false,
+      "verification_passed": false,
+      "product_location_verified": false,
+      "product_identity_verified": false,
+      "test_product_identity_verified": true,
+      "test_product_location_match": false,
+      "quantity_verified": false,
+      "observed_quantity": null,
+      "expected_quantity": 1,
+      "identity_method": "TEST_REGION_OCR_PRODUCT_CODE",
+      "detection_ids": [
+        "test-region-2"
+      ],
+      "verified_detection_id": "test-region-2",
+      "fragment_detection_ids": [],
+      "product_matches": [],
+      "ocr_token_ids": [
+        "region2-read1-t1",
+        "region2-read1-t2",
+        "region2-read1-t3",
+        "region2-read1-t4",
+        "region2-read1-t5",
+        "region2-read1-t6",
+        "region2-read1-t7",
+        "region2-read1-t8",
+        "region2-read1-t9",
+        "region2-read1-t10",
+        "region2-read1-t11",
+        "region2-read1-t12",
+        "region2-read1-t13",
+        "region2-read1-t14",
+        "region2-read1-t15",
+        "region2-read2-t1",
+        "region2-read2-t2",
+        "region2-read2-t3",
+        "region2-read2-t4",
+        "region2-read2-t5",
+        "region2-read2-t6",
+        "region2-read2-t7",
+        "region2-read2-t8",
+        "region2-read2-t9",
+        "region2-read2-t10",
+        "region2-read2-t11",
+        "region2-read2-t12",
+        "region2-read2-t13",
+        "region2-read2-t14",
+        "region2-read2-t15",
+        "region2-read2-t16"
+      ],
+      "f04_status_code": 2,
+      "f04_status": "TEST_PRODUCT_MISPLACED"
+    },
+    {
+      "rack": "QAC03",
+      "floor": 5,
+      "side": "01",
+      "zone": null,
+      "position_id": "-/QAC03/5/01",
+      "location_label": "QAC03-5F-01",
+      "location_bbox": [
+        0.675,
+        0.15,
+        0.99,
+        0.935
+      ],
+      "erp_product_ids": [
+        "HPX-333"
+      ],
+      "ai_product_ids": [
+        "HPX-333"
+      ],
+      "ai_product_id": "HPX-333",
+      "product_names": {
+        "HPX-111": "흰색 가전 포장 묶음",
+        "HPX-222": "갈색 가전 포장 묶음",
+        "HPX-333": "연녹색 가전 포장 묶음"
+      },
+      "ocr_max_confidence": 0.9930465723473683,
+      "yolo_candidates": 0,
+      "review_status": "비교 테스트 상품·위치 일치",
+      "review_reasons": [
+        "F05 검증용으로 사람이 표시한 위치 영역입니다. YOLO 탐지 성능을 측정하지 않습니다.",
+        "위치는 사전 표시 영역을 사용하고, 상품 코드는 원본·대비 보정 영상에서 각각 읽습니다.",
+        "합성 비교 사진이며 수량은 확인하지 않습니다.",
+        "위치 라벨 OCR은 불충분하여 사람이 표시한 테스트 위치를 사용했습니다."
+      ],
+      "location_verified": true,
+      "location_method": "human_annotated_test_region",
+      "location_label_ocr_confirmed": false,
+      "verification_passed": false,
+      "product_location_verified": false,
+      "product_identity_verified": false,
+      "test_product_identity_verified": true,
+      "test_product_location_match": true,
+      "quantity_verified": false,
+      "observed_quantity": null,
+      "expected_quantity": 1,
+      "identity_method": "TEST_REGION_OCR_PRODUCT_CODE",
+      "detection_ids": [
+        "test-region-3"
+      ],
+      "verified_detection_id": "test-region-3",
+      "fragment_detection_ids": [],
+      "product_matches": [],
+      "ocr_token_ids": [
+        "region3-read1-t1",
+        "region3-read1-t2",
+        "region3-read1-t3",
+        "region3-read1-t4",
+        "region3-read1-t5",
+        "region3-read1-t6",
+        "region3-read1-t7",
+        "region3-read1-t8",
+        "region3-read1-t9",
+        "region3-read1-t10",
+        "region3-read1-t11",
+        "region3-read1-t12",
+        "region3-read1-t13",
+        "region3-read1-t14",
+        "region3-read1-t15",
+        "region3-read1-t16",
+        "region3-read1-t17",
+        "region3-read1-t18",
+        "region3-read1-t19",
+        "region3-read1-t20",
+        "region3-read1-t21",
+        "region3-read1-t22",
+        "region3-read1-t23",
+        "region3-read1-t24",
+        "region3-read2-t1",
+        "region3-read2-t2",
+        "region3-read2-t3",
+        "region3-read2-t4",
+        "region3-read2-t5",
+        "region3-read2-t6",
+        "region3-read2-t7",
+        "region3-read2-t8",
+        "region3-read2-t9",
+        "region3-read2-t10",
+        "region3-read2-t11",
+        "region3-read2-t12",
+        "region3-read2-t13",
+        "region3-read2-t14",
+        "region3-read2-t15",
+        "region3-read2-t16",
+        "region3-read2-t17",
+        "region3-read2-t18",
+        "region3-read2-t19",
+        "region3-read2-t20",
+        "region3-read2-t21",
+        "region3-read2-t22",
+        "region3-read2-t23",
+        "region3-read2-t24",
+        "region3-read2-t25",
+        "region3-read2-t26",
+        "region3-read2-t27",
+        "region3-read2-t28"
+      ],
+      "f04_status_code": 1,
+      "f04_status": "TEST_PRODUCT_LOCATION_MATCH"
+    }
+  ],
+  "detections": [
+    {
+      "id": "test-region-1",
+      "bbox": [
+        0.025,
+        0.18,
+        0.34,
+        0.815
+      ],
+      "confidence": null,
+      "source": "manually_annotated_f05_test_region",
+      "detection_stable": false,
+      "location_verified": true,
+      "location_label_ocr_confirmed": false,
+      "verification_passed": false,
+      "product_location_verified": false,
+      "test_product_location_match": false,
+      "product_ids": [
+        "HPX-222"
+      ],
+      "review_status": "비교 테스트 오적재"
+    },
+    {
+      "id": "test-region-2",
+      "bbox": [
+        0.35,
+        0.18,
+        0.665,
+        0.815
+      ],
+      "confidence": null,
+      "source": "manually_annotated_f05_test_region",
+      "detection_stable": false,
+      "location_verified": true,
+      "location_label_ocr_confirmed": false,
+      "verification_passed": false,
+      "product_location_verified": false,
+      "test_product_location_match": false,
+      "product_ids": [
+        "HPX-111"
+      ],
+      "review_status": "비교 테스트 오적재"
+    },
+    {
+      "id": "test-region-3",
+      "bbox": [
+        0.68,
+        0.18,
+        0.985,
+        0.815
+      ],
+      "confidence": null,
+      "source": "manually_annotated_f05_test_region",
+      "detection_stable": false,
+      "location_verified": true,
+      "location_label_ocr_confirmed": false,
+      "verification_passed": false,
+      "product_location_verified": false,
+      "test_product_location_match": true,
+      "product_ids": [
+        "HPX-333"
+      ],
+      "review_status": "비교 테스트 상품·위치 일치"
+    }
+  ],
+  "data_source": "FIRESTORE_TEST_ERP",
+  "erp_backend": "FIRESTORE",
+  "erp_comparison_available": true,
+  "erp_warehouse": "AI 상품·위치 비교 테스트 창고",
+  "verification_scope": "test_annotated_product_locations",
+  "comparison_module": "F05_ANNOTATED_PRODUCT_COMPARISON",
+  "detector_status": "not_evaluated_in_f05_region_test",
+  "quantity_verified": false,
+  "firebase_inventory_modified": false,
+  "inventory_issues": [],
+  "product_names": {
+    "HPX-111": "흰색 가전 포장 묶음",
+    "HPX-222": "갈색 가전 포장 묶음",
+    "HPX-333": "연녹색 가전 포장 묶음"
+  },
+  "ocr_tokens": [
+    {
+      "id": "region1-read1-t1",
+      "text": "LG",
+      "confidence": 0.9998549336294775,
+      "bbox": [
+        0.2734375,
+        0.369140625,
+        0.287109375,
+        0.3857421875
+      ]
+    },
+    {
+      "id": "region1-read1-t2",
+      "text": "LG",
+      "confidence": 0.9997131605996891,
+      "bbox": [
+        0.08333333333333333,
+        0.3779296875,
+        0.11653645833333333,
+        0.4140625
+      ]
+    },
+    {
+      "id": "region1-read1-t3",
+      "text": "Microwave Oven",
+      "confidence": 0.6365316835908561,
+      "bbox": [
+        0.275390625,
+        0.3916015625,
+        0.318359375,
+        0.400390625
+      ]
+    },
+    {
+      "id": "region1-read1-t4",
+      "text": "LG MICROWAVE OVEN",
+      "confidence": 0.9993865429612331,
+      "bbox": [
+        0.08268229166666667,
+        0.4755859375,
+        0.2981770833333333,
+        0.5078125
+      ]
+    },
+    {
+      "id": "region1-read1-t5",
+      "text": "SKU HPX-222",
+      "confidence": 0.9748412579961689,
+      "bbox": [
+        0.09895833333333333,
+        0.525390625,
+        0.2766927083333333,
+        0.5673828125
+      ]
+    },
+    {
+      "id": "region1-read1-t6",
+      "text": "Toud",
+      "confidence": 0.9809229373931885,
+      "bbox": [
+        0.24153645833333334,
+        0.625,
+        0.2584635416666667,
+        0.63671875
+      ]
+    },
+    {
+      "id": "region1-read1-t7",
+      "text": "Control",
+      "confidence": 0.9792631577355752,
+      "bbox": [
+        0.2643229166666667,
+        0.623046875,
+        0.2923177083333333,
+        0.63671875
+      ]
+    },
+    {
+      "id": "region1-read1-t8",
+      "text": "Made in Vietnam",
+      "confidence": 0.6548887282247312,
+      "bbox": [
+        0.2727864583333333,
+        0.681640625,
+        0.3209635416666667,
+        0.6943359375
+      ]
+    },
+    {
+      "id": "region1-read1-t9",
+      "text": "QACO2-5F-01",
+      "confidence": 0.6107306480851571,
+      "bbox": [
+        0.09635416666666667,
+        0.8369140625,
+        0.2649739583333333,
+        0.8837890625
+      ]
+    },
+    {
+      "id": "region1-read2-t1",
+      "text": "LG",
+      "confidence": 0.9999591178017129,
+      "bbox": [
+        0.2743241074387011,
+        0.37149658203125,
+        0.2874225998177601,
+        0.38721923828125004
+      ]
+    },
+    {
+      "id": "region1-read2-t2",
+      "text": "LG",
+      "confidence": 0.9998350412202288,
+      "bbox": [
+        0.08243119408548708,
+        0.37739257812500004,
+        0.11583234965208748,
+        0.4127685546875
+      ]
+    },
+    {
+      "id": "region1-read2-t3",
+      "text": "Microwave Oven",
+      "confidence": 0.9888309615780477,
+      "bbox": [
+        0.2743241074387011,
+        0.390167236328125,
+        0.31885898152750164,
+        0.40195922851562504
+      ]
+    },
+    {
+      "id": "region1-read2-t4",
+      "text": "LG MICROWAVE OVEN",
+      "confidence": 0.693473720177514,
+      "bbox": [
+        0.08275865639496355,
+        0.47516784667968753,
+        0.2988837806494367,
+        0.5085784912109375
+      ]
+    },
+    {
+      "id": "region1-read2-t5",
+      "text": "SKU HPX-222",
+      "confidence": 0.8087287300589837,
+      "bbox": [
+        0.09978669648774023,
+        0.5252838134765625,
+        0.2772712682239894,
+        0.5685211181640626
+      ]
+    },
+    {
+      "id": "region1-read2-t6",
+      "text": "25L Capacity",
+      "confidence": 0.7668269561799786,
+      "bbox": [
+        0.10437116882041086,
+        0.6235504150390625,
+        0.1453039575049702,
+        0.6392730712890625
+      ]
+    },
+    {
+      "id": "region1-read2-t7",
+      "text": "4",
+      "confidence": 0.9257341853190724,
+      "bbox": [
+        0.16626154531146456,
+        0.62305908203125,
+        0.17477556535785288,
+        0.6407470703125
+      ]
+    },
+    {
+      "id": "region1-read2-t8",
+      "text": "1000 W",
+      "confidence": 0.5341100073496623,
+      "bbox": [
+        0.17805018845261764,
+        0.6250244140625001,
+        0.20424717321073557,
+        0.63681640625
+      ]
+    },
+    {
+      "id": "region1-read2-t9",
+      "text": "Toud",
+      "confidence": 0.9664509892463684,
+      "bbox": [
+        0.2409229518721007,
+        0.6240417480468751,
+        0.2579509919648774,
+        0.637799072265625
+      ]
+    },
+    {
+      "id": "region1-read2-t10",
+      "text": "Control",
+      "confidence": 0.9999261959572435,
+      "bbox": [
+        0.2645002381544069,
+        0.6240417480468751,
+        0.29200707215043076,
+        0.637799072265625
+      ]
+    },
+    {
+      "id": "region1-read2-t11",
+      "text": "Madein Victnam",
+      "confidence": 0.49802895308019535,
+      "bbox": [
+        0.2723593335818423,
+        0.68201904296875,
+        0.3208237553843605,
+        0.694793701171875
+      ]
+    },
+    {
+      "id": "region1-read2-t12",
+      "text": "QACO2-SF-01",
+      "confidence": 0.707994910904596,
+      "bbox": [
+        0.09782192263088137,
+        0.8387542724609376,
+        0.26417277584493043,
+        0.8829742431640626
+      ]
+    },
+    {
+      "id": "region2-read1-t1",
+      "text": "Multi-Function",
+      "confidence": 0.7438781959846469,
+      "bbox": [
+        0.380859375,
+        0.224609375,
+        0.4375,
+        0.240234375
+      ]
+    },
+    {
+      "id": "region2-read1-t2",
+      "text": "Multi-Function",
+      "confidence": 0.904441133753286,
+      "bbox": [
+        0.5240885416666666,
+        0.224609375,
+        0.5774739583333334,
+        0.240234375
+      ]
+    },
+    {
+      "id": "region2-read1-t3",
+      "text": "Coffee Maker",
+      "confidence": 0.8246596590662815,
+      "bbox": [
+        0.380859375,
+        0.2392578125,
+        0.43359375,
+        0.25390625
+      ]
+    },
+    {
+      "id": "region2-read1-t4",
+      "text": "Coffee Maker",
+      "confidence": 0.9997022016530592,
+      "bbox": [
+        0.5234375,
+        0.2392578125,
+        0.57421875,
+        0.25390625
+      ]
+    },
+    {
+      "id": "region2-read1-t5",
+      "text": "Multi-Function",
+      "confidence": 0.8647564745396101,
+      "bbox": [
+        0.380859375,
+        0.39453125,
+        0.4375,
+        0.4091796875
+      ]
+    },
+    {
+      "id": "region2-read1-t6",
+      "text": "Multi-Function",
+      "confidence": 0.5874579452624371,
+      "bbox": [
+        0.5247395833333334,
+        0.39453125,
+        0.5794270833333334,
+        0.4091796875
+      ]
+    },
+    {
+      "id": "region2-read1-t7",
+      "text": "Coffee Maker",
+      "confidence": 0.9958208017326258,
+      "bbox": [
+        0.380859375,
+        0.408203125,
+        0.4342447916666667,
+        0.423828125
+      ]
+    },
+    {
+      "id": "region2-read1-t8",
+      "text": "Coffee Maker",
+      "confidence": 0.7071233796738526,
+      "bbox": [
+        0.5240885416666666,
+        0.408203125,
+        0.5755208333333334,
+        0.423828125
+      ]
+    },
+    {
+      "id": "region2-read1-t9",
+      "text": "D12Cup",
+      "confidence": 0.5012502877093975,
+      "bbox": [
+        0.3828125,
+        0.501953125,
+        0.41015625,
+        0.5146484375
+      ]
+    },
+    {
+      "id": "region2-read1-t10",
+      "text": "SKU HPX-111",
+      "confidence": 0.9797086791702038,
+      "bbox": [
+        0.4114583333333333,
+        0.5263671875,
+        0.5826822916666666,
+        0.5673828125
+      ]
+    },
+    {
+      "id": "region2-read1-t11",
+      "text": "Multi-Function",
+      "confidence": 0.7880072741192318,
+      "bbox": [
+        0.380859375,
+        0.58203125,
+        0.4388020833333333,
+        0.5966796875
+      ]
+    },
+    {
+      "id": "region2-read1-t12",
+      "text": "Multi-Function",
+      "confidence": 0.9125281069359881,
+      "bbox": [
+        0.5247395833333334,
+        0.58203125,
+        0.580078125,
+        0.5966796875
+      ]
+    },
+    {
+      "id": "region2-read1-t13",
+      "text": "Coffee Maker",
+      "confidence": 0.7825842525856401,
+      "bbox": [
+        0.380859375,
+        0.595703125,
+        0.4342447916666667,
+        0.611328125
+      ]
+    },
+    {
+      "id": "region2-read1-t14",
+      "text": "Coffee Maker",
+      "confidence": 0.9960907786482777,
+      "bbox": [
+        0.5240885416666666,
+        0.595703125,
+        0.5768229166666666,
+        0.611328125
+      ]
+    },
+    {
+      "id": "region2-read1-t15",
+      "text": "QACO2-SF-02",
+      "confidence": 0.6552250911621137,
+      "bbox": [
+        0.4173177083333333,
+        0.8369140625,
+        0.5846354166666666,
+        0.8837890625
+      ]
+    },
+    {
+      "id": "region2-read2-t1",
+      "text": "Multi-Function",
+      "confidence": 0.8490195609148226,
+      "bbox": [
+        0.38107900351405627,
+        0.225079345703125,
+        0.4380608370983936,
+        0.240802001953125
+      ]
+    },
+    {
+      "id": "region2-read2-t2",
+      "text": "Multi-Function",
+      "confidence": 0.9794778523792402,
+      "bbox": [
+        0.5245160328815262,
+        0.22606201171875,
+        0.5782230484437751,
+        0.240802001953125
+      ]
+    },
+    {
+      "id": "region2-read2-t3",
+      "text": "Coffee Maker",
+      "confidence": 0.8545300660738141,
+      "bbox": [
+        0.38107900351405627,
+        0.2398193359375,
+        0.4341310554718876,
+        0.2555419921875
+      ]
+    },
+    {
+      "id": "region2-read2-t4",
+      "text": "Coffee Maker",
+      "confidence": 0.9999793521893278,
+      "bbox": [
+        0.5238610692771085,
+        0.2398193359375,
+        0.5749482304216867,
+        0.2555419921875
+      ]
+    },
+    {
+      "id": "region2-read2-t5",
+      "text": "Multi-Function",
+      "confidence": 0.9999803421976922,
+      "bbox": [
+        0.38107900351405627,
+        0.393115234375,
+        0.4390432825050201,
+        0.41129455566406253
+      ]
+    },
+    {
+      "id": "region2-read2-t6",
+      "text": "Multi-Function",
+      "confidence": 0.9999625638630233,
+      "bbox": [
+        0.5251709964859438,
+        0.39508056640625,
+        0.5801879392570282,
+        0.409820556640625
+      ]
+    },
+    {
+      "id": "region2-read2-t7",
+      "text": "Coffee Maker",
+      "confidence": 0.8095366343757103,
+      "bbox": [
+        0.38107900351405627,
+        0.40883789062500003,
+        0.43478601907630526,
+        0.424560546875
+      ]
+    },
+    {
+      "id": "region2-read2-t8",
+      "text": "Coffee Maker",
+      "confidence": 0.9479562332515749,
+      "bbox": [
+        0.5245160328815262,
+        0.40883789062500003,
+        0.5762581576305221,
+        0.424560546875
+      ]
+    },
+    {
+      "id": "region2-read2-t9",
+      "text": "@rcup",
+      "confidence": 0.46520869372521495,
+      "bbox": [
+        0.3830438943273093,
+        0.5021911621093751,
+        0.4098974021084338,
+        0.5149658203125
+      ]
+    },
+    {
+      "id": "region2-read2-t10",
+      "text": "SKU HPX-111",
+      "confidence": 0.9939569603816927,
+      "bbox": [
+        0.41153481111947793,
+        0.5252838134765625,
+        0.5837902390813253,
+        0.5675384521484375
+      ]
+    },
+    {
+      "id": "region2-read2-t11",
+      "text": "Multi-Function",
+      "confidence": 0.9308449373924883,
+      "bbox": [
+        0.3817339671184739,
+        0.582769775390625,
+        0.4387158007028112,
+        0.597509765625
+      ]
+    },
+    {
+      "id": "region2-read2-t12",
+      "text": "Multi-Function",
+      "confidence": 0.9623306442775341,
+      "bbox": [
+        0.5251709964859438,
+        0.581787109375,
+        0.5801879392570282,
+        0.597509765625
+      ]
+    },
+    {
+      "id": "region2-read2-t13",
+      "text": "Coffee Maker",
+      "confidence": 0.9632696605489602,
+      "bbox": [
+        0.38107900351405627,
+        0.596527099609375,
+        0.43478601907630526,
+        0.612249755859375
+      ]
+    },
+    {
+      "id": "region2-read2-t14",
+      "text": "Coffee Maker",
+      "confidence": 0.48310233358194277,
+      "bbox": [
+        0.5251709964859438,
+        0.596527099609375,
+        0.5769131212349398,
+        0.612249755859375
+      ]
+    },
+    {
+      "id": "region2-read2-t15",
+      "text": "Wm",
+      "confidence": 0.48839904827809166,
+      "bbox": [
+        0.6165384193022089,
+        0.6943023681640625,
+        0.6296376913905622,
+        0.7031463623046875
+      ]
+    },
+    {
+      "id": "region2-read2-t16",
+      "text": "QACO2-5F-02",
+      "confidence": 0.8043794701670026,
+      "bbox": [
+        0.4180844471636546,
+        0.8387542724609376,
+        0.5851001662901606,
+        0.8839569091796876
+      ]
+    },
+    {
+      "id": "region3-read1-t1",
+      "text": "Stand Mixer",
+      "confidence": 0.999979833975133,
+      "bbox": [
+        0.7115885416666666,
+        0.2265625,
+        0.7643229166666666,
+        0.2412109375
+      ]
+    },
+    {
+      "id": "region3-read1-t2",
+      "text": "Stand Mixer",
+      "confidence": 0.5936149729073575,
+      "bbox": [
+        0.8509114583333334,
+        0.2265625,
+        0.9029947916666666,
+        0.2412109375
+      ]
+    },
+    {
+      "id": "region3-read1-t3",
+      "text": "0 5",
+      "confidence": 0.6524452277862187,
+      "bbox": [
+        0.9114583333333334,
+        0.2587890625,
+        0.9388020833333334,
+        0.275390625
+      ]
+    },
+    {
+      "id": "region3-read1-t4",
+      "text": "6 Spceds",
+      "confidence": 0.4679130944231759,
+      "bbox": [
+        0.7890625,
+        0.2900390625,
+        0.814453125,
+        0.302734375
+      ]
+    },
+    {
+      "id": "region3-read1-t5",
+      "text": "6 Speeds",
+      "confidence": 0.6308970720220556,
+      "bbox": [
+        0.9296875,
+        0.291015625,
+        0.9544270833333334,
+        0.2998046875
+      ]
+    },
+    {
+      "id": "region3-read1-t6",
+      "text": "Attachmcnts",
+      "confidence": 0.45029793305094595,
+      "bbox": [
+        0.7897135416666666,
+        0.3173828125,
+        0.8209635416666666,
+        0.3251953125
+      ]
+    },
+    {
+      "id": "region3-read1-t7",
+      "text": "Attacnmcnts",
+      "confidence": 0.9367330461519383,
+      "bbox": [
+        0.9296875,
+        0.3173828125,
+        0.9609375,
+        0.3251953125
+      ]
+    },
+    {
+      "id": "region3-read1-t8",
+      "text": "Included",
+      "confidence": 0.9956794926377476,
+      "bbox": [
+        0.7897135416666666,
+        0.3271484375,
+        0.8111979166666666,
+        0.3349609375
+      ]
+    },
+    {
+      "id": "region3-read1-t9",
+      "text": "Inc luded",
+      "confidence": 0.648782111041778,
+      "bbox": [
+        0.9296875,
+        0.326171875,
+        0.9518229166666666,
+        0.3349609375
+      ]
+    },
+    {
+      "id": "region3-read1-t10",
+      "text": "Stand Mixer",
+      "confidence": 0.8523188248971764,
+      "bbox": [
+        0.7115885416666666,
+        0.392578125,
+        0.7643229166666666,
+        0.408203125
+      ]
+    },
+    {
+      "id": "region3-read1-t11",
+      "text": "Stand Mixer",
+      "confidence": 0.9998924558987756,
+      "bbox": [
+        0.8541666666666666,
+        0.392578125,
+        0.9069010416666666,
+        0.408203125
+      ]
+    },
+    {
+      "id": "region3-read1-t12",
+      "text": "Specds",
+      "confidence": 0.7191143277140011,
+      "bbox": [
+        0.7936197916666666,
+        0.455078125,
+        0.8157552083333334,
+        0.4677734375
+      ]
+    },
+    {
+      "id": "region3-read1-t13",
+      "text": "Specds",
+      "confidence": 0.8028334001089923,
+      "bbox": [
+        0.9348958333333334,
+        0.455078125,
+        0.95703125,
+        0.4677734375
+      ]
+    },
+    {
+      "id": "region3-read1-t14",
+      "text": "Attachments",
+      "confidence": 0.6752396530913166,
+      "bbox": [
+        0.7897135416666666,
+        0.482421875,
+        0.8209635416666666,
+        0.4912109375
+      ]
+    },
+    {
+      "id": "region3-read1-t15",
+      "text": "Included",
+      "confidence": 0.8755979235564126,
+      "bbox": [
+        0.7897135416666666,
+        0.4931640625,
+        0.8111979166666666,
+        0.501953125
+      ]
+    },
+    {
+      "id": "region3-read1-t16",
+      "text": "Included",
+      "confidence": 0.9315474101388355,
+      "bbox": [
+        0.9303385416666666,
+        0.4931640625,
+        0.953125,
+        0.5009765625
+      ]
+    },
+    {
+      "id": "region3-read1-t17",
+      "text": "SKU HPX-333",
+      "confidence": 0.7264254557011395,
+      "bbox": [
+        0.748046875,
+        0.5224609375,
+        0.9264322916666666,
+        0.564453125
+      ]
+    },
+    {
+      "id": "region3-read1-t18",
+      "text": "Stand Mixer",
+      "confidence": 0.9985843761402909,
+      "bbox": [
+        0.7115885416666666,
+        0.5791015625,
+        0.7643229166666666,
+        0.59375
+      ]
+    },
+    {
+      "id": "region3-read1-t19",
+      "text": "Stand Mixer",
+      "confidence": 0.9998272714484813,
+      "bbox": [
+        0.853515625,
+        0.578125,
+        0.9069010416666666,
+        0.595703125
+      ]
+    },
+    {
+      "id": "region3-read1-t20",
+      "text": "0",
+      "confidence": 0.759411194116101,
+      "bbox": [
+        0.771484375,
+        0.61328125,
+        0.78515625,
+        0.6279296875
+      ]
+    },
+    {
+      "id": "region3-read1-t21",
+      "text": "Speeds",
+      "confidence": 0.999720058674246,
+      "bbox": [
+        0.7936197916666666,
+        0.642578125,
+        0.814453125,
+        0.6552734375
+      ]
+    },
+    {
+      "id": "region3-read1-t22",
+      "text": "Speeds",
+      "confidence": 0.9896129264528825,
+      "bbox": [
+        0.9342447916666666,
+        0.642578125,
+        0.955078125,
+        0.6552734375
+      ]
+    },
+    {
+      "id": "region3-read1-t23",
+      "text": "Included",
+      "confidence": 0.7177631016007445,
+      "bbox": [
+        0.9283854166666666,
+        0.681640625,
+        0.951171875,
+        0.689453125
+      ]
+    },
+    {
+      "id": "region3-read1-t24",
+      "text": "QACO3-5F-01",
+      "confidence": 0.6506184507185236,
+      "bbox": [
+        0.7467447916666666,
+        0.8388671875,
+        0.9140625,
+        0.8828125
+      ]
+    },
+    {
+      "id": "region3-read2-t1",
+      "text": "Stand Mixer",
+      "confidence": 0.9861194124890039,
+      "bbox": [
+        0.7124746066735823,
+        0.227044677734375,
+        0.7655372039246197,
+        0.242767333984375
+      ]
+    },
+    {
+      "id": "region3-read2-t2",
+      "text": "Stand Mixer",
+      "confidence": 0.9873785907425049,
+      "bbox": [
+        0.8510269439401797,
+        0.2255706787109375,
+        0.9040895411912171,
+        0.24375000000000002
+      ]
+    },
+    {
+      "id": "region3-read2-t3",
+      "text": "SL",
+      "confidence": 0.6260996821756442,
+      "bbox": [
+        0.7884654866874136,
+        0.260455322265625,
+        0.7989469873789764,
+        0.272247314453125
+      ]
+    },
+    {
+      "id": "region3-read2-t4",
+      "text": "6 Spccds",
+      "confidence": 0.6454836772018776,
+      "bbox": [
+        0.7884654866874136,
+        0.28895263671875004,
+        0.8153243322095435,
+        0.301727294921875
+      ]
+    },
+    {
+      "id": "region3-read2-t5",
+      "text": "6 Specds",
+      "confidence": 0.6223734243991709,
+      "bbox": [
+        0.9280004646438451,
+        0.28895263671875004,
+        0.9555144039591977,
+        0.301727294921875
+      ]
+    },
+    {
+      "id": "region3-read2-t6",
+      "text": "Attachments",
+      "confidence": 0.6913007137178118,
+      "bbox": [
+        0.7881379397908023,
+        0.3140106201171875,
+        0.821547723245159,
+        0.32580261230468754
+      ]
+    },
+    {
+      "id": "region3-read2-t7",
+      "text": "Attachmcnts",
+      "confidence": 0.9533388040284785,
+      "bbox": [
+        0.9280004646438451,
+        0.314501953125,
+        0.9620653418914246,
+        0.3262939453125
+      ]
+    },
+    {
+      "id": "region3-read2-t8",
+      "text": "Included",
+      "confidence": 0.9991191387282815,
+      "bbox": [
+        0.7884654866874136,
+        0.32432861328125,
+        0.8127039570366529,
+        0.33612060546875
+      ]
+    },
+    {
+      "id": "region3-read2-t9",
+      "text": "Included",
+      "confidence": 0.9777463727074994,
+      "bbox": [
+        0.9280004646438451,
+        0.32432861328125,
+        0.9528940287863071,
+        0.33612060546875
+      ]
+    },
+    {
+      "id": "region3-read2-t10",
+      "text": "Stand Mixer",
+      "confidence": 0.9974001191940048,
+      "bbox": [
+        0.7118195128803596,
+        0.39409790039062503,
+        0.7655372039246197,
+        0.40883789062500003
+      ]
+    },
+    {
+      "id": "region3-read2-t11",
+      "text": "Stand Mixer",
+      "confidence": 0.702277537538691,
+      "bbox": [
+        0.8536473191130706,
+        0.3926239013671875,
+        0.9080201039505532,
+        0.41080322265625
+      ]
+    },
+    {
+      "id": "region3-read2-t12",
+      "text": "SL",
+      "confidence": 0.9136456519377811,
+      "bbox": [
+        0.9302932929201244,
+        0.4270172119140625,
+        0.9401196998184647,
+        0.4368438720703125
+      ]
+    },
+    {
+      "id": "region3-read2-t13",
+      "text": "6 Specds",
+      "confidence": 0.6232284971233164,
+      "bbox": [
+        0.7881379397908023,
+        0.45354919433593754,
+        0.8153243322095435,
+        0.46878051757812506
+      ]
+    },
+    {
+      "id": "region3-read2-t14",
+      "text": "6 Specds",
+      "confidence": 0.8980751460917094,
+      "bbox": [
+        0.929965746023513,
+        0.45404052734375,
+        0.9568245915456431,
+        0.46779785156250003
+      ]
+    },
+    {
+      "id": "region3-read2-t15",
+      "text": "Attachments",
+      "confidence": 0.7140798858040758,
+      "bbox": [
+        0.7881379397908023,
+        0.48008117675781253,
+        0.821547723245159,
+        0.4918731689453125
+      ]
+    },
+    {
+      "id": "region3-read2-t16",
+      "text": "Attxxchments",
+      "confidence": 0.4576184867214909,
+      "bbox": [
+        0.929965746023513,
+        0.48057250976562504,
+        0.9627204356846474,
+        0.49236450195312503
+      ]
+    },
+    {
+      "id": "region3-read2-t17",
+      "text": "Incluocd",
+      "confidence": 0.5478610153281139,
+      "bbox": [
+        0.7884654866874136,
+        0.4913818359375,
+        0.8120488632434301,
+        0.503173828125
+      ]
+    },
+    {
+      "id": "region3-read2-t18",
+      "text": "Included",
+      "confidence": 0.8586153372156654,
+      "bbox": [
+        0.9302932929201244,
+        0.4918731689453125,
+        0.9532215756829183,
+        0.5016998291015625
+      ]
+    },
+    {
+      "id": "region3-read2-t19",
+      "text": "SKU HPX-333",
+      "confidence": 0.9930465723473683,
+      "bbox": [
+        0.7481772184042185,
+        0.5243011474609376,
+        0.9263627301607884,
+        0.5665557861328125
+      ]
+    },
+    {
+      "id": "region3-read2-t20",
+      "text": "Stand Mixer",
+      "confidence": 0.5359770914238147,
+      "bbox": [
+        0.7124746066735823,
+        0.57982177734375,
+        0.764882110131397,
+        0.5955444335937501
+      ]
+    },
+    {
+      "id": "region3-read2-t21",
+      "text": "Stand MMixer",
+      "confidence": 0.9480048681923833,
+      "bbox": [
+        0.8539748660096819,
+        0.57982177734375,
+        0.9076925570539419,
+        0.5955444335937501
+      ]
+    },
+    {
+      "id": "region3-read2-t22",
+      "text": "O",
+      "confidence": 0.508266159091253,
+      "bbox": [
+        0.7733983294432919,
+        0.6142150878906251,
+        0.7851900177213001,
+        0.626007080078125
+      ]
+    },
+    {
+      "id": "region3-read2-t23",
+      "text": "SL",
+      "confidence": 0.8886159196342966,
+      "bbox": [
+        0.7878103928941909,
+        0.613232421875,
+        0.7989469873789764,
+        0.6250244140625001
+      ]
+    },
+    {
+      "id": "region3-read2-t24",
+      "text": "6 Speeds",
+      "confidence": 0.9974439492982201,
+      "bbox": [
+        0.7878103928941909,
+        0.64271240234375,
+        0.8146692384163209,
+        0.655487060546875
+      ]
+    },
+    {
+      "id": "region3-read2-t25",
+      "text": "6 Speeds",
+      "confidence": 0.9976887853897041,
+      "bbox": [
+        0.9280004646438451,
+        0.64271240234375,
+        0.9555144039591977,
+        0.655487060546875
+      ]
+    },
+    {
+      "id": "region3-read2-t26",
+      "text": "Attachmcnts",
+      "confidence": 0.7204168527719728,
+      "bbox": [
+        0.9280004646438451,
+        0.6692443847656251,
+        0.961410248098202,
+        0.681036376953125
+      ]
+    },
+    {
+      "id": "region3-read2-t27",
+      "text": "Includcd",
+      "confidence": 0.8049546580745417,
+      "bbox": [
+        0.9280004646438451,
+        0.6790710449218751,
+        0.9522389349930843,
+        0.690863037109375
+      ]
+    },
+    {
+      "id": "region3-read2-t28",
+      "text": "QACO3-SF-01",
+      "confidence": 0.5140462789686766,
+      "bbox": [
+        0.7468670308177732,
+        0.8387542724609376,
+        0.91457104188278,
+        0.8829742431640626
+      ]
+    }
+  ],
+  "ocr_status": "completed",
+  "image_width": 1536,
+  "image_height": 1024,
+  "ocr_languages": [
+    "en"
+  ],
+  "total_candidates": 3,
+  "codes": [],
+  "module": "F04",
+  "filename": "ee148ea67152463cafba5309c79a1c9b.jpg",
+  "job_id": "ee148ea67152463cafba5309c79a1c9b",
+  "company_code": "ABC-002",
+  "warehouse_id": 1,
+  "warehouse_code": "AI 상품·위치 비교 테스트 창고",
+  "revision": {
+    "pipeline": "2026-11-24.41",
+    "image_sha256": "59a46419e63a470e457db4ceab35e6e0eefed10d00b859222d7a3be71f6b2d40",
+    "fixture_sha256": "42b539cba8ad88a959f9116ee6fa8c866ebb3eae32bf2d8c307fc291205c14c0",
+    "inventory_revision": "ac0029cc79d0f76470cb7ea51634f4100cbc322aff89a334d7eb6fadaf0449d7",
+    "mode": "test_product_regions"
+  },
+  "model": {
+    "name": "OCR_WITH_ANNOTATED_TEST_REGIONS",
+    "yolo_evaluated": false
+  },
+  "analyzed_at": "2026-11-24T04:34:48.423795+00:00",
+  "source_module": "F03"
+}

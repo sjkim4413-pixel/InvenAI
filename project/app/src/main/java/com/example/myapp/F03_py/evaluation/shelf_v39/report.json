@@ -1,0 +1,368 @@
+{
+  "pipeline_version": "2026-11-21.39",
+  "recorded_at_utc": "2026-11-21T06:33:57.937051+00:00",
+  "change": "Resolve nested processed-view fragments using a unique, stronger, original-colour-backed parent",
+  "weights_retrained": false,
+  "weights": "runs/detect/shelf_v37/weights/best.pt",
+  "weights_sha256": "c94bf8cca79b945db6ec03fed46a898eb29d81803c422226eb88851578a901cf",
+  "resolution_requirements": {
+    "original_colour_witness_min_confidence": 0.25,
+    "original_colour_witness_stretch": 1.0,
+    "original_colour_witness_reflected": false,
+    "parent_min_confidence": 0.5,
+    "parent_must_exceed_every_alternative_confidence": true,
+    "alternative_min_fraction_inside_parent": 0.95,
+    "alternative_max_area_fraction_of_parent": 0.6,
+    "competing_original_colour_extents": "manual_review"
+  },
+  "main_regression": {
+    "description": "Repeatedly used synthetic-label development photos; not a new field holdout",
+    "photos": 3,
+    "stock_positions": 11,
+    "baseline_pipeline": "2026-11-19.38",
+    "before": {
+      "correct": 10,
+      "correct_with_bbox": 10,
+      "stocks": 11,
+      "wrong_automatic": 0,
+      "empty_cells": 1,
+      "empty_label_read": 0,
+      "empty_false_detection": 0,
+      "empty_automatic": 0,
+      "load_detected_iou50": 10,
+      "rack_read": 11,
+      "sku_read": 11,
+      "both_read": 11,
+      "location_linked": 10
+    },
+    "after": {
+      "correct": 11,
+      "correct_with_bbox": 11,
+      "stocks": 11,
+      "wrong_automatic": 0,
+      "empty_cells": 1,
+      "empty_label_read": 0,
+      "empty_false_detection": 0,
+      "empty_automatic": 0,
+      "load_detected_iou50": 11,
+      "rack_read": 11,
+      "sku_read": 11,
+      "both_read": 11,
+      "location_linked": 11
+    },
+    "accuracy_before": 0.9090909090909091,
+    "accuracy_after": 1.0,
+    "measurements": [
+      {
+        "image": "aisle19-pallets.png",
+        "rack": "HLB01-3F-01",
+        "sku": "HPY-301",
+        "expected": "PRODUCT_LOCATION_MATCH",
+        "observed": "PRODUCT_LOCATION_MATCH",
+        "detected": true,
+        "aligned": true,
+        "correct": true,
+        "rack_read": true,
+        "sku_read": true,
+        "location_linked": true
+      },
+      {
+        "image": "aisle19-pallets.png",
+        "rack": "HLB01-3F-02",
+        "sku": "HPY-407",
+        "expected": "PRODUCT_LOCATION_MATCH",
+        "observed": "PRODUCT_LOCATION_MATCH",
+        "detected": true,
+        "aligned": true,
+        "correct": true,
+        "rack_read": true,
+        "sku_read": true,
+        "location_linked": true
+      },
+      {
+        "image": "aisle19-pallets.png",
+        "rack": "HLB01-3F-03",
+        "sku": "HPY-508",
+        "expected": "MISPLACED",
+        "observed": "MISPLACED",
+        "detected": true,
+        "aligned": true,
+        "correct": true,
+        "rack_read": true,
+        "sku_read": true,
+        "location_linked": true
+      },
+      {
+        "image": "aisle19-pallets.png",
+        "rack": "HLB01-3F-04",
+        "sku": "HPY-615",
+        "expected": "MISPLACED",
+        "observed": "MISPLACED",
+        "detected": true,
+        "aligned": true,
+        "correct": true,
+        "rack_read": true,
+        "sku_read": true,
+        "location_linked": true
+      },
+      {
+        "image": "aisle20-empty-slot.png",
+        "rack": "HLC01-3F-01",
+        "sku": "",
+        "expected": "EMPTY",
+        "observed": null,
+        "detected": false,
+        "aligned": null,
+        "correct": true,
+        "rack_read": false,
+        "sku_read": false,
+        "location_linked": false
+      },
+      {
+        "image": "aisle20-empty-slot.png",
+        "rack": "HLC01-3F-02",
+        "sku": "HPZ-302",
+        "expected": "PRODUCT_LOCATION_MATCH",
+        "observed": "PRODUCT_LOCATION_MATCH",
+        "detected": true,
+        "aligned": true,
+        "correct": true,
+        "rack_read": true,
+        "sku_read": true,
+        "location_linked": true
+      },
+      {
+        "image": "aisle20-empty-slot.png",
+        "rack": "HLC02-3F-02",
+        "sku": "HPZ-507",
+        "expected": "PRODUCT_LOCATION_MATCH",
+        "observed": "PRODUCT_LOCATION_MATCH",
+        "detected": true,
+        "aligned": true,
+        "correct": true,
+        "rack_read": true,
+        "sku_read": true,
+        "location_linked": true
+      },
+      {
+        "image": "supplement-beam.png",
+        "rack": "HLA01-4F-01",
+        "sku": "HPX-105",
+        "expected": "PRODUCT_LOCATION_MATCH",
+        "observed": "PRODUCT_LOCATION_MATCH",
+        "detected": true,
+        "aligned": true,
+        "correct": true,
+        "rack_read": true,
+        "sku_read": true,
+        "location_linked": true
+      },
+      {
+        "image": "supplement-beam.png",
+        "rack": "HLA01-4F-02",
+        "sku": "HPX-208",
+        "expected": "PRODUCT_LOCATION_MATCH",
+        "observed": "PRODUCT_LOCATION_MATCH",
+        "detected": true,
+        "aligned": true,
+        "correct": true,
+        "rack_read": true,
+        "sku_read": true,
+        "location_linked": true
+      },
+      {
+        "image": "supplement-beam.png",
+        "rack": "HLA01-3F-01",
+        "sku": "HPX-309",
+        "expected": "MISPLACED",
+        "observed": "MISPLACED",
+        "detected": true,
+        "aligned": true,
+        "correct": true,
+        "rack_read": true,
+        "sku_read": true,
+        "location_linked": true
+      },
+      {
+        "image": "supplement-beam.png",
+        "rack": "HLA01-3F-02",
+        "sku": "HPX-418",
+        "expected": "MISPLACED",
+        "observed": "MISPLACED",
+        "detected": true,
+        "aligned": true,
+        "correct": true,
+        "rack_read": true,
+        "sku_read": true,
+        "location_linked": true
+      },
+      {
+        "image": "supplement-beam.png",
+        "rack": "HLA01-3F-03",
+        "sku": "HPX-502",
+        "expected": "PRODUCT_LOCATION_MATCH",
+        "observed": "PRODUCT_LOCATION_MATCH",
+        "detected": true,
+        "aligned": true,
+        "correct": true,
+        "rack_read": true,
+        "sku_read": true,
+        "location_linked": true
+      }
+    ]
+  },
+  "additional_close_control": {
+    "description": "An extra 572x333 close view of an already represented physical location",
+    "photos": 1,
+    "totals": {
+      "correct": 0,
+      "correct_with_bbox": 0,
+      "stocks": 1,
+      "wrong_automatic": 0,
+      "empty_cells": 1,
+      "empty_label_read": 0,
+      "empty_false_detection": 0,
+      "empty_automatic": 0,
+      "load_detected_iou50": 0,
+      "rack_read": 0,
+      "sku_read": 0,
+      "both_read": 0,
+      "location_linked": 0
+    },
+    "result": "No false empty-cell detection; one occupied stock observation remains unverified",
+    "included_in_main_11_position_metric": false,
+    "measurements": [
+      {
+        "rack": "HLC01-3F-01",
+        "sku": "",
+        "expected": "EMPTY",
+        "observed": null,
+        "detected": false,
+        "aligned": null,
+        "correct": true,
+        "rack_read": false,
+        "sku_read": false,
+        "location_linked": false
+      },
+      {
+        "rack": "HLC01-3F-02",
+        "sku": "HPZ-302",
+        "expected": "PRODUCT_LOCATION_MATCH",
+        "observed": null,
+        "detected": false,
+        "aligned": false,
+        "correct": false,
+        "rack_read": false,
+        "sku_read": false,
+        "location_linked": false
+      }
+    ]
+  },
+  "combined_tested_observations": {
+    "photos": 4,
+    "before_correct": 10,
+    "correct": 11,
+    "stock_observations": 12,
+    "accuracy_before": 0.8333333333333334,
+    "accuracy": 0.9166666666666666,
+    "totals": {
+      "correct": 11,
+      "correct_with_bbox": 11,
+      "stocks": 12,
+      "wrong_automatic": 0,
+      "empty_cells": 2,
+      "empty_label_read": 0,
+      "empty_false_detection": 0,
+      "empty_automatic": 0,
+      "load_detected_iou50": 11,
+      "rack_read": 11,
+      "sku_read": 11,
+      "both_read": 11,
+      "location_linked": 11
+    },
+    "note": "Includes repeat views of one stock position and one empty slot; not 12 unique positions"
+  },
+  "resolved_extent_evidence": [
+    {
+      "image": "supplement-beam.png",
+      "bbox": [
+        0.1546027511358261,
+        0.4733797311782837,
+        0.3110807538032532,
+        0.6647698283195496
+      ],
+      "confidence": 0.503224790096283,
+      "extent_resolution": "original_colour_parent",
+      "nested_processed_candidates": [
+        {
+          "bbox": [
+            0.2032620906829834,
+            0.49688732624053955,
+            0.27907776832580566,
+            0.6522298455238342
+          ],
+          "confidence": 0.4124329686164856,
+          "scale_predictions": [
+            {
+              "bbox": [
+                0.2032620906829834,
+                0.49688732624053955,
+                0.27907776832580566,
+                0.6522298455238342
+              ],
+              "confidence": 0.4124329686164856,
+              "scale": 960,
+              "view": [
+                "tier-deskew",
+                "t9",
+                "deskew",
+                1.0,
+                false,
+                960
+              ],
+              "shelf_slope": 0.1587494924888346
+            },
+            {
+              "bbox": [
+                0.1997343748807907,
+                0.49542394280433655,
+                0.28300899267196655,
+                0.6471319198608398
+              ],
+              "confidence": 0.2926126718521118,
+              "scale": 960,
+              "view": [
+                "tier-deskew",
+                "t25",
+                "gray",
+                1.0,
+                false,
+                960
+              ],
+              "shelf_slope": 0.1587494924888346
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "tests": {
+    "backend_unit_tests": 123,
+    "failures": 0
+  },
+  "evaluation": {
+    "mode": "fresh_upload_jpeg_ocr_detector_and_live_review",
+    "inventory": "test_company_snapshot",
+    "oracle_detections": false,
+    "cached_observations_replayed": false,
+    "raw_results": "C:\\Users\\user\\.codex\\visualizations\\2026\\11\\17\\01a1e6ee-0137-7f33-ba70-31280f447a98\\model-improvement39\\final-guard-verified",
+    "manifest": "C:\\Users\\user\\.codex\\visualizations\\2026\\11\\17\\01a1e6ee-0137-7f33-ba70-31280f447a98\\model-improvement39\\evaluation-manifest.json",
+    "manifest_sha256": "95aac74e9310cb3c7552d136b3502b01901d25682cc0c5868b37421bc976ca2a"
+  },
+  "limitations": [
+    "Main 11/11 is a development regression result on reused synthetic-label photos, not field accuracy.",
+    "One low-resolution close-view stock observation remains unverified.",
+    "Zero empty-slot false detections does not establish empty-slot recognition.",
+    "Quantity remains unverified."
+  ]
+}

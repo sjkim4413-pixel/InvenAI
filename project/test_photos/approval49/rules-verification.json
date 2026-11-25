@@ -1,0 +1,192 @@
+{
+  "emulatorOnly": true,
+  "passed": true,
+  "cases": 37,
+  "checks": [
+    {
+      "case": "anonymous cannot read admin marker",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "ordinary user can read own missing admin marker",
+      "status": 404,
+      "allowed": true
+    },
+    {
+      "case": "ordinary user cannot write admin marker",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "admin cannot grant another admin",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "owner cannot self-provision membership",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "cross-user signup denied",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "request ADMIN role",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "invalid company",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "spoof email",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "unknown field",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "oversized identity",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "owner chooses approved state",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "client timestamps denied",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "valid pending signup",
+      "status": 200,
+      "allowed": true
+    },
+    {
+      "case": "own pending readable",
+      "status": 200,
+      "allowed": true
+    },
+    {
+      "case": "other request private",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "admin status-filter list",
+      "status": 200,
+      "allowed": true
+    },
+    {
+      "case": "ordinary user list denied",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "owner cannot approve self",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "approve without membership denied",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "membership without approval denied",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "mismatched role denied",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "mismatched company denied",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "admin elevation via approval denied",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "owner edits pending request",
+      "status": 200,
+      "allowed": true
+    },
+    {
+      "case": "admin atomic approval with assigned company",
+      "status": 200,
+      "allowed": true
+    },
+    {
+      "case": "approved owner cannot resubmit",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "membership immutable to admin",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "approved worker reads own membership",
+      "status": 200,
+      "allowed": true
+    },
+    {
+      "case": "approved worker company stock accessible",
+      "status": 200,
+      "allowed": true
+    },
+    {
+      "case": "approved worker other company blocked",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "admin marker alone grants no stock access",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "second request",
+      "status": 200,
+      "allowed": true
+    },
+    {
+      "case": "admin rejects without membership",
+      "status": 200,
+      "allowed": true
+    },
+    {
+      "case": "rejected account has no stock access",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "rejected owner resubmits",
+      "status": 200,
+      "allowed": true
+    },
+    {
+      "case": "revoked admin cannot approve",
+      "status": 403,
+      "allowed": false
+    }
+  ]
+}

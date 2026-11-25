@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="Theme.InvenAI" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">#0D9488</item>
+        <item name="colorPrimaryVariant">#0F766E</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSecondary">#0D9488</item>
+        <item name="colorOnSecondary">#FFFFFF</item>
+        <item name="android:colorAccent">#0D9488</item>
+        <item name="android:fontFamily">sans</item>
+        <item name="materialButtonStyle">@style/Widget.InvenAI.PrimaryButton</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:statusBarColor">#FFFFFF</item>
+        <item name="android:navigationBarColor">#FFFFFF</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:windowBackground">#F8FAFC</item>
+    </style>
+    <style name="Widget.InvenAI.PrimaryButton" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">14dp</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="backgroundTint">#0D9488</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
 	<style name="cr8">
 		<item name="cornerSize">8dp</item>
 	</style>

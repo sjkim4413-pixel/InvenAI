@@ -15,10 +15,11 @@ from fastapi import Depends, FastAPI, File, HTTPException, Query, Request, Uploa
 from fastapi.concurrency import run_in_threadpool
 from PIL import Image, ImageOps, UnidentifiedImageError, JpegImagePlugin, PngImagePlugin
 
-from f03_auth import AuditUser, external_f04_directory, require_user
+from f03_auth import AuditUser, require_user
 from f03_storage import atomic_json, check_filename, job_lock, owner_dir, utc_now
 from f03_catalog import AuditConfigError, load_catalog, load_locations
 from f03_verification import covered_fraction
+from f03_shelf_detection import shelf_model_digest
 from f03_fixture_inventory import fixture_configuration, fixture_inventory, review_fixture
 from f03_firebase_rest import FirebaseAccessError, firebase_config
 from f03_visual_identity import add_visual_observations, load_visual_assets
@@ -29,8 +30,8 @@ from ivenai_erp_matcher import ERPDataError, ERP_FILE, load_erp
 BASE_DIR=Path(__file__).resolve().parent
 MAX_UPLOAD_BYTES=16*1024*1024
 MAX_IMAGE_PIXELS=24_000_000
-PIPELINE_VERSION='2026-11-17.35'
-AuditMode=Literal['live','simulation','test_rack_labels']
+PIPELINE_VERSION='2026-11-24.45'
+AuditMode=Literal['live','simulation','test_rack_labels','test_product_regions','test_reference_pairs']
 app=FastAPI(title='IvenAI F03 API',version='2.0.0')
 app.state.upload_dir=Path(os.environ.get('IVENAI_UPLOAD_DIR',str(BASE_DIR/'audit_uploads')))
 app.state.erp_path=Path(os.environ.get('IVENAI_ERP_PATH',str(ERP_FILE)))
@@ -159,6 +160,7 @@ def run_analysis(filename,user,warehouse_id,rack):
         catalog=load_catalog(catalog_path)
         visual_assets,visual_revision=load_visual_assets(catalog_path) if fixture else (None,None)
         revision={'pipeline':PIPELINE_VERSION,'model_sha256':model_digest(),
+                  'shelf_model_sha256':shelf_model_digest(),
                   'erp_sha256':erp_revision,
                   'catalog_sha256':hashlib.sha256(Path(catalog_path).read_bytes()).hexdigest(),
                   'location_map_sha256':hashlib.sha256(Path(map_path).read_bytes()).hexdigest(),
@@ -245,10 +247,8 @@ async def checked_analysis(filename,user,warehouse_id,rack):
 @app.get('/health')
 def health(mode:AuditMode='live'):
     errors=[]
-    external_auth=external_f04_directory() is not None
-    if not external_auth:
-        try: firebase_config()
-        except FirebaseAccessError: errors.append('FIREBASE_APP_CONFIG_INVALID')
+    try: firebase_config()
+    except FirebaseAccessError: errors.append('FIREBASE_APP_CONFIG_INVALID')
     if not pipeline.MODEL_PATH.is_file(): errors.append('MODEL_UNAVAILABLE')
     catalog,locations={'catalog_id':'FIREBASE_REGISTERED_CODES','products':[]},{'images':[]}
     if mode=='simulation':
@@ -262,7 +262,8 @@ def health(mode:AuditMode='live'):
         except AuditConfigError: errors.append('F04_UNAVAILABLE')
     if errors: raise HTTPException(503,detail={'status':'not_ready','errors':errors})
     return {'module':'F03','status':'ok','pipeline_version':PIPELINE_VERSION,
-            'firebase_auth_backend':'F04_EXTERNAL' if external_auth else 'FIREBASE_ID_TOKEN',
+            'shelf_detector_available':shelf_model_digest() is not None,
+            'firebase_auth_backend':'FIREBASE_ID_TOKEN',
             'data_source':locations.get('data_source','LOCAL_TEST_ERP') if mode=='simulation' else 'FIREBASE_READ_ONLY',
             'catalog_id':catalog.get('catalog_id','UNCONFIGURED'),'catalog_products':len(catalog['products']),
             'ocr_languages':['en'],'mapped_photos':len(locations['images']),
@@ -294,7 +295,8 @@ async def analyze_uploaded_image(request:Request,filename:str,user:AuditUser=Dep
         raw=(await checked_analysis(filename,user,warehouse_id,rack))['analysis']
     else:
         raw=await run_in_threadpool(run_live_analysis,request,filename,warehouse_id,user,warehouse_code,raw_only=True,
-                                    test_rack_labels=mode=='test_rack_labels')
+                                    test_rack_labels=mode=='test_rack_labels',test_product_regions=mode=='test_product_regions',
+                                    test_reference_pairs=mode=='test_reference_pairs')
     return {**raw,'job_id':filename[:-4],'filename':filename}
 
 
@@ -306,7 +308,8 @@ async def analyze_and_compare(request:Request,filename:str,user:AuditUser=Depend
     if mode=='simulation':
         return (await checked_analysis(filename,user,warehouse_id,rack))['comparison']
     return await run_in_threadpool(run_live_analysis,request,filename,warehouse_id,user,warehouse_code,
-                                   test_rack_labels=mode=='test_rack_labels')
+                                   test_rack_labels=mode=='test_rack_labels',test_product_regions=mode=='test_product_regions',
+                                   test_reference_pairs=mode=='test_reference_pairs')
 
 
 @app.post('/f04/audit/review-job')
@@ -317,12 +320,14 @@ async def review_f03_job(request:Request,filename:str,user:AuditUser=Depends(req
         result=(await checked_analysis(filename,user,warehouse_id,None))['comparison']
     else:
         result=await run_in_threadpool(run_live_analysis,request,filename,warehouse_id,user,warehouse_code,
-                                       test_rack_labels=mode=='test_rack_labels')
+                                       test_rack_labels=mode=='test_rack_labels',test_product_regions=mode=='test_product_regions',
+                                       test_reference_pairs=mode=='test_reference_pairs')
     return {**result,'module':'F04','source_module':'F03'}
 
 
 def result_suffix(mode):
-    return {'live':'.live.json','simulation':'.analysis.json','test_rack_labels':TEST_RACK_LABEL_SUFFIX}[mode]
+    return {'live':'.live.json','simulation':'.analysis.json','test_rack_labels':TEST_RACK_LABEL_SUFFIX,
+            'test_product_regions':'.test-product-regions.json','test_reference_pairs':'.test-reference-pairs.json'}[mode]
 
 
 def saved_result(user,filename=None,mode='live'):
@@ -376,5 +381,9 @@ app.include_router(f04_safe_review_router,dependencies=[Depends(require_user)])
 from f03_live_api import TEST_RACK_LABEL_SUFFIX, router as live_router, run_live_analysis
 app.state.pipeline_version=PIPELINE_VERSION
 app.state.model_digest=model_digest
+app.state.shelf_model_digest=shelf_model_digest
 app.state.analysis_slot=_analysis_slot
 app.include_router(live_router)
+
+from f06_push import router as push_router
+app.include_router(push_router)

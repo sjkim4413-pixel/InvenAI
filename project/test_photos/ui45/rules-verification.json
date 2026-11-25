@@ -1,0 +1,166 @@
+{
+  "emulator_only": true,
+  "project": "warehouseqa-8c262",
+  "firestore_host": "127.0.0.1:18861",
+  "cases": 31,
+  "passed": true,
+  "stock_quantity_and_status_unchanged": true,
+  "android_inventory_seeded": 242,
+  "checks": [
+    {
+      "case": "QA creates owned finding",
+      "status": 200,
+      "expected": "allow"
+    },
+    {
+      "case": "unauthenticated",
+      "status": 403,
+      "expected": "deny"
+    },
+    {
+      "case": "loader creates",
+      "status": 403,
+      "expected": "deny"
+    },
+    {
+      "case": "other company creates",
+      "status": 403,
+      "expected": "deny"
+    },
+    {
+      "case": "spoof creator",
+      "status": 403,
+      "expected": "deny"
+    },
+    {
+      "case": "spoof company",
+      "status": 403,
+      "expected": "deny"
+    },
+    {
+      "case": "wrong stock SKU",
+      "status": 403,
+      "expected": "deny"
+    },
+    {
+      "case": "wrong stock location",
+      "status": 403,
+      "expected": "deny"
+    },
+    {
+      "case": "wrong warehouse",
+      "status": 403,
+      "expected": "deny"
+    },
+    {
+      "case": "test scope spoof",
+      "status": 403,
+      "expected": "deny"
+    },
+    {
+      "case": "unknown field",
+      "status": 403,
+      "expected": "deny"
+    },
+    {
+      "case": "oversized note",
+      "status": 403,
+      "expected": "deny"
+    },
+    {
+      "case": "unbounded job",
+      "status": 403,
+      "expected": "deny"
+    },
+    {
+      "case": "same product",
+      "status": 403,
+      "expected": "deny"
+    },
+    {
+      "case": "path traversal",
+      "status": 403,
+      "expected": "deny"
+    },
+    {
+      "case": "invalid status",
+      "status": 403,
+      "expected": "deny"
+    },
+    {
+      "case": "required field missing",
+      "status": 403,
+      "expected": "deny"
+    },
+    {
+      "case": "missing server timestamps",
+      "status": 403,
+      "expected": "deny"
+    },
+    {
+      "case": "loader reads same company",
+      "status": 200,
+      "expected": "allow"
+    },
+    {
+      "case": "other company cannot read",
+      "status": 403,
+      "expected": "deny"
+    },
+    {
+      "case": "actual company query",
+      "status": 200,
+      "expected": "allow"
+    },
+    {
+      "case": "unscoped list denied",
+      "status": 403,
+      "expected": "deny"
+    },
+    {
+      "case": "loader cannot resolve",
+      "status": 403,
+      "expected": "deny"
+    },
+    {
+      "case": "immutable creator",
+      "status": 403,
+      "expected": "deny"
+    },
+    {
+      "case": "immutable scope",
+      "status": 403,
+      "expected": "deny"
+    },
+    {
+      "case": "loader requests review",
+      "status": 200,
+      "expected": "allow"
+    },
+    {
+      "case": "loader cannot reset",
+      "status": 403,
+      "expected": "deny"
+    },
+    {
+      "case": "QA requests correction again",
+      "status": 200,
+      "expected": "allow"
+    },
+    {
+      "case": "loader responds again",
+      "status": 200,
+      "expected": "allow"
+    },
+    {
+      "case": "QA resolves",
+      "status": 200,
+      "expected": "allow"
+    },
+    {
+      "case": "resolved cannot be reopened",
+      "status": 403,
+      "expected": "deny"
+    }
+  ]
+}

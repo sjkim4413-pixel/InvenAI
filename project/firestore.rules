@@ -1,0 +1,515 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // warehouseAdmins/{uid}: enabled boolean, IAM-managed; no client writes.
+    // signupRequests/{uid}: owner-created identity and requested company/role;
+    // immutable userId/email/createdAt, server submittedAt, bounded review fields.
+    // PENDING -> APPROVED plus atomic worker membership, or REJECTED; owner may resubmit.
+    // warehouseMemberships/{uid}: companyCode and QA/LOADER role. Admin approval
+    // additionally requires approvedBy UID and approvedAt server timestamp.
+    // users/{uid}: legacy profile, readable only by its owner.
+    // inventory/{id}: companyCode, itemCode, itemName, quantity, location,
+    // status, pendingQuantity, pendingLocation, userId (last writer), updatedAt.
+    // Existing import metadata and legacy IDs are preserved on updates.
+    // anomalies/{inventoryId}: one active alert per inventory document.
+    // auditAlerts/{AI_sha256}: QA-created audit findings, separate from stock.
+    // Immutable companyCode/qaUid/jobId/inventoryId/warehouse/location and product
+    // codes/names/targetLocation/isTest/createdAt; bounded strings and timestamps.
+    // OPEN -> REVIEW_REQUESTED (same-company LOADER) -> RESOLVED or OPEN (QA).
+    // QA may resolve an OPEN finding after inspecting it. No stock writes occur.
+    // stockHistory/{company}/events/{eventId}: immutable actor, item, operation,
+    // warehouse, before/after quantities and locations, and server timestamp.
+    // auditHistory/{company}/events/{20-char auto ID}: immutable alertId/inventoryId,
+    // actorUid, type, beforeStatus/afterStatus, expected/observed item codes/names,
+    // warehouse/fromLocation/toLocation, isTest, note (<=500), occurredAt timestamp.
+    // Every create must be linked to an atomic alert create/transition. No stock quantities.
+    // auditAlerts.lastHistoryEventId is optional for compatibility with existing apps;
+    // when changed it must identify the event written in the same transaction.
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(uid) {
+      return signedIn() && request.auth.uid == uid;
+    }
+
+    function membership() {
+      return get(/databases/$(database)/documents/warehouseMemberships/$(request.auth.uid)).data;
+    }
+
+    function validMembership(data) {
+      return data.companyCode is string
+        && data.companyCode.matches('^[A-Z0-9][A-Z0-9_-]{0,63}$')
+        && data.companyCode != 'DEFAULT'
+        && data.role in ['QA', 'LOADER'];
+    }
+
+    function sameCompany(company) {
+      return signedIn() && validMembership(membership()) && membership().companyCode == company;
+    }
+
+    function isQa() {
+      return membership().role == 'QA';
+    }
+
+    function isLoader() {
+      return membership().role == 'LOADER';
+    }
+
+    function boundedText(value, min, max) {
+      return value is string && value.size() >= min && value.size() <= max;
+    }
+
+    function validQuantity(value) {
+      return value is int && value >= 0 && value <= 2147483647;
+    }
+
+    function validStockWriter(data) {
+      return data.userId == request.auth.uid && data.updatedAt == request.time;
+    }
+
+    function stockPath(id) {
+      return /databases/$(database)/documents/inventory/$(id);
+    }
+
+    function alertPath(id) {
+      return /databases/$(database)/documents/anomalies/$(id);
+    }
+
+    function eventPath(company, id) {
+      return /databases/$(database)/documents/stockHistory/$(company)/events/$(id);
+    }
+
+    function itemCode(data, id) {
+      return data.get('itemCode', data.get('code', id));
+    }
+
+    function itemName(data, id) {
+      return data.get('itemName', data.get('name', data.get('title', itemCode(data, id))));
+    }
+
+    function quantity(data) {
+      return data.get('quantity', data.get('qty', 0));
+    }
+
+    function location(data) {
+      return data.get('location', data.get('loc', '미지정 위치'));
+    }
+
+    function stockFields() {
+      return ['companyCode', 'itemCode', 'itemName', 'quantity', 'location', 'status',
+              'pendingQuantity', 'pendingLocation', 'userId', 'updatedAt'];
+    }
+
+    function clearedReview(data) {
+      return data.pendingQuantity == 0 && data.pendingLocation == '';
+    }
+
+    function validStock(data) {
+      return data.keys().hasAll(stockFields())
+        && boundedText(data.itemCode, 1, 120) && data.itemCode.matches('^[^/]+$')
+        && boundedText(data.itemName, 1, 240)
+        && boundedText(data.location, 1, 160) && validQuantity(data.quantity)
+        && clearedReview(data);
+    }
+
+    function regularStockUpdate(before, after, id) {
+      return before.get('status', 'NORMAL') in ['NORMAL', '정상', 'OUTBOUND_COMPLETE']
+        && after.itemCode == itemCode(before, id)
+        && after.diff(before).affectedKeys().hasOnly(stockFields())
+        && validStock(after)
+        && (after.status == 'NORMAL'
+            || (isQa() && after.status == 'OUTBOUND_COMPLETE' && after.quantity == 0));
+    }
+
+    function requestReview(before, after) {
+      return isLoader() && before.status == 'ANOMALY' && after.status == 'PENDING_QA'
+        && after.diff(before).affectedKeys().hasOnly(
+          ['status', 'pendingQuantity', 'pendingLocation', 'userId', 'updatedAt'])
+        && validQuantity(after.pendingQuantity) && boundedText(after.pendingLocation, 1, 160);
+    }
+
+    function confirmReview(before, after) {
+      let oldPendingLocation = before.get('pendingLocation', '');
+      let approvedLocation = oldPendingLocation == '' ? location(before) : oldPendingLocation;
+      let approvedQuantity = oldPendingLocation == '' ? quantity(before) : before.pendingQuantity;
+      return after.status == 'NORMAL'
+        && after.diff(before).affectedKeys().hasOnly(
+          ['status', 'pendingQuantity', 'pendingLocation', 'location', 'quantity', 'userId', 'updatedAt'])
+        && boundedText(after.location, 1, 160) && validQuantity(after.quantity)
+        && after.location == approvedLocation && after.quantity == approvedQuantity;
+    }
+
+    function finishReview(before, after) {
+      return isQa() && before.status == 'PENDING_QA' && clearedReview(after)
+        && ((after.status == 'ANOMALY' && after.diff(before).affectedKeys().hasOnly(
+                ['status', 'pendingQuantity', 'pendingLocation', 'userId', 'updatedAt']))
+            || confirmReview(before, after));
+    }
+
+    function setAlertLocation(before, after, id) {
+      let alert = getAfter(alertPath(id)).data;
+      return isQa() && before.status == 'ANOMALY' && after.status == 'ANOMALY'
+        && after.diff(before).affectedKeys().hasOnly(['targetLocation', 'userId', 'updatedAt'])
+        && boundedText(after.targetLocation, 0, 160)
+        && alert.companyCode == after.companyCode && alert.inventoryId == id
+        && alert.qaUserId == request.auth.uid && alert.updatedAt == request.time
+        && alert.targetLocation == after.targetLocation;
+    }
+
+    function freshEvent(before, after) {
+      return after.get('lastEventId', '') != before.get('lastEventId', '');
+    }
+
+    function historyType(stock, id) {
+      let event = getAfter(eventPath(stock.companyCode, stock.lastEventId)).data;
+      return event.inventoryId == id && event.actorUid == request.auth.uid
+        && event.occurredAt == request.time ? event.type : '';
+    }
+
+    function stockLocationFields() {
+      return ['loc', 'zone', 'rack', 'rackId', 'tier', 'floor', 'side'];
+    }
+
+    function validLocationChange(before, after) {
+      return !after.diff(before).affectedKeys().hasAny(stockLocationFields())
+        || (location(before) != location(after) && !after.keys().hasAny(stockLocationFields()));
+    }
+
+    function regularHistoryAction(before, after, id, type) {
+      return before.get('status', 'NORMAL') in ['NORMAL', '정상', 'OUTBOUND_COMPLETE']
+        && after.itemCode == itemCode(before, id)
+        && after.warehouse == before.get('warehouse', '')
+        && after.diff(before).affectedKeys().hasOnly(
+             stockFields().concat(['warehouse', 'lastEventId']).concat(stockLocationFields()))
+        && validStock(after) && validLocationChange(before, after)
+        && (type == 'IMPORT' || after.itemName == itemName(before, id))
+        && ((type == 'INBOUND' && after.status == 'NORMAL' && after.quantity > quantity(before)
+              && after.location == location(before))
+          || (type == 'OUTBOUND' && isQa() && after.quantity < quantity(before)
+              && after.location == location(before)
+              && after.status == (after.quantity == 0 ? 'OUTBOUND_COMPLETE' : 'NORMAL'))
+          || (type == 'TRANSFER' && after.status == 'NORMAL' && after.quantity > 0
+              && boundedText(after.warehouse, 1, 160)
+              && after.quantity == quantity(before) && after.location != location(before))
+          || (type in ['CORRECTION', 'IMPORT'] && isQa() && after.status == 'NORMAL'
+              && after.location == location(before)));
+    }
+
+    function anomalyHistoryAction(before, after, id, type) {
+      return (type == 'ALERT' && isQa()
+          && before.get('status', 'NORMAL') in ['NORMAL', '정상', 'ANOMALY']
+          && after.status == 'ANOMALY'
+          && after.diff(before).affectedKeys().hasOnly(['status', 'targetLocation', 'userId', 'updatedAt', 'lastEventId'])
+          && boundedText(after.targetLocation, 0, 160)
+          && getAfter(alertPath(id)).data.updatedAt == request.time
+          && getAfter(alertPath(id)).data.targetLocation == after.targetLocation)
+        || (type == 'REVIEW_REQUEST' && isLoader() && before.status == 'ANOMALY' && after.status == 'PENDING_QA'
+          && after.diff(before).affectedKeys().hasOnly(['status', 'pendingQuantity', 'pendingLocation', 'userId', 'updatedAt', 'lastEventId'])
+          && validQuantity(after.pendingQuantity) && boundedText(after.pendingLocation, 1, 160))
+        || (isQa() && before.status == 'PENDING_QA' && clearedReview(after)
+          && ((type == 'REVIEW_REJECTION' && after.status == 'ANOMALY'
+              && after.diff(before).affectedKeys().hasOnly(['status', 'pendingQuantity', 'pendingLocation', 'userId', 'updatedAt', 'lastEventId']))
+            || (type == 'REVIEW_APPROVAL' && after.status == 'NORMAL'
+              && after.diff(before).affectedKeys().hasOnly(
+                   ['status', 'pendingQuantity', 'pendingLocation', 'location', 'quantity', 'userId', 'updatedAt', 'lastEventId'].concat(stockLocationFields()))
+              && validLocationChange(before, after)
+              && boundedText(after.location, 1, 160) && validQuantity(after.quantity)
+              && (before.get('pendingLocation', '') == ''
+                ? (after.location == location(before) && after.quantity == quantity(before))
+                : (after.location == before.pendingLocation && after.quantity == before.pendingQuantity)))));
+    }
+
+    function validHistoryEvent(company, eventId, data) {
+      let previous = get(stockPath(data.inventoryId));
+      let next = getAfter(stockPath(data.inventoryId)).data;
+      return eventId.matches('^[A-Za-z0-9]{20}$')
+        && data.keys().hasOnly(['inventoryId', 'actorUid', 'type', 'itemCode', 'itemName', 'warehouse',
+                               'fromLocation', 'toLocation', 'beforeQuantity', 'afterQuantity', 'occurredAt'])
+        && boundedText(data.inventoryId, 1, 512) && data.inventoryId.matches('^[^/]+$')
+        && boundedText(data.itemCode, 1, 120) && boundedText(data.itemName, 1, 240)
+        && boundedText(data.warehouse, 0, 160)
+        && boundedText(data.fromLocation, 0, 160) && boundedText(data.toLocation, 1, 160)
+        && validQuantity(data.beforeQuantity) && validQuantity(data.afterQuantity)
+        && data.actorUid == request.auth.uid && data.occurredAt == request.time
+        && next.companyCode == company && next.lastEventId == eventId
+        && next.userId == data.actorUid && next.updatedAt == data.occurredAt
+        && itemCode(next, data.inventoryId) == data.itemCode && itemName(next, data.inventoryId) == data.itemName
+        && next.get('warehouse', '') == data.warehouse
+        && (data.type == 'REVIEW_REQUEST'
+          ? (next.status == 'PENDING_QA'
+              && ((next.pendingLocation == data.toLocation && next.pendingQuantity == data.afterQuantity)
+                || (location(next) == data.toLocation && quantity(next) == data.afterQuantity)))
+          : (location(next) == data.toLocation && quantity(next) == data.afterQuantity))
+        && (previous == null
+          ? (data.type in ['INBOUND', 'IMPORT'] && data.fromLocation == '' && data.beforeQuantity == 0)
+          : (previous.data.get('lastEventId', '') != eventId
+             && previous.data.companyCode == company
+             && data.fromLocation == location(previous.data)
+             && data.beforeQuantity == quantity(previous.data)));
+    }
+
+    function validAlert(data, id) {
+      let stock = getAfter(stockPath(id)).data;
+      return data.keys().hasOnly(['inventoryId', 'companyCode', 'itemCode', 'itemName',
+                                  'currentLocation', 'targetLocation', 'quantity', 'status',
+                                  'qaUserId', 'updatedAt'])
+        && data.inventoryId == id && data.qaUserId == request.auth.uid
+        && data.updatedAt == request.time && data.status == 'ALERTED'
+        && boundedText(data.itemCode, 1, 120) && boundedText(data.itemName, 1, 240)
+        && boundedText(data.currentLocation, 1, 160) && boundedText(data.targetLocation, 0, 160)
+        && validQuantity(data.quantity)
+        && stock.companyCode == data.companyCode && stock.status == 'ANOMALY'
+        && stock.userId == request.auth.uid && stock.updatedAt == request.time
+        && itemCode(stock, id) == data.itemCode && itemName(stock, id) == data.itemName
+        && location(stock) == data.currentLocation && stock.targetLocation == data.targetLocation
+        && quantity(stock) == data.quantity;
+    }
+
+    function auditAlertFields() {
+      return ['companyCode', 'qaUid', 'jobId', 'inventoryId', 'warehouse', 'location',
+              'expectedItemCode', 'observedItemCode', 'expectedItemName', 'observedItemName',
+              'targetLocation', 'isTest', 'status', 'responderUid', 'note', 'createdAt', 'updatedAt'];
+    }
+
+    function validAuditAlert(data, id) {
+      return data.keys().hasAll(auditAlertFields()) && data.keys().hasOnly(auditAlertFields().concat(['lastHistoryEventId']))
+        && (!data.keys().hasAny(['lastHistoryEventId']) || data.lastHistoryEventId.matches('^[A-Za-z0-9]{20}$'))
+        && id.matches('^AI_[a-f0-9]{64}$')
+        && boundedText(data.companyCode, 1, 64)
+        && data.companyCode.matches('^[A-Z0-9][A-Z0-9_-]{0,63}$')
+        && boundedText(data.qaUid, 1, 128) && data.jobId.matches('^[a-f0-9]{32}$')
+        && boundedText(data.inventoryId, 1, 512) && data.inventoryId.matches('^[^/]+$')
+        && boundedText(data.warehouse, 1, 160) && boundedText(data.location, 1, 160)
+        && boundedText(data.expectedItemCode, 1, 120) && boundedText(data.observedItemCode, 1, 120)
+        && data.expectedItemCode != data.observedItemCode
+        && boundedText(data.expectedItemName, 1, 240) && boundedText(data.observedItemName, 1, 240)
+        && boundedText(data.targetLocation, 0, 160) && data.isTest is bool
+        && data.status in ['OPEN', 'REVIEW_REQUESTED', 'RESOLVED']
+        && boundedText(data.responderUid, 0, 128) && boundedText(data.note, 0, 500)
+        && data.createdAt is timestamp && data.updatedAt is timestamp
+        && data.createdAt <= data.updatedAt && data.updatedAt <= request.time;
+    }
+
+    function auditAlertStockMatches(data) {
+      let stock = get(stockPath(data.inventoryId)).data;
+      return stock.companyCode == data.companyCode
+        && itemCode(stock, data.inventoryId) == data.expectedItemCode
+        && itemName(stock, data.inventoryId) == data.expectedItemName
+        && location(stock) == data.location && stock.get('warehouse', '') == data.warehouse
+        && stock.get('isTestData', false) == data.isTest
+        && quantity(stock) > 0 && stock.get('status', 'NORMAL') in ['NORMAL', '정상', 'ANOMALY'];
+    }
+
+    function auditAlertTransition(before, after) {
+      return after.diff(before).affectedKeys().hasOnly(['status', 'responderUid', 'note', 'updatedAt', 'lastHistoryEventId'])
+        && after.updatedAt == request.time
+        && ((isLoader() && before.status == 'OPEN' && after.status == 'REVIEW_REQUESTED'
+              && after.responderUid == request.auth.uid)
+          || (isQa() && before.status in ['OPEN', 'REVIEW_REQUESTED'] && after.status == 'RESOLVED'
+              && after.responderUid == before.responderUid)
+          || (isQa() && before.status == 'REVIEW_REQUESTED' && after.status == 'OPEN'
+              && after.responderUid == ''));
+    }
+
+    function auditHistoryPath(company, id) {
+      return /databases/$(database)/documents/auditHistory/$(company)/events/$(id);
+    }
+
+    function auditHistoryLinked(id, data) {
+      let event = getAfter(auditHistoryPath(data.companyCode, data.lastHistoryEventId)).data;
+      return event.alertId == id && event.actorUid == request.auth.uid
+        && event.afterStatus == data.status && event.occurredAt == request.time;
+    }
+
+    function validAuditHistory(company, eventId, data) {
+      let before = get(/databases/$(database)/documents/auditAlerts/$(data.alertId));
+      let after = getAfter(/databases/$(database)/documents/auditAlerts/$(data.alertId)).data;
+      return eventId.matches('^[A-Za-z0-9]{20}$') && data.alertId.matches('^AI_[a-f0-9]{64}$')
+        && data.keys().hasAll(['alertId', 'inventoryId', 'actorUid', 'type', 'beforeStatus', 'afterStatus',
+          'expectedItemCode', 'expectedItemName', 'observedItemCode', 'observedItemName',
+          'warehouse', 'fromLocation', 'toLocation', 'isTest', 'note', 'occurredAt'])
+        && data.keys().hasOnly(['alertId', 'inventoryId', 'actorUid', 'type', 'beforeStatus', 'afterStatus',
+          'expectedItemCode', 'expectedItemName', 'observedItemCode', 'observedItemName',
+          'warehouse', 'fromLocation', 'toLocation', 'isTest', 'note', 'occurredAt'])
+        && data.actorUid == request.auth.uid && data.occurredAt == request.time
+        && after.companyCode == company && after.updatedAt == request.time && after.lastHistoryEventId == eventId
+        && data.inventoryId == after.inventoryId && data.warehouse == after.warehouse
+        && data.expectedItemCode == after.expectedItemCode && data.expectedItemName == after.expectedItemName
+        && data.observedItemCode == after.observedItemCode && data.observedItemName == after.observedItemName
+        && data.fromLocation == after.location && data.toLocation == after.targetLocation
+        && data.isTest == after.isTest && data.note == after.note && data.afterStatus == after.status
+        && (before == null
+          ? (isQa() && after.qaUid == request.auth.uid && data.type == 'AUDIT_DETECTION'
+              && data.beforeStatus == '' && after.status == 'OPEN')
+          : (before.data.companyCode == company && before.data.updatedAt < request.time
+            && before.data.get('lastHistoryEventId', '') != eventId && data.beforeStatus == before.data.status
+            && auditAlertTransition(before.data, after)
+            && ((data.type == 'AUDIT_RELOCATION' && before.data.status == 'OPEN' && after.status == 'REVIEW_REQUESTED')
+              || (data.type == 'AUDIT_APPROVAL' && after.status == 'RESOLVED')
+              || (data.type == 'AUDIT_REJECTION' && before.data.status == 'REVIEW_REQUESTED' && after.status == 'OPEN'))));
+    }
+
+    match /auditHistory/{company}/events/{id} {
+      allow read: if sameCompany(company);
+      allow create: if sameCompany(company) && validAuditHistory(company, id, request.resource.data);
+    }
+
+    match /auditAlerts/{id} {
+      allow get: if signedIn() && validMembership(membership())
+        && ((resource != null && sameCompany(resource.data.companyCode))
+            || (resource == null && isQa() && id.matches('^AI_[a-f0-9]{64}$')));
+      allow list: if sameCompany(resource.data.companyCode);
+      allow create: if sameCompany(request.resource.data.companyCode) && isQa()
+        && validAuditAlert(request.resource.data, id)
+        && request.resource.data.qaUid == request.auth.uid
+        && request.resource.data.status == 'OPEN' && request.resource.data.responderUid == ''
+        && request.resource.data.note == ''
+        && request.resource.data.createdAt == request.time && request.resource.data.updatedAt == request.time
+        && auditAlertStockMatches(request.resource.data)
+        && (!request.resource.data.keys().hasAny(['lastHistoryEventId']) || auditHistoryLinked(id, request.resource.data));
+      allow update: if sameCompany(resource.data.companyCode)
+        && validAuditAlert(request.resource.data, id)
+        && auditAlertTransition(resource.data, request.resource.data)
+        && (request.resource.data.get('lastHistoryEventId', '') == resource.data.get('lastHistoryEventId', '')
+          || (request.resource.data.get('lastHistoryEventId', '') != '' && auditHistoryLinked(id, request.resource.data)));
+    }
+
+    function systemAdmin() {
+      return signedIn()
+        && get(/databases/$(database)/documents/warehouseAdmins/$(request.auth.uid)).data.enabled == true;
+    }
+
+    function validCompanyCode(company) {
+      return company is string && company.matches('^[A-Z0-9][A-Z0-9_-]{0,63}$') && company != 'DEFAULT';
+    }
+
+    function validSignup(data) {
+      return data.keys().hasAll(['userId', 'email', 'companyCode', 'requestedRole', 'status',
+          'createdAt', 'submittedAt', 'reviewedAt', 'reviewedBy', 'assignedCompanyCode', 'assignedRole', 'rejectionReason'])
+        && data.keys().hasOnly(['userId', 'email', 'companyCode', 'requestedRole', 'status',
+          'createdAt', 'submittedAt', 'reviewedAt', 'reviewedBy', 'assignedCompanyCode', 'assignedRole', 'rejectionReason'])
+        && boundedText(data.userId, 1, 128) && boundedText(data.email, 3, 320)
+        && validCompanyCode(data.companyCode) && data.requestedRole in ['QA', 'LOADER']
+        && data.createdAt is timestamp && data.submittedAt is timestamp
+        && ((data.status == 'PENDING' && data.reviewedAt == null && data.reviewedBy == ''
+            && data.assignedCompanyCode == '' && data.assignedRole == '' && data.rejectionReason == '')
+          || (data.status == 'APPROVED' && data.reviewedAt is timestamp
+            && boundedText(data.reviewedBy, 1, 128) && validCompanyCode(data.assignedCompanyCode)
+            && data.assignedRole in ['QA', 'LOADER'] && data.rejectionReason == '')
+          || (data.status == 'REJECTED' && data.reviewedAt is timestamp
+            && boundedText(data.reviewedBy, 1, 128) && data.assignedCompanyCode == ''
+            && data.assignedRole == '' && boundedText(data.rejectionReason, 1, 500)));
+    }
+
+    function ownerSignup(uid, data) {
+      return isOwner(uid) && !exists(/databases/$(database)/documents/warehouseMemberships/$(uid))
+        && data.email == request.auth.token.email && data.status == 'PENDING'
+        && data.submittedAt == request.time;
+    }
+
+    function approvedMember(uid, data) {
+      let member = getAfter(/databases/$(database)/documents/warehouseMemberships/$(uid)).data;
+      return !exists(/databases/$(database)/documents/warehouseMemberships/$(uid))
+        && member.companyCode == data.assignedCompanyCode && member.role == data.assignedRole
+        && member.approvedBy == request.auth.uid && member.approvedAt == request.time;
+    }
+
+    match /warehouseAdmins/{uid} {
+      allow get: if isOwner(uid);
+    }
+
+    match /signupRequests/{uid} {
+      allow get: if isOwner(uid) || systemAdmin();
+      allow list: if systemAdmin();
+      allow create: if validSignup(request.resource.data) && ownerSignup(uid, request.resource.data)
+        && request.resource.data.createdAt == request.time;
+      allow update: if validSignup(request.resource.data)
+        && ((ownerSignup(uid, request.resource.data) && resource.data.status in ['PENDING', 'REJECTED']
+            && !request.resource.data.diff(resource.data).affectedKeys().hasAny(['userId', 'email', 'createdAt']))
+          || (systemAdmin() && resource.data.status == 'PENDING'
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+              'status', 'reviewedAt', 'reviewedBy', 'assignedCompanyCode', 'assignedRole', 'rejectionReason'])
+            && request.resource.data.reviewedBy == request.auth.uid && request.resource.data.reviewedAt == request.time
+            && ((request.resource.data.status == 'APPROVED' && approvedMember(uid, request.resource.data))
+              || (request.resource.data.status == 'REJECTED'
+                && !existsAfter(/databases/$(database)/documents/warehouseMemberships/$(uid))))));
+    }
+
+    function validApprovedMembership(data) {
+      return data.keys().hasAll(['companyCode', 'role', 'approvedBy', 'approvedAt'])
+        && data.keys().hasOnly(['companyCode', 'role', 'approvedBy', 'approvedAt'])
+        && validMembership(data) && data.approvedBy == request.auth.uid && data.approvedAt == request.time;
+    }
+
+    function matchingApprovedRequest(uid, data) {
+      let before = get(/databases/$(database)/documents/signupRequests/$(uid)).data;
+      let after = getAfter(/databases/$(database)/documents/signupRequests/$(uid)).data;
+      return before.status == 'PENDING' && after.status == 'APPROVED'
+        && after.assignedCompanyCode == data.companyCode && after.assignedRole == data.role
+        && after.reviewedBy == request.auth.uid && after.reviewedAt == request.time;
+    }
+
+    match /warehouseMemberships/{uid} {
+      allow get: if isOwner(uid) || systemAdmin();
+      allow create: if systemAdmin() && validApprovedMembership(request.resource.data)
+        && matchingApprovedRequest(uid, request.resource.data);
+    }
+
+    match /users/{uid} {
+      allow get: if isOwner(uid);
+    }
+
+    match /inventory/{id} {
+      allow list: if sameCompany(resource.data.companyCode);
+      allow get: if (resource != null && sameCompany(resource.data.companyCode))
+        || (resource == null && signedIn() && validMembership(membership())
+            && id.matches('^' + membership().companyCode + '_.+$'));
+      allow create: if sameCompany(request.resource.data.companyCode)
+        && validStockWriter(request.resource.data) && validStock(request.resource.data)
+        && request.resource.data.status == 'NORMAL'
+        && id == request.resource.data.companyCode + '_' + request.resource.data.itemCode
+        && (request.resource.data.keys().hasOnly(stockFields())
+          || (request.resource.data.keys().hasOnly(stockFields().concat(['warehouse', 'lastEventId', 'firstReceivedAt']))
+              && boundedText(request.resource.data.warehouse, 1, 160)
+              && request.resource.data.firstReceivedAt == request.time
+              && ((historyType(request.resource.data, id) == 'INBOUND' && request.resource.data.quantity > 0)
+                  || (historyType(request.resource.data, id) == 'IMPORT' && isQa()))));
+      allow update: if sameCompany(resource.data.companyCode)
+        && request.resource.data.companyCode == resource.data.companyCode
+        && validStockWriter(request.resource.data)
+        && (freshEvent(resource.data, request.resource.data)
+          ? (regularHistoryAction(resource.data, request.resource.data, id, historyType(request.resource.data, id))
+            || anomalyHistoryAction(resource.data, request.resource.data, id, historyType(request.resource.data, id)))
+          : (regularStockUpdate(resource.data, request.resource.data, id)
+            || requestReview(resource.data, request.resource.data)
+            || finishReview(resource.data, request.resource.data)
+            || setAlertLocation(resource.data, request.resource.data, id)));
+    }
+
+    match /stockHistory/{company}/events/{id} {
+      allow read: if sameCompany(company);
+      allow create: if sameCompany(company) && validHistoryEvent(company, id, request.resource.data);
+    }
+
+    match /anomalies/{id} {
+      allow get: if sameCompany(get(stockPath(id)).data.companyCode)
+        && isQa() && (resource == null || resource.data.companyCode == membership().companyCode);
+      allow create: if sameCompany(request.resource.data.companyCode)
+        && isQa() && validAlert(request.resource.data, id);
+      allow update: if sameCompany(resource.data.companyCode)
+        && isQa() && request.resource.data.companyCode == resource.data.companyCode
+        && validAlert(request.resource.data, id);
+      allow delete: if sameCompany(resource.data.companyCode)
+        && isQa()
+        && get(stockPath(id)).data.companyCode == resource.data.companyCode
+        && get(stockPath(id)).data.status == 'PENDING_QA'
+        && getAfter(stockPath(id)).data.status == 'NORMAL';
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

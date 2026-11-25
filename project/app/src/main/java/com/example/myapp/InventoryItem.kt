@@ -12,9 +12,14 @@ data class InventoryItem(
     val userId: String = "시스템",
     val targetLocation: String = "",
     val relocationDone: Boolean = false,
-    val warehouse: String = "제1물류센터",
-    val zone: String = "B구역",
-    val rack: String = "R05",
-    val tier: String = "3층",
-    val rackId: String = "B구역 R05"
+    val warehouse: String = "",
+    val zone: String = "",
+    val rack: String = "",
+    val tier: String = "",
+    val rackId: String = "",
+    val documentId: String = "",
+    val palletId: String = "",
+    val receivedAtTimestamp: Long = 0L,
+    val barcodes: List<String> = emptyList(),
+    val isTestData: Boolean = false
 )

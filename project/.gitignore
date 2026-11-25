@@ -1,27 +1,51 @@
-# Gradle files
+# Android Studio, Gradle and machine-specific configuration
+.idea/
+*.iml
 .gradle/
-/app/build/
-/app/.cxx/
-# OpenCV SDK
-opencv-4.14.0-android-sdk.zip
-opencv-4.14.0-android-sdk/
-
-
-# Local Android configuration and build outputs
-/.idea/
-/local.properties
-/app/google-services.json
+**/build/
+**/.cxx/
+local.properties
+app/google-services.json
 *.jks
 *.keystore
 
-# Local Python environments and audit data
+# Downloaded OpenCV Android SDK
+opencv-4.14.0-android-sdk.zip
+opencv-4.14.0-android-sdk/
+
+# Credentials and private runtime data
+.secrets/
+.env
+.env.*
+**/audit_private/
+**/audit_uploads/
+**/audit_demo_runtime/
+
+# Python environments and caches
 .venv/
+venv/
 __pycache__/
 .pytest_cache/
 *.py[cod]
-.env
-.env.*
-audit_uploads/
-audit_demo_runtime/
-/test_photos/
+
+# Generated logs, screenshots and intermediate image exports
+*.log
 /app/src/main/java/com/example/myapp/test_image/
+/test_photos/**/*.png
+/test_photos/**/*.jpg
+/test_photos/**/*.jpeg
+!/test_photos/rack_labelled/QAE_rack_labels.png
+!/test_photos/rack_labelled/QAF_rack_labels.png
+!/test_photos/rack_labelled/QAG_rack_labels.png
+!/test_photos/comparison/retired/compare_01_normal.png
+
+# Cloud backups and per-machine operational receipts
+/test_photos/**/cloud-rules-*.json
+/test_photos/approval49/admin-provisioned.json
+/test_photos/approval49/cloud-admin-verification.json
+/test_photos/push48/real-device-receipt.json
+/test_photos/push48/real-fcm-send.json
+/test_photos/label_corrections/*firestore-*.json
+
+.DS_Store
+Thumbs.db

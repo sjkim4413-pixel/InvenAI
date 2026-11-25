@@ -19,6 +19,22 @@
 		android:layout_height="match_parent"
 		android:background="#80000000" />
 
+	<TextView
+		android:id="@+id/auditCameraWarehouse"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_margin="20dp"
+		android:padding="16dp"
+		android:background="@drawable/cr100b0d9488"
+		android:textColor="#FFFFFF"
+		android:textSize="14sp"
+		android:maxLines="3"
+		android:ellipsize="end"
+		android:contentDescription="실사 창고 선택 및 변경"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintEnd_toEndOf="parent" />
+
 	<!-- 랙 촬영 가이드 -->
 	<View
 		android:id="@+id/arGuideBox"
@@ -48,10 +64,26 @@
 	<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:orientation="horizontal"
+		android:orientation="vertical"
 		android:gravity="center"
 		android:padding="24dp"
 		app:layout_constraintBottom_toBottomOf="parent">
+
+		<Button
+			android:id="@+id/btnSelectTestImage"
+			android:layout_width="match_parent"
+			android:layout_height="48dp"
+			android:text="테스트 이미지 선택"
+			android:textColor="#FFFFFF"
+			android:backgroundTint="#0D9488"
+			android:textStyle="bold"
+			android:layout_marginBottom="12dp" />
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:gravity="center">
 
 		<!-- 닫기 -->
 		<ImageButton
@@ -81,17 +113,7 @@
 			android:src="@android:drawable/ic_menu_gallery"
 			android:contentDescription="갤러리에서 사진 선택" />
 
-		<!-- 테스트 이미지 선택 -->
-		<Button
-			android:id="@+id/btnSelectTestImage"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:text="📁 테스트 이미지"
-			android:textColor="#FFFFFF"
-			android:backgroundTint="#0D9488"
-			android:textStyle="bold"
-			android:layout_marginStart="12dp"
-		/>
+		</LinearLayout>
 
 	</LinearLayout>
 

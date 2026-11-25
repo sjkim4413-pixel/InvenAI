@@ -10,5 +10,6 @@ data class MisplacementAlertPayload(
     @SerializedName("currentItemCode") val currentItemCode: String,   // 오적재된 ID
     @SerializedName("photoUrl") val photoUrl: String = "",       // 크롭된 현장 사진 URL
     @SerializedName("status") val status: String = "ALERTED",    // ALERTED -> WAITING_REVERIFICATION -> VERIFIED
-    @SerializedName("timestamp") val timestamp: Long = System.currentTimeMillis()
+    @SerializedName("timestamp") val timestamp: Long = System.currentTimeMillis(),
+    @SerializedName("isTest") val isTest: Boolean = false
 )

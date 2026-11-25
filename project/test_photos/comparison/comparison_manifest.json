@@ -1,0 +1,40 @@
+{
+  "source": "QAC_rack_labels.png",
+  "source_sha256": "7329e9dd4c3be633d24ef0e79117f568f651a023695dc9d57d2178e23dd54911",
+  "crop_reference": [
+    235,
+    100,
+    730,
+    298
+  ],
+  "crop_reference_size": [
+    1400,
+    1050
+  ],
+  "normal": "compare_01_normal.png",
+  "normal_sha256": "ca35db35b5e908fe65add070852a84ed02cf301c0a8e79e4fc3e56bfaa5ac3a1",
+  "warehouse": "AI 상품·위치 비교 테스트 창고",
+  "products": [
+    {
+      "sku": "HPX-111",
+      "location": "QAC02-5F-01",
+      "name": "흰색 가전 포장 묶음"
+    },
+    {
+      "sku": "HPX-222",
+      "location": "QAC02-5F-02",
+      "name": "갈색 가전 포장 묶음"
+    },
+    {
+      "sku": "HPX-333",
+      "location": "QAC03-5F-01",
+      "name": "연녹색 가전 포장 묶음"
+    }
+  ],
+  "scope": "Synthetic product codes for controlled photo comparison; quantity unverified",
+  "image_preparation": "AI-edited QAC-derived baseline and swapped variant; synthetic SKU labels; F05 uses human-annotated locations and real OCR, without evaluating automatic object detection",
+  "misplaced": "compare_02_misplaced.png",
+  "misplaced_sha256": "d610e332563c8809e083b6256e8f12de8721722519d5a993ac71673440d54b91",
+  "test_mode": "test_product_regions",
+  "region_provenance": "Human-checked fixed location regions for F05 visualization; not YOLO ground-truth predictions"
+}

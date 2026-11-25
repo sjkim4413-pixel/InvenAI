@@ -2,60 +2,74 @@ package com.example.myapp
 
 import android.app.Activity
 import android.content.Intent
+import android.net.Uri
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
 
 object MenuHelper {
-	fun showMoreMenu(activity: Activity) {
-		val bottomSheetDialog = BottomSheetDialog(activity)
-		val view: View = LayoutInflater.from(activity).inflate(R.layout.bottom_sheet_more_menu, null)
+    fun showProfile(activity: Activity) {
+        val session = activity.getSharedPreferences("app_user_session", Activity.MODE_PRIVATE)
+        val company = InventoryManager.activeCompanyCode(activity)
+        val role = InventoryManager.role(activity)
+        val employee = session.getString("USER_ID", "").orEmpty()
+        val roleName = when (role) { "QA" -> "검수자"; "LOADER" -> "적재자"; else -> "확인 필요" }
+        val details = if (company == null) "다시 로그인해 주세요."
+            else "회사 · $company\n아이디 · $employee\n권한 · $roleName"
+        AlertDialog.Builder(activity).setTitle("계정 정보").setMessage(details)
+            .setPositiveButton("닫기", null).show()
+    }
 
-		// 1. 프로필 / 계정 정보
-		view.findViewById<View>(R.id.item_profile)?.setOnClickListener {
-			bottomSheetDialog.dismiss()
-			Toast.makeText(activity, "김현수 (제1 물류센터 / 현장 관리자)", Toast.LENGTH_SHORT).show()
-		}
+    fun showMoreMenu(activity: Activity) {
+        val sheet = BottomSheetDialog(activity)
+        val view = LayoutInflater.from(activity).inflate(R.layout.bottom_sheet_more_menu, null)
+        for (id in listOf(R.id.item_profile, R.id.item_erp, R.id.item_outbound,
+                         R.id.item_settings, R.id.item_notice, R.id.item_logout)) {
+            view.findViewById<View>(id)?.let { item ->
+                WarehouseMenus.decorateAnchor(item)
+                (item.layoutParams as? android.view.ViewGroup.MarginLayoutParams)?.bottomMargin =
+                    (8 * activity.resources.displayMetrics.density).toInt()
+            }
+        }
+        fun route(id: Int, screen: Class<*>) {
+            view.findViewById<View>(id).setOnClickListener {
+                sheet.dismiss()
+                activity.startActivity(Intent(activity, screen))
+            }
+        }
 
-		// 2. ERP/WMS 시스템 연동
-		view.findViewById<View>(R.id.item_erp)?.setOnClickListener {
-			bottomSheetDialog.dismiss()
-			activity.startActivity(Intent(activity, ErpWmsConnection::class.java))
-		}
-
-		// 3. 시스템 설정
-		view.findViewById<View>(R.id.item_settings)?.setOnClickListener {
-			bottomSheetDialog.dismiss()
-			Toast.makeText(activity, "시스템 설정 메뉴 준비 중입니다.", Toast.LENGTH_SHORT).show()
-		}
-
-		// 4. 공지사항 및 고객지원
-		view.findViewById<View>(R.id.item_notice)?.setOnClickListener {
-			bottomSheetDialog.dismiss()
-			Toast.makeText(activity, "최신 공지사항: v2.0 버그 수정 완료", Toast.LENGTH_SHORT).show()
-		}
-
-		// 5. 로그아웃
-		view.findViewById<View>(R.id.item_logout)?.setOnClickListener {
-			bottomSheetDialog.dismiss()
-			try {
-				FirebaseAuth.getInstance().signOut()
-			} catch (e: Exception) {
-				// Ignore
-			}
-			val sharedPref = activity.getSharedPreferences("app_user_session", Activity.MODE_PRIVATE)
-			sharedPref.edit().clear().apply()
-			Toast.makeText(activity, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show()
-
-			val intent = Intent(activity, Frame1::class.java)
-			intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-			activity.startActivity(intent)
-			activity.finish()
-		}
-
-		bottomSheetDialog.setContentView(view)
-		bottomSheetDialog.show()
-	}
+        view.findViewById<View>(R.id.item_profile).setOnClickListener {
+            sheet.dismiss()
+            showProfile(activity)
+        }
+        route(R.id.item_erp, ErpWmsConnection::class.java)
+        val canInspect = InventoryManager.role(activity) == "QA"
+        view.findViewById<View>(R.id.item_outbound).visibility = if (canInspect) View.VISIBLE else View.GONE
+        route(R.id.item_outbound, Outbound::class.java)
+        view.findViewById<View>(R.id.item_settings).setOnClickListener {
+            sheet.dismiss()
+            activity.startActivity(Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                Uri.fromParts("package", activity.packageName, null)))
+        }
+        view.findViewById<View>(R.id.item_notice).setOnClickListener {
+            sheet.dismiss()
+            AlertDialog.Builder(activity).setTitle("사용 도움말")
+                .setMessage("카메라 사용이 차단되면 앱 권한 설정을 확인해 주세요.\n회사 코드와 작업 권한은 소속 회사 관리자에게 문의해 주세요.")
+                .setPositiveButton("닫기", null).show()
+        }
+        view.findViewById<View>(R.id.item_logout).setOnClickListener {
+            sheet.dismiss()
+            F06PushRegistration.unregister(activity)
+            FirebaseAuth.getInstance().signOut()
+            activity.getSharedPreferences("app_user_session", Activity.MODE_PRIVATE).edit().clear().apply()
+            activity.startActivity(Intent(activity, Frame1::class.java)
+                .addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK))
+            activity.finish()
+        }
+        sheet.setContentView(view)
+        sheet.show()
+    }
 }

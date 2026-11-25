@@ -11,6 +11,7 @@ import android.view.animation.Animation
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
+import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -19,10 +20,13 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
+import com.google.firebase.firestore.ListenerRegistration
 import java.io.InputStream
 import java.util.concurrent.Executors
 
 internal const val EXTRA_TEST_RACK_LABELS = "com.example.myapp.TEST_RACK_LABELS"
+internal const val EXTRA_AUDIT_TEST_TITLE = "com.example.myapp.AUDIT_TEST_TITLE"
+internal const val EXTRA_AUDIT_TEST_MODE = "com.example.myapp.AUDIT_TEST_MODE"
 
 class AiAuditCamera : AppCompatActivity() {
 
@@ -33,10 +37,14 @@ class AiAuditCamera : AppCompatActivity() {
 	private val cameraExecutor = Executors.newSingleThreadExecutor()
 	private var processingPhoto = false
 	private var previousLowLight = false
+	private var warehouseCode: String? = null
+	private var warehouseReady = false
+	private var inventoryCompany: String? = null
+	private var inventoryListener: ListenerRegistration? = null
+	private var testImages = emptyList<AuditTestImage>()
 
 	private var orientationEventListener: android.view.OrientationEventListener? = null
 	private var captureRotation = Surface.ROTATION_0
-	private var targetRackId: String = "B구역 R05"
 
 	private val requestPermissionLauncher = registerForActivityResult(
 		ActivityResultContracts.RequestPermission()
@@ -51,8 +59,21 @@ class AiAuditCamera : AppCompatActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_ai_audit_camera)
+		warehouseCode = intent.getStringExtra("WAREHOUSE_CODE")?.takeIf(String::isNotBlank)
+		if (warehouseCode == null) {
+			startActivity(Intent(this, AuditStart::class.java))
+			finish()
+			return
+		}
+		testImages = runCatching { loadAuditTestImages(this) }.getOrDefault(emptyList())
+		findViewById<TextView>(R.id.auditCameraWarehouse).apply {
+			text = "실사 창고 · $warehouseCode\n창고 정보를 확인하고 있습니다."
+			setOnClickListener {
+				startActivity(Intent(this@AiAuditCamera, AuditStart::class.java).putExtra("WAREHOUSE_CODE", warehouseCode))
+				finish()
+			}
+		}
 
-		targetRackId = intent.getStringExtra("TARGET_RACK_ID") ?: "B구역 R05"
 
 		orientationEventListener = object : android.view.OrientationEventListener(this) {
 			override fun onOrientationChanged(orientation: Int) {
@@ -84,7 +105,7 @@ class AiAuditCamera : AppCompatActivity() {
 		updatePhotoControls()
 
 		findViewById<View>(R.id.btnGallery)?.setOnClickListener {
-			selectPhoto.launch(arrayOf("image/jpeg", "image/png"))
+			if (requireWarehouse()) selectPhoto.launch(arrayOf("image/jpeg", "image/png"))
 		}
 
 		findViewById<View>(R.id.btnSelectTestImage)?.setOnClickListener { showTestImagePicker() }
@@ -96,23 +117,53 @@ class AiAuditCamera : AppCompatActivity() {
 		}
 	}
 
+	override fun onStart() {
+		super.onStart()
+		if (isFinishing) return
+		val company = InventoryManager.activeCompanyCode(this)
+		if (company != inventoryCompany) warehouseReady = false
+		inventoryCompany = company
+		inventoryListener = InventoryManager.listenToRealtimeInventory(this, onError = {
+			warehouseReady = false
+			findViewById<TextView>(R.id.auditCameraWarehouse).text = "$it\n터치하여 창고 다시 선택"
+			updatePhotoControls()
+		}) { items ->
+			warehouseReady = warehouseCode in auditWarehouseChoices(items, testImages)
+			findViewById<TextView>(R.id.auditCameraWarehouse).text = if (warehouseReady)
+				"실사 창고 · $warehouseCode\n터치하여 창고 변경" else
+				"선택한 창고의 실사 재고를 확인할 수 없습니다.\n터치하여 창고 다시 선택"
+			updatePhotoControls()
+		}
+	}
+
+	override fun onStop() {
+		inventoryListener?.remove()
+		inventoryListener = null
+		super.onStop()
+	}
+
+	private fun requireWarehouse(): Boolean {
+		if (warehouseReady && warehouseCode != null && inventoryCompany != null &&
+			InventoryManager.activeCompanyCode(this) == inventoryCompany) return true
+		Toast.makeText(this, "실사할 창고를 선택하고 창고 정보를 확인해 주세요.", Toast.LENGTH_SHORT).show()
+		return false
+	}
+
 	private fun showTestImagePicker() {
+		if (!requireWarehouse()) return
 		val directory = "audit_test_images"
-		val files = assets.list(directory).orEmpty().sorted()
-		if (files.isEmpty()) {
-			Toast.makeText(this, "내장 테스트 사진이 없습니다.", Toast.LENGTH_SHORT).show()
+		val images = auditImagesForWarehouse(testImages, warehouseCode)
+		if (images.isEmpty()) {
+			Toast.makeText(this, "이 창고에 연결된 테스트 이미지가 없습니다. 촬영하거나 앨범 사진을 선택해 주세요.", Toast.LENGTH_LONG).show()
 			return
 		}
-		val labels = files.mapIndexed { index, file ->
-			"테스트 이미지 ${index + 1} · ${file.substringBefore('-')}"
-		}.toTypedArray()
-		AlertDialog.Builder(this)
-			.setTitle("테스트 이미지 선택")
-			.setItems(labels) { _, which ->
-				loadSelectedPhoto(testRackLabels = true) { assets.open("$directory/${files[which]}") }
+		val title = if (images.any { it.group == "paired" }) "정상·오적재 테스트 ${images.size}장" else "테스트 이미지 선택"
+		WarehouseMenus.show(this, title, images.map { it.title }) { index ->
+			val selected = images[index]
+			loadSelectedPhoto(selected.testRackLabels, selected.warehouseCode, selected.title, selected.mode) {
+				assets.open("$directory/${selected.file}")
 			}
-			.setNegativeButton("취소", null)
-			.show()
+		}
 	}
 
 	private val selectPhoto = registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri ->
@@ -121,8 +172,9 @@ class AiAuditCamera : AppCompatActivity() {
 		}
 	}
 
-	private fun loadSelectedPhoto(testRackLabels: Boolean = false, openStream: () -> InputStream) {
-		if (processingPhoto) return
+	private fun loadSelectedPhoto(testRackLabels: Boolean = false, testWarehouse: String? = null,
+	                              testTitle: String? = null, testMode: String? = null, openStream: () -> InputStream) {
+		if (processingPhoto || !requireWarehouse()) return
 		processingPhoto = true
 		updatePhotoControls()
 		cameraExecutor.execute {
@@ -146,7 +198,7 @@ class AiAuditCamera : AppCompatActivity() {
 				processingPhoto = false
 				updatePhotoControls()
 				result.fold(
-					onSuccess = { showAuditResults(it, testRackLabels) },
+					onSuccess = { showAuditResults(it, testRackLabels, testWarehouse, testTitle, testMode) },
 					onFailure = {
 						Toast.makeText(this, it.message ?: "사진을 읽을 수 없습니다.", Toast.LENGTH_SHORT).show()
 					}
@@ -155,11 +207,21 @@ class AiAuditCamera : AppCompatActivity() {
 		}
 	}
 
-	private fun showAuditResults(bytes: ByteArray, testRackLabels: Boolean = false) {
+	private fun showAuditResults(bytes: ByteArray, testRackLabels: Boolean = false,
+	                             testWarehouse: String? = null, testTitle: String? = null, testMode: String? = null) {
+		if (!requireWarehouse()) return
+		val problem = auditPhotoWarehouseProblem(warehouseCode, if (testRackLabels) "test_rack_labels" else testMode, testWarehouse)
+		if (problem != null) {
+			Toast.makeText(this, problem, Toast.LENGTH_LONG).show()
+			return
+		}
 		CapturedPhotoHolder.photoBytes = bytes
-		startActivity(Intent(this, AiAuditResults::class.java).apply {
-			putExtra("TARGET_RACK_ID", targetRackId)
+		startActivity(Intent(this, PhotoConfirmation::class.java).apply {
+			putExtra("WAREHOUSE_CODE", warehouseCode)
+			putExtra(EXTRA_AUDIT_TEST_WAREHOUSE, testWarehouse)
 			putExtra(EXTRA_TEST_RACK_LABELS, testRackLabels)
+			putExtra(EXTRA_AUDIT_TEST_TITLE, testTitle)
+			putExtra(EXTRA_AUDIT_TEST_MODE, testMode)
 		})
 		finish()
 	}
@@ -257,9 +319,13 @@ class AiAuditCamera : AppCompatActivity() {
 	}
 
 	private fun updatePhotoControls() {
-		findViewById<View>(R.id.btnShutter).isEnabled = imageCapture != null && !processingPhoto
-		findViewById<View>(R.id.btnGallery).isEnabled = !processingPhoto
-		findViewById<View>(R.id.btnSelectTestImage)?.isEnabled = !processingPhoto
+		val ready = warehouseReady && inventoryCompany != null && InventoryManager.activeCompanyCode(this) == inventoryCompany
+		findViewById<View>(R.id.btnShutter).isEnabled = ready && imageCapture != null && !processingPhoto
+		findViewById<View>(R.id.btnGallery).isEnabled = ready && !processingPhoto
+		findViewById<View>(R.id.btnSelectTestImage)?.apply {
+			isEnabled = ready && !processingPhoto
+			visibility = if (auditImagesForWarehouse(testImages, warehouseCode).isEmpty()) View.GONE else View.VISIBLE
+		}
 	}
 
 	private fun captureFailed(message: String) {
@@ -270,7 +336,7 @@ class AiAuditCamera : AppCompatActivity() {
 
 	private fun takePhotoAndProcess() {
 		val imageCapture = imageCapture ?: return
-		if (processingPhoto) return
+		if (processingPhoto || !requireWarehouse()) return
 		processingPhoto = true
 		updatePhotoControls()
 

@@ -61,6 +61,20 @@ class LiveService(unittest.TestCase):
         forged=self.client.post('/f03/audit/live/warehouse-binding',json={'warehouse_id':3,'warehouse_code':'WH1','verification_passed':True})
         self.assertEqual(forged.status_code,422)
 
+    def test_manual_position_lookup_uses_selected_warehouse_without_changing_binding(self):
+        endpoint='/f03/audit/live/context'
+        params={'warehouse_id':3}
+        result=self.client.get(endpoint,params={**params,'warehouse_code':'WH1'})
+        self.assertEqual(result.status_code,200,result.text)
+        body=result.json()
+        self.assertEqual(body['warehouse_code'],'WH1')
+        self.assertIsNone(body['binding'])
+        self.assertEqual([p['position_id'] for p in body['positions']],['B/R08/1/-'])
+        self.assertEqual(self.client.get(endpoint,params=params).json()['positions'],[])
+        bad=self.client.get(endpoint,params={**params,'warehouse_code':'OTHER'})
+        self.assertEqual(bad.status_code,422)
+        self.assertEqual(bad.json()['detail']['code'],'UNKNOWN_WAREHOUSE')
+
     def test_snapshot_failure_does_not_use_local_test_erp(self):
         with patch.object(api.app.state,'live_inventory_loader',side_effect=InventoryUnavailable('unavailable')):
             result=self.client.get('/f03/audit/live/context',params={'warehouse_id':3})

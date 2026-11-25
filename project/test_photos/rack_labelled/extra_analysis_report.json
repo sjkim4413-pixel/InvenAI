@@ -1,0 +1,110 @@
+{
+  "pipeline_version": "2026-11-21.40",
+  "recorded_at_utc": "2026-11-21T07:08:43.497867+00:00",
+  "mode": "test_rack_labels",
+  "inventory_source": "Firestore fixture readback",
+  "authenticated_http_dependency": "test_override_company_ABC-002",
+  "detections_mocked": false,
+  "ocr_mocked": false,
+  "photos": [
+    {
+      "image": "QAE_rack_labels.png",
+      "expected_positions": 12,
+      "test_label_matches": 9,
+      "read_label_codes": [
+        "QAE01-1F-01",
+        "QAE01-3F-01",
+        "QAE01-4F-01",
+        "QAE01-5F-01",
+        "QAE02-1F-02",
+        "QAE02-3F-01",
+        "QAE02-3F-02",
+        "QAE02-4F-01",
+        "QAE02-4F-02",
+        "QAE02-5F-01",
+        "QAE02-5F-02"
+      ],
+      "unverified_positions": [
+        "QAE02-1F-01",
+        "QAE02-3F-02",
+        "QAE02-5F-02"
+      ],
+      "positions_without_localized_result": [
+        "QAE02-1F-01",
+        "QAE02-3F-02",
+        "QAE02-5F-02"
+      ],
+      "unexpected_matches": [],
+      "seconds": 20.63,
+      "statuses": {
+        "TEST_RACK_LABEL_MATCH": 9,
+        "MANUAL_REVIEW_REQUIRED": 20
+      }
+    },
+    {
+      "image": "QAF_rack_labels.png",
+      "expected_positions": 10,
+      "test_label_matches": 0,
+      "read_label_codes": [],
+      "unverified_positions": [
+        "QAF01-1F-01",
+        "QAF01-1F-02",
+        "QAF01-1F-03",
+        "QAF01-2F-01",
+        "QAF01-2F-02",
+        "QAF02-1F-01",
+        "QAF02-1F-02",
+        "QAF02-1F-03",
+        "QAF02-2F-01",
+        "QAF02-2F-02"
+      ],
+      "positions_without_localized_result": [
+        "QAF01-1F-01",
+        "QAF01-1F-02",
+        "QAF01-1F-03",
+        "QAF01-2F-01",
+        "QAF01-2F-02",
+        "QAF02-1F-01",
+        "QAF02-1F-02",
+        "QAF02-1F-03",
+        "QAF02-2F-01",
+        "QAF02-2F-02"
+      ],
+      "unexpected_matches": [],
+      "seconds": 9.51,
+      "statuses": {
+        "MANUAL_REVIEW_REQUIRED": 13
+      }
+    },
+    {
+      "image": "QAG_rack_labels.png",
+      "expected_positions": 4,
+      "test_label_matches": 0,
+      "read_label_codes": [],
+      "unverified_positions": [
+        "QAG01-2F-01",
+        "QAG01-2F-02",
+        "QAG02-2F-01",
+        "QAG02-2F-02"
+      ],
+      "positions_without_localized_result": [
+        "QAG01-2F-01",
+        "QAG01-2F-02",
+        "QAG02-2F-01",
+        "QAG02-2F-02"
+      ],
+      "unexpected_matches": [],
+      "seconds": 3.34,
+      "statuses": {
+        "MANUAL_REVIEW_REQUIRED": 2
+      }
+    }
+  ],
+  "total_positions": 26,
+  "total_test_label_matches": 9,
+  "limitations": [
+    "Synthetic rack stickers are compared as test codes; real SKU and quantity accuracy are not measured.",
+    "Stock is read back from Firestore; the local HTTP test substitutes authentication and the inventory loader.",
+    "Selection includes images from a capture batch already represented in development; not an independent field holdout."
+  ]
+}

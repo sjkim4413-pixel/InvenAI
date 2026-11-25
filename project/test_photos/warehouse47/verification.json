@@ -1,0 +1,32 @@
+{
+  "time_utc": "2026-11-25T04:17:46.802281+00:00",
+  "android_unit_tests": {
+    "tests": 38,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "android_device_tests": 1,
+  "backend_tests": 8,
+  "selectable_test_images": 12,
+  "test_images_per_warehouse": {
+    "AI 이미지 테스트 창고 01": 2,
+    "AI 이미지 테스트 창고 02": 2,
+    "AI 이미지 테스트 창고 03": 2,
+    "AI 실사 추가 테스트 창고": 6
+  },
+  "warehouse_selection_required": true,
+  "chosen_warehouse_preserved_through_preview_and_api": true,
+  "mismatched_result_blocked": true,
+  "local_firebase_only": true,
+  "stock_unchanged_during_device_test": true,
+  "production_inventory_written": false,
+  "production_alerts_created": false,
+  "test_credentials_absent_from_main_apk": true,
+  "apk_sha256": "26dee0236f57747eec3a549ce8cf65460dd42d1371086e61141ee854ef409496",
+  "screenshots": [
+    "warehouse47_choices.png",
+    "warehouse47_photo_picker.png",
+    "warehouse47_preview.png"
+  ]
+}

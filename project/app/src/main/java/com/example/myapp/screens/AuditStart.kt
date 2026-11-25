@@ -2,73 +2,84 @@ package com.example.myapp
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.TextView
+import com.google.android.material.button.MaterialButton
+import com.google.firebase.firestore.ListenerRegistration
 
-class AuditStart : AppCompatActivity() {
-	override fun onCreate(savedInstanceState: Bundle?) {
-		super.onCreate(savedInstanceState)
-		setContentView(R.layout.activity_audit_start)
-		findViewById<View>(R.id.rov44kvu00s)?.visibility = View.GONE
+class AuditStart : WarehouseScreen() {
+    private var listener: ListenerRegistration? = null
+    private var warehouse: String? = null
+    private var choices = emptyList<String>()
+    private var images = emptyList<AuditTestImage>()
+    private var ready = false
+    private var problem: String? = null
+    private lateinit var status: TextView
+    private lateinit var warehouseSelector: MaterialButton
+    private lateinit var openCamera: MaterialButton
 
-		// 상단 뒤로가기 버튼
-		findViewById<View>(R.id.r96weuqy0tyj)?.setOnClickListener { finish() }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        openScreen("AI 재고 실사")
+        warehouse = savedInstanceState?.getString("warehouse") ?: intent.getStringExtra("WAREHOUSE_CODE")
+        label("랙 사진을 촬영하거나 앨범에서 선택해 전산 재고와 비교합니다.")
+        images = runCatching { loadAuditTestImages(this) }.getOrDefault(emptyList())
+        status = label("회사 창고를 불러오는 중입니다.", true).apply { id = R.id.auditWarehouseStatus }
+        card(status)
+        warehouseSelector = selector("실사 창고 선택") {
+            choose("실사 창고 선택", choices, choices.indexOf(warehouse)) { selected ->
+                warehouse = choices.getOrNull(selected)
+                render()
+            }
+        }.apply { id = R.id.auditSelectWarehouse }
+        openCamera = button("카메라 또는 앨범 열기", primary = true, icon = R.drawable.ic_inven_camera) {
+            if (!ready || warehouse !in choices) return@button
+            startActivity(Intent(this, AiAuditCamera::class.java).putExtra("WAREHOUSE_CODE", warehouse))
+        }.apply { id = R.id.auditOpenCamera }
+        render()
+    }
 
-		// 하단 네비게이션 바
-		// 1. 홈
-		findViewById<View>(R.id.rlis7tw39f7b)?.setOnClickListener {
-			val intent = Intent(this, HomeDashboard::class.java)
-			intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-			startActivity(intent)
-			finish()
-		}
-		// 2. 재고
-		findViewById<View>(R.id.rfgttzwpdgsv)?.setOnClickListener {
-			startActivity(Intent(this, InventoryList::class.java))
-		}
-		// 3. 스캔
-		val openScanner = View.OnClickListener {
-			startActivity(Intent(this, BarcodeScanner::class.java))
-		}
-		findViewById<View>(R.id.rbacjdf7m65n)?.setOnClickListener(openScanner)
-		findViewById<View>(R.id.rygg1q1smwrl)?.setOnClickListener(openScanner)
+    override fun onStart() {
+        super.onStart()
+        ready = false
+        problem = null
+        render()
+        listener = InventoryManager.listenToRealtimeInventory(this, onError = {
+            ready = false
+            problem = it
+            render()
+        }) {
+            choices = auditWarehouseChoices(it, images)
+            if (warehouse !in choices) warehouse = null
+            ready = true
+            problem = null
+            render()
+        }
+    }
 
-		// 4. 작업
-		findViewById<View>(R.id.r9lvydb052fq)?.setOnClickListener {
-			startActivity(Intent(this, WorkHistory::class.java))
-		}
-		// 5. 더보기 (드롭바/바텀시트 메뉴)
-		findViewById<View>(R.id.r3sd4rh47xqh)?.setOnClickListener {
-			MenuHelper.showMoreMenu(this)
-		}
+    private fun render() {
+        warehouseSelector.isEnabled = ready && choices.isNotEmpty()
+        warehouseSelector.text = warehouse ?: "실사 창고 선택"
+        openCamera.isEnabled = ready && warehouse in choices
+        status.text = when {
+            problem != null -> problem
+            !ready -> "회사 창고를 불러오는 중입니다."
+            choices.isEmpty() -> "실사할 창고가 없습니다. 회사의 전산 재고를 확인해 주세요."
+            warehouse == null -> "실사할 창고를 먼저 선택해 주세요."
+            else -> {
+                val count = auditImagesForWarehouse(images, warehouse).size
+                "실사 창고 · $warehouse\n" + if (count > 0) "연결된 테스트 이미지 ${count}장" else "이 창고의 전산 재고와 사진을 비교합니다."
+            }
+        }
+    }
 
-		// 1. 메인 [카메라로 실사 시작] 버튼 클릭 ➔ 카메라 촬영 화면 실행
-		findViewById<View>(R.id.roxu0u1g02kd)?.setOnClickListener {
-			startActivity(Intent(this, AiAuditCamera::class.java))
-		}
+    override fun onStop() {
+        listener?.remove()
+        listener = null
+        super.onStop()
+    }
 
-		// 2. 구역 선택 버튼 (A구역 선택)
-		findViewById<View>(R.id.rbn1juwucwum)?.setOnClickListener {
-			Toast.makeText(this, "A구역 (A01~A05)이 실사 대상으로 선택되었습니다.", Toast.LENGTH_SHORT).show()
-		}
-
-		// 3. 개별 랙 선택 버튼 (A01~A05)
-		val rackClick = View.OnClickListener { v ->
-			val tag = when(v.id) {
-				R.id.rgb1sqjwlxjm -> "A01"
-				R.id.rj6alsyhivu -> "A02"
-				R.id.rtwmfq85qt5 -> "A03"
-				R.id.ru26cdip6k2 -> "A04"
-				R.id.r4wdp4899azj -> "A05"
-				else -> "랙"
-			}
-			Toast.makeText(this, "$tag 랙이 실사 대상으로 선택되었습니다.", Toast.LENGTH_SHORT).show()
-		}
-		findViewById<View>(R.id.rgb1sqjwlxjm)?.setOnClickListener(rackClick)
-		findViewById<View>(R.id.rj6alsyhivu)?.setOnClickListener(rackClick)
-		findViewById<View>(R.id.rtwmfq85qt5)?.setOnClickListener(rackClick)
-		findViewById<View>(R.id.ru26cdip6k2)?.setOnClickListener(rackClick)
-		findViewById<View>(R.id.r4wdp4899azj)?.setOnClickListener(rackClick)
-	}
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString("warehouse", warehouse)
+        super.onSaveInstanceState(outState)
+    }
 }

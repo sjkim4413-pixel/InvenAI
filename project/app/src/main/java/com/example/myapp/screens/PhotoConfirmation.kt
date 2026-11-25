@@ -2,38 +2,57 @@ package com.example.myapp
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.ImageView
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 
-class PhotoConfirmation : AppCompatActivity() {
+class AuditPhotoPreviewModel : ViewModel() {
+    var bytes: ByteArray? = null
+}
 
-	override fun onCreate(savedInstanceState: Bundle?) {
-		super.onCreate(savedInstanceState)
-		setContentView(R.layout.activity_photo_confirmation)
-
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/r18axnwt_expires_30_days.png").into(findViewById(R.id.rgsw0un4ycns))
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/m99cfgdk_expires_30_days.png").into(findViewById(R.id.r3zlzs93haff))
-
-		// 상단 뒤로가기
-		findViewById<View>(R.id.rgsw0un4ycns)?.setOnClickListener { finish() }
-
-		// [적재 완료 제출] 버튼
-		val btnSubmit: View? = findViewById(R.id.r9q20dzoqfq6)
-		btnSubmit?.setOnClickListener {
-			Toast.makeText(this, "✅ 적재 완료 전송 및 로컬 DB 상태 업데이트 완료!", Toast.LENGTH_SHORT).show()
-
-			val intent = Intent(this, Inbound::class.java)
-			intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-			startActivity(intent)
-			finish()
-		}
-
-		// [재촬영] 버튼
-		val btnRetake: View? = findViewById(R.id.r6r7tkf5i87c)
-		btnRetake?.setOnClickListener {
-			Toast.makeText(this, "사진 재촬영을 진행합니다.", Toast.LENGTH_SHORT).show()
-		}
-	}
+class PhotoConfirmation : WarehouseScreen() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        openScreen("실사 사진 확인", navigation = false)
+        val warehouse = intent.getStringExtra("WAREHOUSE_CODE")
+        val mode = if (intent.getBooleanExtra(EXTRA_TEST_RACK_LABELS, false)) "test_rack_labels"
+            else intent.getStringExtra(EXTRA_AUDIT_TEST_MODE)
+        val problem = auditPhotoWarehouseProblem(warehouse, mode, intent.getStringExtra(EXTRA_AUDIT_TEST_WAREHOUSE))
+        if (problem != null) {
+            CapturedPhotoHolder.getAndClear()
+            label(problem, true)
+            button("실사 창고 다시 선택", primary = true) {
+                startActivity(Intent(this, AuditStart::class.java))
+                finish()
+            }
+            return
+        }
+        label("실사 창고 · $warehouse", true)
+        intent.getStringExtra(EXTRA_AUDIT_TEST_TITLE)?.let { label(it, true) }
+        val model = ViewModelProvider(this)[AuditPhotoPreviewModel::class.java]
+        if (model.bytes == null) model.bytes = CapturedPhotoHolder.getAndClear()
+        val photo = model.bytes
+        if (photo == null) {
+            label("선택된 사진이 없습니다. 사진을 다시 촬영하거나 선택해 주세요.")
+        } else {
+            val preview = ImageView(this).apply {
+                scaleType = ImageView.ScaleType.FIT_CENTER
+                contentDescription = "실사 사진"
+                background = WarehouseAppearance.shape(this@PhotoConfirmation, WarehouseAppearance.INK)
+                clipToOutline = true
+            }
+            body.addView(preview, android.widget.LinearLayout.LayoutParams(-1, dp(430)).apply { bottomMargin = dp(18) })
+            Glide.with(this).load(photo).fitCenter().into(preview)
+            button("이 사진 분석", primary = true, icon = R.drawable.ic_inven_audit) {
+                CapturedPhotoHolder.photoBytes = photo
+                startActivity(Intent(this, AiAuditResults::class.java).putExtras(intent))
+                finish()
+            }.id = R.id.auditAnalyzePhoto
+        }
+        button("다시 촬영 또는 선택") {
+            startActivity(Intent(this, AiAuditCamera::class.java).putExtras(intent))
+            finish()
+        }
+    }
 }

@@ -11,6 +11,7 @@ import com.google.android.material.imageview.ShapeableImageView
 
 internal data class AuditPhotoMark(val detection: F03Detection, val position: F03ComparedPosition?) {
     val color: Int get() = when {
+        position?.testProductLocationMatch == true && detection.testProductLocationMatch && detection.locationVerified -> 0xFF059669.toInt()
         position?.testLabelMatch == true && detection.testLabelMatch -> 0xFF059669.toInt()
         position?.isVerifiedMatch == true && detection.locationVerified &&
             (detection.verificationPassed || detection.productLocationVerified) -> 0xFF059669.toInt()
@@ -20,7 +21,7 @@ internal data class AuditPhotoMark(val detection: F03Detection, val position: F0
     }
 }
 
-internal fun F03AnalyzeAndCompareResponse.photoMarks(): List<AuditPhotoMark> {
+internal fun F03AnalyzeAndCompareResponse.photoMarks(includeUnmappedTestCandidates: Boolean = false): List<AuditPhotoMark> {
     val positionsByDetection = results.orEmpty().flatMap { row ->
         row.detectionIds.orEmpty().map { id -> id to row }
     }.groupBy({ it.first }, { it.second })
@@ -31,6 +32,7 @@ internal fun F03AnalyzeAndCompareResponse.photoMarks(): List<AuditPhotoMark> {
             box[2] <= box[0] || box[3] <= box[1]) return@mapNotNull null
         val position = positionsByDetection[detection.id]?.singleOrNull()
             ?.takeIf { detection.locationVerified || it.locationVerified || (it.floor == null && it.ocrTokenIds != null) }
+        if (verificationScope == "test_rack_label_as_item_code" && position == null && !includeUnmappedTestCandidates) return@mapNotNull null
         AuditPhotoMark(detection, position)
     }
 }

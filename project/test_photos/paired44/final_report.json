@@ -1,0 +1,508 @@
+{
+  "pipeline": "2026-11-24.44",
+  "time_utc": "2026-11-24T08:52:46.125564+00:00",
+  "actual_pixel_comparison": true,
+  "auth": "local TestClient override",
+  "inventory_source": "saved Firestore readback",
+  "method": "human-annotated reference appearance; no OCR/YOLO claim",
+  "photos": [
+    {
+      "file": "276ec63e-e08f-4915-b585-582e9529bdaa.png",
+      "title": "테스트 01 · 생활용품 A 정면 · 정상",
+      "pair": "pair_01",
+      "variant": "normal",
+      "positions": 20,
+      "matched": 20,
+      "misplaced": 0,
+      "review": 0,
+      "expected_changed_locations": [],
+      "changed_locations": [],
+      "expected_changes_flagged": true,
+      "exceptional": []
+    },
+    {
+      "file": "pair_01_misplaced.png",
+      "title": "테스트 02 · 생활용품 A 정면 · 오적재",
+      "pair": "pair_01",
+      "variant": "misplaced",
+      "positions": 20,
+      "matched": 18,
+      "misplaced": 1,
+      "review": 1,
+      "expected_changed_locations": [
+        "A01-4F",
+        "A03-4F"
+      ],
+      "changed_locations": [
+        "A01-4F",
+        "A03-4F"
+      ],
+      "expected_changes_flagged": true,
+      "exceptional": [
+        {
+          "status": 2,
+          "location": "A01-4F",
+          "sku": "SIM-AI01-P08",
+          "candidate_sku": "SIM-AI01-P08",
+          "reference_location": "A03-4F",
+          "distance": 0.10395,
+          "margin": 0.04471,
+          "accepted": true,
+          "candidates": [
+            {
+              "sku": "SIM-AI01-P08",
+              "distance": 0.10395
+            },
+            {
+              "sku": "SIM-AI01-P18",
+              "distance": 0.14866
+            },
+            {
+              "sku": "SIM-AI01-P16",
+              "distance": 0.1516
+            }
+          ]
+        },
+        {
+          "status": 5,
+          "location": "A03-4F",
+          "sku": null,
+          "candidate_sku": "SIM-AI01-P06",
+          "reference_location": "A01-4F",
+          "distance": 0.19526,
+          "margin": 0.0169,
+          "accepted": false,
+          "candidates": [
+            {
+              "sku": "SIM-AI01-P06",
+              "distance": 0.19526
+            },
+            {
+              "sku": "SIM-AI01-P03",
+              "distance": 0.21215
+            },
+            {
+              "sku": "SIM-AI01-P08",
+              "distance": 0.33586
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "31940782-2973-4e71-9765-5ba1d3d0b20b.png",
+      "title": "테스트 03 · 생활용품 B 정면 · 정상",
+      "pair": "pair_02",
+      "variant": "normal",
+      "positions": 21,
+      "matched": 21,
+      "misplaced": 0,
+      "review": 0,
+      "expected_changed_locations": [],
+      "changed_locations": [],
+      "expected_changes_flagged": true,
+      "exceptional": []
+    },
+    {
+      "file": "pair_02_misplaced.png",
+      "title": "테스트 04 · 생활용품 B 정면 · 오적재",
+      "pair": "pair_02",
+      "variant": "misplaced",
+      "positions": 21,
+      "matched": 19,
+      "misplaced": 2,
+      "review": 0,
+      "expected_changed_locations": [
+        "A01-1F",
+        "A02-1F"
+      ],
+      "changed_locations": [
+        "A01-1F",
+        "A02-1F"
+      ],
+      "expected_changes_flagged": true,
+      "exceptional": [
+        {
+          "status": 2,
+          "location": "A01-1F",
+          "sku": "SIM-AI02-P19",
+          "candidate_sku": "SIM-AI02-P19",
+          "reference_location": "A02-1F",
+          "distance": 0.07688,
+          "margin": 0.09481,
+          "accepted": true,
+          "candidates": [
+            {
+              "sku": "SIM-AI02-P19",
+              "distance": 0.07688
+            },
+            {
+              "sku": "SIM-AI02-P02",
+              "distance": 0.17169
+            },
+            {
+              "sku": "SIM-AI02-P07",
+              "distance": 0.18278
+            }
+          ]
+        },
+        {
+          "status": 2,
+          "location": "A02-1F",
+          "sku": "SIM-AI02-P18",
+          "candidate_sku": "SIM-AI02-P18",
+          "reference_location": "A01-1F",
+          "distance": 0.08576,
+          "margin": 0.18915,
+          "accepted": true,
+          "candidates": [
+            {
+              "sku": "SIM-AI02-P18",
+              "distance": 0.08576
+            },
+            {
+              "sku": "SIM-AI02-P16",
+              "distance": 0.2749
+            },
+            {
+              "sku": "SIM-AI02-P20",
+              "distance": 0.29157
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "7be725d7-e159-47a9-884d-1535aace4a93.png",
+      "title": "테스트 05 · 생활용품 C 전경 · 정상",
+      "pair": "pair_03",
+      "variant": "normal",
+      "positions": 42,
+      "matched": 42,
+      "misplaced": 0,
+      "review": 0,
+      "expected_changed_locations": [],
+      "changed_locations": [],
+      "expected_changes_flagged": true,
+      "exceptional": []
+    },
+    {
+      "file": "pair_03_misplaced.png",
+      "title": "테스트 06 · 생활용품 C 전경 · 오적재",
+      "pair": "pair_03",
+      "variant": "misplaced",
+      "positions": 42,
+      "matched": 40,
+      "misplaced": 2,
+      "review": 0,
+      "expected_changed_locations": [
+        "A01-5F",
+        "A02-5F"
+      ],
+      "changed_locations": [
+        "A01-5F",
+        "A02-5F"
+      ],
+      "expected_changes_flagged": true,
+      "exceptional": [
+        {
+          "status": 2,
+          "location": "A01-5F",
+          "sku": "SIM-AI03-P02",
+          "candidate_sku": "SIM-AI03-P02",
+          "reference_location": "A02-5F",
+          "distance": 0.05002,
+          "margin": 0.14844,
+          "accepted": true,
+          "candidates": [
+            {
+              "sku": "SIM-AI03-P02",
+              "distance": 0.05002
+            },
+            {
+              "sku": "SIM-AI03-P35",
+              "distance": 0.19846
+            },
+            {
+              "sku": "SIM-AI03-P11",
+              "distance": 0.24329
+            }
+          ]
+        },
+        {
+          "status": 2,
+          "location": "A02-5F",
+          "sku": "SIM-AI03-P01",
+          "candidate_sku": "SIM-AI03-P01",
+          "reference_location": "A01-5F",
+          "distance": 0.04984,
+          "margin": 0.12287,
+          "accepted": true,
+          "candidates": [
+            {
+              "sku": "SIM-AI03-P01",
+              "distance": 0.04984
+            },
+            {
+              "sku": "SIM-AI03-P14",
+              "distance": 0.17271
+            },
+            {
+              "sku": "SIM-AI03-P42",
+              "distance": 0.19521
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "QAE_rack_labels.png",
+      "title": "테스트 07 · 가전제품 정면 · 정상",
+      "pair": "pair_04",
+      "variant": "normal",
+      "positions": 12,
+      "matched": 12,
+      "misplaced": 0,
+      "review": 0,
+      "expected_changed_locations": [],
+      "changed_locations": [],
+      "expected_changes_flagged": true,
+      "exceptional": []
+    },
+    {
+      "file": "pair_04_misplaced.png",
+      "title": "테스트 08 · 가전제품 정면 · 오적재",
+      "pair": "pair_04",
+      "variant": "misplaced",
+      "positions": 12,
+      "matched": 10,
+      "misplaced": 2,
+      "review": 0,
+      "expected_changed_locations": [
+        "QAE01-1F-01",
+        "QAE02-1F-01"
+      ],
+      "changed_locations": [
+        "QAE01-1F-01",
+        "QAE02-1F-01"
+      ],
+      "expected_changes_flagged": true,
+      "exceptional": [
+        {
+          "status": 2,
+          "location": "QAE01-1F-01",
+          "sku": "SIM-QAE02-1F-01",
+          "candidate_sku": "SIM-QAE02-1F-01",
+          "reference_location": "QAE02-1F-01",
+          "distance": 0.10041,
+          "margin": 0.17708,
+          "accepted": true,
+          "candidates": [
+            {
+              "sku": "SIM-QAE02-1F-01",
+              "distance": 0.10041
+            },
+            {
+              "sku": "SIM-QAE02-5F-02",
+              "distance": 0.27749
+            },
+            {
+              "sku": "SIM-QAE01-4F-01",
+              "distance": 0.285
+            }
+          ]
+        },
+        {
+          "status": 2,
+          "location": "QAE02-1F-01",
+          "sku": "SIM-QAE01-1F-01",
+          "candidate_sku": "SIM-QAE01-1F-01",
+          "reference_location": "QAE01-1F-01",
+          "distance": 0.09677,
+          "margin": 0.15559,
+          "accepted": true,
+          "candidates": [
+            {
+              "sku": "SIM-QAE01-1F-01",
+              "distance": 0.09677
+            },
+            {
+              "sku": "SIM-QAE02-4F-01",
+              "distance": 0.25236
+            },
+            {
+              "sku": "SIM-QAE01-4F-01",
+              "distance": 0.26499
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "QAF_rack_labels.png",
+      "title": "테스트 09 · 장난감 정면 · 정상",
+      "pair": "pair_05",
+      "variant": "normal",
+      "positions": 10,
+      "matched": 10,
+      "misplaced": 0,
+      "review": 0,
+      "expected_changed_locations": [],
+      "changed_locations": [],
+      "expected_changes_flagged": true,
+      "exceptional": []
+    },
+    {
+      "file": "pair_05_misplaced.png",
+      "title": "테스트 10 · 장난감 정면 · 오적재",
+      "pair": "pair_05",
+      "variant": "misplaced",
+      "positions": 10,
+      "matched": 8,
+      "misplaced": 1,
+      "review": 1,
+      "expected_changed_locations": [
+        "QAF01-2F-02",
+        "QAF02-2F-01"
+      ],
+      "changed_locations": [
+        "QAF01-2F-02",
+        "QAF02-2F-01"
+      ],
+      "expected_changes_flagged": true,
+      "exceptional": [
+        {
+          "status": 2,
+          "location": "QAF01-2F-02",
+          "sku": "SIM-QAF02-2F-01",
+          "candidate_sku": "SIM-QAF02-2F-01",
+          "reference_location": "QAF02-2F-01",
+          "distance": 0.13934,
+          "margin": 0.02632,
+          "accepted": true,
+          "candidates": [
+            {
+              "sku": "SIM-QAF02-2F-01",
+              "distance": 0.13934
+            },
+            {
+              "sku": "SIM-QAF02-1F-01",
+              "distance": 0.16566
+            },
+            {
+              "sku": "SIM-QAF01-2F-01",
+              "distance": 0.19227
+            }
+          ]
+        },
+        {
+          "status": 5,
+          "location": "QAF02-2F-01",
+          "sku": null,
+          "candidate_sku": "SIM-QAF01-2F-02",
+          "reference_location": "QAF01-2F-02",
+          "distance": 0.23869,
+          "margin": 0.03719,
+          "accepted": false,
+          "candidates": [
+            {
+              "sku": "SIM-QAF01-2F-02",
+              "distance": 0.23869
+            },
+            {
+              "sku": "SIM-QAF01-1F-02",
+              "distance": 0.27588
+            },
+            {
+              "sku": "SIM-QAF02-1F-02",
+              "distance": 0.30999
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "file": "QAG_rack_labels.png",
+      "title": "테스트 11 · 포장 팔레트 사선 · 정상",
+      "pair": "pair_06",
+      "variant": "normal",
+      "positions": 4,
+      "matched": 4,
+      "misplaced": 0,
+      "review": 0,
+      "expected_changed_locations": [],
+      "changed_locations": [],
+      "expected_changes_flagged": true,
+      "exceptional": []
+    },
+    {
+      "file": "pair_06_misplaced.png",
+      "title": "테스트 12 · 포장 팔레트 사선 · 오적재",
+      "pair": "pair_06",
+      "variant": "misplaced",
+      "positions": 4,
+      "matched": 2,
+      "misplaced": 2,
+      "review": 0,
+      "expected_changed_locations": [
+        "QAG01-2F-01",
+        "QAG01-2F-02"
+      ],
+      "changed_locations": [
+        "QAG01-2F-01",
+        "QAG01-2F-02"
+      ],
+      "expected_changes_flagged": true,
+      "exceptional": [
+        {
+          "status": 2,
+          "location": "QAG01-2F-01",
+          "sku": "SIM-QAG01-2F-02",
+          "candidate_sku": "SIM-QAG01-2F-02",
+          "reference_location": "QAG01-2F-02",
+          "distance": 0.13588,
+          "margin": 0.08326,
+          "accepted": true,
+          "candidates": [
+            {
+              "sku": "SIM-QAG01-2F-02",
+              "distance": 0.13588
+            },
+            {
+              "sku": "SIM-QAG02-2F-02",
+              "distance": 0.21914
+            },
+            {
+              "sku": "SIM-QAG01-2F-01",
+              "distance": 0.24638
+            }
+          ]
+        },
+        {
+          "status": 2,
+          "location": "QAG01-2F-02",
+          "sku": "SIM-QAG01-2F-01",
+          "candidate_sku": "SIM-QAG01-2F-01",
+          "reference_location": "QAG01-2F-01",
+          "distance": 0.12998,
+          "margin": 0.0206,
+          "accepted": true,
+          "candidates": [
+            {
+              "sku": "SIM-QAG01-2F-01",
+              "distance": 0.12998
+            },
+            {
+              "sku": "SIM-QAG02-2F-02",
+              "distance": 0.15059
+            },
+            {
+              "sku": "SIM-QAG02-2F-01",
+              "distance": 0.17358
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

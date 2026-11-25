@@ -1,0 +1,12 @@
+{
+  "pipeline": "2026-11-24.43",
+  "weights_sha256": "9d9c06ee7ce68d67d19ec54e67babb0070899af6e6b5765ec11915f2aff86a98",
+  "source_checkpoint": "training2/candidate/weights/last.pt",
+  "selection": "109/109 reference positions, actual OCR and detector inference",
+  "training_includes_the_six_reference_scenes": true,
+  "independent_field_accuracy_measured": false,
+  "label_text_masked_during_training_and_detection": true,
+  "reference_positions": 109,
+  "production_detector_replaced": false,
+  "used_for": "test_rack_labels_only"
+}

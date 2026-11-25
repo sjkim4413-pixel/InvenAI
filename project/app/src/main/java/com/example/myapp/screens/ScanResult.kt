@@ -2,57 +2,49 @@ package com.example.myapp
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide
+import com.google.firebase.firestore.ListenerRegistration
 
-class ScanResult : AppCompatActivity() {
+class ScanResult : WarehouseScreen() {
+    private var listener: ListenerRegistration? = null
+    private lateinit var code: String
 
-	override fun onCreate(savedInstanceState: Bundle?) {
-		super.onCreate(savedInstanceState)
-		setContentView(R.layout.activity_scan_result)
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        openScreen("스캔 결과")
+        code = intent.getStringExtra(BarcodeScanner.RESULT_CODE).orEmpty()
+        label(if (code.isBlank()) "스캔한 코드가 없습니다." else "스캔한 코드 · $code", true)
+        button("다시 스캔", icon = R.drawable.ic_inven_barcode) { startActivity(Intent(this, BarcodeScanner::class.java)); finish() }
+    }
 
-		// 이미지 로딩
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/a6r81hrn_expires_30_days.png").into(findViewById(R.id.rs501264yjoh))
+    override fun onStart() {
+        super.onStart()
+        if (code.isBlank()) return
+        listener = InventoryManager.listenToRealtimeInventory(this, onError = {
+            render(emptyList(), it)
+        }) { items -> render(items.filter { it.matchesScan(code) }) }
+    }
 
-		val targetLocation = intent.getStringExtra("TARGET_LOCATION") ?: "B구역 R05-3층"
-		val scannedLocation = intent.getStringExtra("SCANNED_LOCATION") ?: "B구역 R05-3층"
-		val isMatch = targetLocation == scannedLocation
+    override fun onStop() {
+        listener?.remove()
+        listener = null
+        super.onStop()
+    }
 
-		if (isMatch) {
-			Toast.makeText(this, "🟢 적재 위치 일치: $scannedLocation", Toast.LENGTH_SHORT).show()
-		} else {
-			Toast.makeText(this, "🔴 ⚠️ 오적재 경고! 목표: $targetLocation / 스캔: $scannedLocation", Toast.LENGTH_LONG).show()
-		}
-
-		// 상단 뒤로가기 버튼
-		findViewById<View>(R.id.rs501264yjoh)?.setOnClickListener { finish() }
-
-		// 하단 네비게이션 바
-		findViewById<View>(R.id.r8amufvebl0f)?.setOnClickListener {
-			val intent = Intent(this, HomeDashboard::class.java)
-			intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
-			startActivity(intent)
-			finish()
-		}
-		findViewById<View>(R.id.r44bpz2b5xd)?.setOnClickListener {
-			startActivity(Intent(this, InventoryList::class.java))
-		}
-		findViewById<View>(R.id.rt6mzo7uanci)?.setOnClickListener {
-			startActivity(Intent(this, WorkHistory::class.java))
-		}
-		findViewById<View>(R.id.r8cwkejnored)?.setOnClickListener {
-			MenuHelper.showMoreMenu(this)
-		}
-
-		// [적재 완료 증빙 사진 촬영] 버튼
-		val btnConfirm: View? = findViewById(R.id.rezvoesofeq)
-		btnConfirm?.setOnClickListener {
-			val intent = Intent(this, PhotoConfirmation::class.java)
-			intent.putExtra("TARGET_LOCATION", targetLocation)
-			intent.putExtra("SCANNED_LOCATION", scannedLocation)
-			startActivity(intent)
-		}
-	}
+    private fun render(items: List<InventoryItem>, error: String? = null) {
+        body.removeAllViews()
+        label("스캔한 코드 · $code", true)
+        if (error != null) label(error)
+        else if (items.isEmpty()) {
+            label("현재 회사 재고에서 이 코드를 찾을 수 없습니다.")
+            button("이 코드로 신규 입고", primary = true, icon = R.drawable.ic_inven_inventory) {
+                startActivity(Intent(this, Inbound::class.java).putExtra("SCANNED_ITEM_CODE", code))
+            }
+        } else items.forEach { item ->
+            body.addView(warehouseRow(this, item.itemName,
+                "${item.warehouse.ifBlank { "창고 미등록" }} · ${item.location}\n${item.quantity}개 · ${item.statusLabel()}") {
+                startActivity(inventoryIntent(this, InventoryDetail::class.java, item))
+            })
+        }
+        button("다시 스캔", icon = R.drawable.ic_inven_barcode) { startActivity(Intent(this, BarcodeScanner::class.java)); finish() }
+    }
 }

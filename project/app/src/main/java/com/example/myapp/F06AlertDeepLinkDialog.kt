@@ -35,18 +35,11 @@ object F06AlertDeepLinkDialog {
             dialog.dismiss()
         }
 
-        // F-06 명세서 규격: [수정 완료] 클릭 ➔ 해당 로케이션 상태를 '재검증 대기'(WAITING_REVERIFICATION)로 회신
+        // 현재 오적재로 표시된 품목에 대해 검수자 재확인을 요청합니다.
         btnComplete.setOnClickListener {
-            val updatedItem = InventoryItem(
-                itemCode = payload.expectedItemCode,
-                itemName = "품목: " + payload.expectedItemCode,
-                quantity = 1,
-                location = payload.location,
-                status = "WAITING_REVERIFICATION"
-            )
-
-            InventoryManager.addOrUpdateInventoryItem(
-                item = updatedItem,
+            InventoryManager.requestReverification(
+                context = activity,
+                itemCode = payload.currentItemCode,
                 onSuccess = {
                     Toast.makeText(activity, "✅ 시정 완료 회신! 로케이션 상태가 '재검증 대기'로 변경되었습니다.", Toast.LENGTH_LONG).show()
                     dialog.dismiss()

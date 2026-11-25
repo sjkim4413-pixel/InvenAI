@@ -11,7 +11,10 @@
       "height": 1448,
       "sha256": [
         "84a830553e3b86a7d8c361703da3635d5bd1d15f6d624e8816e53472fd285135",
-        "1d4c55ec48ad207ab866b0187b3c938c67b2153ccecb0f783e02ff5e8e006e9e"
+        "1d4c55ec48ad207ab866b0187b3c938c67b2153ccecb0f783e02ff5e8e006e9e",
+        "bd14a5678f188fe91882a72563d7c9b8fddfdec89305ade2ecaff113011e8269",
+        "13895cbb919aec19ee8487ad8ef427bfceb3b567240f3321c5eb3fdfbe39a22e",
+        "2b73ea27aa8261481562c50a1c6be64a48633c02ddf824f68ef8ca23ea7c5b51"
       ],
       "regions": [
         {
@@ -222,7 +225,8 @@
       "height": 1447,
       "sha256": [
         "4cf6f1c804e771a1216e6546b05125510d101a1e64f43b30fc0b5566a40e106b",
-        "5a0eca2b8f724b8861409c5809b17bbd00e6652d9de347e96d349cd65715e459"
+        "5a0eca2b8f724b8861409c5809b17bbd00e6652d9de347e96d349cd65715e459",
+        "2bfc0cb2bae68d2224b326bda41d5d1d5939ad3726cad4f7e806272bc372473d"
       ],
       "regions": [
         {
@@ -443,7 +447,8 @@
       "height": 1086,
       "sha256": [
         "f596e9c1934bfa15a77d2d335e3433380dfd1bfb92f464a3be6a50eb15a1749b",
-        "be44f2656362813cafb0cbff5be44fe33359389694490d27bafaf3a13ff06e78"
+        "be44f2656362813cafb0cbff5be44fe33359389694490d27bafaf3a13ff06e78",
+        "c565698885dce0e9c2488b3fa54fba167064fc53be4870a7cd6242f9857dfa18"
       ],
       "regions": [
         {

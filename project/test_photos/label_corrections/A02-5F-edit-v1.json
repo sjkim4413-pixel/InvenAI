@@ -1,0 +1,13 @@
+{
+  "original_sha256": "84a830553e3b86a7d8c361703da3635d5bd1d15f6d624e8816e53472fd285135",
+  "edited_sha256": "bd14a5678f188fe91882a72563d7c9b8fddfdec89305ade2ecaff113011e8269",
+  "changed_region": [
+    280,
+    379,
+    346,
+    416
+  ],
+  "label": "A02-5F",
+  "method": "Built-in imagegen edit; integrate generated sticker region only to preserve other labels",
+  "prompt": "Add A02-5F beneath the top row second pallet, matching adjacent labels; preserve all other content."
+}

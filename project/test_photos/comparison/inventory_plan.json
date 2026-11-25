@@ -1,0 +1,72 @@
+{
+  "project": "warehouseqa-8c262",
+  "database": "(default)",
+  "collection": "inventory",
+  "companyCode": "ABC-002",
+  "warehouse": "AI 상품·위치 비교 테스트 창고",
+  "records": [
+    {
+      "id": "ABC-002_HPX-111",
+      "data": {
+        "companyCode": "ABC-002",
+        "warehouse": "AI 상품·위치 비교 테스트 창고",
+        "location": "QAC02-5F-01",
+        "itemCode": "HPX-111",
+        "itemName": "흰색 가전 포장 묶음",
+        "quantity": 1,
+        "quantityUnit": "PACKAGING_GROUP",
+        "status": "NORMAL",
+        "isTestData": true,
+        "dataSource": "SIMULATED_AI_IMAGE_ERP",
+        "photoReference": "compare_01_normal.png",
+        "alternatePhotoReference": "compare_02_misplaced.png",
+        "photoSha256": "ca35db35b5e908fe65add070852a84ed02cf301c0a8e79e4fc3e56bfaa5ac3a1",
+        "alternatePhotoSha256": "d610e332563c8809e083b6256e8f12de8721722519d5a993ac71673440d54b91",
+        "photoLocationLabel": "QAC02-5F-01",
+        "photoLabelIssue": ""
+      }
+    },
+    {
+      "id": "ABC-002_HPX-222",
+      "data": {
+        "companyCode": "ABC-002",
+        "warehouse": "AI 상품·위치 비교 테스트 창고",
+        "location": "QAC02-5F-02",
+        "itemCode": "HPX-222",
+        "itemName": "갈색 가전 포장 묶음",
+        "quantity": 1,
+        "quantityUnit": "PACKAGING_GROUP",
+        "status": "NORMAL",
+        "isTestData": true,
+        "dataSource": "SIMULATED_AI_IMAGE_ERP",
+        "photoReference": "compare_01_normal.png",
+        "alternatePhotoReference": "compare_02_misplaced.png",
+        "photoSha256": "ca35db35b5e908fe65add070852a84ed02cf301c0a8e79e4fc3e56bfaa5ac3a1",
+        "alternatePhotoSha256": "d610e332563c8809e083b6256e8f12de8721722519d5a993ac71673440d54b91",
+        "photoLocationLabel": "QAC02-5F-02",
+        "photoLabelIssue": ""
+      }
+    },
+    {
+      "id": "ABC-002_HPX-333",
+      "data": {
+        "companyCode": "ABC-002",
+        "warehouse": "AI 상품·위치 비교 테스트 창고",
+        "location": "QAC03-5F-01",
+        "itemCode": "HPX-333",
+        "itemName": "연녹색 가전 포장 묶음",
+        "quantity": 1,
+        "quantityUnit": "PACKAGING_GROUP",
+        "status": "NORMAL",
+        "isTestData": true,
+        "dataSource": "SIMULATED_AI_IMAGE_ERP",
+        "photoReference": "compare_01_normal.png",
+        "alternatePhotoReference": "compare_02_misplaced.png",
+        "photoSha256": "ca35db35b5e908fe65add070852a84ed02cf301c0a8e79e4fc3e56bfaa5ac3a1",
+        "alternatePhotoSha256": "d610e332563c8809e083b6256e8f12de8721722519d5a993ac71673440d54b91",
+        "photoLocationLabel": "QAC03-5F-01",
+        "photoLabelIssue": ""
+      }
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "photos": 6,
+  "matched": 109,
+  "total": 109,
+  "rate": 100.0,
+  "weights_sha256": "9d9c06ee7ce68d67d19ec54e67babb0070899af6e6b5765ec11915f2aff86a98",
+  "inventory_records": 242,
+  "negative_controls": [
+    {
+      "case": "zero_quantity",
+      "matched": 19,
+      "total": 20,
+      "ocr_reused": true,
+      "firestore_written": false
+    },
+    {
+      "case": "anomaly_status",
+      "matched": 19,
+      "total": 20,
+      "ocr_reused": true,
+      "firestore_written": false
+    },
+    {
+      "case": "wrong_registered_location",
+      "matched": 19,
+      "total": 20,
+      "ocr_reused": true,
+      "firestore_written": false
+    }
+  ],
+  "unknown_photo_status": 422,
+  "unauthenticated_status": 401,
+  "scope": "Curated reference scenes included in detector training; label/location test only; quantity unverified"
+}

@@ -1,0 +1,13 @@
+{
+  "original_sha256": "84a830553e3b86a7d8c361703da3635d5bd1d15f6d624e8816e53472fd285135",
+  "edited_sha256": "13895cbb919aec19ee8487ad8ef427bfceb3b567240f3321c5eb3fdfbe39a22e",
+  "changed_region": [
+    272,
+    380,
+    356,
+    418
+  ],
+  "label": "A02-5F",
+  "method": "Built-in imagegen edit; integrate generated sticker region only to preserve other labels",
+  "prompt": "Add a clear 72x30 pixel A02-5F label beneath the top row second pallet; preserve all other content."
+}

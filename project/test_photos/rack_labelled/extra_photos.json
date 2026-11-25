@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "purpose": "Additional synthetic rack-label test photos; labels and quantities are simulated",
+  "photos": [
+    {
+      "source": "KakaoTalk_20261103_153240227_01.jpg",
+      "output": "QAE_rack_labels.png",
+      "referenceSize": [1050, 1400],
+      "description": "가전제품 정면 진열",
+      "positions": [
+        {"location": "QAE01-5F-01", "center": [250, 538], "loadBBox": [108, 340, 390, 493], "name": "흰색 쿠쿠 포장 묶음"},
+        {"location": "QAE02-5F-01", "center": [555, 538], "loadBBox": [425, 304, 686, 490], "name": "흰색 생활가전 포장 묶음"},
+        {"location": "QAE02-5F-02", "center": [885, 538], "loadBBox": [746, 341, 1007, 490], "name": "공구 장난감 포장 묶음"},
+        {"location": "QAE01-4F-01", "center": [255, 785], "loadBBox": [158, 632, 390, 733], "name": "필립스 토스터 포장 묶음"},
+        {"location": "QAE02-4F-01", "center": [570, 785], "loadBBox": [432, 561, 711, 733], "name": "블랙앤데커 전기그릴 포장 묶음"},
+        {"location": "QAE02-4F-02", "center": [885, 785], "loadBBox": [748, 562, 1017, 733], "name": "분홍색 미용기기 포장 묶음"},
+        {"location": "QAE01-3F-01", "center": [320, 943], "loadBBox": [240, 810, 394, 925], "name": "흰색 토스터 포장 묶음"},
+        {"location": "QAE02-3F-01", "center": [565, 943], "loadBBox": [422, 846, 711, 925], "name": "테팔 차 포트 포장 묶음"},
+        {"location": "QAE02-3F-02", "center": [885, 943], "loadBBox": [749, 804, 1042, 925], "name": "필립스 전기주전자 포장 묶음"},
+        {"location": "QAE01-1F-01", "center": [245, 1355], "loadBBox": [113, 1116, 387, 1330], "name": "블랙앤데커 믹서기 포장 묶음"},
+        {"location": "QAE02-1F-01", "center": [565, 1355], "loadBBox": [421, 1117, 709, 1330], "name": "필립스 녹색 믹서기 포장 묶음"},
+        {"location": "QAE02-1F-02", "center": [905, 1355], "loadBBox": [747, 1130, 1045, 1335], "name": "주황색 전기주전자 포장 묶음"}
+      ]
+    },
+    {
+      "source": "KakaoTalk_20261103_153240227_10.jpg",
+      "output": "QAF_rack_labels.png",
+      "referenceSize": [1400, 1050],
+      "description": "장난감 정면 진열",
+      "positions": [
+        {"location": "QAF01-2F-01", "center": [185, 338], "loadBBox": [42, 79, 339, 315], "name": "공구 놀이 세트"},
+        {"location": "QAF01-2F-02", "center": [520, 338], "loadBBox": [346, 154, 676, 314], "name": "뽑기 놀이 장난감"},
+        {"location": "QAF02-2F-01", "center": [875, 333], "loadBBox": [722, 61, 1065, 305], "name": "주차장 놀이 세트"},
+        {"location": "QAF02-2F-02", "center": [1170, 333], "loadBBox": [1049, 89, 1280, 304], "name": "워터 놀이 세트"},
+        {"location": "QAF01-1F-01", "center": [145, 796], "loadBBox": [0, 400, 289, 774], "name": "분홍색 생일 놀이 세트"},
+        {"location": "QAF01-1F-02", "center": [385, 796], "loadBBox": [277, 413, 484, 774], "name": "사파리 동물 알 장난감"},
+        {"location": "QAF01-1F-03", "center": [580, 796], "loadBBox": [476, 405, 681, 773], "name": "바다 동물 알 장난감"},
+        {"location": "QAF02-1F-01", "center": [865, 796], "loadBBox": [734, 405, 1007, 772], "name": "트럭 자동차 놀이 세트"},
+        {"location": "QAF02-1F-02", "center": [1080, 796], "loadBBox": [998, 446, 1206, 773], "name": "아기 인형 놀이 세트"},
+        {"location": "QAF02-1F-03", "center": [1300, 796], "loadBBox": [1123, 363, 1400, 774], "name": "인형의 집 놀이 세트"}
+      ]
+    },
+    {
+      "source": "KakaoTalk_20261103_153240227_13.jpg",
+      "output": "QAG_rack_labels.png",
+      "referenceSize": [1400, 1050],
+      "description": "비스듬한 포장 팔레트",
+      "positions": [
+        {"location": "QAG01-2F-01", "center": [420, 918], "loadBBox": [148, 170, 618, 802], "name": "흰색 식품 포장 팔레트"},
+        {"location": "QAG01-2F-02", "center": [840, 918], "loadBBox": [600, 418, 994, 836], "name": "녹색 식품 포장 팔레트"},
+        {"location": "QAG02-2F-01", "center": [1120, 918], "loadBBox": [968, 565, 1235, 859], "name": "보라색 포장 팔레트"},
+        {"location": "QAG02-2F-02", "center": [1310, 926], "loadBBox": [1164, 549, 1370, 865], "name": "흰색 포장 팔레트"}
+      ]
+    }
+  ]
+}

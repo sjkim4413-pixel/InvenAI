@@ -1,0 +1,7142 @@
+[
+  {
+    "image": "276ec63e-e08f-4915-b585-582e9529bdaa.png",
+    "expected": 20,
+    "recognized": 20,
+    "candidates": 20,
+    "missing": [],
+    "seconds": 6.5,
+    "tokens": [
+      {
+        "id": "t1",
+        "text": "Ao4-5F",
+        "confidence": 0.5488157449407393,
+        "bbox": [
+          0.5957642725598526,
+          0.24378453038674033,
+          0.6740331491712708,
+          0.2617403314917127
+        ]
+      },
+      {
+        "id": "t2",
+        "text": "Ao3-5F",
+        "confidence": 0.6986016437553024,
+        "bbox": [
+          0.40791896869244937,
+          0.25,
+          0.4843462246777164,
+          0.26795580110497236
+        ]
+      },
+      {
+        "id": "t3",
+        "text": "Aoz-SF",
+        "confidence": 0.5193677011992861,
+        "bbox": [
+          0.24769797421731124,
+          0.26726519337016574,
+          0.3259668508287293,
+          0.2852209944751381
+        ]
+      },
+      {
+        "id": "t4",
+        "text": "Aoz-4F",
+        "confidence": 0.5375002342387928,
+        "bbox": [
+          0.2265193370165746,
+          0.39640883977900554,
+          0.30570902394106814,
+          0.4164364640883978
+        ]
+      },
+      {
+        "id": "t5",
+        "text": "Ao3-4F",
+        "confidence": 0.8103843869841689,
+        "bbox": [
+          0.40791896869244937,
+          0.39226519337016574,
+          0.4843462246777164,
+          0.4102209944751381
+        ]
+      },
+      {
+        "id": "t6",
+        "text": "A04-4F",
+        "confidence": 0.6788591105586249,
+        "bbox": [
+          0.5957642725598526,
+          0.39019337016574585,
+          0.6767955801104972,
+          0.4088397790055249
+        ]
+      },
+      {
+        "id": "t7",
+        "text": "Aos-4F",
+        "confidence": 0.5115001482976225,
+        "bbox": [
+          0.8268876611418048,
+          0.38743093922651933,
+          0.9051565377532228,
+          0.4053867403314917
+        ]
+      },
+      {
+        "id": "t8",
+        "text": "Ao1-4F",
+        "confidence": 0.5493829076047939,
+        "bbox": [
+          0.072744014732965,
+          0.40124309392265195,
+          0.15377532228360957,
+          0.4198895027624309
+        ]
+      },
+      {
+        "id": "t9",
+        "text": "Aoz-2F",
+        "confidence": 0.4864085110013631,
+        "bbox": [
+          0.20994475138121546,
+          0.5545580110497238,
+          0.289134438305709,
+          0.574585635359116
+        ]
+      },
+      {
+        "id": "t10",
+        "text": "[Ao3-2F",
+        "confidence": 0.5048098596461191,
+        "bbox": [
+          0.39134438305709024,
+          0.5573204419889503,
+          0.4723756906077348,
+          0.5773480662983426
+        ]
+      },
+      {
+        "id": "t11",
+        "text": "A04-2F",
+        "confidence": 0.543523297605658,
+        "bbox": [
+          0.5976058931860037,
+          0.5607734806629834,
+          0.6767955801104972,
+          0.5808011049723757
+        ]
+      },
+      {
+        "id": "t12",
+        "text": "Ao5-2F",
+        "confidence": 0.7396124637043736,
+        "bbox": [
+          0.8314917127071824,
+          0.5669889502762431,
+          0.9097605893186004,
+          0.5870165745856354
+        ]
+      },
+      {
+        "id": "t13",
+        "text": "Ao1-TF",
+        "confidence": 0.5647210571990637,
+        "bbox": [
+          0.02302025782688766,
+          0.6892265193370166,
+          0.10128913443830571,
+          0.7085635359116023
+        ]
+      },
+      {
+        "id": "t14",
+        "text": "A0z-1F",
+        "confidence": 0.5427459171221253,
+        "bbox": [
+          0.20626151012891344,
+          0.699585635359116,
+          0.2826887661141805,
+          0.7182320441988951
+        ]
+      },
+      {
+        "id": "t15",
+        "text": "A03-1F",
+        "confidence": 0.5671831405858077,
+        "bbox": [
+          0.39318600368324125,
+          0.710635359116022,
+          0.4705340699815838,
+          0.7279005524861878
+        ]
+      },
+      {
+        "id": "t16",
+        "text": "A04-1F",
+        "confidence": 0.6262764453313733,
+        "bbox": [
+          0.6206261510128913,
+          0.7230662983425414,
+          0.6988950276243094,
+          0.7417127071823204
+        ]
+      },
+      {
+        "id": "t17",
+        "text": "Ao5-1F",
+        "confidence": 0.634845045739295,
+        "bbox": [
+          0.8480662983425414,
+          0.7354972375690608,
+          0.9244935543278084,
+          0.7541436464088398
+        ]
+      },
+      {
+        "id": "t18",
+        "text": "AO1-1F",
+        "confidence": 0.8914562463803112,
+        "bbox": [
+          0.022099447513812154,
+          0.6906077348066298,
+          0.10405156537753223,
+          0.7085635359116023
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "AO1-1F",
+            "confidence": 0.8914562463803112
+          },
+          {
+            "text": "AO1-1F",
+            "confidence": 0.94305230971621
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t19",
+        "bbox": [
+          0.24677716390423574,
+          0.26657458563535913,
+          0.3287292817679558,
+          0.2866022099447514
+        ],
+        "text": "A02-5F",
+        "confidence": 0.999433716857201,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "A",
+                "confidence": 0.9999777079870888
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999021315679535
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999736549205274
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "02",
+                "confidence": 0.9999996628252286
+              },
+              {
+                "text": "02",
+                "confidence": 0.9999995785315409
+              },
+              {
+                "text": "02",
+                "confidence": 0.9999995785315409
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "5",
+                "confidence": 0.9999710323524234
+              },
+              {
+                "text": "5",
+                "confidence": 0.9999965429335909
+              },
+              {
+                "text": "5",
+                "confidence": 0.9999907016970297
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9995130893371176
+              },
+              {
+                "text": "F",
+                "confidence": 0.999433716857201
+              },
+              {
+                "text": "F",
+                "confidence": 0.9994424166899449
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t20",
+        "text": "A03-1F",
+        "confidence": 0.9866988778030717,
+        "bbox": [
+          0.39226519337016574,
+          0.7113259668508287,
+          0.47421731123388583,
+          0.7292817679558011
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A03-1F",
+            "confidence": 0.9982020726890198
+          },
+          {
+            "text": "A03-1F",
+            "confidence": 0.9866988778030717
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t21",
+        "text": "A01-2F",
+        "confidence": 0.9523114977024599,
+        "bbox": [
+          0.04788213627992634,
+          0.5545580110497238,
+          0.1298342541436464,
+          0.5725138121546961
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A01-2F",
+            "confidence": 0.9832607552134395
+          },
+          {
+            "text": "A01-2F",
+            "confidence": 0.9523114977024599
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t22",
+        "text": "A02-1F",
+        "confidence": 0.7742516241986812,
+        "bbox": [
+          0.20441988950276244,
+          0.7016574585635359,
+          0.2863720073664825,
+          0.7196132596685083
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A02-1F",
+            "confidence": 0.7742516241986812
+          },
+          {
+            "text": "AO2-1F",
+            "confidence": 0.9109407228048871
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t23",
+        "text": "A05-1F",
+        "confidence": 0.787893328353634,
+        "bbox": [
+          0.8462246777163904,
+          0.7375690607734806,
+          0.9281767955801105,
+          0.755524861878453
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A05-1F",
+            "confidence": 0.787893328353634
+          },
+          {
+            "text": "A05-1F",
+            "confidence": 0.9024181764123024
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t24",
+        "bbox": [
+          0.09300184162062615,
+          0.27071823204419887,
+          0.17495395948434622,
+          0.2886740331491713
+        ],
+        "text": "A01-5F",
+        "confidence": 0.999315021552011,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "A",
+                "confidence": 0.9999785424429888
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999167936467899
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999748469980752
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "01",
+                "confidence": 0.9999997471189183
+              },
+              {
+                "text": "01",
+                "confidence": 0.9999994099441718
+              },
+              {
+                "text": "01",
+                "confidence": 0.9999997471189183
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "5",
+                "confidence": 0.9999729396743398
+              },
+              {
+                "text": "5",
+                "confidence": 0.9999965429335909
+              },
+              {
+                "text": "5",
+                "confidence": 0.9999897480273745
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.999315021552011
+              },
+              {
+                "text": "F",
+                "confidence": 0.999433716857201
+              },
+              {
+                "text": "F",
+                "confidence": 0.9994107161119246
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t25",
+        "bbox": [
+          0.07366482504604052,
+          0.40193370165745856,
+          0.15561694290976058,
+          0.4198895027624309
+        ],
+        "text": "A01-4F",
+        "confidence": 0.9993544666997423,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "A",
+                "confidence": 0.9999741317514612
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999167936467899
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999724628436901
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "01",
+                "confidence": 0.9999998314126102
+              },
+              {
+                "text": "01",
+                "confidence": 0.9999994099441718
+              },
+              {
+                "text": "01",
+                "confidence": 0.9999995785315409
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "4",
+                "confidence": 0.9999991655351472
+              },
+              {
+                "text": "4",
+                "confidence": 0.9999997615814351
+              },
+              {
+                "text": "4",
+                "confidence": 0.9999988079074598
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9993544666997423
+              },
+              {
+                "text": "F",
+                "confidence": 0.999433716857201
+              },
+              {
+                "text": "F",
+                "confidence": 0.9994644643808535
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t26",
+        "bbox": [
+          0.6206261510128913,
+          0.7237569060773481,
+          0.7025782688766115,
+          0.7417127071823204
+        ],
+        "text": "A04-1F",
+        "confidence": 0.999375202527645,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "A",
+                "confidence": 0.9999766351157291
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999346743762203
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999734165051031
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "04",
+                "confidence": 0.9999995785315409
+              },
+              {
+                "text": "04",
+                "confidence": 0.9999991570631338
+              },
+              {
+                "text": "04",
+                "confidence": 0.9999993256504904
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "1",
+                "confidence": 1.0
+              },
+              {
+                "text": "1",
+                "confidence": 1.0
+              },
+              {
+                "text": "1",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.999375202527645
+              },
+              {
+                "text": "F",
+                "confidence": 0.999433716857201
+              },
+              {
+                "text": "F",
+                "confidence": 0.9994632726075601
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t27",
+        "text": "A03-2F",
+        "confidence": 0.9984847385326563,
+        "bbox": [
+          0.39410681399631675,
+          0.5593922651933702,
+          0.47605893186003684,
+          0.5773480662983426
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A03-2F",
+            "confidence": 0.9990792712899589
+          },
+          {
+            "text": "A03-2F",
+            "confidence": 0.9984847385326563
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t28",
+        "text": "A02-2F",
+        "confidence": 0.9852394481430519,
+        "bbox": [
+          0.20902394106813996,
+          0.5566298342541437,
+          0.29097605893186,
+          0.574585635359116
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A02-2F",
+            "confidence": 0.9973995950808878
+          },
+          {
+            "text": "A02-2F",
+            "confidence": 0.9852394481430519
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t29",
+        "text": "A03-5F",
+        "confidence": 0.9981787030233181,
+        "bbox": [
+          0.40699815837937386,
+          0.2513812154696133,
+          0.4889502762430939,
+          0.26933701657458564
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A03-5F",
+            "confidence": 0.9986679797395436
+          },
+          {
+            "text": "A03-5F",
+            "confidence": 0.9981787030233181
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t30",
+        "text": "A03-4F",
+        "confidence": 0.993453066663781,
+        "bbox": [
+          0.40699815837937386,
+          0.393646408839779,
+          0.4889502762430939,
+          0.4116022099447514
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A03-4F",
+            "confidence": 0.9989714502834555
+          },
+          {
+            "text": "A03-4F",
+            "confidence": 0.993453066663781
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t31",
+        "bbox": [
+          0.8305709023941068,
+          0.569060773480663,
+          0.9125230202578268,
+          0.5870165745856354
+        ],
+        "text": "A05-2F",
+        "confidence": 0.9994190583205551,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "A",
+                "confidence": 0.9999763966999495
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999167936467899
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999721052207775
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "05",
+                "confidence": 0.9999965439601713
+              },
+              {
+                "text": "05",
+                "confidence": 0.9999989884757856
+              },
+              {
+                "text": "05",
+                "confidence": 0.9999982298328214
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "2",
+                "confidence": 0.999999880790714
+              },
+              {
+                "text": "2",
+                "confidence": 1.0
+              },
+              {
+                "text": "2",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9994368154234259
+              },
+              {
+                "text": "F",
+                "confidence": 0.999433716857201
+              },
+              {
+                "text": "F",
+                "confidence": 0.9994190583205551
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t32",
+        "text": "A02-4F",
+        "confidence": 0.9347794024323806,
+        "bbox": [
+          0.2265193370165746,
+          0.39848066298342544,
+          0.30847145488029465,
+          0.4164364640883978
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A02-4F",
+            "confidence": 0.9975112037093782
+          },
+          {
+            "text": "A02-4F",
+            "confidence": 0.9347794024323806
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t33",
+        "text": "A04-2F",
+        "confidence": 0.9285499215669637,
+        "bbox": [
+          0.5966850828729282,
+          0.5628453038674033,
+          0.6786372007366482,
+          0.5808011049723757
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A04-2F",
+            "confidence": 0.990802679527863
+          },
+          {
+            "text": "A04-2F",
+            "confidence": 0.9285499215669637
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t34",
+        "bbox": [
+          0.8066298342541437,
+          0.23825966850828728,
+          0.8885819521178637,
+          0.2562154696132597
+        ],
+        "text": "A05-5F",
+        "confidence": 0.9993502957258649,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "A",
+                "confidence": 0.9999783040269818
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999221578488324
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999769927394517
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "05",
+                "confidence": 0.9999962067857412
+              },
+              {
+                "text": "05",
+                "confidence": 0.9999989041821146
+              },
+              {
+                "text": "05",
+                "confidence": 0.9999979769518709
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "5",
+                "confidence": 0.999971866805538
+              },
+              {
+                "text": "5",
+                "confidence": 0.9999965429335909
+              },
+              {
+                "text": "5",
+                "confidence": 0.9999899864447457
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9993502957258649
+              },
+              {
+                "text": "F",
+                "confidence": 0.9994076175861579
+              },
+              {
+                "text": "F",
+                "confidence": 0.9993926017216381
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t35",
+        "text": "A04-5F",
+        "confidence": 0.8351754508829333,
+        "bbox": [
+          0.5948434622467772,
+          0.2451657458563536,
+          0.6767955801104972,
+          0.26312154696132595
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A04-5F",
+            "confidence": 0.9895048165503301
+          },
+          {
+            "text": "A04-5F",
+            "confidence": 0.8351754508829333
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t36",
+        "text": "A05-4F",
+        "confidence": 0.9057208066128543,
+        "bbox": [
+          0.8259668508287292,
+          0.38812154696132595,
+          0.9079189686924494,
+          0.40607734806629836
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A05-4F",
+            "confidence": 0.9905142552160934
+          },
+          {
+            "text": "A05-4F",
+            "confidence": 0.9057208066128543
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t37",
+        "bbox": [
+          0.5966850828729282,
+          0.39157458563535913,
+          0.6786372007366482,
+          0.4095303867403315
+        ],
+        "text": "A04-4F",
+        "confidence": 0.9994032081539252,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "A",
+                "confidence": 0.9999754430371155
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999167936467899
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999767543236295
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "04",
+                "confidence": 0.9999994942378553
+              },
+              {
+                "text": "04",
+                "confidence": 0.9999993256504904
+              },
+              {
+                "text": "04",
+                "confidence": 0.9999993256504904
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "4",
+                "confidence": 0.9999992847443906
+              },
+              {
+                "text": "4",
+                "confidence": 0.9999991655351472
+              },
+              {
+                "text": "4",
+                "confidence": 0.9999991655351472
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9994032081539252
+              },
+              {
+                "text": "F",
+                "confidence": 0.999433716857201
+              },
+              {
+                "text": "F",
+                "confidence": 0.9994488522070242
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      }
+    ]
+  },
+  {
+    "image": "31940782-2973-4e71-9765-5ba1d3d0b20b.png",
+    "expected": 21,
+    "recognized": 21,
+    "candidates": 21,
+    "missing": [],
+    "seconds": 6.78,
+    "tokens": [
+      {
+        "id": "t1",
+        "text": "Ao1-5F",
+        "confidence": 0.5199395933514447,
+        "bbox": [
+          0.09383624655013799,
+          0.1762266758811334,
+          0.1701931922723091,
+          0.1962681409813407
+        ]
+      },
+      {
+        "id": "t2",
+        "text": "Aoz-SF",
+        "confidence": 0.6575006155304537,
+        "bbox": [
+          0.33026678932842685,
+          0.17829993089149965,
+          0.4093836246550138,
+          0.1962681409813407
+        ]
+      },
+      {
+        "id": "t3",
+        "text": "A03-SF",
+        "confidence": 0.5192772544658976,
+        "bbox": [
+          0.5676172953081877,
+          0.17829993089149965,
+          0.6458141674333027,
+          0.1962681409813407
+        ]
+      },
+      {
+        "id": "t4",
+        "text": "A04-5F",
+        "confidence": 0.4656889247016564,
+        "bbox": [
+          0.8022079116835327,
+          0.17277125086385625,
+          0.8794848206071757,
+          0.193503800967519
+        ]
+      },
+      {
+        "id": "t5",
+        "text": "Ao1-4F",
+        "confidence": 0.5606435884976163,
+        "bbox": [
+          0.09751609935602576,
+          0.38286109191430545,
+          0.17387304507819687,
+          0.4008293020041465
+        ]
+      },
+      {
+        "id": "t6",
+        "text": "A02 4F",
+        "confidence": 0.46819617067629593,
+        "bbox": [
+          0.3330266789328427,
+          0.38286109191430545,
+          0.41122355105795766,
+          0.4029025570145128
+        ]
+      },
+      {
+        "id": "t7",
+        "text": "A03-4F",
+        "confidence": 0.8583066779427644,
+        "bbox": [
+          0.5841766329346826,
+          0.3807878369039392,
+          0.6605335786568537,
+          0.39944713199723564
+        ]
+      },
+      {
+        "id": "t8",
+        "text": "A01-3F",
+        "confidence": 0.8408220052735944,
+        "bbox": [
+          0.08923643054277829,
+          0.5293711126468555,
+          0.16743330266789327,
+          0.548030407740152
+        ]
+      },
+      {
+        "id": "t9",
+        "text": "A03-3F",
+        "confidence": 0.7091771647303475,
+        "bbox": [
+          0.5887764489420423,
+          0.5266067726330339,
+          0.6669733210671573,
+          0.5431928127159641
+        ]
+      },
+      {
+        "id": "t10",
+        "text": "A04-3F",
+        "confidence": 0.8337160090986447,
+        "bbox": [
+          0.8334866605335787,
+          0.5245335176226675,
+          0.9126034958601656,
+          0.5431928127159641
+        ]
+      },
+      {
+        "id": "t11",
+        "text": "CD",
+        "confidence": 0.7090521840499662,
+        "bbox": [
+          0.42318307267709293,
+          0.6268140981340705,
+          0.47286108555657774,
+          0.6378714581893573
+        ]
+      },
+      {
+        "id": "t12",
+        "text": "Ao2-2F",
+        "confidence": 0.5077662036206837,
+        "bbox": [
+          0.26770929162833484,
+          0.6496199032480995,
+          0.3468261269549218,
+          0.668279198341396
+        ]
+      },
+      {
+        "id": "t13",
+        "text": "A03-2F",
+        "confidence": 0.8265137299295098,
+        "bbox": [
+          0.38638454461821525,
+          0.6496199032480995,
+          0.46274149034038636,
+          0.668279198341396
+        ]
+      },
+      {
+        "id": "t14",
+        "text": "Ao1-1F",
+        "confidence": 0.643372764849068,
+        "bbox": [
+          0.04967801287948482,
+          0.8541810642709053,
+          0.12787488500459981,
+          0.8728403593642018
+        ]
+      },
+      {
+        "id": "t15",
+        "text": "Aoz-1F",
+        "confidence": 0.7280500027522961,
+        "bbox": [
+          0.3265869365225391,
+          0.8527988942639945,
+          0.4047838086476541,
+          0.8714581893572909
+        ]
+      },
+      {
+        "id": "t16",
+        "text": "A03-1F",
+        "confidence": 0.48156703179068855,
+        "bbox": [
+          0.6108555657773689,
+          0.8500345542501728,
+          0.6899724011039559,
+          0.8680027643400138
+        ]
+      },
+      {
+        "id": "t17",
+        "text": "A04-1F",
+        "confidence": 0.6481569120503468,
+        "bbox": [
+          0.8610855565777369,
+          0.8479612992398065,
+          0.9392824287028518,
+          0.866620594333103
+        ]
+      },
+      {
+        "id": "t18",
+        "bbox": [
+          0.04967801287948482,
+          0.8562543192812716,
+          0.13155473781048757,
+          0.8742225293711127
+        ],
+        "text": "A01-1F",
+        "confidence": 0.9994241828374051,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "A",
+                "confidence": 0.999974966205869
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999167936467899
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999707939373117
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "01",
+                "confidence": 0.9999998314126102
+              },
+              {
+                "text": "01",
+                "confidence": 0.9999994099441718
+              },
+              {
+                "text": "01",
+                "confidence": 0.9999996628252286
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "1",
+                "confidence": 1.0
+              },
+              {
+                "text": "1",
+                "confidence": 1.0
+              },
+              {
+                "text": "1",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9994241828374051
+              },
+              {
+                "text": "F",
+                "confidence": 0.999433716857201
+              },
+              {
+                "text": "F",
+                "confidence": 0.9994290690168697
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t19",
+        "text": "A01-3F",
+        "confidence": 0.9883901410582581,
+        "bbox": [
+          0.08831646734130635,
+          0.5307532826537664,
+          0.1701931922723091,
+          0.5487214927436075
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A01-3F",
+            "confidence": 0.9973077057656277
+          },
+          {
+            "text": "A01-3F",
+            "confidence": 0.9883901410582581
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t20",
+        "text": "A03-1F",
+        "confidence": 0.983410825913523,
+        "bbox": [
+          0.6108555657773689,
+          0.8514167242570836,
+          0.6927322907083716,
+          0.8693849343469247
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A03-1F",
+            "confidence": 0.9983368840474861
+          },
+          {
+            "text": "A03-1F",
+            "confidence": 0.983410825913523
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t21",
+        "text": "A01-2F",
+        "confidence": 0.9481999999990927,
+        "bbox": [
+          0.062557497700092,
+          0.6440912232204561,
+          0.14443422263109476,
+          0.6620594333102972
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A01-2F",
+            "confidence": 0.9883899946736038
+          },
+          {
+            "text": "A01-2F",
+            "confidence": 0.9481999999990927
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t22",
+        "text": "A02-1F",
+        "confidence": 0.756536090932064,
+        "bbox": [
+          0.32750689972401104,
+          0.8541810642709053,
+          0.4093836246550138,
+          0.8721492743607464
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A02-1F",
+            "confidence": 0.756536090932064
+          },
+          {
+            "text": "AO2-1F",
+            "confidence": 0.803521839055082
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t23",
+        "bbox": [
+          0.09199632014719411,
+          0.17829993089149965,
+          0.17387304507819687,
+          0.1962681409813407
+        ],
+        "text": "A01-5F",
+        "confidence": 0.9992411384757851,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "A",
+                "confidence": 0.9999741317514612
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999034428063993
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999754430371155
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "01",
+                "confidence": 0.9999998314126102
+              },
+              {
+                "text": "01",
+                "confidence": 0.9999994099441718
+              },
+              {
+                "text": "01",
+                "confidence": 0.9999997471189183
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "5",
+                "confidence": 0.9999698402771493
+              },
+              {
+                "text": "5",
+                "confidence": 0.9999965429335909
+              },
+              {
+                "text": "5",
+                "confidence": 0.9999892711927174
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9993774667977426
+              },
+              {
+                "text": "F",
+                "confidence": 0.999433716857201
+              },
+              {
+                "text": "F",
+                "confidence": 0.9992411384757851
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t24",
+        "bbox": [
+          0.09567617295308188,
+          0.38424326192121633,
+          0.17755289788408463,
+          0.40221147201105734
+        ],
+        "text": "A01-4F",
+        "confidence": 0.9994076175861579,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "A",
+                "confidence": 0.999975204621478
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999021315679535
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999747277902884
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "01",
+                "confidence": 0.9999998314126102
+              },
+              {
+                "text": "01",
+                "confidence": 0.9999994099441718
+              },
+              {
+                "text": "01",
+                "confidence": 0.9999997471189183
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "4",
+                "confidence": 0.9999994039536411
+              },
+              {
+                "text": "4",
+                "confidence": 0.9999995231628986
+              },
+              {
+                "text": "4",
+                "confidence": 0.9999986886982448
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9994269238634388
+              },
+              {
+                "text": "F",
+                "confidence": 0.9994076175861579
+              },
+              {
+                "text": "F",
+                "confidence": 0.9994486138541703
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t25",
+        "bbox": [
+          0.8620055197792088,
+          0.848652384243262,
+          0.9438822447102115,
+          0.866620594333103
+        ],
+        "text": "A04-1F",
+        "confidence": 0.999367694703043,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "A",
+                "confidence": 0.9999779464030247
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999040388241589
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999723436360455
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "04",
+                "confidence": 0.9999994099441718
+              },
+              {
+                "text": "04",
+                "confidence": 0.9999991570631338
+              },
+              {
+                "text": "04",
+                "confidence": 0.9999992413568111
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "1",
+                "confidence": 1.0
+              },
+              {
+                "text": "1",
+                "confidence": 1.0
+              },
+              {
+                "text": "1",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9994107161119246
+              },
+              {
+                "text": "F",
+                "confidence": 0.999433716857201
+              },
+              {
+                "text": "F",
+                "confidence": 0.999367694703043
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t26",
+        "text": "A03-3F",
+        "confidence": 0.8272275015435969,
+        "bbox": [
+          0.5887764489420423,
+          0.5266067726330339,
+          0.6706531738730451,
+          0.544574982722875
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A03-3F",
+            "confidence": 0.9985427202950737
+          },
+          {
+            "text": "A03-3F",
+            "confidence": 0.8272275015435969
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t27",
+        "text": "A03-2F",
+        "confidence": 0.9978565299106819,
+        "bbox": [
+          0.38546458141674333,
+          0.6510020732550104,
+          0.46734130634774607,
+          0.6689702833448514
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A03-2F",
+            "confidence": 0.99906861099995
+          },
+          {
+            "text": "A03-2F",
+            "confidence": 0.9978565299106819
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t28",
+        "text": "A02-3F",
+        "confidence": 0.9983647318933414,
+        "bbox": [
+          0.3311867525298988,
+          0.5279889426399447,
+          0.41306347746090155,
+          0.5459571527297857
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A02-3F",
+            "confidence": 0.9983647318933414
+          },
+          {
+            "text": "A02-3F",
+            "confidence": 0.9985484648785313
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t29",
+        "text": "A02-2F",
+        "confidence": 0.9852394481430519,
+        "bbox": [
+          0.26770929162833484,
+          0.6510020732550104,
+          0.34958601655933763,
+          0.6689702833448514
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A02-2F",
+            "confidence": 0.997711283880651
+          },
+          {
+            "text": "A02-2F",
+            "confidence": 0.9852394481430519
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t30",
+        "text": "A03-5F",
+        "confidence": 0.9977482896897342,
+        "bbox": [
+          0.5685372585096596,
+          0.17829993089149965,
+          0.6504139834406624,
+          0.1962681409813407
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A03-5F",
+            "confidence": 0.9989309984772229
+          },
+          {
+            "text": "A03-5F",
+            "confidence": 0.9977482896897342
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t31",
+        "text": "A03-4F",
+        "confidence": 0.993453066663781,
+        "bbox": [
+          0.5832566697332107,
+          0.38286109191430545,
+          0.6651333946642134,
+          0.4008293020041465
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A03-4F",
+            "confidence": 0.9990798067376412
+          },
+          {
+            "text": "A03-4F",
+            "confidence": 0.993453066663781
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t32",
+        "bbox": [
+          0.8334866605335787,
+          0.5266067726330339,
+          0.9153633854645814,
+          0.544574982722875
+        ],
+        "text": "A04-3F",
+        "confidence": 0.9993587568533826,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "A",
+                "confidence": 0.9999778271950532
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999167936467899
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999730588820199
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "04",
+                "confidence": 0.9999994942378553
+              },
+              {
+                "text": "04",
+                "confidence": 0.9999990727694587
+              },
+              {
+                "text": "04",
+                "confidence": 0.9999992413568111
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "3",
+                "confidence": 0.9999805689801953
+              },
+              {
+                "text": "3",
+                "confidence": 0.9999954700521272
+              },
+              {
+                "text": "3",
+                "confidence": 0.9999778271950532
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9993587568533826
+              },
+              {
+                "text": "F",
+                "confidence": 0.999433716857201
+              },
+              {
+                "text": "F",
+                "confidence": 0.9994110736344375
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t33",
+        "text": "A02-5F",
+        "confidence": 0.9945740651408604,
+        "bbox": [
+          0.3311867525298988,
+          0.17829993089149965,
+          0.41306347746090155,
+          0.1962681409813407
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A02-5F",
+            "confidence": 0.9971366317171176
+          },
+          {
+            "text": "A02-5F",
+            "confidence": 0.9945740651408604
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t34",
+        "bbox": [
+          0.8298068077276909,
+          0.6378714581893573,
+          0.9116835326586936,
+          0.6558396682791984
+        ],
+        "text": "A05-2F",
+        "confidence": 0.9993716273695554,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "A",
+                "confidence": 0.9999789000670525
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999321710644757
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999771119473735
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "05",
+                "confidence": 0.9999960381985386
+              },
+              {
+                "text": "05",
+                "confidence": 0.9999983141264758
+              },
+              {
+                "text": "05",
+                "confidence": 0.9999975554836615
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "2",
+                "confidence": 0.999999880790714
+              },
+              {
+                "text": "2",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9994147680374823
+              },
+              {
+                "text": "F",
+                "confidence": 0.999433716857201
+              },
+              {
+                "text": "F",
+                "confidence": 0.9993716273695554
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t35",
+        "text": "A04-2F",
+        "confidence": 0.8947360548326242,
+        "bbox": [
+          0.5906163753449862,
+          0.6385625431928127,
+          0.672493100275989,
+          0.6565307532826538
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A04-2F",
+            "confidence": 0.9941406213945432
+          },
+          {
+            "text": "A04-2F",
+            "confidence": 0.8947360548326242
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t36",
+        "text": "A02-4F",
+        "confidence": 0.9819394027345307,
+        "bbox": [
+          0.33210671573137074,
+          0.38424326192121633,
+          0.4139834406623735,
+          0.40221147201105734
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A02-4F",
+            "confidence": 0.9979173925735717
+          },
+          {
+            "text": "A02-4F",
+            "confidence": 0.9819394027345307
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t37",
+        "text": "A04-5F",
+        "confidence": 0.8983666901634717,
+        "bbox": [
+          0.8012879484820608,
+          0.17553559087767795,
+          0.8831646734130635,
+          0.193503800967519
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A04-5F",
+            "confidence": 0.9901238232844025
+          },
+          {
+            "text": "A04-5F",
+            "confidence": 0.8983666901634717
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t38",
+        "bbox": [
+          0.8132474701011959,
+          0.38009675190048375,
+          0.8951241950321988,
+          0.3980649619903248
+        ],
+        "text": "A04-4F",
+        "confidence": 0.9993113273333307,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "A",
+                "confidence": 0.999975800660625
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999346743762203
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999730588820199
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "04",
+                "confidence": 0.9999994942378553
+              },
+              {
+                "text": "04",
+                "confidence": 0.9999993256504904
+              },
+              {
+                "text": "04",
+                "confidence": 0.9999993256504904
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "4",
+                "confidence": 0.9999992847443906
+              },
+              {
+                "text": "4",
+                "confidence": 0.9999997615814351
+              },
+              {
+                "text": "4",
+                "confidence": 0.999999046325911
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.999379611898096
+              },
+              {
+                "text": "F",
+                "confidence": 0.9993113273333307
+              },
+              {
+                "text": "F",
+                "confidence": 0.9995478902770891
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      }
+    ]
+  },
+  {
+    "image": "7be725d7-e159-47a9-884d-1535aace4a93.png",
+    "expected": 42,
+    "recognized": 42,
+    "candidates": 42,
+    "missing": [],
+    "seconds": 10.0,
+    "tokens": [
+      {
+        "id": "t1",
+        "text": "0800",
+        "confidence": 0.7759446501731873,
+        "bbox": [
+          0.29570284049526585,
+          0.08195211786372007,
+          0.325564457392571,
+          0.09484346224677716
+        ]
+      },
+      {
+        "id": "t2",
+        "text": "00",
+        "confidence": 0.9431073116780752,
+        "bbox": [
+          0.2942461762563729,
+          0.11694290976058933,
+          0.30954115076474875,
+          0.1289134438305709
+        ]
+      },
+      {
+        "id": "t3",
+        "text": "Ao1-5F",
+        "confidence": 0.6404537051270327,
+        "bbox": [
+          0.0764748725418791,
+          0.16758747697974216,
+          0.13838310269482884,
+          0.19337016574585636
+        ]
+      },
+      {
+        "id": "t4",
+        "text": "Ao3-5F",
+        "confidence": 0.7716431568331368,
+        "bbox": [
+          0.30735615440640934,
+          0.1712707182320442,
+          0.3699927166788055,
+          0.19705340699815838
+        ]
+      },
+      {
+        "id": "t5",
+        "text": "A04-5F",
+        "confidence": 0.7273625240028265,
+        "bbox": [
+          0.4246176256372906,
+          0.1712707182320442,
+          0.48725418790968683,
+          0.19705340699815838
+        ]
+      },
+      {
+        "id": "t6",
+        "text": "Ao6-5F",
+        "confidence": 0.8568092186032829,
+        "bbox": [
+          0.663510560815732,
+          0.17955801104972377,
+          0.7246904588492352,
+          0.20257826887661143
+        ]
+      },
+      {
+        "id": "t7",
+        "text": "Ao7-SF",
+        "confidence": 0.4695709941228089,
+        "bbox": [
+          0.7734887108521485,
+          0.18139963167587478,
+          0.8353969410050983,
+          0.20441988950276244
+        ]
+      },
+      {
+        "id": "t8",
+        "text": "Ao8-5F",
+        "confidence": 0.9222466552988179,
+        "bbox": [
+          0.8871085214857976,
+          0.1850828729281768,
+          0.9497450837581938,
+          0.21086556169429096
+        ]
+      },
+      {
+        "id": "t9",
+        "text": "Ao1-4F",
+        "confidence": 0.5981698297822411,
+        "bbox": [
+          0.06409322651128915,
+          0.3416206261510129,
+          0.12454479242534595,
+          0.36464088397790057
+        ]
+      },
+      {
+        "id": "t10",
+        "text": "A02-4F",
+        "confidence": 0.48992437359342433,
+        "bbox": [
+          0.1842680262199563,
+          0.3434622467771639,
+          0.24471959213401312,
+          0.3692449355432781
+        ]
+      },
+      {
+        "id": "t11",
+        "text": "Ao3-4F",
+        "confidence": 0.8330041500154192,
+        "bbox": [
+          0.30735615440640934,
+          0.34714548802946593,
+          0.3685360524399126,
+          0.3710865561694291
+        ]
+      },
+      {
+        "id": "t12",
+        "text": "A04-4F",
+        "confidence": 0.895248483346646,
+        "bbox": [
+          0.42607428987618357,
+          0.34898710865561694,
+          0.48725418790968683,
+          0.3729281767955801
+        ]
+      },
+      {
+        "id": "t13",
+        "text": "Ao5-4F",
+        "confidence": 0.5892570474842235,
+        "bbox": [
+          0.5469774217042972,
+          0.35174953959484345,
+          0.6088856518572469,
+          0.3747697974217311
+        ]
+      },
+      {
+        "id": "t14",
+        "text": "Ao6-4F",
+        "confidence": 0.5604047305495735,
+        "bbox": [
+          0.662053896576839,
+          0.35359116022099446,
+          0.7232337946103423,
+          0.3766114180478821
+        ]
+      },
+      {
+        "id": "t15",
+        "text": "A07-4F",
+        "confidence": 0.5331454934696154,
+        "bbox": [
+          0.7822286962855062,
+          0.35543278084714547,
+          0.8434085943190095,
+          0.3784530386740331
+        ]
+      },
+      {
+        "id": "t16",
+        "text": "Ao8-4F",
+        "confidence": 0.5871726913607966,
+        "bbox": [
+          0.8922068463219228,
+          0.3572744014732965,
+          0.9541150764748726,
+          0.38029465930018413
+        ]
+      },
+      {
+        "id": "t17",
+        "text": "Ao1-3F",
+        "confidence": 0.9116451306785293,
+        "bbox": [
+          0.04515659140568099,
+          0.47605893186003684,
+          0.10706482155863073,
+          0.4990791896869245
+        ]
+      },
+      {
+        "id": "t18",
+        "text": "Ao2-3F",
+        "confidence": 0.5007525223295686,
+        "bbox": [
+          0.17479970866715222,
+          0.47605893186003684,
+          0.23670793882010197,
+          0.5009208103130756
+        ]
+      },
+      {
+        "id": "t19",
+        "text": "Ao3-3F",
+        "confidence": 0.5766290090138445,
+        "bbox": [
+          0.3058994901675164,
+          0.47790055248618785,
+          0.3685360524399126,
+          0.5009208103130756
+        ]
+      },
+      {
+        "id": "t20",
+        "text": "A04-3F",
+        "confidence": 0.5192252107347708,
+        "bbox": [
+          0.4297159504734159,
+          0.47790055248618785,
+          0.4901675163874727,
+          0.5027624309392266
+        ]
+      },
+      {
+        "id": "t21",
+        "text": "Ao5-3F",
+        "confidence": 0.7560195458312142,
+        "bbox": [
+          0.5469774217042972,
+          0.47790055248618785,
+          0.6103423160961399,
+          0.5027624309392266
+        ]
+      },
+      {
+        "id": "t22",
+        "text": "Ao6-3F",
+        "confidence": 0.667267969479547,
+        "bbox": [
+          0.6656955571740714,
+          0.47790055248618785,
+          0.7276037873270211,
+          0.5009208103130756
+        ]
+      },
+      {
+        "id": "t23",
+        "text": "Ao8-3F",
+        "confidence": 0.9734307778809766,
+        "bbox": [
+          0.9045884923525127,
+          0.47974217311233885,
+          0.9650400582665696,
+          0.5027624309392266
+        ]
+      },
+      {
+        "id": "t24",
+        "text": "Ao1-2F",
+        "confidence": 0.5179721490480046,
+        "bbox": [
+          0.04806991988346686,
+          0.5681399631675875,
+          0.10924981791697014,
+          0.5920810313075506
+        ]
+      },
+      {
+        "id": "t25",
+        "text": "Aoz-2F",
+        "confidence": 0.7890586004992708,
+        "bbox": [
+          0.16533139111434814,
+          0.5681399631675875,
+          0.22796795338674436,
+          0.5920810313075506
+        ]
+      },
+      {
+        "id": "t26",
+        "text": "Ao3-2F",
+        "confidence": 0.6951174430411011,
+        "bbox": [
+          0.29351784413692644,
+          0.5681399631675875,
+          0.35396941005098326,
+          0.5939226519337016
+        ]
+      },
+      {
+        "id": "t27",
+        "text": "A04-2F",
+        "confidence": 0.9751106465657133,
+        "bbox": [
+          0.3954843408594319,
+          0.5718232044198895,
+          0.4457392571012382,
+          0.5911602209944752
+        ]
+      },
+      {
+        "id": "t28",
+        "text": "A05-2F",
+        "confidence": 0.6795861382017165,
+        "bbox": [
+          0.4588492352512746,
+          0.570902394106814,
+          0.5120174799708667,
+          0.5939226519337016
+        ]
+      },
+      {
+        "id": "t29",
+        "text": "A07-2F",
+        "confidence": 0.6848374792697666,
+        "bbox": [
+          0.6365622723962127,
+          0.5718232044198895,
+          0.6860888565185724,
+          0.5911602209944752
+        ]
+      },
+      {
+        "id": "t30",
+        "text": "Ao8-2F",
+        "confidence": 0.7891158609773591,
+        "bbox": [
+          0.6999271667880553,
+          0.570902394106814,
+          0.7509104151493081,
+          0.5939226519337016
+        ]
+      },
+      {
+        "id": "t31",
+        "text": "Aog-2F",
+        "confidence": 0.6920406261320454,
+        "bbox": [
+          0.7916970138383103,
+          0.570902394106814,
+          0.8528769118718136,
+          0.5957642725598526
+        ]
+      },
+      {
+        "id": "t32",
+        "text": "A10-2F",
+        "confidence": 0.8634463727239508,
+        "bbox": [
+          0.9075018208302986,
+          0.570902394106814,
+          0.9679533867443554,
+          0.5957642725598526
+        ]
+      },
+      {
+        "id": "t33",
+        "text": "ja",
+        "confidence": 0.5427529672769184,
+        "bbox": [
+          0.3241077931536781,
+          0.6823204419889503,
+          0.348871085214858,
+          0.7016574585635359
+        ]
+      },
+      {
+        "id": "t34",
+        "text": "Ao1-1F",
+        "confidence": 0.8647158276731897,
+        "bbox": [
+          0.027676620538965767,
+          0.7486187845303868,
+          0.09031318281136198,
+          0.7716390423572744
+        ]
+      },
+      {
+        "id": "t35",
+        "text": "Aoz-1F",
+        "confidence": 0.7515567360377949,
+        "bbox": [
+          0.15586307356154405,
+          0.7486187845303868,
+          0.21849963583394028,
+          0.7716390423572744
+        ]
+      },
+      {
+        "id": "t36",
+        "text": "A03-1F",
+        "confidence": 0.7020571452509429,
+        "bbox": [
+          0.2964311726147123,
+          0.7486187845303868,
+          0.35761107064821557,
+          0.7716390423572744
+        ]
+      },
+      {
+        "id": "t37",
+        "text": "A04-1F",
+        "confidence": 0.879387128942681,
+        "bbox": [
+          0.4202476329206118,
+          0.7486187845303868,
+          0.48215586307356156,
+          0.7716390423572744
+        ]
+      },
+      {
+        "id": "t38",
+        "text": "Ao5-1F",
+        "confidence": 0.6338275113162496,
+        "bbox": [
+          0.549890750182083,
+          0.7486187845303868,
+          0.6103423160961399,
+          0.7716390423572744
+        ]
+      },
+      {
+        "id": "t39",
+        "text": "Ao6-1F",
+        "confidence": 0.5644249051200859,
+        "bbox": [
+          0.6766205389657683,
+          0.7486187845303868,
+          0.7370721048798252,
+          0.7716390423572744
+        ]
+      },
+      {
+        "id": "t40",
+        "text": "Ao7-1F",
+        "confidence": 0.745082107783789,
+        "bbox": [
+          0.8011653313911143,
+          0.7486187845303868,
+          0.8638018936635106,
+          0.7716390423572744
+        ]
+      },
+      {
+        "id": "t41",
+        "text": "Ao8-1F",
+        "confidence": 0.94054323580103,
+        "bbox": [
+          0.9198834668608885,
+          0.7467771639042358,
+          0.9825200291332847,
+          0.7697974217311234
+        ]
+      },
+      {
+        "id": "t42",
+        "text": "AO1-1F",
+        "confidence": 0.9312401674408904,
+        "bbox": [
+          0.027676620538965767,
+          0.7495395948434622,
+          0.09249817916970138,
+          0.7734806629834254
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "AO1-1F",
+            "confidence": 0.9312401674408904
+          },
+          {
+            "text": "AO1-1F",
+            "confidence": 0.9604674107948808
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t43",
+        "text": "A07-1F",
+        "confidence": 0.9094137126490001,
+        "bbox": [
+          0.8011653313911143,
+          0.7495395948434622,
+          0.8659868900218499,
+          0.7734806629834254
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A07-1F",
+            "confidence": 0.9094137126490001
+          },
+          {
+            "text": "A07-1F",
+            "confidence": 0.9625282152392403
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t44",
+        "text": "A07-2F",
+        "confidence": 0.963885193433513,
+        "bbox": [
+          0.6351056081573198,
+          0.572744014732965,
+          0.6904588492352512,
+          0.5939226519337016
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A07-2F",
+            "confidence": 0.963885193433513
+          },
+          {
+            "text": "A07-2F",
+            "confidence": 0.9646698647309367
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t45",
+        "text": "A01-3F",
+        "confidence": 0.9896042829951411,
+        "bbox": [
+          0.04515659140568099,
+          0.47697974217311234,
+          0.1099781500364166,
+          0.5009208103130756
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A01-3F",
+            "confidence": 0.9973295217371478
+          },
+          {
+            "text": "A01-3F",
+            "confidence": 0.9896042829951411
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t46",
+        "text": "A03-1F",
+        "confidence": 0.9852192813438455,
+        "bbox": [
+          0.2949745083758194,
+          0.7495395948434622,
+          0.359796067006555,
+          0.7734806629834254
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A03-1F",
+            "confidence": 0.998260106827023
+          },
+          {
+            "text": "A03-1F",
+            "confidence": 0.9852192813438455
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t47",
+        "text": "A10-2F",
+        "confidence": 0.9849278045793778,
+        "bbox": [
+          0.9067734887108522,
+          0.572744014732965,
+          0.9715950473415877,
+          0.5966850828729282
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A10-2F",
+            "confidence": 0.9927095411636349
+          },
+          {
+            "text": "A10-2F",
+            "confidence": 0.9849278045793778
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t48",
+        "text": "A01-2F",
+        "confidence": 0.8912513369377438,
+        "bbox": [
+          0.04661325564457393,
+          0.5699815837937385,
+          0.11143481427530955,
+          0.5939226519337016
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A01-2F",
+            "confidence": 0.9861243033199913
+          },
+          {
+            "text": "A01-2F",
+            "confidence": 0.8912513369377438
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t49",
+        "text": "A02-1F",
+        "confidence": 0.8067619570595449,
+        "bbox": [
+          0.15586307356154405,
+          0.7495395948434622,
+          0.22068463219227968,
+          0.7734806629834254
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A02-1F",
+            "confidence": 0.8067619570595449
+          },
+          {
+            "text": "AO2-1F",
+            "confidence": 0.8890196200876758
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t50",
+        "text": "A07-3F",
+        "confidence": 0.9967485861955553,
+        "bbox": [
+          0.7880553532410779,
+          0.48066298342541436,
+          0.8528769118718136,
+          0.5046040515653776
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A07-3F",
+            "confidence": 0.9967485861955553
+          },
+          {
+            "text": "A07-3F",
+            "confidence": 0.9974387947662527
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t51",
+        "bbox": [
+          0.0764748725418791,
+          0.1694290976058932,
+          0.1412964311726147,
+          0.19337016574585636
+        ],
+        "text": "A01-5F",
+        "confidence": 0.9993077522894964,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "A",
+                "confidence": 0.9999743701669708
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999167936467899
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999761582841984
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "01",
+                "confidence": 0.9999997471189183
+              },
+              {
+                "text": "01",
+                "confidence": 0.9999994099441718
+              },
+              {
+                "text": "01",
+                "confidence": 0.9999996628252286
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "5",
+                "confidence": 0.9999756814527814
+              },
+              {
+                "text": "5",
+                "confidence": 0.9999965429335909
+              },
+              {
+                "text": "5",
+                "confidence": 0.9999892711927174
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9993077522894964
+              },
+              {
+                "text": "F",
+                "confidence": 0.9993113273333307
+              },
+              {
+                "text": "F",
+                "confidence": 0.9994417016337707
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t52",
+        "bbox": [
+          0.5491624180626365,
+          0.7495395948434622,
+          0.6139839766933721,
+          0.7734806629834254
+        ],
+        "text": "A05-1F",
+        "confidence": 0.9993868814219695,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "A",
+                "confidence": 0.9999741317514612
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999021315679535
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999734165051031
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "05",
+                "confidence": 0.999996375372952
+              },
+              {
+                "text": "05",
+                "confidence": 0.9999980612455189
+              },
+              {
+                "text": "05",
+                "confidence": 0.9999979769518709
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "1",
+                "confidence": 1.0
+              },
+              {
+                "text": "1",
+                "confidence": 1.0
+              },
+              {
+                "text": "1",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9993868814219695
+              },
+              {
+                "text": "F",
+                "confidence": 0.999433716857201
+              },
+              {
+                "text": "F",
+                "confidence": 0.9994114311570144
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t53",
+        "bbox": [
+          0.41951930080116534,
+          0.7495395948434622,
+          0.48434085943190097,
+          0.7734806629834254
+        ],
+        "text": "A04-1F",
+        "confidence": 0.9993940317991132,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "A",
+                "confidence": 0.9999765159078358
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999167936467899
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999705555222285
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "04",
+                "confidence": 0.9999994942378553
+              },
+              {
+                "text": "04",
+                "confidence": 0.9999991570631338
+              },
+              {
+                "text": "04",
+                "confidence": 0.9999991570631338
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "1",
+                "confidence": 1.0
+              },
+              {
+                "text": "1",
+                "confidence": 1.0
+              },
+              {
+                "text": "1",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9993940317991132
+              },
+              {
+                "text": "F",
+                "confidence": 0.999433716857201
+              },
+              {
+                "text": "F",
+                "confidence": 0.9994929479739909
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t54",
+        "bbox": [
+          0.06263656227239621,
+          0.3425414364640884,
+          0.12745812090313183,
+          0.3664825046040516
+        ],
+        "text": "A01-4F",
+        "confidence": 0.9993874772857545,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "A",
+                "confidence": 0.9999756814527814
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999167936467899
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999760390763335
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "01",
+                "confidence": 0.9999998314126102
+              },
+              {
+                "text": "01",
+                "confidence": 0.9999994099441718
+              },
+              {
+                "text": "01",
+                "confidence": 0.9999997471189183
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "4",
+                "confidence": 0.9999992847443906
+              },
+              {
+                "text": "4",
+                "confidence": 0.9999996423721633
+              },
+              {
+                "text": "4",
+                "confidence": 0.9999986886982448
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9993874772857545
+              },
+              {
+                "text": "F",
+                "confidence": 0.9994076175861579
+              },
+              {
+                "text": "F",
+                "confidence": 0.9994675629947416
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t55",
+        "text": "A07-SF",
+        "confidence": 0.9422011874559046,
+        "bbox": [
+          0.7734887108521485,
+          0.18232044198895028,
+          0.8383102694828842,
+          0.20626151012891344
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A07-SF",
+            "confidence": 0.9422011874559046
+          },
+          {
+            "text": "A07-5F",
+            "confidence": 0.9747831046522902
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t56",
+        "bbox": [
+          0.7815003641660597,
+          0.356353591160221,
+          0.8463219227967953,
+          0.38029465930018413
+        ],
+        "text": "A07-4F",
+        "confidence": 0.999346005590386,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "A",
+                "confidence": 0.9999734165051031
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999321710644757
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999732972974016
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "07",
+                "confidence": 0.999999915706304
+              },
+              {
+                "text": "07",
+                "confidence": 0.9999990727694587
+              },
+              {
+                "text": "07",
+                "confidence": 0.999999915706304
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "4",
+                "confidence": 0.9999991655351472
+              },
+              {
+                "text": "4",
+                "confidence": 0.9999991655351472
+              },
+              {
+                "text": "4",
+                "confidence": 0.9999988079074598
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.999346005590386
+              },
+              {
+                "text": "F",
+                "confidence": 0.999433716857201
+              },
+              {
+                "text": "F",
+                "confidence": 0.9994811492815678
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t57",
+        "text": "A04-2F",
+        "confidence": 0.9543606602149801,
+        "bbox": [
+          0.3932993445010925,
+          0.5718232044198895,
+          0.4493809176984705,
+          0.5939226519337016
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A04-2F",
+            "confidence": 0.9950370891700916
+          },
+          {
+            "text": "A04-2F",
+            "confidence": 0.9543606602149801
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t58",
+        "text": "A05-2F",
+        "confidence": 0.9914268677473699,
+        "bbox": [
+          0.4588492352512746,
+          0.5718232044198895,
+          0.5149308084486526,
+          0.5939226519337016
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A05-2F",
+            "confidence": 0.997021702093626
+          },
+          {
+            "text": "A05-2F",
+            "confidence": 0.9914268677473699
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t59",
+        "text": "A03-3F",
+        "confidence": 0.781724773051705,
+        "bbox": [
+          0.3058994901675164,
+          0.47882136279926335,
+          0.370721048798252,
+          0.5027624309392266
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A03-3F",
+            "confidence": 0.9984615164055114
+          },
+          {
+            "text": "A03-3F",
+            "confidence": 0.781724773051705
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t60",
+        "text": "A06-1F",
+        "confidence": 0.9560448608954794,
+        "bbox": [
+          0.674435542607429,
+          0.7495395948434622,
+          0.7392571012381646,
+          0.7734806629834254
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A06-1F",
+            "confidence": 0.9846962305634546
+          },
+          {
+            "text": "A06-1F",
+            "confidence": 0.9560448608954794
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t61",
+        "text": "A03-2F",
+        "confidence": 0.9979652543856837,
+        "bbox": [
+          0.29278951201748,
+          0.570902394106814,
+          0.35761107064821557,
+          0.5948434622467772
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A03-2F",
+            "confidence": 0.999151118057258
+          },
+          {
+            "text": "A03-2F",
+            "confidence": 0.9979652543856837
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t62",
+        "text": "A02-3F",
+        "confidence": 0.9984854201026886,
+        "bbox": [
+          0.17479970866715222,
+          0.47790055248618785,
+          0.23962126729788782,
+          0.501841620626151
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A02-3F",
+            "confidence": 0.9984854201026886
+          },
+          {
+            "text": "A02-3F",
+            "confidence": 0.9986467545244435
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t63",
+        "bbox": [
+          0.9206117989803351,
+          0.7476979742173112,
+          0.9854333576110706,
+          0.7716390423572744
+        ],
+        "text": "A08-1F",
+        "confidence": 0.9993922442024292,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "A",
+                "confidence": 0.9999741317514612
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999021315679535
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999753238292932
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "08",
+                "confidence": 0.9999994942378553
+              },
+              {
+                "text": "08",
+                "confidence": 0.9999993256504904
+              },
+              {
+                "text": "08",
+                "confidence": 0.9999994099441718
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "1",
+                "confidence": 1.0
+              },
+              {
+                "text": "1",
+                "confidence": 1.0
+              },
+              {
+                "text": "1",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9993922442024292
+              },
+              {
+                "text": "F",
+                "confidence": 0.9994076175861579
+              },
+              {
+                "text": "F",
+                "confidence": 0.999452546679894
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t64",
+        "text": "A08-2F",
+        "confidence": 0.9960602186009702,
+        "bbox": [
+          0.6991988346686089,
+          0.572744014732965,
+          0.7545520757465404,
+          0.5939226519337016
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A08-2F",
+            "confidence": 0.9983512461576212
+          },
+          {
+            "text": "A08-2F",
+            "confidence": 0.9960602186009702
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t65",
+        "text": "A02-2F",
+        "confidence": 0.9925161084862464,
+        "bbox": [
+          0.16605972323379461,
+          0.5699815837937385,
+          0.23088128186453022,
+          0.5939226519337016
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A02-2F",
+            "confidence": 0.9975649618378423
+          },
+          {
+            "text": "A02-2F",
+            "confidence": 0.9925161084862464
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t66",
+        "text": "A03-5F",
+        "confidence": 0.9979426138165834,
+        "bbox": [
+          0.30735615440640934,
+          0.1731123388581952,
+          0.3721777130371449,
+          0.19705340699815838
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A03-5F",
+            "confidence": 0.9989846420684595
+          },
+          {
+            "text": "A03-5F",
+            "confidence": 0.9979426138165834
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t67",
+        "text": "A05-3F",
+        "confidence": 0.7606214116553398,
+        "bbox": [
+          0.5477057538237436,
+          0.47974217311233885,
+          0.6125273124544792,
+          0.503683241252302
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A05-3F",
+            "confidence": 0.9983986651338794
+          },
+          {
+            "text": "A05-3F",
+            "confidence": 0.7606214116553398
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t68",
+        "text": "A03-4F",
+        "confidence": 0.9955219383649484,
+        "bbox": [
+          0.30662782228696284,
+          0.34898710865561694,
+          0.37144938091769847,
+          0.3729281767955801
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A03-4F",
+            "confidence": 0.9991707345541245
+          },
+          {
+            "text": "A03-4F",
+            "confidence": 0.9955219383649484
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t69",
+        "text": "A04-3F",
+        "confidence": 0.8988058487789777,
+        "bbox": [
+          0.4282592862345229,
+          0.47974217311233885,
+          0.49308084486525855,
+          0.503683241252302
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A04-3F",
+            "confidence": 0.9183150486882891
+          },
+          {
+            "text": "A04-3F",
+            "confidence": 0.8988058487789777
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t70",
+        "text": "A02-4F",
+        "confidence": 0.9753323547174235,
+        "bbox": [
+          0.18353969410050983,
+          0.3453038674033149,
+          0.24836125273124546,
+          0.3692449355432781
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A02-4F",
+            "confidence": 0.9976570892904031
+          },
+          {
+            "text": "A02-4F",
+            "confidence": 0.9753323547174235
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t71",
+        "text": "A02-5F",
+        "confidence": 0.994942227516245,
+        "bbox": [
+          0.19227967953386743,
+          0.1703499079189687,
+          0.25710123816460306,
+          0.19429097605893186
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A02-5F",
+            "confidence": 0.9970285200357201
+          },
+          {
+            "text": "A02-5F",
+            "confidence": 0.994942227516245
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t72",
+        "bbox": [
+          0.5440640932265113,
+          0.17771639042357273,
+          0.6088856518572469,
+          0.20165745856353592
+        ],
+        "text": "A05-5F",
+        "confidence": 0.9993899799155912,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "A",
+                "confidence": 0.9999774695711814
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999034428063993
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999734165051031
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "05",
+                "confidence": 0.9999964596665606
+              },
+              {
+                "text": "05",
+                "confidence": 0.9999988198884456
+              },
+              {
+                "text": "05",
+                "confidence": 0.9999983141264758
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "5",
+                "confidence": 0.9999777079870888
+              },
+              {
+                "text": "5",
+                "confidence": 0.9999965429335909
+              },
+              {
+                "text": "5",
+                "confidence": 0.999989390401371
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9993899799155912
+              },
+              {
+                "text": "F",
+                "confidence": 0.9994076175861579
+              },
+              {
+                "text": "F",
+                "confidence": 0.9994276389143266
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t73",
+        "text": "A04-5F",
+        "confidence": 0.870077001204403,
+        "bbox": [
+          0.4246176256372906,
+          0.17403314917127072,
+          0.48943918426802624,
+          0.19797421731123388
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A04-5F",
+            "confidence": 0.9883002599635018
+          },
+          {
+            "text": "A04-5F",
+            "confidence": 0.870077001204403
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t74",
+        "bbox": [
+          0.42534595775673706,
+          0.34990791896869244,
+          0.4901675163874727,
+          0.3738489871086556
+        ],
+        "text": "A04-4F",
+        "confidence": 0.9994076175861579,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "A",
+                "confidence": 0.9999792576911801
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999021315679535
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999722244284079
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "04",
+                "confidence": 0.9999995785315409
+              },
+              {
+                "text": "04",
+                "confidence": 0.9999991570631338
+              },
+              {
+                "text": "04",
+                "confidence": 0.9999991570631338
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "4",
+                "confidence": 0.9999992847443906
+              },
+              {
+                "text": "4",
+                "confidence": 0.9999995231628986
+              },
+              {
+                "text": "4",
+                "confidence": 0.9999988079074598
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9995103481929277
+              },
+              {
+                "text": "F",
+                "confidence": 0.9994076175861579
+              },
+              {
+                "text": "F",
+                "confidence": 0.9994734027032024
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t75",
+        "text": "A05-4F",
+        "confidence": 0.8723738790560153,
+        "bbox": [
+          0.5462490895848507,
+          0.35267034990791896,
+          0.6110706482155863,
+          0.3766114180478821
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A05-4F",
+            "confidence": 0.990094752889753
+          },
+          {
+            "text": "A05-4F",
+            "confidence": 0.8723738790560153
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t76",
+        "bbox": [
+          0.6656955571740714,
+          0.47882136279926335,
+          0.7305171158048069,
+          0.5027624309392266
+        ],
+        "text": "A06-3F",
+        "confidence": 0.999396891957133,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "A",
+                "confidence": 0.9999768735315371
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999167936467899
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999768735315371
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "06",
+                "confidence": 0.9999912334667646
+              },
+              {
+                "text": "06",
+                "confidence": 0.9999983984201323
+              },
+              {
+                "text": "06",
+                "confidence": 0.9999950266754979
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "3",
+                "confidence": 0.9999803305639468
+              },
+              {
+                "text": "3",
+                "confidence": 0.9999957084701805
+              },
+              {
+                "text": "3",
+                "confidence": 0.9999806881883302
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.999396891957133
+              },
+              {
+                "text": "F",
+                "confidence": 0.999433716857201
+              },
+              {
+                "text": "F",
+                "confidence": 0.9994339552082785
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t77",
+        "text": "A06-2F",
+        "confidence": 0.9894141776860053,
+        "bbox": [
+          0.5455207574654042,
+          0.570902394106814,
+          0.6103423160961399,
+          0.5948434622467772
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A06-2F",
+            "confidence": 0.9980119471518347
+          },
+          {
+            "text": "A06-2F",
+            "confidence": 0.9894141776860053
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t78",
+        "bbox": [
+          0.9031318281136198,
+          0.48066298342541436,
+          0.9679533867443554,
+          0.5046040515653776
+        ],
+        "text": "A08-3F",
+        "confidence": 0.999433716857201,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "A",
+                "confidence": 0.9999772311553023
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999346743762203
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999742509592124
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "08",
+                "confidence": 0.9999992413568111
+              },
+              {
+                "text": "08",
+                "confidence": 0.9999995785315409
+              },
+              {
+                "text": "08",
+                "confidence": 0.9999992413568111
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "3",
+                "confidence": 0.9999845028523993
+              },
+              {
+                "text": "3",
+                "confidence": 0.9999954700521272
+              },
+              {
+                "text": "3",
+                "confidence": 0.9999821186865034
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9995195250817268
+              },
+              {
+                "text": "F",
+                "confidence": 0.999433716857201
+              },
+              {
+                "text": "F",
+                "confidence": 0.999463868494118
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t79",
+        "bbox": [
+          0.7909686817188638,
+          0.572744014732965,
+          0.8557902403495994,
+          0.5966850828729282
+        ],
+        "text": "A09-2F",
+        "confidence": 0.999433716857201,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "A",
+                "confidence": 0.9999794961073007
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999346743762203
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999734165051031
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "09",
+                "confidence": 0.9999996628252286
+              },
+              {
+                "text": "09",
+                "confidence": 0.9999995785315409
+              },
+              {
+                "text": "09",
+                "confidence": 0.9999990727694587
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "2",
+                "confidence": 0.9999997615814351
+              },
+              {
+                "text": "2",
+                "confidence": 0.9998304052940508
+              },
+              {
+                "text": "2",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9994338360327362
+              },
+              {
+                "text": "F",
+                "confidence": 0.999433716857201
+              },
+              {
+                "text": "F",
+                "confidence": 0.9995110632736584
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t80",
+        "bbox": [
+          0.662053896576839,
+          0.18047882136279927,
+          0.7268754552075747,
+          0.20441988950276244
+        ],
+        "text": "A06-5F",
+        "confidence": 0.9993313476969803,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "A",
+                "confidence": 0.9999760390763335
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999021315679535
+              },
+              {
+                "text": "A",
+                "confidence": 0.9999747277902884
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "06",
+                "confidence": 0.9999914020537298
+              },
+              {
+                "text": "06",
+                "confidence": 0.9999974711900259
+              },
+              {
+                "text": "06",
+                "confidence": 0.9999946052076528
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "5",
+                "confidence": 0.9999686482025858
+              },
+              {
+                "text": "5",
+                "confidence": 0.9999965429335909
+              },
+              {
+                "text": "5",
+                "confidence": 0.999990582488298
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9994554069216441
+              },
+              {
+                "text": "F",
+                "confidence": 0.999433716857201
+              },
+              {
+                "text": "F",
+                "confidence": 0.9993313476969803
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t81",
+        "text": "A06-4F",
+        "confidence": 0.8313805084021646,
+        "bbox": [
+          0.6605972323379461,
+          0.35451197053406996,
+          0.7254187909686817,
+          0.3784530386740331
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A06-4F",
+            "confidence": 0.99540535919651
+          },
+          {
+            "text": "A06-4F",
+            "confidence": 0.8313805084021646
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t82",
+        "text": "A08-5F",
+        "confidence": 0.995061498542672,
+        "bbox": [
+          0.8871085214857976,
+          0.1869244935543278,
+          0.9519300801165331,
+          0.21086556169429096
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A08-5F",
+            "confidence": 0.9972992812657775
+          },
+          {
+            "text": "A08-5F",
+            "confidence": 0.995061498542672
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t83",
+        "text": "A08-4F",
+        "confidence": 0.9881533331103532,
+        "bbox": [
+          0.8914785142024764,
+          0.358195211786372,
+          0.956300072833212,
+          0.3821362799263352
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "A08-4F",
+            "confidence": 0.997602991425
+          },
+          {
+            "text": "A08-4F",
+            "confidence": 0.9881533331103532
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      }
+    ]
+  },
+  {
+    "image": "QAE_rack_labels.png",
+    "expected": 12,
+    "recognized": 12,
+    "candidates": 12,
+    "missing": [],
+    "seconds": 8.32,
+    "tokens": [
+      {
+        "id": "t1",
+        "text": "LG",
+        "confidence": 0.9997285850849961,
+        "bbox": [
+          0.7915151515151515,
+          0.0,
+          0.8242424242424242,
+          0.015
+        ]
+      },
+      {
+        "id": "t2",
+        "text": "ROMM",
+        "confidence": 0.9970732927322388,
+        "bbox": [
+          0.2587878787878788,
+          0.035,
+          0.3115151515151515,
+          0.04772727272727273
+        ]
+      },
+      {
+        "id": "t3",
+        "text": "OMM",
+        "confidence": 0.9877621656174325,
+        "bbox": [
+          0.7872727272727272,
+          0.03772727272727273,
+          0.8345454545454546,
+          0.05181818181818182
+        ]
+      },
+      {
+        "id": "t4",
+        "text": "pjet collec",
+        "confidence": 0.5212699097762357,
+        "bbox": [
+          0.2593939393939394,
+          0.04772727272727273,
+          0.30424242424242426,
+          0.055
+        ]
+      },
+      {
+        "id": "t5",
+        "text": "OMIM",
+        "confidence": 0.4571404457092285,
+        "bbox": [
+          0.0,
+          0.05181818181818182,
+          0.04242424242424243,
+          0.06318181818181819
+        ]
+      },
+      {
+        "id": "t6",
+        "text": "CUC",
+        "confidence": 0.4787065511924305,
+        "bbox": [
+          0.32181818181818184,
+          0.2790909090909091,
+          0.3418181818181818,
+          0.28454545454545455
+        ]
+      },
+      {
+        "id": "t7",
+        "text": "cuCKOO",
+        "confidence": 0.6401109696288593,
+        "bbox": [
+          0.18666666666666668,
+          0.3131818181818182,
+          0.22303030303030302,
+          0.32045454545454544
+        ]
+      },
+      {
+        "id": "t8",
+        "text": "QAEO1-5F-01",
+        "confidence": 0.6104377652773056,
+        "bbox": [
+          0.16242424242424242,
+          0.375,
+          0.31212121212121213,
+          0.3931818181818182
+        ]
+      },
+      {
+        "id": "t9",
+        "text": "@QAE02-5F-02",
+        "confidence": 0.6211895586780769,
+        "bbox": [
+          0.7648484848484849,
+          0.37363636363636366,
+          0.92,
+          0.3931818181818182
+        ]
+      },
+      {
+        "id": "t10",
+        "text": "@QAE02-4F-01",
+        "confidence": 0.6402171514588509,
+        "bbox": [
+          0.46484848484848484,
+          0.55,
+          0.6163636363636363,
+          0.57
+        ]
+      },
+      {
+        "id": "t11",
+        "text": "QAE02-4F-02",
+        "confidence": 0.629843210823924,
+        "bbox": [
+          0.7648484848484849,
+          0.55,
+          0.92,
+          0.57
+        ]
+      },
+      {
+        "id": "t12",
+        "text": "Tefal",
+        "confidence": 0.9959050729284764,
+        "bbox": [
+          0.4012121212121212,
+          0.6086363636363636,
+          0.42727272727272725,
+          0.6140909090909091
+        ]
+      },
+      {
+        "id": "t13",
+        "text": "Tefal",
+        "confidence": 0.965514532488365,
+        "bbox": [
+          0.4696969696969697,
+          0.6086363636363636,
+          0.49636363636363634,
+          0.6140909090909091
+        ]
+      },
+      {
+        "id": "t14",
+        "text": "Telal",
+        "confidence": 0.9852600506957382,
+        "bbox": [
+          0.5387878787878788,
+          0.6086363636363636,
+          0.5648484848484848,
+          0.6140909090909091
+        ]
+      },
+      {
+        "id": "t15",
+        "text": "Tefal",
+        "confidence": 0.9761432187396427,
+        "bbox": [
+          0.6054545454545455,
+          0.6086363636363636,
+          0.6339393939393939,
+          0.6140909090909091
+        ]
+      },
+      {
+        "id": "t16",
+        "text": "QAEO1-3F-01",
+        "confidence": 0.7147823839479054,
+        "bbox": [
+          0.2290909090909091,
+          0.6640909090909091,
+          0.3787878787878788,
+          0.6822727272727273
+        ]
+      },
+      {
+        "id": "t17",
+        "text": "MAE02-3F-01",
+        "confidence": 0.4692784037616272,
+        "bbox": [
+          0.4581818181818182,
+          0.6640909090909091,
+          0.6121212121212121,
+          0.6822727272727273
+        ]
+      },
+      {
+        "id": "t18",
+        "text": "QAE02-3F-02",
+        "confidence": 0.7455068035256268,
+        "bbox": [
+          0.7666666666666667,
+          0.6640909090909091,
+          0.92,
+          0.6822727272727273
+        ]
+      },
+      {
+        "id": "t19",
+        "text": "PHiLIPS",
+        "confidence": 0.46994701545753453,
+        "bbox": [
+          0.10121212121212121,
+          0.6868181818181818,
+          0.1315151515151515,
+          0.6940909090909091
+        ]
+      },
+      {
+        "id": "t20",
+        "text": "Telal",
+        "confidence": 0.9901025306016314,
+        "bbox": [
+          0.5157575757575757,
+          0.6963636363636364,
+          0.5375757575757576,
+          0.7031818181818181
+        ]
+      },
+      {
+        "id": "t21",
+        "text": "19,800",
+        "confidence": 0.9585162368228597,
+        "bbox": [
+          0.9363636363636364,
+          0.7868181818181819,
+          0.9587878787878787,
+          0.7940909090909091
+        ]
+      },
+      {
+        "id": "t22",
+        "text": "04)",
+        "confidence": 0.5428849069621884,
+        "bbox": [
+          0.2721212121212121,
+          0.8604545454545455,
+          0.2878787878787879,
+          0.865909090909091
+        ]
+      },
+      {
+        "id": "t23",
+        "text": "9900",
+        "confidence": 0.5833495855331421,
+        "bbox": [
+          0.10848484848484849,
+          0.9327272727272727,
+          0.1703030303030303,
+          0.9513636363636364
+        ]
+      },
+      {
+        "id": "t24",
+        "text": "@999",
+        "confidence": 0.5058439373970032,
+        "bbox": [
+          0.1896969696969697,
+          0.9327272727272727,
+          0.2515151515151515,
+          0.9513636363636364
+        ]
+      },
+      {
+        "id": "t25",
+        "text": "@0",
+        "confidence": 0.5614174696722063,
+        "bbox": [
+          0.2690909090909091,
+          0.935,
+          0.3012121212121212,
+          0.9477272727272728
+        ]
+      },
+      {
+        "id": "t26",
+        "text": "02",
+        "confidence": 0.7717337794082614,
+        "bbox": [
+          0.3,
+          0.9345454545454546,
+          0.33090909090909093,
+          0.9513636363636364
+        ]
+      },
+      {
+        "id": "t27",
+        "text": "@QAEOT-TF-01",
+        "confidence": 0.4551506889306736,
+        "bbox": [
+          0.15393939393939393,
+          0.9577272727272728,
+          0.30787878787878786,
+          0.9763636363636363
+        ]
+      },
+      {
+        "id": "t28",
+        "text": "QAE02-TF-01",
+        "confidence": 0.6530412056265662,
+        "bbox": [
+          0.46060606060606063,
+          0.9577272727272728,
+          0.6121212121212121,
+          0.9763636363636363
+        ]
+      },
+      {
+        "id": "t29",
+        "text": "[AE02-1F-02",
+        "confidence": 0.7325751544010147,
+        "bbox": [
+          0.7830303030303031,
+          0.9577272727272728,
+          0.9387878787878788,
+          0.9777272727272728
+        ]
+      },
+      {
+        "id": "t30",
+        "text": "QAEO1-4F-01",
+        "confidence": 0.960850645338399,
+        "bbox": [
+          0.16666666666666666,
+          0.5527272727272727,
+          0.32,
+          0.5690909090909091
+        ]
+      },
+      {
+        "id": "t31",
+        "bbox": [
+          0.15696969696969698,
+          0.96,
+          0.3103030303030303,
+          0.9763636363636363
+        ],
+        "text": "QAE01-1F-01",
+        "confidence": 0.8497184498013689,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "QAE",
+                "confidence": 0.9999344783969167
+              },
+              {
+                "text": "QAE",
+                "confidence": 0.99992091990172
+              },
+              {
+                "text": "QAE",
+                "confidence": 0.9999250493900343
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "01",
+                "confidence": 0.999999915706304
+              },
+              {
+                "text": "01",
+                "confidence": 0.9999998314126102
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "1",
+                "confidence": 0.8949641540476314
+              },
+              {
+                "text": "1",
+                "confidence": 0.9999997615814351
+              },
+              {
+                "text": "1",
+                "confidence": 0.8497184498013689
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9996261946071172
+              },
+              {
+                "text": "F",
+                "confidence": 0.9991278166779836
+              },
+              {
+                "text": "F",
+                "confidence": 0.9997064090719086
+              }
+            ]
+          },
+          {
+            "field": "side",
+            "reads": [
+              {
+                "text": "01",
+                "confidence": 0.999999915706304
+              },
+              {
+                "text": "01",
+                "confidence": 0.999999915706304
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t32",
+        "text": "QAE01-3F-01",
+        "confidence": 0.871272467103074,
+        "bbox": [
+          0.22848484848484849,
+          0.6654545454545454,
+          0.38181818181818183,
+          0.6818181818181818
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "QAE01-3F-01",
+            "confidence": 0.871272467103074
+          },
+          {
+            "text": "QAE01-3F-01",
+            "confidence": 0.8958668702529404
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t33",
+        "bbox": [
+          0.16666666666666666,
+          0.5527272727272727,
+          0.32,
+          0.5690909090909091
+        ],
+        "text": "QAE01-4F-01",
+        "confidence": 0.9991278166779836,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "QAE",
+                "confidence": 0.9999370249190666
+              },
+              {
+                "text": "QAE",
+                "confidence": 0.99992091990172
+              },
+              {
+                "text": "QAE",
+                "confidence": 0.9999183045603026
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "01",
+                "confidence": 0.999999915706304
+              },
+              {
+                "text": "01",
+                "confidence": 0.9999998314126102
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "4",
+                "confidence": 0.9999960660973137
+              },
+              {
+                "text": "4",
+                "confidence": 0.9999979734431044
+              },
+              {
+                "text": "4",
+                "confidence": 0.9999973773973494
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9996261946071172
+              },
+              {
+                "text": "F",
+                "confidence": 0.9991278166779836
+              },
+              {
+                "text": "F",
+                "confidence": 0.9997064090719086
+              }
+            ]
+          },
+          {
+            "field": "side",
+            "reads": [
+              {
+                "text": "01",
+                "confidence": 0.999999915706304
+              },
+              {
+                "text": "01",
+                "confidence": 0.999999915706304
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t34",
+        "text": "QAEO2-1F-01",
+        "confidence": 0.9183836915364096,
+        "bbox": [
+          0.4612121212121212,
+          0.96,
+          0.6145454545454545,
+          0.9763636363636363
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "QAEO2-1F-01",
+            "confidence": 0.9183836915364096
+          },
+          {
+            "text": "QAEO2-1F-01",
+            "confidence": 0.9248895947891181
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t35",
+        "bbox": [
+          0.1618181818181818,
+          0.37636363636363634,
+          0.3151515151515151,
+          0.3927272727272727
+        ],
+        "text": "QAE01-5F-01",
+        "confidence": 0.9991278166779836,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "QAE",
+                "confidence": 0.9999301424287688
+              },
+              {
+                "text": "QAE",
+                "confidence": 0.9999319318756357
+              },
+              {
+                "text": "QAE",
+                "confidence": 0.9999300736038979
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "01",
+                "confidence": 0.999999915706304
+              },
+              {
+                "text": "01",
+                "confidence": 0.9999998314126102
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "5",
+                "confidence": 0.9999978542339392
+              },
+              {
+                "text": "5",
+                "confidence": 0.9999737741282502
+              },
+              {
+                "text": "5",
+                "confidence": 0.9999969005608733
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9995932992638359
+              },
+              {
+                "text": "F",
+                "confidence": 0.9991278166779836
+              },
+              {
+                "text": "F",
+                "confidence": 0.9997000919170773
+              }
+            ]
+          },
+          {
+            "field": "side",
+            "reads": [
+              {
+                "text": "01",
+                "confidence": 0.999999915706304
+              },
+              {
+                "text": "01",
+                "confidence": 0.999999915706304
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t36",
+        "text": "QAE02-3F-01",
+        "confidence": 0.9506765176353881,
+        "bbox": [
+          0.4612121212121212,
+          0.6654545454545454,
+          0.6145454545454545,
+          0.6818181818181818
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "QAE02-3F-01",
+            "confidence": 0.9506765176353881
+          },
+          {
+            "text": "QAE02-3F-01",
+            "confidence": 0.9790911144596521
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t37",
+        "bbox": [
+          0.46606060606060606,
+          0.5527272727272727,
+          0.6193939393939394,
+          0.5690909090909091
+        ],
+        "text": "QAE02-4F-01",
+        "confidence": 0.9991278166779836,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "QAE",
+                "confidence": 0.9999424620908892
+              },
+              {
+                "text": "QAE",
+                "confidence": 0.9999213328504486
+              },
+              {
+                "text": "QAE",
+                "confidence": 0.9999177539622263
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "02",
+                "confidence": 0.9999997471189183
+              },
+              {
+                "text": "02",
+                "confidence": 0.9999994942378553
+              },
+              {
+                "text": "02",
+                "confidence": 0.9999997471189183
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "4",
+                "confidence": 0.9999955892611503
+              },
+              {
+                "text": "4",
+                "confidence": 0.9999978542339392
+              },
+              {
+                "text": "4",
+                "confidence": 0.9999970197699817
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9995493204656647
+              },
+              {
+                "text": "F",
+                "confidence": 0.9991278166779836
+              },
+              {
+                "text": "F",
+                "confidence": 0.9996629045422765
+              }
+            ]
+          },
+          {
+            "field": "side",
+            "reads": [
+              {
+                "text": "01",
+                "confidence": 0.999999915706304
+              },
+              {
+                "text": "01",
+                "confidence": 0.999999915706304
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t38",
+        "text": "QAEO2-1F-02",
+        "confidence": 0.8345175269868514,
+        "bbox": [
+          0.786060606060606,
+          0.96,
+          0.9393939393939394,
+          0.9763636363636363
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "QAEO2-1F-02",
+            "confidence": 0.8345175269868514
+          },
+          {
+            "text": "QAEO2-1F-02",
+            "confidence": 0.9254130305326259
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t39",
+        "bbox": [
+          0.4527272727272727,
+          0.37636363636363634,
+          0.6060606060606061,
+          0.3927272727272727
+        ],
+        "text": "QAE02-5F-01",
+        "confidence": 0.9991278166779836,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "QAE",
+                "confidence": 0.9999307618526357
+              },
+              {
+                "text": "QAE",
+                "confidence": 0.9999319318756357
+              },
+              {
+                "text": "QAE",
+                "confidence": 0.9999273894344267
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "02",
+                "confidence": 0.9999997471189183
+              },
+              {
+                "text": "02",
+                "confidence": 0.9999994942378553
+              },
+              {
+                "text": "02",
+                "confidence": 0.9999996628252286
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "5",
+                "confidence": 0.9999978542339392
+              },
+              {
+                "text": "5",
+                "confidence": 0.9999737741282502
+              },
+              {
+                "text": "5",
+                "confidence": 0.9999971389790971
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.999606052104415
+              },
+              {
+                "text": "F",
+                "confidence": 0.9991278166779836
+              },
+              {
+                "text": "F",
+                "confidence": 0.9996316772169536
+              }
+            ]
+          },
+          {
+            "field": "side",
+            "reads": [
+              {
+                "text": "01",
+                "confidence": 0.999999915706304
+              },
+              {
+                "text": "01",
+                "confidence": 0.999999915706304
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t40",
+        "text": "QAE02-3F-02",
+        "confidence": 0.9460664873643017,
+        "bbox": [
+          0.7666666666666667,
+          0.6654545454545454,
+          0.92,
+          0.6818181818181818
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "QAE02-3F-02",
+            "confidence": 0.9460664873643017
+          },
+          {
+            "text": "QAE02-3F-02",
+            "confidence": 0.9651424100564097
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t41",
+        "text": "QAE02-4F-02",
+        "confidence": 0.9388588341841907,
+        "bbox": [
+          0.7666666666666667,
+          0.5527272727272727,
+          0.92,
+          0.5690909090909091
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "QAE02-4F-02",
+            "confidence": 0.9388588341841907
+          },
+          {
+            "text": "QAE02-4F-02",
+            "confidence": 0.9671327518054986
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t42",
+        "bbox": [
+          0.7666666666666667,
+          0.37636363636363634,
+          0.92,
+          0.3927272727272727
+        ],
+        "text": "QAE02-5F-02",
+        "confidence": 0.9991278166779836,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "QAE",
+                "confidence": 0.9999370937440016
+              },
+              {
+                "text": "QAE",
+                "confidence": 0.9999319318756357
+              },
+              {
+                "text": "QAE",
+                "confidence": 0.9999280088580652
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "02",
+                "confidence": 0.9999997471189183
+              },
+              {
+                "text": "02",
+                "confidence": 0.9999994942378553
+              },
+              {
+                "text": "02",
+                "confidence": 0.9999996628252286
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "5",
+                "confidence": 0.9999976158156301
+              },
+              {
+                "text": "5",
+                "confidence": 0.9999890327754315
+              },
+              {
+                "text": "5",
+                "confidence": 0.9999969005608733
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.999533707629098
+              },
+              {
+                "text": "F",
+                "confidence": 0.9991278166779836
+              },
+              {
+                "text": "F",
+                "confidence": 0.9997503913257475
+              }
+            ]
+          },
+          {
+            "field": "side",
+            "reads": [
+              {
+                "text": "02",
+                "confidence": 0.9999997471189183
+              },
+              {
+                "text": "02",
+                "confidence": 0.9999997471189183
+              },
+              {
+                "text": "02",
+                "confidence": 0.9999997471189183
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      }
+    ]
+  },
+  {
+    "image": "QAF_rack_labels.png",
+    "expected": 10,
+    "recognized": 10,
+    "candidates": 10,
+    "missing": [],
+    "seconds": 8.85,
+    "tokens": [
+      {
+        "id": "t1",
+        "text": "34,400",
+        "confidence": 0.999991191266332,
+        "bbox": [
+          0.8254545454545454,
+          0.013333333333333334,
+          0.8554545454545455,
+          0.027878787878787878
+        ]
+      },
+      {
+        "id": "t2",
+        "text": "49,980",
+        "confidence": 0.9273540869848967,
+        "bbox": [
+          0.3440909090909091,
+          0.03393939393939394,
+          0.37272727272727274,
+          0.04909090909090909
+        ]
+      },
+      {
+        "id": "t3",
+        "text": "29,980",
+        "confidence": 0.9997439069353536,
+        "bbox": [
+          0.11318181818181818,
+          0.044848484848484846,
+          0.13454545454545455,
+          0.056363636363636366
+        ]
+      },
+      {
+        "id": "t4",
+        "text": "Quclity",
+        "confidence": 0.6328296988307537,
+        "bbox": [
+          0.041363636363636366,
+          0.14909090909090908,
+          0.07363636363636364,
+          0.1606060606060606
+        ]
+      },
+      {
+        "id": "t5",
+        "text": "g24",
+        "confidence": 0.482063816852805,
+        "bbox": [
+          0.4268181818181818,
+          0.15272727272727274,
+          0.4490909090909091,
+          0.16787878787878788
+        ]
+      },
+      {
+        "id": "t6",
+        "text": "TrADERS",
+        "confidence": 0.5114650775119834,
+        "bbox": [
+          0.9127272727272727,
+          0.24666666666666667,
+          0.9618181818181818,
+          0.26121212121212123
+        ]
+      },
+      {
+        "id": "t7",
+        "text": "@bw",
+        "confidence": 0.45037348333859906,
+        "bbox": [
+          0.7977272727272727,
+          0.2678787878787879,
+          0.8159090909090909,
+          0.2775757575757576
+        ]
+      },
+      {
+        "id": "t8",
+        "text": "Machind",
+        "confidence": 0.5189235867111774,
+        "bbox": [
+          0.37136363636363634,
+          0.2824242424242424,
+          0.39545454545454545,
+          0.2896969696969697
+        ]
+      },
+      {
+        "id": "t9",
+        "text": "QAFO1-2F-01",
+        "confidence": 0.9512899095344455,
+        "bbox": [
+          0.075,
+          0.3084848484848485,
+          0.18863636363636363,
+          0.3327272727272727
+        ]
+      },
+      {
+        "id": "t10",
+        "text": "QAF02-2F-01",
+        "confidence": 0.516387649797581,
+        "bbox": [
+          0.5686363636363636,
+          0.30424242424242426,
+          0.6809090909090909,
+          0.3284848484848485
+        ]
+      },
+      {
+        "id": "t11",
+        "text": "QAF02-2F-02",
+        "confidence": 0.690866863587843,
+        "bbox": [
+          0.7795454545454545,
+          0.30424242424242426,
+          0.8931818181818182,
+          0.3284848484848485
+        ]
+      },
+      {
+        "id": "t12",
+        "text": "39,980",
+        "confidence": 0.8666014957489078,
+        "bbox": [
+          0.9586363636363636,
+          0.31393939393939396,
+          0.9845454545454545,
+          0.32545454545454544
+        ]
+      },
+      {
+        "id": "t13",
+        "text": "27.980",
+        "confidence": 0.7407758926363803,
+        "bbox": [
+          0.415,
+          0.33454545454545453,
+          0.43454545454545457,
+          0.3418181818181818
+        ]
+      },
+      {
+        "id": "t14",
+        "text": "Safan Animals",
+        "confidence": 0.9656757888448007,
+        "bbox": [
+          0.235,
+          0.49636363636363634,
+          0.30863636363636365,
+          0.5157575757575757
+        ]
+      },
+      {
+        "id": "t15",
+        "text": "ean",
+        "confidence": 0.971258045464746,
+        "bbox": [
+          0.38545454545454544,
+          0.62,
+          0.4031818181818182,
+          0.6296969696969696
+        ]
+      },
+      {
+        "id": "t16",
+        "text": "Safari Animals",
+        "confidence": 0.5965886772411264,
+        "bbox": [
+          0.23772727272727273,
+          0.6224242424242424,
+          0.3104545454545454,
+          0.6412121212121212
+        ]
+      },
+      {
+        "id": "t17",
+        "text": "Ocean Animals",
+        "confidence": 0.9996498166980041,
+        "bbox": [
+          0.3709090909090909,
+          0.7084848484848485,
+          0.4431818181818182,
+          0.7260606060606061
+        ]
+      },
+      {
+        "id": "t18",
+        "text": "Safan Animals",
+        "confidence": 0.8810579520931181,
+        "bbox": [
+          0.24681818181818183,
+          0.7127272727272728,
+          0.31681818181818183,
+          0.7351515151515151
+        ]
+      },
+      {
+        "id": "t19",
+        "text": "QAFO1-1F-01",
+        "confidence": 0.7268009418101391,
+        "bbox": [
+          0.04681818181818182,
+          0.7460606060606061,
+          0.1590909090909091,
+          0.7703030303030303
+        ]
+      },
+      {
+        "id": "t20",
+        "text": "QAFO1-1F-03",
+        "confidence": 0.8558600699922014,
+        "bbox": [
+          0.3577272727272727,
+          0.7460606060606061,
+          0.4713636363636364,
+          0.7703030303030303
+        ]
+      },
+      {
+        "id": "t21",
+        "text": "[AFO2-1F-01",
+        "confidence": 0.6579322605585984,
+        "bbox": [
+          0.5595454545454546,
+          0.7460606060606061,
+          0.6731818181818182,
+          0.7703030303030303
+        ]
+      },
+      {
+        "id": "t22",
+        "text": "QAFO2-1F-03",
+        "confidence": 0.7884929863518584,
+        "bbox": [
+          0.8718181818181818,
+          0.7460606060606061,
+          0.9854545454545455,
+          0.7703030303030303
+        ]
+      },
+      {
+        "id": "t23",
+        "text": "CLEARANCE",
+        "confidence": 0.7235163447503001,
+        "bbox": [
+          0.8612079061689413,
+          0.0,
+          0.9056102756492406,
+          0.025063348802776268
+        ]
+      },
+      {
+        "id": "t24",
+        "text": "garage",
+        "confidence": 0.6067314490081324,
+        "bbox": [
+          0.6420358816455953,
+          0.25381320251951633,
+          0.6797823001725865,
+          0.2752777065713928
+        ]
+      },
+      {
+        "id": "t25",
+        "text": "PARKING ",
+        "confidence": 0.6549262119471098,
+        "bbox": [
+          0.6010255842812922,
+          0.25929092115499514,
+          0.6439744157187078,
+          0.2825272606631867
+        ]
+      },
+      {
+        "id": "t26",
+        "text": "QAFO1-2F-02",
+        "confidence": 0.8727980515446744,
+        "bbox": [
+          0.3145454545454546,
+          0.3115151515151515,
+          0.42863636363636365,
+          0.3333333333333333
+        ]
+      },
+      {
+        "id": "t27",
+        "bbox": [
+          0.04681818181818182,
+          0.7478787878787879,
+          0.16090909090909092,
+          0.7696969696969697
+        ],
+        "text": "QAF01-1F-01",
+        "confidence": 0.9772737624643907,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "QAF",
+                "confidence": 0.9983136213697317
+              },
+              {
+                "text": "QAF",
+                "confidence": 0.9989481449666067
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "01",
+                "confidence": 0.9999998314126102
+              },
+              {
+                "text": "01",
+                "confidence": 0.999999915706304
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "1",
+                "confidence": 0.999999880790714
+              },
+              {
+                "text": "1",
+                "confidence": 0.9991159579080461
+              },
+              {
+                "text": "1",
+                "confidence": 0.999999880790714
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9772737624643907
+              },
+              {
+                "text": "F",
+                "confidence": 0.99935101074934
+              },
+              {
+                "text": "F",
+                "confidence": 0.9986583920982781
+              }
+            ]
+          },
+          {
+            "field": "side",
+            "reads": [
+              {
+                "text": "01",
+                "confidence": 0.999999915706304
+              },
+              {
+                "text": "01",
+                "confidence": 0.9999998314126102
+              },
+              {
+                "text": "01",
+                "confidence": 0.999999915706304
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t28",
+        "bbox": [
+          0.3572727272727273,
+          0.7478787878787879,
+          0.4713636363636364,
+          0.7696969696969697
+        ],
+        "text": "QAF01-1F-03",
+        "confidence": 0.9768078484565197,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "QAF",
+                "confidence": 0.9983081165754317
+              },
+              {
+                "text": "QAF",
+                "confidence": 0.9982651105099553
+              },
+              {
+                "text": "QAF",
+                "confidence": 0.9987198175987363
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "01",
+                "confidence": 0.999999915706304
+              },
+              {
+                "text": "01",
+                "confidence": 0.9999998314126102
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "1",
+                "confidence": 0.999999880790714
+              },
+              {
+                "text": "1",
+                "confidence": 0.9991159579080461
+              },
+              {
+                "text": "1",
+                "confidence": 0.999999880790714
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9768078484565197
+              },
+              {
+                "text": "F",
+                "confidence": 0.99935101074934
+              },
+              {
+                "text": "F",
+                "confidence": 0.998256371189715
+              }
+            ]
+          },
+          {
+            "field": "side",
+            "reads": [
+              {
+                "text": "03",
+                "confidence": 0.9999983141264758
+              },
+              {
+                "text": "03",
+                "confidence": 0.9999982298328214
+              },
+              {
+                "text": "03",
+                "confidence": 0.9999975554836615
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t29",
+        "text": "QAFO1-2F-01",
+        "confidence": 0.8609396524690355,
+        "bbox": [
+          0.07545454545454545,
+          0.3115151515151515,
+          0.18954545454545454,
+          0.3333333333333333
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "QAFO1-2F-01",
+            "confidence": 0.8609396524690355
+          },
+          {
+            "text": "QAFO1-2F-01",
+            "confidence": 0.9491658063668804
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t30",
+        "text": "QAFO1-1F-02",
+        "confidence": 0.7554475251439104,
+        "bbox": [
+          0.21818181818181817,
+          0.7478787878787879,
+          0.3322727272727273,
+          0.7696969696969697
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "QAFO1-1F-02",
+            "confidence": 0.7554475251439104
+          },
+          {
+            "text": "QAFO1-1F-02",
+            "confidence": 0.7659225621341789
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t31",
+        "bbox": [
+          0.5609090909090909,
+          0.7478787878787879,
+          0.675,
+          0.7696969696969697
+        ],
+        "text": "QAF02-1F-01",
+        "confidence": 0.9768078484565197,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "QAF",
+                "confidence": 0.9984218602137279
+              },
+              {
+                "text": "QAF",
+                "confidence": 0.9982651105099553
+              },
+              {
+                "text": "QAF",
+                "confidence": 0.9985832924593229
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "02",
+                "confidence": 0.9999997471189183
+              },
+              {
+                "text": "02",
+                "confidence": 0.9999998314126102
+              },
+              {
+                "text": "02",
+                "confidence": 0.9999995785315409
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "1",
+                "confidence": 0.999999880790714
+              },
+              {
+                "text": "1",
+                "confidence": 0.9991159579080461
+              },
+              {
+                "text": "1",
+                "confidence": 0.999999880790714
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9768078484565197
+              },
+              {
+                "text": "F",
+                "confidence": 0.99935101074934
+              },
+              {
+                "text": "F",
+                "confidence": 0.998256371189715
+              }
+            ]
+          },
+          {
+            "field": "side",
+            "reads": [
+              {
+                "text": "01",
+                "confidence": 0.999999915706304
+              },
+              {
+                "text": "01",
+                "confidence": 0.9999997471189183
+              },
+              {
+                "text": "01",
+                "confidence": 0.999999915706304
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t32",
+        "bbox": [
+          0.8718181818181818,
+          0.7478787878787879,
+          0.985909090909091,
+          0.7696969696969697
+        ],
+        "text": "QAF02-1F-03",
+        "confidence": 0.9978980154609332,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "QAF",
+                "confidence": 0.9985687042354469
+              },
+              {
+                "text": "QAF",
+                "confidence": 0.9981347864450015
+              },
+              {
+                "text": "QAF",
+                "confidence": 0.9989535814177344
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "02",
+                "confidence": 0.9999998314126102
+              },
+              {
+                "text": "02",
+                "confidence": 0.9999997471189183
+              },
+              {
+                "text": "02",
+                "confidence": 0.9999995785315409
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "1",
+                "confidence": 0.999999880790714
+              },
+              {
+                "text": "1",
+                "confidence": 0.9999995231628986
+              },
+              {
+                "text": "1",
+                "confidence": 0.999999880790714
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9978980154609332
+              },
+              {
+                "text": "F",
+                "confidence": 0.99935101074934
+              },
+              {
+                "text": "F",
+                "confidence": 0.9984617193135001
+              }
+            ]
+          },
+          {
+            "field": "side",
+            "reads": [
+              {
+                "text": "03",
+                "confidence": 0.9999984827137908
+              },
+              {
+                "text": "03",
+                "confidence": 0.9999964596665606
+              },
+              {
+                "text": "03",
+                "confidence": 0.9999976397772992
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t33",
+        "bbox": [
+          0.7145454545454546,
+          0.7478787878787879,
+          0.8286363636363636,
+          0.7696969696969697
+        ],
+        "text": "QAF02-1F-02",
+        "confidence": 0.9909873744269662,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "QAF",
+                "confidence": 0.9983435537599118
+              },
+              {
+                "text": "QAF",
+                "confidence": 0.9982489402935467
+              },
+              {
+                "text": "QAF",
+                "confidence": 0.9987668863211873
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "02",
+                "confidence": 0.9999997471189183
+              },
+              {
+                "text": "02",
+                "confidence": 0.9999997471189183
+              },
+              {
+                "text": "02",
+                "confidence": 0.9999997471189183
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "1",
+                "confidence": 0.9999997615814351
+              },
+              {
+                "text": "1",
+                "confidence": 0.9999995231628986
+              },
+              {
+                "text": "1",
+                "confidence": 0.999999880790714
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9909873744269662
+              },
+              {
+                "text": "F",
+                "confidence": 0.99935101074934
+              },
+              {
+                "text": "F",
+                "confidence": 0.998195747504397
+              }
+            ]
+          },
+          {
+            "field": "side",
+            "reads": [
+              {
+                "text": "02",
+                "confidence": 0.9999997471189183
+              },
+              {
+                "text": "02",
+                "confidence": 0.9999996628252286
+              },
+              {
+                "text": "02",
+                "confidence": 0.9999995785315409
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t34",
+        "text": "QAFO1-2F-02",
+        "confidence": 0.7691517310043762,
+        "bbox": [
+          0.3145454545454546,
+          0.3115151515151515,
+          0.42863636363636365,
+          0.3333333333333333
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "QAFO1-2F-02",
+            "confidence": 0.8307989329727307
+          },
+          {
+            "text": "QAFO1-2F-02",
+            "confidence": 0.7691517310043762
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t35",
+        "bbox": [
+          0.5681818181818182,
+          0.30666666666666664,
+          0.6822727272727273,
+          0.3284848484848485
+        ],
+        "text": "QAF02-2F-01",
+        "confidence": 0.7901029684310573,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "QAF",
+                "confidence": 0.9983079789556264
+              },
+              {
+                "text": "QAF",
+                "confidence": 0.9982651105099553
+              },
+              {
+                "text": "QAF",
+                "confidence": 0.9985616853831897
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "02",
+                "confidence": 0.9999997471189183
+              },
+              {
+                "text": "02",
+                "confidence": 0.9999998314126102
+              },
+              {
+                "text": "02",
+                "confidence": 0.9999995785315409
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "2",
+                "confidence": 1.0
+              },
+              {
+                "text": "2",
+                "confidence": 1.0
+              },
+              {
+                "text": "2",
+                "confidence": 0.7901029684310573
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9550083908731842
+              },
+              {
+                "text": "F",
+                "confidence": 0.99935101074934
+              },
+              {
+                "text": "F",
+                "confidence": 0.9985685706283789
+              }
+            ]
+          },
+          {
+            "field": "side",
+            "reads": [
+              {
+                "text": "01",
+                "confidence": 0.999999915706304
+              },
+              {
+                "text": "01",
+                "confidence": 0.9999997471189183
+              },
+              {
+                "text": "01",
+                "confidence": 0.999999915706304
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t36",
+        "bbox": [
+          0.7790909090909091,
+          0.30666666666666664,
+          0.8931818181818182,
+          0.3284848484848485
+        ],
+        "text": "QAF02-2F-02",
+        "confidence": 0.815449858251172,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "QAF",
+                "confidence": 0.998413878147381
+              },
+              {
+                "text": "QAF",
+                "confidence": 0.9982651105099553
+              },
+              {
+                "text": "QAF",
+                "confidence": 0.9986989670754427
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "02",
+                "confidence": 0.9999997471189183
+              },
+              {
+                "text": "02",
+                "confidence": 0.9999998314126102
+              },
+              {
+                "text": "02",
+                "confidence": 0.9999995785315409
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "2",
+                "confidence": 1.0
+              },
+              {
+                "text": "2",
+                "confidence": 1.0
+              },
+              {
+                "text": "2",
+                "confidence": 0.815449858251172
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9493785184299737
+              },
+              {
+                "text": "F",
+                "confidence": 0.99935101074934
+              },
+              {
+                "text": "F",
+                "confidence": 0.9984700575604997
+              }
+            ]
+          },
+          {
+            "field": "side",
+            "reads": [
+              {
+                "text": "02",
+                "confidence": 0.9999997471189183
+              },
+              {
+                "text": "02",
+                "confidence": 0.9999994942378553
+              },
+              {
+                "text": "02",
+                "confidence": 0.9999996628252286
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      }
+    ]
+  },
+  {
+    "image": "QAG_rack_labels.png",
+    "expected": 4,
+    "recognized": 4,
+    "candidates": 4,
+    "missing": [],
+    "seconds": 4.24,
+    "tokens": [
+      {
+        "id": "t1",
+        "text": "[AGo1-2F-02",
+        "confidence": 0.555244182306418,
+        "bbox": [
+          0.5404545454545454,
+          0.8624242424242424,
+          0.6590909090909091,
+          0.8866666666666667
+        ]
+      },
+      {
+        "id": "t2",
+        "text": "@AGo2-2F-02",
+        "confidence": 0.4528778482034253,
+        "bbox": [
+          0.8759090909090909,
+          0.8660606060606061,
+          0.9972727272727273,
+          0.8963636363636364
+        ]
+      },
+      {
+        "id": "t3",
+        "text": "QAGO1-2F-02",
+        "confidence": 0.8077165554021506,
+        "bbox": [
+          0.5422727272727272,
+          0.8642424242424243,
+          0.6586363636363637,
+          0.8860606060606061
+        ]
+      },
+      {
+        "id": "t4",
+        "text": "QAGO1-2F-01",
+        "confidence": 0.812469120849409,
+        "bbox": [
+          0.24227272727272728,
+          0.8642424242424243,
+          0.35863636363636364,
+          0.8860606060606061
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "QAGO1-2F-01",
+            "confidence": 0.812469120849409
+          },
+          {
+            "text": "QAGO1-2F-01",
+            "confidence": 0.9148884774521046
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      },
+      {
+        "id": "t5",
+        "bbox": [
+          0.5422727272727272,
+          0.8642424242424243,
+          0.6586363636363637,
+          0.8860606060606061
+        ],
+        "text": "QAG01-2F-02",
+        "confidence": 0.9717869162559509,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "QAG",
+                "confidence": 0.9999922227208102
+              },
+              {
+                "text": "QAG",
+                "confidence": 0.9717869162559509
+              },
+              {
+                "text": "QAG",
+                "confidence": 0.9999907085612024
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "01",
+                "confidence": 0.999999915706304
+              },
+              {
+                "text": "01",
+                "confidence": 0.999999915706304
+              },
+              {
+                "text": "01",
+                "confidence": 0.9999542311725774
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "2",
+                "confidence": 1.0
+              },
+              {
+                "text": "2",
+                "confidence": 1.0
+              },
+              {
+                "text": "2",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9994576712825989
+              },
+              {
+                "text": "F",
+                "confidence": 0.9988618753011593
+              },
+              {
+                "text": "F",
+                "confidence": 0.9995439572637821
+              }
+            ]
+          },
+          {
+            "field": "side",
+            "reads": [
+              {
+                "text": "02",
+                "confidence": 0.9999997471189183
+              },
+              {
+                "text": "02",
+                "confidence": 0.9999997471189183
+              },
+              {
+                "text": "02",
+                "confidence": 0.9999996628252286
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t6",
+        "bbox": [
+          0.7422727272727273,
+          0.8642424242424243,
+          0.8586363636363636,
+          0.8860606060606061
+        ],
+        "text": "QAG02-2F-01",
+        "confidence": 0.9717869162559509,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "QAG",
+                "confidence": 0.9999916032918427
+              },
+              {
+                "text": "QAG",
+                "confidence": 0.9717869162559509
+              },
+              {
+                "text": "QAG",
+                "confidence": 0.9999912591646607
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "02",
+                "confidence": 0.9999998314126102
+              },
+              {
+                "text": "02",
+                "confidence": 0.9999992413568111
+              },
+              {
+                "text": "02",
+                "confidence": 0.9999997471189183
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "2",
+                "confidence": 1.0
+              },
+              {
+                "text": "2",
+                "confidence": 1.0
+              },
+              {
+                "text": "2",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9994564795133556
+              },
+              {
+                "text": "F",
+                "confidence": 0.9988618753011593
+              },
+              {
+                "text": "F",
+                "confidence": 0.9996238108683997
+              }
+            ]
+          },
+          {
+            "field": "side",
+            "reads": [
+              {
+                "text": "01",
+                "confidence": 0.9999998314126102
+              },
+              {
+                "text": "01",
+                "confidence": 0.9999998314126102
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ]
+      },
+      {
+        "id": "t7",
+        "text": "QAG02-2F-02",
+        "confidence": 0.9517637327459482,
+        "bbox": [
+          0.8777272727272727,
+          0.8715151515151515,
+          0.9940909090909091,
+          0.8933333333333333
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "QAG02-2F-02",
+            "confidence": 0.9624390620271883
+          },
+          {
+            "text": "QAG02-2F-02",
+            "confidence": 0.9517637327459482
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+      }
+    ]
+  }
+]

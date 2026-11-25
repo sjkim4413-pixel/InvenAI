@@ -20,7 +20,18 @@ data class F03AnalyzeAndCompareResponse(
     @SerializedName("ocr_tokens") val ocrTokens: List<F03OcrToken>? = null,
     val detections: List<F03Detection> = emptyList(),
     @SerializedName("registered_code_observations") val registeredCodes: List<F03RegisteredCode>? = null,
-    @SerializedName("inventory_issues") val inventoryIssues: List<F03InventoryIssue>? = null
+    @SerializedName("inventory_issues") val inventoryIssues: List<F03InventoryIssue>? = null,
+    @SerializedName("company_code") val companyCode: String? = null,
+    @SerializedName("warehouse_code") val warehouseCode: String? = null,
+    @SerializedName("unmapped_observations") val unmappedObservations: List<F03ComparedPosition>? = null,
+    val model: F03AuditModel? = null
+)
+
+data class F03AuditModel(
+    val name: String? = null,
+    val file: String? = null,
+    @SerializedName("training_scope") val trainingScope: String? = null,
+    @SerializedName("used_for") val usedFor: String? = null
 )
 
 data class F03ComparedPosition(
@@ -55,12 +66,23 @@ data class F03ComparedPosition(
     @SerializedName("identity_method") val identityMethod: String? = null,
     @SerializedName("f04_status_code") val f04StatusCode: Int? = null,
     @SerializedName("ocr_max_confidence") val ocrMaxConfidence: Double? = null,
-    @SerializedName("test_label_match") val testLabelMatch: Boolean = false
+    @SerializedName("test_label_match") val testLabelMatch: Boolean = false,
+    @SerializedName("test_product_location_match") val testProductLocationMatch: Boolean = false,
+    @SerializedName("position_id") val positionId: String? = null,
+    @SerializedName("reference_evidence") val referenceEvidence: F03ReferenceEvidence? = null,
+    @SerializedName("erp_inventory_ids") val erpInventoryIds: List<String>? = null
 ) {
     val isVerifiedMatch: Boolean get() = f04StatusCode == 1 && (verificationPassed || productLocationVerified)
-    val isMatch: Boolean get() = isVerifiedMatch || testLabelMatch
+    val isMatch: Boolean get() = isVerifiedMatch || testLabelMatch || testProductLocationMatch
     val isConfirmedAnomaly: Boolean get() = (f04StatusCode ?: 5) in 2..4
 }
+
+data class F03ReferenceEvidence(
+    @SerializedName("reference_location") val referenceLocation: String?,
+    val distance: Double?,
+    val margin: Double?,
+    val accepted: Boolean = false
+)
 
 data class F03OcrToken(
     val text: String,
@@ -92,8 +114,20 @@ data class F03Detection(
     @SerializedName("overlay_parent_id") val overlayParentId: String? = null,
     @SerializedName("ocr_token_ids") val ocrTokenIds: List<String>? = null,
     @SerializedName("support_scales") val supportScales: List<Int> = emptyList(),
-    @SerializedName("test_label_match") val testLabelMatch: Boolean = false
+    @SerializedName("test_label_match") val testLabelMatch: Boolean = false,
+    @SerializedName("test_product_location_match") val testProductLocationMatch: Boolean = false
 )
 
 data class F03RegisteredCode(val sku: String)
 data class F03InventoryIssue(val reason: String)
+
+data class F03PositionContext(
+    @SerializedName("company_code") val companyCode: String?,
+    @SerializedName("warehouse_code") val warehouseCode: String?,
+    val positions: List<F03WarehousePosition>?
+)
+
+data class F03WarehousePosition(
+    @SerializedName("position_id") val id: String?,
+    @SerializedName("source_location") val label: String?
+)

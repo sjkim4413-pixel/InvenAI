@@ -2,27 +2,25 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.myapp">
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-feature android:name="android.hardware.camera" android:required="false" />
 
     <application
+        android:name=".InvenAIApplication"
         android:usesCleartextTraffic="true"
-        android:icon="@android:drawable/star_big_on"
-        android:roundIcon="@android:drawable/star_big_on"
+        android:icon="@drawable/ic_inven_app_mark"
+        android:roundIcon="@drawable/ic_inven_app_mark"
         android:supportsRtl="true"
         android:allowBackup="true"
-        android:label="MyApp"
-        android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar">
-        <activity
-            android:name="com.example.myapp.overlay.OverlayActivity"
-            android:exported="false" />
-        <activity
-            android:name="com.example.myapp.screens.WarehousePhotos"
-            android:exported="false" />
-		<activity
-			android:name=".AiAnalysis"
-			android:exported="false" />
+        android:label="InvenAI"
+        android:theme="@style/Theme.InvenAI">
+        <meta-data android:name="firebase_messaging_auto_init_enabled" android:value="false" />
+        <service android:name=".F06MessagingService" android:exported="false">
+            <intent-filter><action android:name="com.google.firebase.MESSAGING_EVENT" /></intent-filter>
+        </service>
 		<activity
 			android:name=".AiAuditCamera"
 			android:exported="false" />
@@ -33,37 +31,13 @@
 			android:name=".AnomalyInventory"
 			android:exported="false" />
 		<activity
-			android:name=".AuditResults"
-			android:exported="false" />
-		<activity
 			android:name=".AuditStart"
 			android:exported="false" />
 		<activity
 			android:name=".BarcodeScanner"
 			android:exported="false" />
 		<activity
-			android:name=".CameraCapture"
-			android:exported="false" />
-		<activity
-			android:name=".ConnectionComplete"
-			android:exported="false" />
-		<activity
-			android:name=".ConnectionProgress"
-			android:exported="false" />
-		<activity
-			android:name=".DataConnectionSelect"
-			android:exported="false" />
-		<activity
-			android:name=".DataConnectionSelect2"
-			android:exported="false" />
-		<activity
-			android:name=".DataConnectionSelect3"
-			android:exported="false" />
-		<activity
 			android:name=".ErpWmsConnection"
-			android:exported="false" />
-		<activity
-			android:name=".FileConnectionComplete"
 			android:exported="false" />
 		<activity
 			android:name=".FileUpload"
@@ -78,9 +52,6 @@
 		</activity>
 		<activity
 			android:name=".HomeDashboard"
-			android:exported="false" />
-		<activity
-			android:name=".LoaderHomeDashboard"
 			android:exported="false" />
 		<activity
 			android:name=".Inbound"
@@ -106,7 +77,9 @@
 		<activity
 			android:name=".WorkHistory"
 			android:exported="false" />
-
-        <activity android:name="com.example.myapp.WarehousePhotos" android:exported="false" />
+        <activity android:name=".LoaderHomeDashboard" android:exported="false" />
+        <activity android:name=".StockCorrection" android:exported="false" />
+        <activity android:name=".AdminDashboard" android:exported="false" />
+        <activity android:name=".PendingApproval" android:exported="false" />
     </application>
 </manifest>

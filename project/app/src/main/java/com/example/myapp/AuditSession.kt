@@ -3,11 +3,13 @@ package com.example.myapp
 import android.content.Context
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Source
 
 data class AuditSession(
     val companyCode: String,
     val userId: String,
-    val warehouseId: Int
+    val warehouseId: Int,
+    val role: String
 )
 
 object AuditSessionManager {
@@ -29,15 +31,7 @@ object AuditSessionManager {
             return
         }
 
-        val prefs = context.getSharedPreferences(
-            "app_user_session",
-            Context.MODE_PRIVATE
-        )
-
-        val localCompany = prefs.getString(
-            "COMPANY_CODE",
-            null
-        )?.trim()?.uppercase()
+        val localCompany = InventoryManager.activeCompanyCode(context)
 
         if (
             localCompany.isNullOrBlank() ||
@@ -48,20 +42,16 @@ object AuditSessionManager {
         }
 
         FirebaseFirestore.getInstance()
-            .collection("users")
+            .collection(WarehouseMembership.COLLECTION)
             .document(user.uid)
-            .get()
+            .get(Source.SERVER)
             .addOnSuccessListener { document ->
-
-                val firebaseCompany = document
-                    .getString("companyCode")
-                    ?.trim()
-                    ?.uppercase()
+                val membership = WarehouseMembership.from(document)
 
                 if (
-                    !document.exists() ||
-                    firebaseCompany.isNullOrBlank() ||
-                    firebaseCompany != localCompany
+                    membership == null ||
+                    membership.companyCode != localCompany ||
+                    FirebaseAuth.getInstance().currentUser?.uid != user.uid
                 ) {
                     onResult(null)
                     return@addOnSuccessListener
@@ -69,9 +59,10 @@ object AuditSessionManager {
 
                 onResult(
                     AuditSession(
-                        companyCode = firebaseCompany,
+                        companyCode = membership.companyCode,
                         userId = user.uid,
-                        warehouseId = warehouseId
+                        warehouseId = warehouseId,
+                        role = membership.role
                     )
                 )
             }

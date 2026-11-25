@@ -1,0 +1,22 @@
+{
+  "time_utc": "2026-11-24T09:04:16.980268+00:00",
+  "pipeline": "2026-11-24.44",
+  "selectable_photos": 12,
+  "pairs": 6,
+  "normal_matches": 109,
+  "normal_positions": 109,
+  "edited_unchanged_green": 97,
+  "edited_changed_flagged": 12,
+  "edited_red": 10,
+  "edited_orange": 2,
+  "retired_photos_absent_from_apk": true,
+  "server_profiles_absent_from_apk": true,
+  "original_six_hashes_unchanged": true,
+  "android_unit_tests": 20,
+  "apk_sha256": "dc743874d1b4166260674b6e017ccc8ea59bb1ae1b01154223934abc9ae7b0bf",
+  "inventory_records": 242,
+  "firestore_written": false,
+  "screenshots_verified": 12,
+  "paired_device_tests": 2,
+  "method": "closed-set annotated reference appearance, real pixels; not field accuracy"
+}

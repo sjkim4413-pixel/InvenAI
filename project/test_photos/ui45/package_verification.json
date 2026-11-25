@@ -1,0 +1,20 @@
+{
+  "time_utc": "2026-11-24T10:49:59.414202+00:00",
+  "pipeline": "2026-11-24.45",
+  "backend_tests": 148,
+  "android_unit_tests": 25,
+  "android_device_tests": 6,
+  "security_cases": 31,
+  "current_rules_match_tested_source": true,
+  "existing_inventory_rules_preserved": true,
+  "production_inventory_written": false,
+  "production_alerts_created_by_validation": false,
+  "two_accounts_verified_on_local_emulators": true,
+  "selectable_test_images": 12,
+  "normal_reference_matches": 109,
+  "normal_reference_positions": 109,
+  "test_accounts_and_emulator_configuration_absent_from_main_apk": true,
+  "apk_sha256": "e8265e48ed43ac6e449215f6a764a4e41687fdebba9169e4907a90216244918b",
+  "rules_sha256": "3a118775be0a0968ec0b98621d56282fbacf8f8211976e853fec74104ac8d379",
+  "screenshots": 5
+}

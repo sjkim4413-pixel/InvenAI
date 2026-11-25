@@ -1,0 +1,29 @@
+{
+  "time_utc": "2026-11-25T06:02:27.063059+00:00",
+  "android_unit_tests": {
+    "tests": 42,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "backend_tests": 15,
+  "real_fcm_device_tests": 1,
+  "existing_foreground_device_tests": 1,
+  "real_cloud_delivery": true,
+  "other_app_and_screen_off_verified": true,
+  "send_to_notification_ms": 2650,
+  "accept_to_notification_ms": 906,
+  "duplicate_display_blocked": true,
+  "wrong_account_company_and_resolved_blocked": true,
+  "stock_unchanged_during_device_tests": true,
+  "production_stock_written": false,
+  "production_alerts_created": false,
+  "sender_role": "roles/firebasecloudmessaging.admin",
+  "sender_inventory_access_added": false,
+  "billing_changed": false,
+  "cloud_functions_added": false,
+  "test_images": 12,
+  "server_key_and_test_credentials_absent_from_apk": true,
+  "temporary_device_probe_removed": true,
+  "apk_sha256": "4e5980427b102fa94beef064f6038f7e8e6f741e2047790910ba701f2feddddb"
+}

@@ -17,7 +17,9 @@ PREFIX_ONLY = re.compile(rf'{SKU_PREFIX}\s*[:#=]?')
 JOINED_SKU = re.compile(rf'SKU({SKU})')
 CODE_SEPARATORS = ('', '-', '_', '/', '.')
 DIGIT_LOOKALIKES = str.maketrans({'O':'0','S':'5'})
-RACK_DIGIT_LOOKALIKES = str.maketrans({'O':'0','S':'5','I':'1'})
+# These substitutions apply only to rack numeric fields. The warehouse resolver
+# still requires one unique registered position; product SKUs keep their letters.
+RACK_DIGIT_LOOKALIKES = str.maketrans({'O':'0','S':'5','I':'1','Z':'2'})
 TIER_CODE = re.compile(r'[0-9OSI]+\s*[F층단](?:\s*-\s*(?:[LR]|[0-9OSI]{1,3}))?')
 RACK_FIELDS = re.compile(r'(?P<zone>[A-Z0-9가-힣]+구역\s*)?(?P<rack>[A-Z][A-Z0-9]+)'
                          r'(?:\s*[-/|:]\s*|\s+)(?P<tier>[0-9OSI]+)\s*[F층단]'
@@ -100,7 +102,11 @@ def label_evidence(tokens):
 
 def rack_label_evidence(tokens):
     strong=[t for t in tokens if t['confidence']>=OCR_THRESHOLD]
+    reread=[t for t in strong if t.get('confirmed_sticker_reread')]
     for token in strong:
+        if not token.get('confirmed_sticker_reread') and any(
+                same_label(token,other) or covered_fraction(token['bbox'],other['bbox'])>=.85 for other in reread):
+            continue
         if any(rack_readings(token['text'])):
             yield {**token,'ocr_token_ids':[token['id']]}
         elif any(rack_number_variants(rack_text(token['text']))):
@@ -260,6 +266,50 @@ def rack_labels_under_load(labels, box, *, printed_sticker=False):
     return distinct
 
 
+def test_group_relation(detection,anchor,sticker,labels):
+    """Classify overlap using photographed shelf signs, only for test groups.
+
+    All detector boxes remain raw observations. A contained carton is part of
+    a supported load; a box spanning a different sign belongs outside this group.
+    """
+    if detection['id']==anchor['id']: return None
+    box,whole=detection['bbox'],anchor['bbox']
+    others=[label for label in labels if not same_label(label,sticker)]
+    if any(under_load(label['bbox'],box,printed_sticker=True) or covered_fraction(label['bbox'],box)>=.85
+           for label in others): return 'outside_group'
+    if covered_fraction(box,whole)>=.95 and covered_fraction(whole,box)<=.85: return 'contained_part'
+    margin=min(.015,.12*(whole[2]-whole[0]))
+    supported=pallet_ocr_box(whole)
+    supported[0]=max(0.,supported[0]-margin);supported[2]=min(1.,supported[2]+margin)
+    if (not detection.get('detection_stable') and covered_fraction(box,whole)>=.75
+            and covered_fraction(box,supported)>=.95 and covered_fraction(whole,box)<=.65):
+        return 'contained_part'
+    if (not under_load(sticker['bbox'],box,printed_sticker=True)
+            and box[3]>sticker['bbox'][3]+.5*(sticker['bbox'][3]-sticker['bbox'][1])
+            and min(box[2],whole[2])-max(box[0],whole[0])>=.75*min(box[2]-box[0],whole[2]-whole[0])):
+        return 'crosses_shelf_sign'
+    return None
+
+
+def test_group_box_supported(box,sticker,labels,*,printed_stickers=True):
+    linked=rack_labels_under_load(labels,box,printed_sticker=printed_stickers)
+    return (under_load(sticker['bbox'],box,printed_sticker=printed_stickers)
+            and len(linked)==1 and same_label(linked[0],sticker)
+            and not any(not same_label(other,sticker) and covered_fraction(other['bbox'],box)>=.85
+                        and (other['bbox'][1]+other['bbox'][3])/2<box[3]-min(.02,.12*(box[3]-box[1]))
+                        for other in labels))
+
+
+def test_group_anchor(loads,sticker,labels):
+    if len(loads)<2: return loads,[]
+    parents=[candidate for candidate in loads if all(
+        other is candidate or (covered_fraction(other['bbox'],candidate['bbox'])>=.90
+            and test_group_relation(other,candidate,sticker,labels)=='contained_part') for other in loads)]
+    if len(parents)!=1: return loads,[]
+    parent,=parents
+    return [parent],[other['id'] for other in loads if other is not parent]
+
+
 def test_rack_detection_supported(detection):
     return (.40 <= detection['confidence'] < .5
             and sum(p['confidence'] >= .35 for p in detection.get('scale_predictions', ())) >= 2)
@@ -351,6 +401,10 @@ def read_location_regions(raw, positions, manual, *, test_rack_labels=False, pri
     candidates = [d for d in raw['detections'] if d.get('detection_stable') is True
                   and len(rack_labels_under_load(registered_stickers,d['bbox'],printed_sticker=printed_stickers)) == 1
                   and not any(covered_fraction(d['bbox'],r['bbox']) >= .5 for r in manual)]
+    if test_rack_labels:
+        candidates=[d for d in candidates if test_group_box_supported(d['bbox'],
+            rack_labels_under_load(registered_stickers,d['bbox'],printed_sticker=printed_stickers)[0],registered_stickers,
+            printed_stickers=printed_stickers)]
     strict = [d for d in candidates if d['confidence'] >= .5 and d.get('source') not in PERSPECTIVE_SOURCES]
     # A test-label check may use two overlapping moderate detector reads and
     # strong OCR together. Actual product verification retains its own cutoff.
@@ -366,6 +420,9 @@ def read_location_regions(raw, positions, manual, *, test_rack_labels=False, pri
         loads = [d for d in strict if under_load(label['bbox'],d['bbox'],printed_sticker=printed_stickers)]
         if not loads and test_support and label['confidence']>=.80:
             loads = [d for d in test_support if under_load(label['bbox'],d['bbox'],printed_sticker=printed_stickers)]
+        group_parts=[]
+        if test_rack_labels:
+            loads,group_parts=test_group_anchor(loads,label,registered_stickers)
         two_label = False
         if not loads and not test_rack_labels and registered:
             loads = [d for d in candidates if under_load(label['bbox'],d['bbox'])
@@ -376,6 +433,7 @@ def read_location_regions(raw, positions, manual, *, test_rack_labels=False, pri
             region={'position_id':position_id,'rack':position['rack'],'floor':position['floor'],
                     'bbox':detection['bbox'],'detection_id':detection['id'],
                     'confirmation_method':'ocr_rack_label','location_evidence':label}
+            if group_parts: region['test_group_fragment_ids']=group_parts
             if two_label:
                 region['two_label_detection']=True
             elif detection['confidence']<.5:

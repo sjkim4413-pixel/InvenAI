@@ -1,0 +1,11 @@
+{
+  "unitTests": 42,
+  "approvalRulesTests": 37,
+  "existingRulesTests": 31,
+  "androidFlowPassed": true,
+  "productionAdminVerified": true,
+  "productionInventoryWrites": 0,
+  "activeTestImages": 12,
+  "apk": "D:\\AI\\Project\\TeamProject\\InvenAI\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+  "apkSha256": "0da8755524771bd5fc64a2a19e832b7ba94ecd9b6daab16643ab547d977fa096"
+}

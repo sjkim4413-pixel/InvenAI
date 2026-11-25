@@ -38,7 +38,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="👤  프로필 / 계정 정보 (김현수)"
+            android:text="👤  프로필 / 계정 정보"
             android:textColor="#0F172A"
             android:textSize="15sp" />
     </LinearLayout>
@@ -62,7 +62,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="🔗  ERP / WMS 시스템 연동"
+            android:text="🔗  회사 재고 데이터"
             android:textColor="#0F172A"
             android:textSize="15sp" />
     </LinearLayout>
@@ -71,6 +71,18 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="#F1F5F9" />
+
+    <TextView
+        android:id="@+id/item_outbound"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="출고 처리"
+        android:textColor="#0F172A"
+        android:textSize="15sp"
+        android:paddingVertical="12dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?attr/selectableItemBackground" />
 
     <!-- 시스템 설정 -->
     <LinearLayout
@@ -86,7 +98,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="⚙️  시스템 설정"
+            android:text="⚙️  앱 권한 설정"
             android:textColor="#0F172A"
             android:textSize="15sp" />
     </LinearLayout>
@@ -110,7 +122,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="📢  공지사항 및 고객지원"
+            android:text="사용 도움말"
             android:textColor="#0F172A"
             android:textSize="15sp" />
     </LinearLayout>

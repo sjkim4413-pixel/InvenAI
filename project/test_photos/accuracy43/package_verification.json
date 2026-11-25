@@ -1,0 +1,87 @@
+{
+  "time_utc": "2026-11-24T08:20:16.785546+00:00",
+  "pipeline": "2026-11-24.43",
+  "apk": "app\\build\\outputs\\apk\\debug\\app-debug.apk",
+  "apk_sha256": "942f111c96fcc8ab18574b3d206568b3457500aca0600d84f0cdd9f8197a1a3c",
+  "assets": [
+    {
+      "file": "compare_01_normal.png",
+      "sha256": "ca35db35b5e908fe65add070852a84ed02cf301c0a8e79e4fc3e56bfaa5ac3a1",
+      "selectable": true
+    },
+    {
+      "file": "compare_02_misplaced.png",
+      "sha256": "d610e332563c8809e083b6256e8f12de8721722519d5a993ac71673440d54b91",
+      "selectable": true
+    },
+    {
+      "file": "276ec63e-e08f-4915-b585-582e9529bdaa.png",
+      "sha256": "2b73ea27aa8261481562c50a1c6be64a48633c02ddf824f68ef8ca23ea7c5b51",
+      "selectable": true
+    },
+    {
+      "file": "31940782-2973-4e71-9765-5ba1d3d0b20b.png",
+      "sha256": "2bfc0cb2bae68d2224b326bda41d5d1d5939ad3726cad4f7e806272bc372473d",
+      "selectable": true
+    },
+    {
+      "file": "7be725d7-e159-47a9-884d-1535aace4a93.png",
+      "sha256": "c565698885dce0e9c2488b3fa54fba167064fc53be4870a7cd6242f9857dfa18",
+      "selectable": true
+    },
+    {
+      "file": "e05d73dd-61e1-44e0-84c3-30e214ce27b3.png",
+      "sha256": "11fef04a67b2245ba6b246ca5064e83db53395b7eb47abe2768d12a3a5bc4d30",
+      "selectable": false
+    },
+    {
+      "file": "QAA_rack_labels.png",
+      "sha256": "8fee2ab6b1ee3916ac7f2b6df07b756f7184773920c22c938577be634056f29f",
+      "selectable": false
+    },
+    {
+      "file": "QAB_rack_labels.png",
+      "sha256": "653730e9b97762f4fc049d773de0d26cfb4f640c07ec53ade453290c9af93f82",
+      "selectable": false
+    },
+    {
+      "file": "QAC_rack_labels.png",
+      "sha256": "7329e9dd4c3be633d24ef0e79117f568f651a023695dc9d57d2178e23dd54911",
+      "selectable": false
+    },
+    {
+      "file": "QAD_rack_labels.png",
+      "sha256": "628fb84c543e886cbe56f049774e6c391af2fed5236ef946c8f0033f91b096c8",
+      "selectable": false
+    },
+    {
+      "file": "QAD_closeup_rack_labels.png",
+      "sha256": "6e3454f3e4bd35ee69188b27d57511fc3077b8843747c16b8008a11bc90b73e9",
+      "selectable": false
+    },
+    {
+      "file": "QAE_rack_labels.png",
+      "sha256": "81428e4cbc26878232d2ecb23b17da1e8fd041b68dbe190b84fafed4bf4c51c4",
+      "selectable": true
+    },
+    {
+      "file": "QAF_rack_labels.png",
+      "sha256": "6f7177b21e1ec22b8b4a6426fa76bd3c4f401734c64ee472c0143b229e4516f8",
+      "selectable": true
+    },
+    {
+      "file": "QAG_rack_labels.png",
+      "sha256": "81ca235cefe448f638941eb577e2da951996d854a0c18d3bd944804d7ce2dca8",
+      "selectable": true
+    }
+  ],
+  "selectable_images": 8,
+  "reference_photos": 6,
+  "matched": 109,
+  "expected_positions": 109,
+  "weights_sha256": "9d9c06ee7ce68d67d19ec54e67babb0070899af6e6b5765ec11915f2aff86a98",
+  "separate_shelf_v37_hash_verified": true,
+  "server_profiles_and_test_responses_absent_from_main_apk": true,
+  "corrected_firestore_test_documents": 109,
+  "screenshots_verified": 6
+}

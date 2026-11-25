@@ -1,0 +1,155 @@
+{
+  "version": 1,
+  "images": [
+    {
+      "file": "276ec63e-e08f-4915-b585-582e9529bdaa.png",
+      "title": "테스트 01 · 생활용품 A 정면 · 정상",
+      "group": "paired",
+      "mode": "test_reference_pairs",
+      "warehouseCode": "AI 이미지 테스트 창고 01",
+      "pairId": "pair_01",
+      "variant": "normal"
+    },
+    {
+      "file": "pair_01_misplaced.png",
+      "title": "테스트 02 · 생활용품 A 정면 · 오적재",
+      "group": "paired",
+      "mode": "test_reference_pairs",
+      "warehouseCode": "AI 이미지 테스트 창고 01",
+      "pairId": "pair_01",
+      "variant": "misplaced"
+    },
+    {
+      "file": "31940782-2973-4e71-9765-5ba1d3d0b20b.png",
+      "title": "테스트 03 · 생활용품 B 정면 · 정상",
+      "group": "paired",
+      "mode": "test_reference_pairs",
+      "warehouseCode": "AI 이미지 테스트 창고 02",
+      "pairId": "pair_02",
+      "variant": "normal"
+    },
+    {
+      "file": "pair_02_misplaced.png",
+      "title": "테스트 04 · 생활용품 B 정면 · 오적재",
+      "group": "paired",
+      "mode": "test_reference_pairs",
+      "warehouseCode": "AI 이미지 테스트 창고 02",
+      "pairId": "pair_02",
+      "variant": "misplaced"
+    },
+    {
+      "file": "7be725d7-e159-47a9-884d-1535aace4a93.png",
+      "title": "테스트 05 · 생활용품 C 전경 · 정상",
+      "group": "paired",
+      "mode": "test_reference_pairs",
+      "warehouseCode": "AI 이미지 테스트 창고 03",
+      "pairId": "pair_03",
+      "variant": "normal"
+    },
+    {
+      "file": "pair_03_misplaced.png",
+      "title": "테스트 06 · 생활용품 C 전경 · 오적재",
+      "group": "paired",
+      "mode": "test_reference_pairs",
+      "warehouseCode": "AI 이미지 테스트 창고 03",
+      "pairId": "pair_03",
+      "variant": "misplaced"
+    },
+    {
+      "file": "QAE_rack_labels.png",
+      "title": "테스트 07 · 가전제품 정면 · 정상",
+      "group": "paired",
+      "mode": "test_reference_pairs",
+      "warehouseCode": "AI 실사 추가 테스트 창고",
+      "pairId": "pair_04",
+      "variant": "normal"
+    },
+    {
+      "file": "pair_04_misplaced.png",
+      "title": "테스트 08 · 가전제품 정면 · 오적재",
+      "group": "paired",
+      "mode": "test_reference_pairs",
+      "warehouseCode": "AI 실사 추가 테스트 창고",
+      "pairId": "pair_04",
+      "variant": "misplaced"
+    },
+    {
+      "file": "QAF_rack_labels.png",
+      "title": "테스트 09 · 장난감 정면 · 정상",
+      "group": "paired",
+      "mode": "test_reference_pairs",
+      "warehouseCode": "AI 실사 추가 테스트 창고",
+      "pairId": "pair_05",
+      "variant": "normal"
+    },
+    {
+      "file": "pair_05_misplaced.png",
+      "title": "테스트 10 · 장난감 정면 · 오적재",
+      "group": "paired",
+      "mode": "test_reference_pairs",
+      "warehouseCode": "AI 실사 추가 테스트 창고",
+      "pairId": "pair_05",
+      "variant": "misplaced"
+    },
+    {
+      "file": "QAG_rack_labels.png",
+      "title": "테스트 11 · 포장 팔레트 사선 · 정상",
+      "group": "paired",
+      "mode": "test_reference_pairs",
+      "warehouseCode": "AI 실사 추가 테스트 창고",
+      "pairId": "pair_06",
+      "variant": "normal"
+    },
+    {
+      "file": "pair_06_misplaced.png",
+      "title": "테스트 12 · 포장 팔레트 사선 · 오적재",
+      "group": "paired",
+      "mode": "test_reference_pairs",
+      "warehouseCode": "AI 실사 추가 테스트 창고",
+      "pairId": "pair_06",
+      "variant": "misplaced"
+    },
+    {
+      "file": "e05d73dd-61e1-44e0-84c3-30e214ce27b3.png",
+      "title": "테스트 06 · 생활용품 D 정면",
+      "group": "reference",
+      "mode": "test_rack_labels",
+      "enabled": false
+    },
+    {
+      "file": "QAA_rack_labels.png",
+      "title": "테스트 07 · 생활용품 E 정면",
+      "group": "reference",
+      "mode": "test_rack_labels",
+      "enabled": false
+    },
+    {
+      "file": "QAB_rack_labels.png",
+      "title": "테스트 08 · 생활용품 F 전경",
+      "group": "reference",
+      "mode": "test_rack_labels",
+      "enabled": false
+    },
+    {
+      "file": "QAC_rack_labels.png",
+      "title": "테스트 09 · 가전제품 A 전경",
+      "group": "reference",
+      "mode": "test_rack_labels",
+      "enabled": false
+    },
+    {
+      "file": "QAD_rack_labels.png",
+      "title": "테스트 10 · 생활용품 G 전경",
+      "group": "reference",
+      "mode": "test_rack_labels",
+      "enabled": false
+    },
+    {
+      "file": "QAD_closeup_rack_labels.png",
+      "title": "테스트 11 · 생활용품 G 근접",
+      "group": "reference",
+      "mode": "test_rack_labels",
+      "enabled": false
+    }
+  ]
+}

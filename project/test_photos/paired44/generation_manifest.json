@@ -1,0 +1,43 @@
+{
+  "tool": "built-in image_gen",
+  "prompt_template": "Use case: precise-object-edit. Edit target: the provided warehouse photograph. Asset: realistic misplaced-stock test counterpart, one photograph only. {change} Preserve the exact original image framing, resolution/aspect ratio, camera angle, warehouse structure, lighting, floor, green pallets and every unaffected product. Move carton contents naturally with matched local perspective and shrink-wrap reflections. Do not move the shelf labels with the products. Preserve every location label letter and digit verbatim. No annotations, no arrows, no colored outlines, no new text, no collage. Output only the single edited photo.",
+  "pairs": [
+    {
+      "number": "03",
+      "file": "276ec63e-e08f-4915-b585-582e9529bdaa.png",
+      "change": "On the second shelf from the top (4F), exchange ONLY the complete blue-and-white dark purple bottles carton stack at left A01-4F and the complete bright cyan-blue detergent carton stack at A03-4F (middle). The white cartons at A02-4F remain unchanged. This makes exactly two product groups misplaced. Leave every printed rack location label, including A01-4F and A03-4F, at its original location.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1e6ee-0137-7f33-ba70-31280f447a98\\exec-b57b8b18-6fde-4277-b58d-69e0cd0634e9.png"
+    },
+    {
+      "number": "04",
+      "file": "31940782-2973-4e71-9765-5ba1d3d0b20b.png",
+      "change": "On the lowest floor pallet row (1F), swap ONLY the complete orange boxed product group at A01-1F (left) with the complete gray boxed product group at A02-1F (second from left). Keep A03-1F beige kitchenware and A04-1F black boxes unchanged. This makes exactly two product groups misplaced. Keep all white rack-location labels at their original positions with their text unchanged.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1e6ee-0137-7f33-ba70-31280f447a98\\exec-c82c33ea-859d-4504-8074-c3984b01d143.png"
+    },
+    {
+      "number": "05",
+      "file": "7be725d7-e159-47a9-884d-1535aace4a93.png",
+      "change": "On the topmost shelf (5F), swap ONLY the complete blue-and-white detergent stack at A01-5F (first full group from left) with the complete pale yellow-green detergent stack at A02-5F (second full group from left). All other product groups remain in place. Exactly two complete packaging groups exchange places. Keep both location labels and every other white rack label unchanged at their original positions.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1e6ee-0137-7f33-ba70-31280f447a98\\exec-847cf90a-3910-4f15-8aa2-4ac0325e59ff.png"
+    },
+    {
+      "number": "12",
+      "file": "QAE_rack_labels.png",
+      "change": "On the bottommost large pallet row (1F), swap ONLY the whole white-and-turquoise BLACK+DECKER blender carton stack over QAE01-1F-01 (left full stack) with the whole green PHILIPS appliance carton stack over QAE02-1F-01 (middle stack). Keep the orange-and-white toaster cartons on the right unchanged. Exactly two groups swap positions. Preserve ALL white rack-location labels and original perspective.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1e6ee-0137-7f33-ba70-31280f447a98\\exec-96481353-7da1-4be2-924c-201dc72c8c23.png"
+    },
+    {
+      "number": "13",
+      "file": "QAF_rack_labels.png",
+      "change": "On the upper toy shelf (2F), swap ONLY the complete tan capsule claw-machine box group at QAF01-2F-02 (second group from left) with the complete red-and-black PARKING GARAGE toy-box group at QAF02-2F-01 (third group from left). Leave toolbox toys at far left, Water Rail blue toy at right and all lower shelf toys unchanged. Keep white shelf labels QAF01-2F-02 and QAF02-2F-01 fixed exactly where they are, all rack text unchanged.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1e6ee-0137-7f33-ba70-31280f447a98\\exec-85002888-4b45-4a49-b201-9667615e724f.png"
+    },
+    {
+      "number": "14",
+      "file": "QAG_rack_labels.png",
+      "change": "On the prominent lower pallet shelf (2F), swap ONLY the complete tall white-and-orange printed shrink-wrapped carton group at QAG01-2F-01 (leftmost) with the complete green-and-beige shrink-wrapped carton group at QAG01-2F-02 (second from left). Preserve the purple-and-white group at QAG02-2F-01 and white rightmost group at QAG02-2F-02. Keep the steep camera perspective, green pallets and all four white location labels fixed exactly at their original positions.",
+      "source": "C:\\Users\\user\\.codex\\generated_images\\01a1e6ee-0137-7f33-ba70-31280f447a98\\exec-d007de26-6e8c-4531-9f1a-abbbc934dc21.png"
+    }
+  ],
+  "prompt_invariants": "Swap exactly two named packaging groups. Preserve every rack label, camera, framing and all unaffected goods. No marks or added SKU text."
+}

@@ -18,6 +18,7 @@ object F03RetrofitClient {
         .writeTimeout(30, TimeUnit.SECONDS)
         .addInterceptor { chain ->
             val original = chain.request()
+            if (original.header("Authorization") != null) return@addInterceptor chain.proceed(original)
             val token = try {
                 val user = FirebaseAuth.getInstance().currentUser
                 if (user != null) {

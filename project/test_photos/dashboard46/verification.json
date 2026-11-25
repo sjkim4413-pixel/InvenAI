@@ -1,0 +1,33 @@
+{
+  "time_utc": "2026-11-25T03:56:55.050129+00:00",
+  "android_unit_tests": {
+    "tests": 32,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "dashboard_device_test_passed": true,
+  "additional_device_tests": {
+    "total": 6,
+    "passed": 5,
+    "failed": 1
+  },
+  "additional_regression_passed": false,
+  "additional_regression_failure": "UiAutomation.takeScreenshot() returned null in F05ReferencePairsScreenTest.kt:98",
+  "local_firebase_only": true,
+  "production_inventory_written": false,
+  "stock_unchanged_during_dashboard_test": true,
+  "deduplicated_current_inventory_quantity": true,
+  "open_and_review_requested_included": true,
+  "resolved_audit_findings_excluded": true,
+  "warehouse_scope_checked": true,
+  "selectable_test_images": 12,
+  "test_credentials_and_test_emulator_endpoints_absent_from_main_apk": true,
+  "apk_sha256": "01c1b25423562e20419ce197de104079b2aa5d01cd85f0a2c460ff6ea8960ae8",
+  "screenshots": [
+    "dashboard46_active.png",
+    "dashboard46_before.png",
+    "dashboard46_resolved.png",
+    "dashboard46_warehouse.png"
+  ]
+}

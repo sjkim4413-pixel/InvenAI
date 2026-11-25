@@ -1,0 +1,105 @@
+{
+  "pipeline": "2026-11-24.43",
+  "time_utc": "2026-11-24T08:04:57.490420+00:00",
+  "mode": "test_rack_labels",
+  "inference_mocked": false,
+  "ocr_mocked": false,
+  "auth": "local TestClient override",
+  "inventory_source": "Firestore readback",
+  "inventory_revision": "71697be2bca3103fc233980a181122c41400fdead0c6a0ad2b63dab899cffa2b",
+  "photos": [
+    {
+      "image": "276ec63e-e08f-4915-b585-582e9529bdaa.png",
+      "title": "테스트 03 · 생활용품 A 정면",
+      "sha256": "2b73ea27aa8261481562c50a1c6be64a48633c02ddf824f68ef8ca23ea7c5b51",
+      "expected_positions": 20,
+      "matches": 20,
+      "rate": 100.0,
+      "displayed_rows": 20,
+      "unmapped_rows": 0,
+      "statuses": {
+        "TEST_RACK_LABEL_MATCH": 20
+      },
+      "defects": [],
+      "seconds": 10.66
+    },
+    {
+      "image": "31940782-2973-4e71-9765-5ba1d3d0b20b.png",
+      "title": "테스트 04 · 생활용품 B 정면",
+      "sha256": "2bfc0cb2bae68d2224b326bda41d5d1d5939ad3726cad4f7e806272bc372473d",
+      "expected_positions": 21,
+      "matches": 21,
+      "rate": 100.0,
+      "displayed_rows": 21,
+      "unmapped_rows": 0,
+      "statuses": {
+        "TEST_RACK_LABEL_MATCH": 21
+      },
+      "defects": [],
+      "seconds": 12.42
+    },
+    {
+      "image": "7be725d7-e159-47a9-884d-1535aace4a93.png",
+      "title": "테스트 05 · 생활용품 C 전경",
+      "sha256": "c565698885dce0e9c2488b3fa54fba167064fc53be4870a7cd6242f9857dfa18",
+      "expected_positions": 42,
+      "matches": 42,
+      "rate": 100.0,
+      "displayed_rows": 42,
+      "unmapped_rows": 0,
+      "statuses": {
+        "TEST_RACK_LABEL_MATCH": 42
+      },
+      "defects": [],
+      "seconds": 14.34
+    },
+    {
+      "image": "QAE_rack_labels.png",
+      "title": "테스트 12 · 가전제품 B 정면",
+      "sha256": "81428e4cbc26878232d2ecb23b17da1e8fd041b68dbe190b84fafed4bf4c51c4",
+      "expected_positions": 12,
+      "matches": 12,
+      "rate": 100.0,
+      "displayed_rows": 12,
+      "unmapped_rows": 0,
+      "statuses": {
+        "TEST_RACK_LABEL_MATCH": 12
+      },
+      "defects": [],
+      "seconds": 21.59
+    },
+    {
+      "image": "QAF_rack_labels.png",
+      "title": "테스트 13 · 장난감 정면",
+      "sha256": "6f7177b21e1ec22b8b4a6426fa76bd3c4f401734c64ee472c0143b229e4516f8",
+      "expected_positions": 10,
+      "matches": 10,
+      "rate": 100.0,
+      "displayed_rows": 10,
+      "unmapped_rows": 0,
+      "statuses": {
+        "TEST_RACK_LABEL_MATCH": 10
+      },
+      "defects": [],
+      "seconds": 24.92
+    },
+    {
+      "image": "QAG_rack_labels.png",
+      "title": "테스트 14 · 포장 팔레트 사선",
+      "sha256": "81ca235cefe448f638941eb577e2da951996d854a0c18d3bd944804d7ce2dca8",
+      "expected_positions": 4,
+      "matches": 4,
+      "rate": 100.0,
+      "displayed_rows": 4,
+      "unmapped_rows": 0,
+      "statuses": {
+        "TEST_RACK_LABEL_MATCH": 4
+      },
+      "defects": [],
+      "seconds": 10.28
+    }
+  ],
+  "total": 109,
+  "matched": 109,
+  "rate": 100.0
+}

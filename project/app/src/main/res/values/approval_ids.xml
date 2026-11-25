@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="approvalStatus" type="id" />
+    <item name="approvalCompany" type="id" />
+    <item name="approvalRole" type="id" />
+    <item name="approvalSubmit" type="id" />
+    <item name="adminStatusFilter" type="id" />
+    <item name="adminRequestCount" type="id" />
+    <item name="adminApprove" type="id" />
+    <item name="adminReject" type="id" />
+    <item name="adminAssignedCompany" type="id" />
+    <item name="adminAssignedRole" type="id" />
+    <item name="adminRejectionReason" type="id" />
+</resources>

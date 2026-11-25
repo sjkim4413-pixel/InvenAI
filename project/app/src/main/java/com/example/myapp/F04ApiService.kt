@@ -1,4 +1,4 @@
-package com.example.myapp
+﻿package com.example.myapp
 
 import com.google.gson.annotations.SerializedName
 import retrofit2.Call

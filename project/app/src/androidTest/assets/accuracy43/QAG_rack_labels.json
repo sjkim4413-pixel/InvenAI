@@ -1,0 +1,1451 @@
+{
+  "status": "compared",
+  "data_source": "FIREBASE_READ_ONLY",
+  "comparison_module": "F04_TEST_RACK_LABEL_REVIEW",
+  "erp_backend": "FIRESTORE",
+  "firebase_inventory_modified": false,
+  "total_positions": 4,
+  "results": [
+    {
+      "rack": "QAG01",
+      "floor": 2,
+      "zone": "QAG",
+      "side": "01",
+      "position_id": "QAG/QAG01/2/01",
+      "location_label": "QAG01-2F-01",
+      "location_bbox": [
+        0.08980225302956321,
+        0.18502324884588067,
+        0.45708315762606533,
+        0.8121414092092804
+      ],
+      "erp_product_ids": [
+        "QAG01-2F-01"
+      ],
+      "ai_product_ids": [
+        "QAG01-2F-01"
+      ],
+      "ai_product_id": "QAG01-2F-01",
+      "yolo_candidates": 2,
+      "review_status": "테스트 랙 라벨 일치",
+      "verification_passed": false,
+      "product_location_verified": false,
+      "product_identity_verified": false,
+      "location_verified": true,
+      "location_method": "ocr_rack_label",
+      "location_evidence": {
+        "id": "t1",
+        "text": "QAGO1-2F-01",
+        "confidence": 0.8085681523832852,
+        "bbox": [
+          0.24227272727272728,
+          0.8642424242424243,
+          0.35863636363636364,
+          0.8860606060606061
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "QAGO1-2F-01",
+            "confidence": 0.8085681523832852
+          },
+          {
+            "text": "QAGO1-2F-01",
+            "confidence": 0.9148884774521046
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-",
+        "kind": "other",
+        "ocr_token_ids": [
+          "t1"
+        ],
+        "normalized_text": "QAG01-2F-01"
+      },
+      "identity_method": "TEST_RACK_LABEL",
+      "expected_quantity": null,
+      "observed_quantity": null,
+      "quantity_verified": false,
+      "ocr_max_confidence": 0.0,
+      "ocr_yolo_spatial_match": false,
+      "product_matches": [],
+      "ocr_token_ids": [
+        "t1"
+      ],
+      "detection_ids": [
+        "d5",
+        "d8"
+      ],
+      "decoded_code_evidence": [],
+      "verified_detection_id": "d5",
+      "fragment_detection_ids": [
+        "d8"
+      ],
+      "review_reasons": [
+        "내장 테스트 이미지의 랙 라벨을 테스트용 상품 코드로 대조했습니다.",
+        "위치 라벨 OCR 보정 · QAGO1-2F-01 → QAG01-2F-01"
+      ],
+      "f04_status_code": 1,
+      "f04_status": "TEST_RACK_LABEL_MATCH",
+      "test_label_match": true,
+      "product_names": {}
+    },
+    {
+      "rack": "QAG01",
+      "floor": 2,
+      "zone": "QAG",
+      "side": "02",
+      "position_id": "QAG/QAG01/2/02",
+      "location_label": "QAG01-2F-02",
+      "location_bbox": [
+        0.42140932950106536,
+        0.39100153142755684,
+        0.7095333584872159,
+        0.8616603781960227
+      ],
+      "erp_product_ids": [
+        "QAG01-2F-02"
+      ],
+      "ai_product_ids": [
+        "QAG01-2F-02"
+      ],
+      "ai_product_id": "QAG01-2F-02",
+      "yolo_candidates": 1,
+      "review_status": "테스트 랙 라벨 일치",
+      "verification_passed": false,
+      "product_location_verified": false,
+      "product_identity_verified": false,
+      "location_verified": true,
+      "location_method": "ocr_rack_label",
+      "location_evidence": {
+        "id": "t2",
+        "bbox": [
+          0.5422727272727272,
+          0.8642424242424243,
+          0.6586363636363637,
+          0.8860606060606061
+        ],
+        "text": "QAG01-2F-02",
+        "confidence": 0.9717869162559509,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "QAG",
+                "confidence": 0.9999922227208102
+              },
+              {
+                "text": "QAG",
+                "confidence": 0.9717869162559509
+              },
+              {
+                "text": "QAG",
+                "confidence": 0.9999907085612024
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "01",
+                "confidence": 0.999999915706304
+              },
+              {
+                "text": "01",
+                "confidence": 0.999999915706304
+              },
+              {
+                "text": "01",
+                "confidence": 0.9999542311725774
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "2",
+                "confidence": 1.0
+              },
+              {
+                "text": "2",
+                "confidence": 1.0
+              },
+              {
+                "text": "2",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9994576712825989
+              },
+              {
+                "text": "F",
+                "confidence": 0.9988618753011593
+              },
+              {
+                "text": "F",
+                "confidence": 0.9995439572637821
+              }
+            ]
+          },
+          {
+            "field": "side",
+            "reads": [
+              {
+                "text": "02",
+                "confidence": 0.9999997471189183
+              },
+              {
+                "text": "02",
+                "confidence": 0.9999997471189183
+              },
+              {
+                "text": "02",
+                "confidence": 0.9999996628252286
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ],
+        "kind": "other",
+        "ocr_token_ids": [
+          "t2"
+        ]
+      },
+      "identity_method": "TEST_RACK_LABEL",
+      "expected_quantity": null,
+      "observed_quantity": null,
+      "quantity_verified": false,
+      "ocr_max_confidence": 0.0,
+      "ocr_yolo_spatial_match": false,
+      "product_matches": [],
+      "ocr_token_ids": [
+        "t2",
+        "t8"
+      ],
+      "detection_ids": [
+        "d2"
+      ],
+      "decoded_code_evidence": [],
+      "verified_detection_id": "d2",
+      "fragment_detection_ids": [],
+      "review_reasons": [
+        "내장 테스트 이미지의 랙 라벨을 테스트용 상품 코드로 대조했습니다."
+      ],
+      "f04_status_code": 1,
+      "f04_status": "TEST_RACK_LABEL_MATCH",
+      "test_label_match": true,
+      "product_names": {}
+    },
+    {
+      "rack": "QAG02",
+      "floor": 2,
+      "zone": "QAG",
+      "side": "01",
+      "position_id": "QAG/QAG02/2/01",
+      "location_label": "QAG02-2F-01",
+      "location_bbox": [
+        0.7011102294921875,
+        0.5456502278645833,
+        0.881804365678267,
+        0.8664899976325757
+      ],
+      "erp_product_ids": [
+        "QAG02-2F-01"
+      ],
+      "ai_product_ids": [
+        "QAG02-2F-01"
+      ],
+      "ai_product_id": "QAG02-2F-01",
+      "yolo_candidates": 1,
+      "review_status": "테스트 랙 라벨 일치",
+      "verification_passed": false,
+      "product_location_verified": false,
+      "product_identity_verified": false,
+      "location_verified": true,
+      "location_method": "ocr_rack_label",
+      "location_evidence": {
+        "id": "t3",
+        "bbox": [
+          0.7422727272727273,
+          0.8642424242424243,
+          0.8586363636363636,
+          0.8860606060606061
+        ],
+        "text": "QAG02-2F-01",
+        "confidence": 0.9717869162559509,
+        "confirmed_sticker_reread": true,
+        "sticker_field_readings": [
+          {
+            "field": "prefix",
+            "reads": [
+              {
+                "text": "QAG",
+                "confidence": 0.9999922227208102
+              },
+              {
+                "text": "QAG",
+                "confidence": 0.9717869162559509
+              },
+              {
+                "text": "QAG",
+                "confidence": 0.9999904332594886
+              }
+            ]
+          },
+          {
+            "field": "rack_digits",
+            "reads": [
+              {
+                "text": "02",
+                "confidence": 0.9999998314126102
+              },
+              {
+                "text": "02",
+                "confidence": 0.9999992413568111
+              },
+              {
+                "text": "02",
+                "confidence": 0.9999997471189183
+              }
+            ]
+          },
+          {
+            "field": "tier_digits",
+            "reads": [
+              {
+                "text": "2",
+                "confidence": 1.0
+              },
+              {
+                "text": "2",
+                "confidence": 1.0
+              },
+              {
+                "text": "2",
+                "confidence": 1.0
+              }
+            ]
+          },
+          {
+            "field": "tier_suffix",
+            "reads": [
+              {
+                "text": "F",
+                "confidence": 0.9994564795133556
+              },
+              {
+                "text": "F",
+                "confidence": 0.9988618753011593
+              },
+              {
+                "text": "F",
+                "confidence": 0.9996238108683997
+              }
+            ]
+          },
+          {
+            "field": "side",
+            "reads": [
+              {
+                "text": "01",
+                "confidence": 0.9999998314126102
+              },
+              {
+                "text": "01",
+                "confidence": 0.9999998314126102
+              }
+            ]
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_glyph_fields",
+          "otsu_glyph_fields",
+          "clahe_enlarged_glyph_fields"
+        ],
+        "kind": "other",
+        "ocr_token_ids": [
+          "t3"
+        ]
+      },
+      "identity_method": "TEST_RACK_LABEL",
+      "expected_quantity": null,
+      "observed_quantity": null,
+      "quantity_verified": false,
+      "ocr_max_confidence": 0.0,
+      "ocr_yolo_spatial_match": false,
+      "product_matches": [],
+      "ocr_token_ids": [
+        "t3",
+        "t6",
+        "t9",
+        "t11"
+      ],
+      "detection_ids": [
+        "d1"
+      ],
+      "decoded_code_evidence": [],
+      "verified_detection_id": "d1",
+      "fragment_detection_ids": [],
+      "review_reasons": [
+        "내장 테스트 이미지의 랙 라벨을 테스트용 상품 코드로 대조했습니다."
+      ],
+      "f04_status_code": 1,
+      "f04_status": "TEST_RACK_LABEL_MATCH",
+      "test_label_match": true,
+      "product_names": {}
+    },
+    {
+      "rack": "QAG02",
+      "floor": 2,
+      "zone": "QAG",
+      "side": "02",
+      "position_id": "QAG/QAG02/2/02",
+      "location_label": "QAG02-2F-02",
+      "location_bbox": [
+        0.8421237460049716,
+        0.5383861934777462,
+        0.98853759765625,
+        0.8732364908854167
+      ],
+      "erp_product_ids": [
+        "QAG02-2F-02"
+      ],
+      "ai_product_ids": [
+        "QAG02-2F-02"
+      ],
+      "ai_product_id": "QAG02-2F-02",
+      "yolo_candidates": 2,
+      "review_status": "테스트 랙 라벨 일치",
+      "verification_passed": false,
+      "product_location_verified": false,
+      "product_identity_verified": false,
+      "location_verified": true,
+      "location_method": "ocr_rack_label",
+      "location_evidence": {
+        "id": "t4",
+        "text": "QAG02-2F-02",
+        "confidence": 0.9517637327459482,
+        "bbox": [
+          0.8777272727272727,
+          0.8715151515151515,
+          0.9940909090909091,
+          0.8933333333333333
+        ],
+        "confirmed_sticker_reread": true,
+        "sticker_readings": [
+          {
+            "text": "QAG02-2F-02",
+            "confidence": 0.9624390620271883
+          },
+          {
+            "text": "QAG02-2F-02",
+            "confidence": 0.9517637327459482
+          }
+        ],
+        "ocr_preparations": [
+          "grayscale_ink_crop",
+          "otsu_ink_crop"
+        ],
+        "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-",
+        "kind": "other",
+        "ocr_token_ids": [
+          "t4"
+        ]
+      },
+      "identity_method": "TEST_RACK_LABEL",
+      "expected_quantity": null,
+      "observed_quantity": null,
+      "quantity_verified": false,
+      "ocr_max_confidence": 0.0,
+      "ocr_yolo_spatial_match": false,
+      "product_matches": [],
+      "ocr_token_ids": [
+        "t4",
+        "t7",
+        "t10"
+      ],
+      "detection_ids": [
+        "d3",
+        "d7"
+      ],
+      "decoded_code_evidence": [],
+      "verified_detection_id": "d3",
+      "fragment_detection_ids": [
+        "d7"
+      ],
+      "review_reasons": [
+        "내장 테스트 이미지의 랙 라벨을 테스트용 상품 코드로 대조했습니다."
+      ],
+      "f04_status_code": 1,
+      "f04_status": "TEST_RACK_LABEL_MATCH",
+      "test_label_match": true,
+      "product_names": {}
+    }
+  ],
+  "registered_code_observations": [],
+  "unregistered_codes": [],
+  "inventory_issues": [],
+  "inventory_source_count": 242,
+  "inventory_snapshot_complete": true,
+  "inventory_revision": "71697be2bca3103fc233980a181122c41400fdead0c6a0ad2b63dab899cffa2b",
+  "verification_scope": "test_rack_label_as_item_code",
+  "unmapped_observations": [
+    {
+      "rack": "UNMAPPED",
+      "floor": null,
+      "erp_product_ids": [],
+      "ai_product_ids": [],
+      "ai_product_id": "",
+      "yolo_candidates": 1,
+      "review_status": "실제창고위치_확인필요",
+      "verification_passed": false,
+      "product_location_verified": false,
+      "location_verified": false,
+      "location_method": "unverified",
+      "quantity_verified": false,
+      "ocr_max_confidence": 0.0,
+      "product_matches": [],
+      "ocr_token_ids": [],
+      "detection_ids": [
+        "d4"
+      ],
+      "review_reasons": [
+        "사진 속 랙·단을 선택한 창고의 전산 위치 한 곳과 연결하지 못했습니다."
+      ],
+      "f04_status_code": 5,
+      "f04_status": "MANUAL_REVIEW_REQUIRED"
+    },
+    {
+      "rack": "UNMAPPED",
+      "floor": null,
+      "erp_product_ids": [],
+      "ai_product_ids": [],
+      "ai_product_id": "",
+      "yolo_candidates": 1,
+      "review_status": "실제창고위치_확인필요",
+      "verification_passed": false,
+      "product_location_verified": false,
+      "location_verified": false,
+      "location_method": "unverified",
+      "quantity_verified": false,
+      "ocr_max_confidence": 0.0,
+      "product_matches": [],
+      "ocr_token_ids": [],
+      "detection_ids": [
+        "d6"
+      ],
+      "review_reasons": [
+        "사진 속 랙·단을 선택한 창고의 전산 위치 한 곳과 연결하지 못했습니다."
+      ],
+      "f04_status_code": 5,
+      "f04_status": "MANUAL_REVIEW_REQUIRED"
+    },
+    {
+      "rack": "UNMAPPED",
+      "floor": null,
+      "erp_product_ids": [],
+      "ai_product_ids": [],
+      "ai_product_id": "",
+      "yolo_candidates": 1,
+      "review_status": "실제창고위치_확인필요",
+      "verification_passed": false,
+      "product_location_verified": false,
+      "location_verified": false,
+      "location_method": "unverified",
+      "quantity_verified": false,
+      "ocr_max_confidence": 0.0,
+      "product_matches": [],
+      "ocr_token_ids": [],
+      "detection_ids": [
+        "d9"
+      ],
+      "review_reasons": [
+        "사진 속 랙·단을 선택한 창고의 전산 위치 한 곳과 연결하지 못했습니다."
+      ],
+      "f04_status_code": 5,
+      "f04_status": "MANUAL_REVIEW_REQUIRED"
+    }
+  ],
+  "summary_basis": "all_registered_test_positions",
+  "expected_position_count": 4,
+  "module": "F03",
+  "filename": "487dddb7a60e4fe587ce3167efd1522a.jpg",
+  "job_id": "487dddb7a60e4fe587ce3167efd1522a",
+  "company_code": "ABC-002",
+  "warehouse_id": 1,
+  "warehouse_code": "AI 실사 추가 테스트 창고",
+  "erp_warehouse": "AI 실사 추가 테스트 창고",
+  "rack": "LIVE",
+  "revision": {
+    "pipeline": "2026-11-24.43",
+    "model_sha256": "f4c9a7d74aad602aa6c24dfd8ac3c5da99f847b4f2da8afde8748686a4bb1f8e",
+    "shelf_model_sha256": "c94bf8cca79b945db6ec03fed46a898eb29d81803c422226eb88851578a901cf",
+    "image_sha256": "5304fe9eaa4b190857721f7b4635523fb1f9d587c924be660f0d0829820d6de8",
+    "catalog_sha256": "2d28b31da7c14f267a8f4f5815c436d5e152e1e74dfd23b6f006325dd5da5b84",
+    "location_map_sha256": "b17bb24ca0ac424458764bf578cddecc4bf51698cab1ffff31a0be0734e07aa9",
+    "warehouse_code": "AI 실사 추가 테스트 창고",
+    "warehouse_id": 1,
+    "registry_sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+    "inventory_revision": "71697be2bca3103fc233980a181122c41400fdead0c6a0ad2b63dab899cffa2b",
+    "test_shelf_model_sha256": "9d9c06ee7ce68d67d19ec54e67babb0070899af6e6b5765ec11915f2aff86a98"
+  },
+  "detections": [
+    {
+      "id": "d1",
+      "bbox": [
+        0.7011102294921875,
+        0.5456502278645833,
+        0.881804365678267,
+        0.8664899976325757
+      ],
+      "confidence": 0.8937169909477234,
+      "support_scales": [
+        640,
+        1024,
+        1280
+      ],
+      "detection_stable": true,
+      "scale_predictions": [
+        {
+          "bbox": [
+            0.7011102294921875,
+            0.5456502278645833,
+            0.881804365678267,
+            0.8664899976325757
+          ],
+          "confidence": 0.8937169909477234,
+          "scale": 1024
+        },
+        {
+          "bbox": [
+            0.6975526012073864,
+            0.5195807439630682,
+            0.8819784268465909,
+            0.8678850023674243
+          ],
+          "confidence": 0.8804404139518738,
+          "scale": 640
+        },
+        {
+          "bbox": [
+            0.7102176735617898,
+            0.600094512014678,
+            0.8873707164417614,
+            0.8658880060369318
+          ],
+          "confidence": 0.7789915800094604,
+          "scale": 1280
+        }
+      ],
+      "floor": 2,
+      "rack": "QAG02",
+      "product_ids": [
+        "QAG02-2F-01"
+      ],
+      "verification_passed": false,
+      "location_verified": true,
+      "source": "reference_scene_shelf_detector",
+      "ocr_token_ids": [],
+      "product_location_verified": false,
+      "review_status": "테스트 랙 라벨 일치",
+      "test_label_match": true,
+      "location_label": "QAG02-2F-01"
+    },
+    {
+      "id": "d2",
+      "bbox": [
+        0.42140932950106536,
+        0.39100153142755684,
+        0.7095333584872159,
+        0.8616603781960227
+      ],
+      "confidence": 0.8720538020133972,
+      "support_scales": [
+        640,
+        1024,
+        1280
+      ],
+      "detection_stable": true,
+      "scale_predictions": [
+        {
+          "bbox": [
+            0.42140932950106536,
+            0.39100153142755684,
+            0.7095333584872159,
+            0.8616603781960227
+          ],
+          "confidence": 0.8720538020133972,
+          "scale": 640
+        },
+        {
+          "bbox": [
+            0.420734336159446,
+            0.4098569557883523,
+            0.704444580078125,
+            0.9111248224431818
+          ],
+          "confidence": 0.6646208763122559,
+          "scale": 1024
+        },
+        {
+          "bbox": [
+            0.4531381780450994,
+            0.422587890625,
+            0.6945734197443182,
+            0.8744239760890151
+          ],
+          "confidence": 0.32900750637054443,
+          "scale": 1280
+        }
+      ],
+      "floor": 2,
+      "rack": "QAG01",
+      "product_ids": [
+        "QAG01-2F-02"
+      ],
+      "verification_passed": false,
+      "location_verified": true,
+      "source": "reference_scene_shelf_detector",
+      "ocr_token_ids": [],
+      "product_location_verified": false,
+      "review_status": "테스트 랙 라벨 일치",
+      "test_label_match": true,
+      "location_label": "QAG01-2F-02"
+    },
+    {
+      "id": "d3",
+      "bbox": [
+        0.8421237460049716,
+        0.5383861934777462,
+        0.98853759765625,
+        0.8732364908854167
+      ],
+      "confidence": 0.8012208342552185,
+      "support_scales": [
+        640,
+        1024,
+        1280
+      ],
+      "detection_stable": true,
+      "scale_predictions": [
+        {
+          "bbox": [
+            0.8421237460049716,
+            0.5383861934777462,
+            0.98853759765625,
+            0.8732364908854167
+          ],
+          "confidence": 0.8012208342552185,
+          "scale": 1024
+        },
+        {
+          "bbox": [
+            0.8432901833274148,
+            0.5304391571969697,
+            0.9835445889559659,
+            0.8667900686553031
+          ],
+          "confidence": 0.6674714684486389,
+          "scale": 640
+        },
+        {
+          "bbox": [
+            0.8417129794034091,
+            0.5852819084398674,
+            0.9935801003196023,
+            0.8713091856060606
+          ],
+          "confidence": 0.5571548938751221,
+          "scale": 1280
+        }
+      ],
+      "floor": 2,
+      "rack": "QAG02",
+      "product_ids": [
+        "QAG02-2F-02"
+      ],
+      "verification_passed": false,
+      "location_verified": true,
+      "source": "reference_scene_shelf_detector",
+      "ocr_token_ids": [],
+      "product_location_verified": false,
+      "review_status": "테스트 랙 라벨 일치",
+      "test_label_match": true,
+      "location_label": "QAG02-2F-02"
+    },
+    {
+      "id": "d4",
+      "bbox": [
+        0.7563073175603693,
+        0.9127172111742424,
+        0.9181702769886364,
+        1.0
+      ],
+      "confidence": 0.7689640522003174,
+      "support_scales": [
+        640,
+        1024,
+        1280
+      ],
+      "detection_stable": true,
+      "scale_predictions": [
+        {
+          "bbox": [
+            0.7563073175603693,
+            0.9127172111742424,
+            0.9181702769886364,
+            1.0
+          ],
+          "confidence": 0.7689640522003174,
+          "scale": 1280
+        },
+        {
+          "bbox": [
+            0.7536959006569602,
+            0.9136354758522728,
+            0.9120847389914772,
+            0.9997502367424242
+          ],
+          "confidence": 0.711694598197937,
+          "scale": 1024
+        },
+        {
+          "bbox": [
+            0.7781913063742898,
+            0.9122391394412879,
+            0.904940352006392,
+            0.9960153290719697
+          ],
+          "confidence": 0.48925480246543884,
+          "scale": 640
+        }
+      ],
+      "floor": null,
+      "rack": null,
+      "product_ids": [],
+      "verification_passed": false,
+      "location_verified": false,
+      "source": "reference_scene_shelf_detector",
+      "ocr_token_ids": [],
+      "product_location_verified": false,
+      "review_status": "실제창고위치_확인필요",
+      "test_label_match": false
+    },
+    {
+      "id": "d5",
+      "bbox": [
+        0.08980225302956321,
+        0.18502324884588067,
+        0.45708315762606533,
+        0.8121414092092804
+      ],
+      "confidence": 0.670815110206604,
+      "support_scales": [
+        640,
+        1024
+      ],
+      "detection_stable": true,
+      "scale_predictions": [
+        {
+          "bbox": [
+            0.08980225302956321,
+            0.18502324884588067,
+            0.45708315762606533,
+            0.8121414092092804
+          ],
+          "confidence": 0.670815110206604,
+          "scale": 640
+        },
+        {
+          "bbox": [
+            0.14859996448863635,
+            0.1467981141986269,
+            0.442704551003196,
+            0.7286181640625
+          ],
+          "confidence": 0.6251826286315918,
+          "scale": 1024
+        }
+      ],
+      "floor": 2,
+      "rack": "QAG01",
+      "product_ids": [
+        "QAG01-2F-01"
+      ],
+      "verification_passed": false,
+      "location_verified": true,
+      "source": "reference_scene_shelf_detector",
+      "ocr_token_ids": [],
+      "product_location_verified": false,
+      "review_status": "테스트 랙 라벨 일치",
+      "test_label_match": true,
+      "location_label": "QAG01-2F-01"
+    },
+    {
+      "id": "d6",
+      "bbox": [
+        0.9065715443004262,
+        0.9060178444602273,
+        0.9966722523082386,
+        0.9979424863873106
+      ],
+      "confidence": 0.6608431339263916,
+      "support_scales": [
+        640,
+        1024,
+        1280
+      ],
+      "detection_stable": true,
+      "scale_predictions": [
+        {
+          "bbox": [
+            0.9065715443004262,
+            0.9060178444602273,
+            0.9966722523082386,
+            0.9979424863873106
+          ],
+          "confidence": 0.6608431339263916,
+          "scale": 1024
+        },
+        {
+          "bbox": [
+            0.9126467063210227,
+            0.9075714666193182,
+            0.9978878506747159,
+            0.9960019383285985
+          ],
+          "confidence": 0.6070287227630615,
+          "scale": 640
+        },
+        {
+          "bbox": [
+            0.9044657204367897,
+            0.90506591796875,
+            0.9977899724786932,
+            1.0
+          ],
+          "confidence": 0.31211331486701965,
+          "scale": 1280
+        }
+      ],
+      "floor": null,
+      "rack": null,
+      "product_ids": [],
+      "verification_passed": false,
+      "location_verified": false,
+      "source": "reference_scene_shelf_detector",
+      "ocr_token_ids": [],
+      "product_location_verified": false,
+      "review_status": "실제창고위치_확인필요",
+      "test_label_match": false
+    },
+    {
+      "id": "d7",
+      "bbox": [
+        0.9490900213068182,
+        0.5583168353456439,
+        0.9996879438920454,
+        0.6076644989938447
+      ],
+      "confidence": 0.23259498178958893,
+      "support_scales": [
+        1280
+      ],
+      "detection_stable": false,
+      "scale_predictions": [
+        {
+          "bbox": [
+            0.9490900213068182,
+            0.5583168353456439,
+            0.9996879438920454,
+            0.6076644989938447
+          ],
+          "confidence": 0.23259498178958893,
+          "scale": 1280
+        }
+      ],
+      "floor": 2,
+      "rack": "QAG02",
+      "product_ids": [
+        "QAG02-2F-02"
+      ],
+      "verification_passed": false,
+      "location_verified": false,
+      "source": "reference_scene_shelf_detector",
+      "ocr_token_ids": [],
+      "product_location_verified": false,
+      "review_status": "테스트 랙 라벨 일치",
+      "test_label_match": false,
+      "location_label": "QAG02-2F-02",
+      "overlay_parent_id": "d3"
+    },
+    {
+      "id": "d8",
+      "bbox": [
+        0.1902219737659801,
+        0.13768095074277936,
+        0.43053741455078126,
+        0.5988734019886364
+      ],
+      "confidence": 0.22364187240600586,
+      "support_scales": [
+        1280
+      ],
+      "detection_stable": false,
+      "scale_predictions": [
+        {
+          "bbox": [
+            0.1902219737659801,
+            0.13768095074277936,
+            0.43053741455078126,
+            0.5988734019886364
+          ],
+          "confidence": 0.22364187240600586,
+          "scale": 1280
+        }
+      ],
+      "floor": 2,
+      "rack": "QAG01",
+      "product_ids": [
+        "QAG01-2F-01"
+      ],
+      "verification_passed": false,
+      "location_verified": false,
+      "source": "reference_scene_shelf_detector",
+      "ocr_token_ids": [],
+      "product_location_verified": false,
+      "review_status": "테스트 랙 라벨 일치",
+      "test_label_match": false,
+      "location_label": "QAG01-2F-01",
+      "overlay_parent_id": "d5"
+    },
+    {
+      "id": "d9",
+      "bbox": [
+        0.602343417080966,
+        0.9262044270833333,
+        0.7516581032492897,
+        0.996006895123106
+      ],
+      "confidence": 0.2215997278690338,
+      "support_scales": [
+        1024
+      ],
+      "detection_stable": false,
+      "scale_predictions": [
+        {
+          "bbox": [
+            0.602343417080966,
+            0.9262044270833333,
+            0.7516581032492897,
+            0.996006895123106
+          ],
+          "confidence": 0.2215997278690338,
+          "scale": 1024
+        }
+      ],
+      "floor": null,
+      "rack": null,
+      "product_ids": [],
+      "verification_passed": false,
+      "location_verified": false,
+      "source": "reference_scene_shelf_detector",
+      "ocr_token_ids": [],
+      "product_location_verified": false,
+      "review_status": "실제창고위치_확인필요",
+      "test_label_match": false
+    }
+  ],
+  "codes": [],
+  "image_width": 2200,
+  "image_height": 1650,
+  "total_candidates": 9,
+  "ocr_tokens": [
+    {
+      "id": "t1",
+      "text": "QAGO1-2F-01",
+      "confidence": 0.8085681523832852,
+      "bbox": [
+        0.24227272727272728,
+        0.8642424242424243,
+        0.35863636363636364,
+        0.8860606060606061
+      ],
+      "confirmed_sticker_reread": true,
+      "sticker_readings": [
+        {
+          "text": "QAGO1-2F-01",
+          "confidence": 0.8085681523832852
+        },
+        {
+          "text": "QAGO1-2F-01",
+          "confidence": 0.9148884774521046
+        }
+      ],
+      "ocr_preparations": [
+        "grayscale_ink_crop",
+        "otsu_ink_crop"
+      ],
+      "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-",
+      "kind": "location_label"
+    },
+    {
+      "id": "t2",
+      "bbox": [
+        0.5422727272727272,
+        0.8642424242424243,
+        0.6586363636363637,
+        0.8860606060606061
+      ],
+      "text": "QAG01-2F-02",
+      "confidence": 0.9717869162559509,
+      "confirmed_sticker_reread": true,
+      "sticker_field_readings": [
+        {
+          "field": "prefix",
+          "reads": [
+            {
+              "text": "QAG",
+              "confidence": 0.9999922227208102
+            },
+            {
+              "text": "QAG",
+              "confidence": 0.9717869162559509
+            },
+            {
+              "text": "QAG",
+              "confidence": 0.9999907085612024
+            }
+          ]
+        },
+        {
+          "field": "rack_digits",
+          "reads": [
+            {
+              "text": "01",
+              "confidence": 0.999999915706304
+            },
+            {
+              "text": "01",
+              "confidence": 0.999999915706304
+            },
+            {
+              "text": "01",
+              "confidence": 0.9999542311725774
+            }
+          ]
+        },
+        {
+          "field": "tier_digits",
+          "reads": [
+            {
+              "text": "2",
+              "confidence": 1.0
+            },
+            {
+              "text": "2",
+              "confidence": 1.0
+            },
+            {
+              "text": "2",
+              "confidence": 1.0
+            }
+          ]
+        },
+        {
+          "field": "tier_suffix",
+          "reads": [
+            {
+              "text": "F",
+              "confidence": 0.9994576712825989
+            },
+            {
+              "text": "F",
+              "confidence": 0.9988618753011593
+            },
+            {
+              "text": "F",
+              "confidence": 0.9995439572637821
+            }
+          ]
+        },
+        {
+          "field": "side",
+          "reads": [
+            {
+              "text": "02",
+              "confidence": 0.9999997471189183
+            },
+            {
+              "text": "02",
+              "confidence": 0.9999997471189183
+            },
+            {
+              "text": "02",
+              "confidence": 0.9999996628252286
+            }
+          ]
+        }
+      ],
+      "ocr_preparations": [
+        "grayscale_glyph_fields",
+        "otsu_glyph_fields",
+        "clahe_enlarged_glyph_fields"
+      ],
+      "kind": "location_label"
+    },
+    {
+      "id": "t3",
+      "bbox": [
+        0.7422727272727273,
+        0.8642424242424243,
+        0.8586363636363636,
+        0.8860606060606061
+      ],
+      "text": "QAG02-2F-01",
+      "confidence": 0.9717869162559509,
+      "confirmed_sticker_reread": true,
+      "sticker_field_readings": [
+        {
+          "field": "prefix",
+          "reads": [
+            {
+              "text": "QAG",
+              "confidence": 0.9999922227208102
+            },
+            {
+              "text": "QAG",
+              "confidence": 0.9717869162559509
+            },
+            {
+              "text": "QAG",
+              "confidence": 0.9999904332594886
+            }
+          ]
+        },
+        {
+          "field": "rack_digits",
+          "reads": [
+            {
+              "text": "02",
+              "confidence": 0.9999998314126102
+            },
+            {
+              "text": "02",
+              "confidence": 0.9999992413568111
+            },
+            {
+              "text": "02",
+              "confidence": 0.9999997471189183
+            }
+          ]
+        },
+        {
+          "field": "tier_digits",
+          "reads": [
+            {
+              "text": "2",
+              "confidence": 1.0
+            },
+            {
+              "text": "2",
+              "confidence": 1.0
+            },
+            {
+              "text": "2",
+              "confidence": 1.0
+            }
+          ]
+        },
+        {
+          "field": "tier_suffix",
+          "reads": [
+            {
+              "text": "F",
+              "confidence": 0.9994564795133556
+            },
+            {
+              "text": "F",
+              "confidence": 0.9988618753011593
+            },
+            {
+              "text": "F",
+              "confidence": 0.9996238108683997
+            }
+          ]
+        },
+        {
+          "field": "side",
+          "reads": [
+            {
+              "text": "01",
+              "confidence": 0.9999998314126102
+            },
+            {
+              "text": "01",
+              "confidence": 0.9999998314126102
+            }
+          ]
+        }
+      ],
+      "ocr_preparations": [
+        "grayscale_glyph_fields",
+        "otsu_glyph_fields",
+        "clahe_enlarged_glyph_fields"
+      ],
+      "kind": "location_label"
+    },
+    {
+      "id": "t4",
+      "text": "QAG02-2F-02",
+      "confidence": 0.9517637327459482,
+      "bbox": [
+        0.8777272727272727,
+        0.8715151515151515,
+        0.9940909090909091,
+        0.8933333333333333
+      ],
+      "confirmed_sticker_reread": true,
+      "sticker_readings": [
+        {
+          "text": "QAG02-2F-02",
+          "confidence": 0.9624390620271883
+        },
+        {
+          "text": "QAG02-2F-02",
+          "confidence": 0.9517637327459482
+        }
+      ],
+      "ocr_preparations": [
+        "grayscale_ink_crop",
+        "otsu_ink_crop"
+      ],
+      "ocr_alphabet": "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-",
+      "kind": "location_label"
+    },
+    {
+      "id": "t5",
+      "text": "IQAGo1-2F-01",
+      "confidence": 0.48720705389202396,
+      "bbox": [
+        0.240625,
+        0.8608333333333333,
+        0.3575,
+        0.885
+      ],
+      "kind": "other"
+    },
+    {
+      "id": "t6",
+      "text": "QAGoz-2F-01",
+      "confidence": 0.6887279785493096,
+      "bbox": [
+        0.740625,
+        0.8608333333333333,
+        0.8575,
+        0.8866666666666667
+      ],
+      "kind": "other"
+    },
+    {
+      "id": "t7",
+      "text": "@AGo2-2F-02",
+      "confidence": 0.5654688150913707,
+      "bbox": [
+        0.874375,
+        0.8658333333333333,
+        0.996875,
+        0.8958333333333334
+      ],
+      "kind": "other"
+    },
+    {
+      "id": "t8",
+      "text": "QAGO1-2F-02",
+      "confidence": 0.8587685775601963,
+      "bbox": [
+        0.5425,
+        0.8625,
+        0.658125,
+        0.885
+      ],
+      "kind": "other"
+    },
+    {
+      "id": "t9",
+      "text": "01",
+      "confidence": 0.9999849957548995,
+      "bbox": [
+        0.83375,
+        0.8633333333333333,
+        0.8575,
+        0.885
+      ],
+      "kind": "other"
+    },
+    {
+      "id": "t10",
+      "text": "QAGo2-2F-02",
+      "confidence": 0.6198398971858338,
+      "bbox": [
+        0.8775,
+        0.87,
+        0.993125,
+        0.8925
+      ],
+      "kind": "other"
+    },
+    {
+      "id": "t11",
+      "text": "01",
+      "confidence": 0.9985815033359906,
+      "bbox": [
+        0.8340909090909091,
+        0.8642424242424243,
+        0.855909090909091,
+        0.8836363636363637
+      ],
+      "kind": "other"
+    }
+  ],
+  "ocr_status": "completed",
+  "model": {
+    "name": "shelf_test_v43",
+    "file": "best.pt",
+    "imgsz": 1280,
+    "scales": [
+      640,
+      1024,
+      1280
+    ],
+    "fusion": "actual_anchor_iou_0.55",
+    "conf": 0.2,
+    "iou": 0.3,
+    "training_scope": "reference_scenes_included_not_independent_field_accuracy",
+    "used_for": "test_rack_labels_only",
+    "detector_preprocessing": "printed_label_text_redacted",
+    "masked_sticker_count": 4
+  },
+  "catalog_id": "FIREBASE_REGISTERED_CODES",
+  "ocr_languages": [
+    "en"
+  ],
+  "analyzed_at": "2026-11-24T08:06:31.672143+00:00"
+}

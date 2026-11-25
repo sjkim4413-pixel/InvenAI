@@ -7,8 +7,19 @@ import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
 import retrofit2.http.Query
+import retrofit2.http.Body
+import retrofit2.http.Header
+import retrofit2.http.Path
 
 interface F03ApiService {
+    @POST("f06/push/devices")
+    fun registerPushDevice(@Body body: F06DeviceRegistration): Call<F06DeviceRegistrationResult>
+
+    @POST("f06/push/devices/remove")
+    fun removePushDevice(@Body body: F06DeviceRemoval, @Header("Authorization") authorization: String): Call<Map<String, Any>>
+
+    @POST("f06/push/alerts/{alertId}")
+    fun dispatchPushAlert(@Path("alertId") alertId: String, @Query("kind") kind: String): Call<Map<String, Any>>
 
     // 기존 실사 진행률
     @GET("f03/audit/progress")
@@ -44,4 +55,10 @@ interface F03ApiService {
         @Query("warehouse_code") warehouseCode: String? = null,
         @Query("mode") mode: String = "live"
     ): Call<F03AnalyzeAndCompareResponse>
+
+    @GET("f03/audit/live/context")
+    fun getWarehousePositions(
+        @Query("warehouse_code") warehouseCode: String,
+        @Query("warehouse_id") warehouseId: Int = 1
+    ): Call<F03PositionContext>
 }

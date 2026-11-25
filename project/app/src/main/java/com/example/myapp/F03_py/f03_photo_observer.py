@@ -9,8 +9,10 @@ from f03_live_inventory import position_id
 from f03_live_ocr import (
     OCR_THRESHOLD, pallet_ocr_box, product_evidence, rack_label_evidence, rack_labels_under_load,
     rack_readings, same_label, test_rack_detection_supported, under_load,
+    test_group_box_supported,test_group_anchor,
 )
 from f03_verification import covered_fraction, spatially_verified
+from f03_shelf_detection import recover_shelf_detections
 from f03_multiscale_detection import (
     DETECTION_SCALES, FUSION_IOU, PERSPECTIVE_EXTENSION_SOURCE, PERSPECTIVE_MIN_CONFIDENCE,
     PERSPECTIVE_RETRY_SOURCE, box_iou, crop_predictions, detect_objects, fuse_predictions, perspective_consensus,
@@ -417,9 +419,16 @@ def retry_rack_detections(model,image,detections,tokens,*,test_rack_labels=False
             labels.append(label)
 
     def has_anchor(label):
+        if test_rack_labels:
+            options=[d for d in detections if d['detection_stable'] and d['confidence']>=.5
+                     and test_group_box_supported(d['bbox'],label,labels,printed_stickers=printed_stickers)]
+            options,_=test_group_anchor(options,label,labels)
+            return len(options)==1
         return any(detection['detection_stable'] and detection['confidence']>=.5
-                   and under_load(label['bbox'],detection['bbox'])
-                   and len(rack_labels_under_load(labels,detection['bbox']))==1 for detection in detections)
+                   and under_load(label['bbox'],detection['bbox'],printed_sticker=printed_stickers)
+                   and len(rack_labels_under_load(labels,detection['bbox'],printed_sticker=printed_stickers))==1
+                   and (not test_rack_labels or test_group_box_supported(detection['bbox'],label,labels,printed_stickers=printed_stickers))
+                   for detection in detections)
 
     for view_name in ('tile','reflected','reflected_lift','reflected_stretch','local','reflected_wide','reflected_overlap'):
         pending=[label for label in labels if not has_anchor(label)]
@@ -454,19 +463,68 @@ def retry_rack_detections(model,image,detections,tokens,*,test_rack_labels=False
         for view,scales in views:
             if not any(covered_fraction(label['bbox'],view)>=.95 for label in pending):
                 continue
-            for label,prediction in rack_view_predictions(model,retry_image,view,scales,labels,view_name=view_name):
+            for label,prediction in rack_view_predictions(model,retry_image,view,scales,labels,view_name=view_name,
+                                                         printed_stickers=printed_stickers):
                 if label['id'] in proposals:
                     proposals[label['id']].append(prediction)
         merge_rack_proposals(detections,labels,pending,proposals,has_anchor,
-                             view_name=view_name,test_rack_labels=test_rack_labels)
+                             view_name=view_name,test_rack_labels=test_rack_labels,printed_stickers=printed_stickers)
     if printed_stickers:
-        retry_printed_shelf_bands(model,image,detections,labels)
+        retry_printed_shelf_bands(model,image,detections,labels,test_rack_labels=test_rack_labels)
+        if test_rack_labels:
+            retry_shallow_test_rows(model,image,detections,labels)
 
 
-def retry_printed_shelf_bands(model,image,detections,labels):
+def retry_shallow_test_rows(model,image,detections,labels):
+    """Retry shallow visible rows at higher vertical resolution, without a map."""
+    from f03_multiscale_detection import predict_boxes
+    height,width=image.shape[:2]
+    rows=defaultdict(list)
+    for label in labels:
+        tiers={p['tier'] for p,_ in rack_readings(label['text'])}
+        if len(tiers)==1: rows[next(iter(tiers))].append(label)
+    def has_anchor(label):
+        options=[d for d in detections if d['detection_stable'] and d['confidence']>=.5
+                 and test_group_box_supported(d['bbox'],label,labels)]
+        options,_=test_group_anchor(options,label,labels)
+        return len(options)==1
+    for tier,row in rows.items():
+        pending=[label for label in row if not has_anchor(label)]
+        if not pending: continue
+        current_top=min(t['bbox'][1] for t in row)
+        previous=[max(t['bbox'][3] for t in other) for key,other in rows.items()
+                  if key!=tier and max(t['bbox'][3] for t in other)<current_top-.015]
+        top=max(0.,max(previous,default=0.)+.003)
+        bottom=min(1.,max(t['bbox'][3] for t in row)+.014)
+        if bottom<=top or width/((bottom-top)*height)<3.5: continue
+        first,last=round(top*height),round(bottom*height)
+        tile=image[first:last]
+        proposals={label['id']:[] for label in pending}
+        for stretch in (1.7,2.4,3.2):
+            expanded=cv2.resize(tile,(width,round(tile.shape[0]*stretch)),interpolation=cv2.INTER_CUBIC)
+            for reflected in (False,True):
+                view=expanded[:,::-1].copy() if reflected else expanded
+                for scale in (960,1280):
+                    for prediction in predict_boxes(model,view,scale,nms_iou=.55):
+                        a,b,c,d=prediction['bbox']
+                        if reflected: a,c=1-c,1-a
+                        box=[a,(first+b*(last-first))/height,c,(first+d*(last-first))/height]
+                        if (first>0 and b<.01) or (last<height and d>.99): continue
+                        linked=rack_labels_under_load(labels,box,printed_sticker=True)
+                        if len(linked)!=1 or linked[0]['id'] not in proposals: continue
+                        label=linked[0]
+                        if not test_group_box_supported(box,label,labels): continue
+                        proposals[label['id']].append({**prediction,'bbox':box,
+                            'view':('beam_band',tier,stretch,reflected,scale)})
+        merge_rack_proposals(detections,labels,pending,proposals,has_anchor,
+                             view_name='beam_band',test_rack_labels=True,printed_stickers=True)
+
+
+def retry_printed_shelf_bands(model,image,detections,labels,*,test_rack_labels=False):
     def has_anchor(label):
         return any(d['detection_stable'] and d['confidence']>=.5 and
                    rack_labels_under_load(labels,d['bbox'],printed_sticker=True)==[label]
+                   and (not test_rack_labels or test_group_box_supported(d['bbox'],label,labels))
                    for d in detections)
 
     pending=[label for label in labels if not has_anchor(label)]
@@ -489,7 +547,7 @@ def retry_printed_shelf_bands(model,image,detections,labels):
                 continue
             proposals[label['id']].append({**prediction,'view':('shelf_band',*band,True,size)})
     merge_rack_proposals(detections,labels,pending,proposals,has_anchor,
-                         view_name='shelf_band',test_rack_labels=False,printed_stickers=True)
+                         view_name='shelf_band',test_rack_labels=test_rack_labels,printed_stickers=True)
 
 
 def merge_rack_proposals(detections,labels,pending,proposals,has_anchor,*,view_name,test_rack_labels,printed_stickers=False):
@@ -513,6 +571,9 @@ def merge_rack_proposals(detections,labels,pending,proposals,has_anchor,*,view_n
                       (test_support and label['confidence']>=.80
                        and test_rack_detection_supported(candidate)))
                  and any(p['view'][0]==view_name for p in candidate['scale_predictions'])]
+        if test_rack_labels:
+            options=[d for d in options if test_group_box_supported(d['bbox'],label,labels,printed_stickers=printed_stickers)]
+            options,_=test_group_anchor(options,label,labels)
         if not options:
             continue
         candidate=max(options,key=lambda option:option['confidence'])
@@ -525,12 +586,18 @@ def merge_rack_proposals(detections,labels,pending,proposals,has_anchor,*,view_n
             original=detections[index]
             if not original['detection_stable'] or original['confidence']<.5:
                 detections[index]={**candidate,'id':original['id']}
+            elif test_rack_labels:
+                candidate['id']=f'd{len(detections)+1}'
+                detections.append(candidate)
         elif not overlapping:
+            candidate['id']=f'd{len(detections)+1}'
+            detections.append(candidate)
+        elif test_rack_labels:
             candidate['id']=f'd{len(detections)+1}'
             detections.append(candidate)
 
 
-def rack_view_predictions(model,image,tile,scales,labels,*,view_name):
+def rack_view_predictions(model,image,tile,scales,labels,*,view_name,printed_stickers=False):
     """Keep real predictions wholly visible at the crop's internal edges."""
     left,top,right,bottom=tile
     options={'reflected':True} if view_name.startswith('reflected') else {}
@@ -544,7 +611,7 @@ def rack_view_predictions(model,image,tile,scales,labels,*,view_name):
         if ((left>0 and a-left<margin) or (top>0 and b-top<margin)
                 or (right<1 and right-c<margin) or (bottom<1 and bottom-d<margin)):
             continue
-        linked=rack_labels_under_load(labels,candidate['bbox'])
+        linked=rack_labels_under_load(labels,candidate['bbox'],printed_sticker=printed_stickers)
         if len(linked)==1:
             yield linked[0],{**candidate,'view':(view_name,*tile,candidate['scale'])}
 
@@ -849,9 +916,24 @@ def observe_photo(image_path, image, rack_number, models, model_path, *, catalog
     mapping = load_locations(location_map_path) if location_map is None else location_map
     regions, location_reason = resolve_regions(mapping, image_path, w, h, company_code, warehouse_id)
     model, reader = models
-    detections = detect_objects(model,image)
-    retry_empty_regions(model, image, detections, regions)
-    tokens, processed = [], []
+    initial_tokens=[]
+    detector_image=image
+    masked_stickers=0
+    if catalog.get('test_shelf_detector'):
+        import f03_test_shelf_model as test_shelf
+        model=test_shelf.get_model()
+        if model is None:
+            raise ValueError('테스트 적재물 탐지 모델을 확인할 수 없습니다.')
+        model_path=test_shelf.model_path()
+        from f03_sticker_ocr import read_stickers,redact_sticker_text
+        read_stickers(reader,image,initial_tokens)
+        detector_image,masked_stickers=redact_sticker_text(image,initial_tokens)
+    detections = detect_objects(model,detector_image)
+    if catalog.get('test_shelf_detector'):
+        for detection in detections:
+            detection['source']='independent_shelf_detector' if test_shelf.training_scope()=='independent_aisle_training' else 'reference_scene_shelf_detector'
+    retry_empty_regions(model, detector_image, detections, regions)
+    tokens, processed = initial_tokens, []
     printed_stickers=catalog.get('printed_rack_stickers',False)
     # The detector may find some loads while missing a different labelled
     # product entirely. Always read the overview, including those missed areas.
@@ -878,12 +960,15 @@ def observe_photo(image_path, image, rack_number, models, model_path, *, catalog
     if live_ocr:
         if printed_stickers:
             read_printed_rack_stickers(reader,image,tokens)
+            if catalog.get('test_rack_labels'):
+                from f03_sticker_ocr import read_stickers
+                read_stickers(reader,image,tokens)
         recover_live_labels(reader,ocr_image,detections,tokens,rack_only=printed_stickers)
         reread_weak_rack_labels(reader,image,tokens,detections,printed_stickers=printed_stickers)
         if not catalog.get('test_rack_labels'):
             recover_missing_beam_labels(reader,image,detections,tokens)
             reread_unresolved_live_labels(reader,image,tokens)
-        retry_rack_detections(model,image,detections,tokens,test_rack_labels=catalog.get('test_rack_labels',False),
+        retry_rack_detections(model,detector_image,detections,tokens,test_rack_labels=catalog.get('test_rack_labels',False),
                               printed_stickers=printed_stickers)
         if not printed_stickers:
             for detection in detections:
@@ -894,6 +979,7 @@ def observe_photo(image_path, image, rack_number, models, model_path, *, catalog
             retry_oblique_rack_detections(model, image, detections, tokens)
             extend_partial_loads(model, reader, image, detections, tokens)
             recover_unmapped_shelf_labels(reader, image, detections, tokens)
+            recover_shelf_detections(image, detections, tokens)
     all_boxes = [d['bbox'] for d in detections]
     for detection in detections:
         local = [t for t in tokens if covered_fraction(t['bbox'], detection['bbox']) >= .95]
@@ -938,4 +1024,8 @@ def observe_photo(image_path, image, rack_number, models, model_path, *, catalog
             'verification_scope': mapping.get('verification_scope', 'unmapped_photo') if regions else 'unmapped_photo',
             'model': {'name': model_path.parent.parent.name, 'file': model_path.name,
                       'imgsz':1280,'scales':list(DETECTION_SCALES),'fusion':'actual_anchor_iou_0.55',
-                      'conf': .20, 'iou': .30}}
+                      'conf': .20, 'iou': .30,
+                      **({'training_scope':test_shelf.training_scope(),'used_for':'test_rack_labels_only'}
+                         if catalog.get('test_shelf_detector') else {}),
+                      **({'detector_preprocessing':'printed_label_text_redacted','masked_sticker_count':masked_stickers}
+                         if masked_stickers else {})}}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="auditSelectWarehouse" type="id" />
+    <item name="auditWarehouseStatus" type="id" />
+    <item name="auditOpenCamera" type="id" />
+    <item name="auditAnalyzePhoto" type="id" />
+</resources>

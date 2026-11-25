@@ -316,6 +316,25 @@ class LiveInventory(unittest.TestCase):
         row,=review_live(raw,[],snapshot,positions,[],{})['results']
         self.assertFalse(row['location_verified'])
 
+    def test_rack_digit_z_is_resolved_only_to_a_unique_registered_location(self):
+        raw,_,_,_,_=self.fixture()
+        here=record(location='B구역 A02-5F',rack='A02',rackId='B구역 A02',tier='5F')
+        raw['ocr_tokens']=[
+            {'id':'sku','text':'SKU BT-200','confidence':.98,'bbox':[.22,.81,.39,.84]},
+            {'id':'rack','text':'Aoz-SF','confidence':.92,'bbox':[.49,.81,.60,.84]},
+        ]
+        snapshot=build_snapshot('ABC-001',[('here',here)])
+        positions=warehouse_view(snapshot,'제1물류센터')
+        row,=review_live(raw,[],snapshot,positions,[],{})['results']
+        self.assertEqual(row['f04_status'],'PRODUCT_LOCATION_MATCH')
+        self.assertEqual(row['location_evidence']['normalized_text'],'A02-5F')
+        other={**here,'location':'B구역 AO2-5F','rack':'AO2','rackId':'B구역 AO2'}
+        snapshot=build_snapshot('ABC-001',[('here',here),('other',other)])
+        rows=review_live(raw,[],snapshot,warehouse_view(snapshot,'제1물류센터'),[],{})['results']
+        self.assertTrue(all(not row['location_verified'] for row in rows))
+        sku,=product_evidence([{'id':'code','text':'SKU Z02','confidence':.98,'bbox':[.2,.2,.4,.3]}],{'Z02','202'})
+        self.assertEqual(sku['sku'],'Z02')
+
     def test_sku_lookalikes_need_agreeing_rereads_and_keep_registered_conflicts(self):
         raw,_,_,_,regions=self.fixture()
         registered=record(itemCode='BT-005')

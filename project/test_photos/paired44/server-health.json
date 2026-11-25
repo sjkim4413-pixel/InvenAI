@@ -1,0 +1,15 @@
+{
+  "module": "F03",
+  "status": "ok",
+  "pipeline_version": "2026-11-24.44",
+  "shelf_detector_available": true,
+  "firebase_auth_backend": "FIREBASE_ID_TOKEN",
+  "data_source": "FIREBASE_READ_ONLY",
+  "catalog_id": "FIREBASE_REGISTERED_CODES",
+  "catalog_products": 0,
+  "ocr_languages": [
+    "en"
+  ],
+  "mapped_photos": 0,
+  "inventory_verification": "requires_verified_pixel_and_location_evidence"
+}

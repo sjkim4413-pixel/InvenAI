@@ -60,14 +60,20 @@ def bound_view(directory,warehouse_id,source):
 
 
 @router.get('/context')
-def live_context(request:Request,warehouse_id:int=Query(gt=0),user:AuditUser=Depends(require_user)):
+def live_context(request:Request,warehouse_id:int=Query(gt=0),user:AuditUser=Depends(require_user),
+                 warehouse_code:str|None=Query(default=None,min_length=1,max_length=160)):
     source=snapshot(request,user);directory=owner_dir(request.app.state.upload_dir,user)
     selected=binding(directory,warehouse_id)
-    positions=[]
-    if selected and selected['warehouse_code'] in source['warehouses']:positions=warehouse_view(source,selected['warehouse_code'])
-    else:selected=None
+    if selected and selected['warehouse_code'] not in source['warehouses']:selected=None
+    if warehouse_code is not None and warehouse_code not in source['warehouses']:
+        raise error('UNKNOWN_WAREHOUSE','이 회사 전산에 확인된 창고를 선택해주세요.')
+    warehouse=warehouse_code
+    if warehouse is None and selected:
+        warehouse=selected['warehouse_code']
+    positions=warehouse_view(source,warehouse) if warehouse is not None else []
     return {'data_source':'FIREBASE_READ_ONLY','company_code':user.company,'warehouse_id':warehouse_id,
-        'warehouses':source['warehouses'],'binding':selected,'positions':positions,'products':source['products'],
+        'warehouses':source['warehouses'],'binding':selected,'warehouse_code':warehouse,
+        'positions':positions,'products':source['products'],
         'inventory_source_count':source['source_count'],'inventory_issues':source['issues'],
         'inventory_revision':source['revision'],'firebase_inventory_modified':False}
 
@@ -110,9 +116,18 @@ def selected_warehouse(directory,warehouse_id,source,requested):
     return None
 
 
-def run_live_analysis(request,filename,warehouse_id,user,warehouse_code=None,*,raw_only=False,test_rack_labels=False):
+def run_live_analysis(request,filename,warehouse_id,user,warehouse_code=None,*,raw_only=False,test_rack_labels=False,
+                      test_product_regions=False,test_reference_pairs=False):
     directory,image,upload=image_context(request,user,filename)
     source=snapshot(request,user)
+    if test_reference_pairs:
+        from f05_reference_pairs import run_reference_pairs
+        return run_reference_pairs(request,filename,warehouse_id,user,warehouse_code,directory,image,upload,source,
+                                   raw_only=raw_only)
+    if test_product_regions:
+        from f05_comparison_demo import run_comparison_demo
+        return run_comparison_demo(request,filename,warehouse_id,user,warehouse_code,directory,image,upload,source,
+                                   raw_only=raw_only)
     with job_lock(directory,filename):
         target=directory/(filename+(TEST_RACK_LABEL_SUFFIX if test_rack_labels else '.live.json'))
         cached=read_json(target,{})
@@ -147,12 +162,16 @@ def run_live_analysis(request,filename,warehouse_id,user,warehouse_code=None,*,r
         catalog={'catalog_id':'FIREBASE_REGISTERED_CODES','products':[],'ocr_rack_labels':True}
         if test_rack_labels:
             catalog['test_rack_labels']=True
-            if warehouse==ADDITIONAL_WAREHOUSE:
-                catalog['printed_rack_stickers']=True
+            catalog['printed_rack_stickers']=True
+            catalog['test_shelf_detector']=True
         revision={'pipeline':request.app.state.pipeline_version,'model_sha256':request.app.state.model_digest(),
+            'shelf_model_sha256':getattr(request.app.state,'shelf_model_digest',lambda:None)(),
             'image_sha256':upload['sha256'],'catalog_sha256':digest(catalog),'location_map_sha256':digest(mapping),
             'warehouse_code':warehouse,'warehouse_id':warehouse_id,
             'registry_sha256':digest(registry),'inventory_revision':source['revision']}
+        if test_rack_labels:
+            from f03_test_shelf_model import model_digest as test_model_digest
+            revision['test_shelf_model_sha256']=test_model_digest()
         signature=digest(revision);ai_signature=digest({k:v for k,v in revision.items() if k not in ('inventory_revision','registry_sha256')})
         if cached.get('signature')==signature:return cached['analysis' if raw_only else 'comparison']
         raw=cached.get('analysis') if cached.get('ai_signature')==ai_signature else None

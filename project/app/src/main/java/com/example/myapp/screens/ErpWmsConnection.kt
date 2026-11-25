@@ -2,37 +2,43 @@ package com.example.myapp
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import android.view.View
-import android.widget.*
-import android.graphics.Paint
-import com.bumptech.glide.Glide
+import android.widget.TextView
+import com.google.firebase.firestore.ListenerRegistration
 
-class ErpWmsConnection : AppCompatActivity() {
-	override fun onCreate(savedInstanceState: Bundle?) {
-		super.onCreate(savedInstanceState)
-		setContentView(R.layout.activity_erp_wms_connection)
-		Glide.with(this).load("https://storage.googleapis.com/tagjs-prod.appspot.com/v1/DCxOgkdP9z/5npv6fq1_expires_30_days.png").into(findViewById(R.id.r19yzeoke5nu))
+class ErpWmsConnection : WarehouseScreen() {
+    private var listener: ListenerRegistration? = null
+    private lateinit var status: TextView
 
-		// 상단 뒤로가기 버튼
-		findViewById<View>(R.id.r2lp9y0mkyrk)?.setOnClickListener { finish() }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        openScreen("회사 재고 데이터")
+        val source = label("회사 재고 연결", true)
+        val company = label("회사 · ${InventoryManager.activeCompanyCode(this) ?: "로그인 필요"}")
+        status = label("연결을 확인하는 중입니다.")
+        card(source, company, status)
+        button("연결 다시 확인", icon = R.drawable.ic_inven_link) { connect() }
+        if (InventoryManager.role(this) == "QA") {
+            button("CSV 재고 가져오기", primary = true, icon = R.drawable.ic_inven_file) { startActivity(Intent(this, FileUpload::class.java)) }
+        }
+    }
 
-		val button1: View? = findViewById(R.id.r0gl8xlzc7ajj)
-		button1?.setOnClickListener {
-			startActivity(Intent(this, DataConnectionSelect::class.java))
-		}
-		val button2: View? = findViewById(R.id.rd0uqcl7pnu9)
-		button2?.setOnClickListener {
-			startActivity(Intent(this, DataConnectionSelect::class.java))
-		}
-		val button3: View? = findViewById(R.id.rekrkz67ppw)
-		button3?.setOnClickListener {
-			startActivity(Intent(this, DataConnectionSelect::class.java))
-		}
-		val button4: View? = findViewById(R.id.rhxgafg3j5yk)
-		button4?.setOnClickListener {
-			startActivity(Intent(this, ConnectionProgress::class.java))
-		}
-		findViewById<TextView>(R.id.rpgdybouru5g).paintFlags = Paint.UNDERLINE_TEXT_FLAG
-	}
+    override fun onStart() {
+        super.onStart()
+        connect()
+    }
+
+    override fun onStop() {
+        listener?.remove()
+        listener = null
+        super.onStop()
+    }
+
+    private fun connect() {
+        listener?.remove()
+        status.text = "연결을 확인하는 중입니다."
+        listener = InventoryManager.listenToRealtimeInventory(this, onError = { status.text = it }) { stock ->
+            val updated = stock.maxOfOrNull { it.updatedAtTimestamp } ?: 0L
+            status.text = "연결됨 · 재고 위치 ${stock.size}건 · 총 ${stock.sumOf { it.quantity.toLong() }}개\n최근 갱신 · ${inventoryDate(updated)}"
+        }
+    }
 }

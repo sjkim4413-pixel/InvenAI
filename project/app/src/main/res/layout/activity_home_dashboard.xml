@@ -13,7 +13,7 @@
 		android:clipToPadding="false"
 		android:id="@+id/roueqbfdmm5"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
+		android:layout_height="0dp"
 		android:layout_weight="1"
 		android:background="@drawable/cr28bf8fafc">
 		<LinearLayout
@@ -26,7 +26,7 @@
 				android:id="@+id/r173wsniqm27"
 				android:layout_width="match_parent"
 				android:layout_height="wrap_content"
-				android:layout_marginBottom="89dp"
+				android:layout_marginBottom="24dp"
 				android:orientation="vertical">
 				<LinearLayout
 					android:id="@+id/rzjleo93t6h"
@@ -90,7 +90,7 @@
 							android:layout_marginEnd="11dp"
 							android:layout_height="wrap_content"
 							android:layout_width="wrap_content"
-							android:text="제1 물류센터"
+							android:text="전체 창고"
 						/>
 						<ImageView
 							android:id="@+id/rvivb4u3goq"
@@ -122,7 +122,7 @@
 							android:textStyle="bold"
 							android:layout_height="wrap_content"
 							android:layout_width="wrap_content"
-							android:text="김"
+							android:text=""
 						/>
 					</LinearLayout>
 				</LinearLayout>
@@ -137,7 +137,7 @@
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						android:gravity="center_vertical"
-						android:layout_marginBottom="20dp"
+						android:layout_marginBottom="8dp"
 						android:orientation="horizontal">
 						<LinearLayout
 							android:id="@+id/rp1qjy0z7u28"
@@ -165,7 +165,7 @@
 								android:layout_marginStart="12dp"
 								android:layout_height="wrap_content"
 								android:layout_width="wrap_content"
-								android:text="12,847 개"
+								android:text="—"
 							/>
 						</LinearLayout>
 						<LinearLayout
@@ -194,7 +194,7 @@
 								android:layout_marginStart="12dp"
 								android:layout_height="wrap_content"
 								android:layout_width="wrap_content"
-								android:text="12,809 개"
+								android:text="—"
 							/>
 						</LinearLayout>
 						<LinearLayout
@@ -221,10 +221,18 @@
 								android:textColor="#EF4444"
 								android:layout_height="wrap_content"
 								android:layout_width="wrap_content"
-								android:text="38 개"
+								android:text="—"
 							/>
 						</LinearLayout>
 					</LinearLayout>
+                    <TextView
+                        android:id="@+id/homeAnomalySummary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:textColor="#64748B"
+                        android:textSize="12sp"
+                        android:text="실사 알림 확인 중" />
 					<LinearLayout
 						android:id="@+id/rg4twd46k6hb"
 						android:layout_width="match_parent"
@@ -459,159 +467,11 @@
 					</LinearLayout>
 				</LinearLayout>
 			</LinearLayout>
-			<RelativeLayout
-				android:id="@+id/rw0qmnxt2hof"
-				android:layout_width="match_parent"
-				android:layout_height="wrap_content"
-				android:clipChildren="false"
-				android:clipToPadding="false"
-				>
-				<LinearLayout
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:clipChildren="false"
-					android:clipToPadding="false"
-					android:orientation="vertical">
-					<LinearLayout
-						android:id="@+id/rbne32vjpama"
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content"
-						android:background="#FFFFFF"
-						android:paddingHorizontal="12dp"
-						android:orientation="horizontal">
-						<TextView
-							android:id="@+id/rhm1gom7f5ja"
-							android:layout_width="0dp"
-							android:layout_height="52dp"
-							android:layout_weight="1"
-							android:layout_marginVertical="12dp"
-							android:layout_marginEnd="44dp"
-							android:gravity="center"
-							android:paddingVertical="5dp"
-							android:drawableTop="@drawable/ic_inven_home"
-							android:drawableTint="#0D9488"
-							android:drawablePadding="3dp"
-							android:text="홈"
-							android:textSize="11sp"
-							android:textColor="#0D9488"
-						/>
-						<LinearLayout
-							android:id="@+id/rs08jcmj2xlm"
-							android:layout_width="0dp"
-							android:layout_height="wrap_content"
-							android:layout_weight="1"
-							android:gravity="center_horizontal"
-							android:paddingVertical="6dp"
-							android:layout_marginTop="12dp"
-							android:layout_marginEnd="11dp"
-							android:orientation="vertical">
-							<ImageView
-								android:id="@+id/ruqljmdutzc"
-								android:layout_width="22dp"
-								android:layout_height="22dp"
-								android:layout_marginBottom="4dp"
-								android:src="@drawable/ic_inven_inventory"
-								android:tint="#475569"
-								android:scaleType="fitCenter"
-							/>
-							<TextView
-								android:id="@+id/r864qyznxw2q"
-								android:textColor="#475569"
-								android:textSize="11sp"
-								android:layout_height="wrap_content"
-								android:layout_width="wrap_content"
-								android:text="재고"
-							/>
-						</LinearLayout>
-						<TextView
-							android:id="@+id/rdkzl3gxfayl"
-							android:textColor="#0D9488"
-							android:textSize="11sp"
-							android:textStyle="bold"
-							android:layout_marginTop="40dp"
-							android:layout_marginEnd="13dp"
-							android:layout_height="wrap_content"
-							android:layout_width="wrap_content"
-							android:text="스캔"
-						/>
-						<LinearLayout
-							android:id="@+id/rajx13mscno4"
-							android:layout_width="0dp"
-							android:layout_height="wrap_content"
-							android:layout_weight="1"
-							android:gravity="center_horizontal"
-							android:paddingVertical="6dp"
-							android:layout_marginTop="12dp"
-							android:layout_marginEnd="44dp"
-							android:orientation="vertical">
-							<ImageView
-								android:id="@+id/r8l37me9a9ry"
-								android:layout_width="22dp"
-								android:layout_height="22dp"
-								android:layout_marginBottom="4dp"
-								android:src="@drawable/ic_inven_work"
-								android:tint="#475569"
-								android:scaleType="fitCenter"
-							/>
-							<TextView
-								android:id="@+id/rtpdt9zrz3vr"
-								android:textColor="#475569"
-								android:textSize="11sp"
-								android:layout_height="wrap_content"
-								android:layout_width="wrap_content"
-								android:text="작업"
-							/>
-						</LinearLayout>
-						<LinearLayout
-							android:id="@+id/r46r7crd2blu"
-							android:layout_width="0dp"
-							android:layout_height="wrap_content"
-							android:layout_weight="1"
-							android:gravity="center_horizontal"
-							android:paddingVertical="6dp"
-							android:layout_marginTop="12dp"
-							android:orientation="vertical">
-							<ImageView
-								android:id="@+id/rmm59y3lfvnq"
-								android:layout_width="22dp"
-								android:layout_height="22dp"
-								android:layout_marginBottom="4dp"
-								android:src="@drawable/ic_inven_more"
-								android:tint="#475569"
-								android:scaleType="fitCenter"
-							/>
-							<TextView
-								android:id="@+id/rubyhmnp8b6"
-								android:textColor="#475569"
-								android:textSize="11sp"
-								android:layout_height="wrap_content"
-								android:layout_width="wrap_content"
-								android:text="더보기"
-							/>
-						</LinearLayout>
-					</LinearLayout>
-				</LinearLayout>
-				<LinearLayout
-					android:id="@+id/rxg0d3a1pc29"
-					android:layout_marginTop="-17dp"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_centerHorizontal="true"
-					android:gravity="center_horizontal"
-					android:clipChildren="false"
-					android:clipToPadding="false"
-					android:orientation="vertical">
-					<com.google.android.material.imageview.ShapeableImageView
-						android:id="@+id/rz27s8jtbjwo"
-						app:shapeAppearanceOverlay="@style/cr29"
-						android:layout_width="58dp"
-						android:layout_height="58dp"
-						android:src="@drawable/ic_inven_scan_fab"
-						android:contentDescription="바코드 스캔"
-						android:scaleType="fitCenter"
-					/>
-				</LinearLayout>
-			</RelativeLayout>
 		</LinearLayout>
 	</ScrollView>
+    <LinearLayout
+        android:id="@+id/warehouseBottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
 </LinearLayout>

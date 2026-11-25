@@ -3,7 +3,7 @@
   "images": [
     {
       "image": "276ec63e-e08f-4915-b585-582e9529bdaa.png",
-      "sha256": "84a830553e3b86a7d8c361703da3635d5bd1d15f6d624e8816e53472fd285135",
+      "sha256": "2b73ea27aa8261481562c50a1c6be64a48633c02ddf824f68ef8ca23ea7c5b51",
       "samples": [
         {
           "sku": "SIM-AI01-P01",
@@ -189,7 +189,7 @@
     },
     {
       "image": "31940782-2973-4e71-9765-5ba1d3d0b20b.png",
-      "sha256": "4cf6f1c804e771a1216e6546b05125510d101a1e64f43b30fc0b5566a40e106b",
+      "sha256": "2bfc0cb2bae68d2224b326bda41d5d1d5939ad3726cad4f7e806272bc372473d",
       "samples": [
         {
           "sku": "SIM-AI02-P01",
@@ -384,7 +384,7 @@
     },
     {
       "image": "7be725d7-e159-47a9-884d-1535aace4a93.png",
-      "sha256": "f596e9c1934bfa15a77d2d335e3433380dfd1bfb92f464a3be6a50eb15a1749b",
+      "sha256": "c565698885dce0e9c2488b3fa54fba167064fc53be4870a7cd6242f9857dfa18",
       "samples": [
         {
           "sku": "SIM-AI03-P01",

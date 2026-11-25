@@ -7,7 +7,7 @@ plugins {
 val auditTestAssets = layout.buildDirectory.dir("generated/auditTestAssets")
 val syncAuditTestImages by tasks.registering(Sync::class) {
     from(rootProject.layout.projectDirectory.dir("test_image_ai")) {
-        include("*.png")
+        include("*.png", "test_images.json")
         into("audit_test_images")
     }
     into(auditTestAssets)
@@ -75,11 +75,14 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.google.code.gson:gson:2.10.1")
+    implementation("com.google.zxing:core:3.5.3")
 
     // Firebase BoM, Auth & Firestore
     implementation(platform("com.google.firebase:firebase-bom:33.7.0"))
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-firestore")
+    implementation("com.google.firebase:firebase-messaging")
+    implementation("androidx.work:work-runtime-ktx:2.9.1")
     implementation("com.google.guava:guava:32.1.3-android")
 
     // CameraX

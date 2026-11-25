@@ -1,0 +1,13 @@
+{
+  "unitTests": 48,
+  "historyRuleChecks": 29,
+  "existingRulesChecks": 31,
+  "approvalRulesChecks": 37,
+  "auditStockUnchanged": true,
+  "androidFinalFlowPassed": true,
+  "androidDevice": "emulator-5554",
+  "deployedRulesMatch": true,
+  "productionInventoryWrites": 0,
+  "apk": "D:\\AI\\Project\\TeamProject\\InvenAI\\app\\build\\outputs\\apk\\debug\\app-debug.apk",
+  "apkSha256": "b5889808412991006469ddc563beb196b0b81bb033d67db9201cd4b487008a2f"
+}

@@ -90,20 +90,24 @@ def lookup_profile(token):
     if (not isinstance(uid, str) or not uid.strip() or len(uid) > 128 or uid in {'.', '..'} or '/' in uid
             or account.get('disabled') is True or not matches_account(token, project, uid, account)):
         raise FirebaseAccessError(401, 'Firebase 로그인이 필요합니다.')
-    status, profile = firebase_request('GET', f'{document_url(project)}/users/{quote(uid, safe="")}',
-                                       headers=token_headers(token), params={'mask.fieldPaths': 'companyCode'})
+    status, profile = firebase_request(
+        'GET', f'{document_url(project)}/warehouseMemberships/{quote(uid, safe="")}',
+        headers=token_headers(token))
     if status == 401:
         raise FirebaseAccessError(401, 'Firebase 로그인이 필요합니다.')
     if status in {403, 404}:
-        raise FirebaseAccessError(403, 'Firebase 사용자 프로필의 회사 정보를 확인할 수 없습니다.')
+        raise FirebaseAccessError(403, '관리자가 등록한 팀원 권한을 확인할 수 없습니다.')
     if status != 200 or not isinstance(profile, dict):
-        raise FirebaseAccessError(503, 'Firebase 사용자 프로필을 읽지 못했습니다.')
+        raise FirebaseAccessError(503, 'Firebase 팀원 권한을 읽지 못했습니다.')
     fields = profile.get('fields')
     company_field = fields.get('companyCode') if isinstance(fields, dict) else None
     company = company_field.get('stringValue') if isinstance(company_field, dict) else None
-    if not isinstance(company, str) or not company.strip() or company.strip().upper() == 'DEFAULT':
-        raise FirebaseAccessError(403, 'Firebase 사용자 프로필의 회사 정보를 확인할 수 없습니다.')
-    return uid, company.strip()
+    role_field = fields.get('role') if isinstance(fields, dict) else None
+    role = role_field.get('stringValue') if isinstance(role_field, dict) else None
+    if (not isinstance(company, str) or not re.fullmatch(r'[A-Z0-9][A-Z0-9_-]{0,63}', company)
+            or company == 'DEFAULT' or role not in ('QA', 'LOADER')):
+        raise FirebaseAccessError(403, '관리자가 등록한 팀원 권한을 확인할 수 없습니다.')
+    return uid, company
 
 
 def read_inventory(token, company, warehouse, limit):

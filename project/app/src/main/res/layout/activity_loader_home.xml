@@ -10,7 +10,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#0F172A"
+        android:background="#FFFFFF"
         android:paddingVertical="18dp"
         android:paddingHorizontal="20dp"
         android:gravity="center_vertical"
@@ -24,8 +24,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="📦 적재자 전용 작업 대시보드"
-                android:textColor="#FFFFFF"
+                android:text="적재자 작업 홈"
+                android:textColor="#0F172A"
                 android:textSize="18sp"
                 android:textStyle="bold"
             />
@@ -34,8 +34,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="사업장: ABC-001 | 사번: loader"
-                android:textColor="#94A3B8"
+                android:text=""
+                android:textColor="#64748B"
                 android:textSize="12sp"
             />
         </LinearLayout>
@@ -44,11 +44,11 @@
             android:id="@+id/btnLogoutLoader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/cr8bf8fafc"
+            android:background="@drawable/s99f6e4sw1cr12bf0fdfa"
             android:paddingHorizontal="12dp"
             android:paddingVertical="6dp"
             android:text="로그아웃"
-            android:textColor="#EF4444"
+            android:textColor="#0D9488"
             android:textSize="12sp"
             android:textStyle="bold"
             android:clickable="true"
@@ -68,13 +68,32 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <LinearLayout
+                android:id="@+id/btnLoaderNotifications"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:padding="14dp"
+                android:orientation="vertical"
+                android:background="@drawable/s99f6e4sw1cr12bf0fdfa"
+                android:clickable="true"
+                android:focusable="true">
+                <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:text="이상 재고 기기 알림 설정"
+                    android:textColor="#0D9488" android:textSize="13sp" android:textStyle="bold" />
+                <TextView android:id="@+id/tvLoaderNotificationStatus"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp" android:text="기기 알림 연결을 확인하고 있습니다."
+                    android:textColor="#64748B" android:textSize="12sp" />
+            </LinearLayout>
+
             <!-- Anomaly Alert / Status Card (Always visible) -->
             <LinearLayout
                 android:id="@+id/cardActiveAlert"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                android:background="#F0FDFA"
+                android:background="@drawable/s99f6e4sw1cr12bf0fdfa"
                 android:clickable="true"
                 android:focusable="true"
                 android:padding="16dp"
@@ -83,7 +102,7 @@
                     android:id="@+id/tvAlertTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="✅ 오적재 조치 현황: 정상"
+                    android:text="오적재 조치 현황"
                     android:textColor="#0D9488"
                     android:textSize="14sp"
                     android:textStyle="bold"
@@ -93,7 +112,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="6dp"
-                    android:text="현재 접수된 오적재 조치 요청이 없습니다."
+                    android:text="재고 상태를 불러오는 중입니다."
                     android:textColor="#475569"
                     android:textSize="13sp"
                 />
@@ -129,7 +148,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="📥 신규 상품 입고 등록"
+                        android:text="신규 상품 입고 등록"
+                        android:drawableStart="@drawable/ic_inven_inventory"
+                        android:drawablePadding="10dp"
                         android:textColor="#0F172A"
                         android:textSize="15sp"
                         android:textStyle="bold"
@@ -165,7 +186,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="🔄 재고 위치 이동"
+                        android:text="재고 위치 이동"
+                        android:drawableStart="@drawable/ic_inven_transfer"
+                        android:drawablePadding="10dp"
                         android:textColor="#0F172A"
                         android:textSize="15sp"
                         android:textStyle="bold"
@@ -201,7 +224,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="🚨 이상 재고 / 오적재 조치"
+                        android:text="이상 재고 / 오적재 조치"
+                        android:drawableStart="@drawable/ic_inven_alert"
+                        android:drawablePadding="10dp"
                         android:textColor="#0F172A"
                         android:textSize="15sp"
                         android:textStyle="bold"
@@ -237,7 +262,9 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="📋 작업 이력 및 알림"
+                        android:text="작업 이력 및 알림"
+                        android:drawableStart="@drawable/ic_inven_work"
+                        android:drawablePadding="10dp"
                         android:textColor="#0F172A"
                         android:textSize="15sp"
                         android:textStyle="bold"
@@ -246,7 +273,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="3dp"
-                        android:text="현장 작업 로그 및 푸시 알림 전체 조회"
+                        android:text="현장 작업과 이상 기록 조회"
                         android:textColor="#64748B"
                         android:textSize="12sp"
                     />
@@ -264,12 +291,15 @@
         android:padding="12dp"
         android:gravity="center"
         android:orientation="horizontal">
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnScanBarcode"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="52dp"
             android:backgroundTint="#0D9488"
-            android:text="📷 바코드 스캔하기"
+            android:text="바코드 스캔하기"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            style="@style/Widget.InvenAI.PrimaryButton"
             android:textColor="#FFFFFF"
             android:textStyle="bold"
         />

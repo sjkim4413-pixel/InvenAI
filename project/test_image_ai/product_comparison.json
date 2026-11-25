@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "company_code": "ABC-002",
+  "warehouse": "AI 상품·위치 비교 테스트 창고",
+  "photos": {
+    "compare_01_normal.png": "ca35db35b5e908fe65add070852a84ed02cf301c0a8e79e4fc3e56bfaa5ac3a1",
+    "compare_02_misplaced.png": "d610e332563c8809e083b6256e8f12de8721722519d5a993ac71673440d54b91"
+  },
+  "region_provenance": "Human-checked fixed location regions for F05 visualization; not YOLO ground-truth predictions",
+  "regions": [
+    {
+      "location": "QAC02-5F-01",
+      "bbox": [
+        0.015,
+        0.15,
+        0.344,
+        0.935
+      ],
+      "load_bbox": [
+        0.025,
+        0.18,
+        0.34,
+        0.815
+      ]
+    },
+    {
+      "location": "QAC02-5F-02",
+      "bbox": [
+        0.345,
+        0.15,
+        0.67,
+        0.935
+      ],
+      "load_bbox": [
+        0.35,
+        0.18,
+        0.665,
+        0.815
+      ]
+    },
+    {
+      "location": "QAC03-5F-01",
+      "bbox": [
+        0.675,
+        0.15,
+        0.99,
+        0.935
+      ],
+      "load_bbox": [
+        0.68,
+        0.18,
+        0.985,
+        0.815
+      ]
+    }
+  ]
+}

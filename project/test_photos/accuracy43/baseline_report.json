@@ -1,0 +1,583 @@
+{
+  "pipeline": "2026-11-24.42",
+  "time_utc": "2026-11-24T06:04:24.685037+00:00",
+  "mode": "test_rack_labels",
+  "inference_mocked": false,
+  "ocr_mocked": false,
+  "auth": "local TestClient override",
+  "inventory_source": "Firestore readback",
+  "inventory_revision": "6951b9795b0c68c04526d17b813be434ec56ebd3857f52b0d0933cbe9d8bed8f",
+  "photos": [
+    {
+      "image": "276ec63e-e08f-4915-b585-582e9529bdaa.png",
+      "title": "테스트 03 · 생활용품 A 정면",
+      "sha256": "13895cbb919aec19ee8487ad8ef427bfceb3b567240f3321c5eb3fdfbe39a22e",
+      "expected_positions": 20,
+      "matches": 8,
+      "rate": 40.0,
+      "displayed_rows": 25,
+      "unmapped_rows": 17,
+      "statuses": {
+        "TEST_RACK_LABEL_MATCH": 8,
+        "MANUAL_REVIEW_REQUIRED": 17
+      },
+      "defects": [
+        {
+          "document_id": "ABC-002_SIM-AI01-P02",
+          "position_id": "AI01/A02/5/-",
+          "label": "A02-5F",
+          "issue": "",
+          "read_label": true,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-AI01-P03",
+          "position_id": "AI01/A03/5/-",
+          "label": "A03-5F",
+          "issue": "",
+          "read_label": true,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-AI01-P04",
+          "position_id": "AI01/P04/5/-",
+          "label": "A04-5F",
+          "issue": "사진 내 중복",
+          "read_label": true,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-AI01-P05",
+          "position_id": "AI01/P05/5/-",
+          "label": "A04-5F",
+          "issue": "사진 내 중복",
+          "read_label": true,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-AI01-P07",
+          "position_id": "AI01/P07/4/-",
+          "label": "A02-4F",
+          "issue": "사진 내 중복",
+          "read_label": true,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-AI01-P08",
+          "position_id": "AI01/P08/4/-",
+          "label": "A02-4F",
+          "issue": "사진 내 중복",
+          "read_label": true,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-AI01-P09",
+          "position_id": "AI01/P09/4/-",
+          "label": "A03-3F",
+          "issue": "선반 단수와 다름",
+          "read_label": true,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-AI01-P12",
+          "position_id": "AI01/P12/2/-",
+          "label": "A02-2F",
+          "issue": "사진 내 중복",
+          "read_label": true,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-AI01-P13",
+          "position_id": "AI01/P13/2/-",
+          "label": "A02-2F",
+          "issue": "사진 내 중복",
+          "read_label": true,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-AI01-P16",
+          "position_id": "AI01/A01/1/-",
+          "label": "A01-1F",
+          "issue": "",
+          "read_label": true,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-AI01-P17",
+          "position_id": "AI01/P17/1/-",
+          "label": "A02-1F",
+          "issue": "사진 내 중복",
+          "read_label": false,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-AI01-P18",
+          "position_id": "AI01/P18/1/-",
+          "label": "A02-1F",
+          "issue": "사진 내 중복",
+          "read_label": false,
+          "localized": false,
+          "reasons": []
+        }
+      ],
+      "seconds": 17.05
+    },
+    {
+      "image": "31940782-2973-4e71-9765-5ba1d3d0b20b.png",
+      "title": "테스트 04 · 생활용품 B 정면",
+      "sha256": "4cf6f1c804e771a1216e6546b05125510d101a1e64f43b30fc0b5566a40e106b",
+      "expected_positions": 21,
+      "matches": 13,
+      "rate": 61.9,
+      "displayed_rows": 21,
+      "unmapped_rows": 8,
+      "statuses": {
+        "TEST_RACK_LABEL_MATCH": 13,
+        "MANUAL_REVIEW_REQUIRED": 8
+      },
+      "defects": [
+        {
+          "document_id": "ABC-002_SIM-AI02-P03",
+          "position_id": "AI02/A03/5/-",
+          "label": "A03-5F",
+          "issue": "",
+          "read_label": true,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-AI02-P04",
+          "position_id": "AI02/A04/5/-",
+          "label": "A04-5F",
+          "issue": "",
+          "read_label": true,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-AI02-P13",
+          "position_id": "AI02/A01/2/-",
+          "label": "A01-2F",
+          "issue": "",
+          "read_label": true,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-AI02-P14",
+          "position_id": "AI02/P14/2/-",
+          "label": "A02-2F",
+          "issue": "사진 내 중복",
+          "read_label": false,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-AI02-P15",
+          "position_id": "AI02/P15/2/-",
+          "label": "A02-2F",
+          "issue": "사진 내 중복",
+          "read_label": false,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-AI02-P16",
+          "position_id": "AI02/A03/2/-",
+          "label": "A03-2F",
+          "issue": "",
+          "read_label": true,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-AI02-P17",
+          "position_id": "AI02/A04/2/-",
+          "label": "A04-2F",
+          "issue": "",
+          "read_label": true,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-AI02-P21",
+          "position_id": "AI02/A04/1/-",
+          "label": "A04-1F",
+          "issue": "",
+          "read_label": true,
+          "localized": false,
+          "reasons": []
+        }
+      ],
+      "seconds": 20.85
+    },
+    {
+      "image": "7be725d7-e159-47a9-884d-1535aace4a93.png",
+      "title": "테스트 05 · 생활용품 C 전경",
+      "sha256": "f596e9c1934bfa15a77d2d335e3433380dfd1bfb92f464a3be6a50eb15a1749b",
+      "expected_positions": 42,
+      "matches": 27,
+      "rate": 64.29,
+      "displayed_rows": 35,
+      "unmapped_rows": 8,
+      "statuses": {
+        "TEST_RACK_LABEL_MATCH": 27,
+        "MANUAL_REVIEW_REQUIRED": 8
+      },
+      "defects": [
+        {
+          "document_id": "ABC-002_SIM-AI03-P02",
+          "position_id": "AI03/P02/5/-",
+          "label": "A01-5F-03",
+          "issue": "사진 내 중복",
+          "read_label": true,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-AI03-P03",
+          "position_id": "AI03/P03/5/-",
+          "label": "A01-5F-03",
+          "issue": "사진 내 중복",
+          "read_label": true,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-AI03-P06",
+          "position_id": "AI03/A03/5/02",
+          "label": "A03-5F-02",
+          "issue": "",
+          "read_label": true,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-AI03-P17",
+          "position_id": "AI03/A01/3/01",
+          "label": "A01-3F-01",
+          "issue": "",
+          "read_label": true,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-AI03-P25",
+          "position_id": "AI03/A01/2/01",
+          "label": "A01-2F-01",
+          "issue": "",
+          "read_label": true,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-AI03-P26",
+          "position_id": "AI03/A01/2/02",
+          "label": "A01-2F-02",
+          "issue": "",
+          "read_label": true,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-AI03-P27",
+          "position_id": "AI03/A01/2/03",
+          "label": "A01-2F-03",
+          "issue": "",
+          "read_label": true,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-AI03-P28",
+          "position_id": "AI03/P28/2/-",
+          "label": "A02-2F-01",
+          "issue": "사진 내 중복",
+          "read_label": true,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-AI03-P30",
+          "position_id": "AI03/P30/2/-",
+          "label": "A02-2F-01",
+          "issue": "사진 내 중복",
+          "read_label": true,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-AI03-P32",
+          "position_id": "AI03/A03/2/03",
+          "label": "A03-2F-03",
+          "issue": "",
+          "read_label": true,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-AI03-P33",
+          "position_id": "AI03/A03/2/01",
+          "label": "A03-2F-01",
+          "issue": "",
+          "read_label": false,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-AI03-P35",
+          "position_id": "AI03/A01/1/01",
+          "label": "A01-1F-01",
+          "issue": "",
+          "read_label": false,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-AI03-P36",
+          "position_id": "AI03/A01/1/02",
+          "label": "A01-1F-02",
+          "issue": "",
+          "read_label": false,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-AI03-P40",
+          "position_id": "AI03/A03/1/02",
+          "label": "A03-1F-02",
+          "issue": "",
+          "read_label": true,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-AI03-P42",
+          "position_id": "AI03/A04/1/02",
+          "label": "A04-1F-02",
+          "issue": "",
+          "read_label": true,
+          "localized": false,
+          "reasons": []
+        }
+      ],
+      "seconds": 20.24
+    },
+    {
+      "image": "QAE_rack_labels.png",
+      "title": "테스트 12 · 가전제품 B 정면",
+      "sha256": "a98cd15ffaaf5dac971ebe39a713191931153a3b4a5472d109abba69e2998d17",
+      "expected_positions": 12,
+      "matches": 9,
+      "rate": 75.0,
+      "displayed_rows": 29,
+      "unmapped_rows": 20,
+      "statuses": {
+        "TEST_RACK_LABEL_MATCH": 9,
+        "MANUAL_REVIEW_REQUIRED": 20
+      },
+      "defects": [
+        {
+          "document_id": "ABC-002_SIM-QAE02-1F-01",
+          "position_id": "QAE/QAE02/1/01",
+          "label": "QAE02-1F-01",
+          "issue": "",
+          "read_label": false,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-QAE02-3F-02",
+          "position_id": "QAE/QAE02/3/02",
+          "label": "QAE02-3F-02",
+          "issue": "",
+          "read_label": true,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-QAE02-5F-02",
+          "position_id": "QAE/QAE02/5/02",
+          "label": "QAE02-5F-02",
+          "issue": "",
+          "read_label": true,
+          "localized": false,
+          "reasons": []
+        }
+      ],
+      "seconds": 20.54
+    },
+    {
+      "image": "QAF_rack_labels.png",
+      "title": "테스트 13 · 장난감 정면",
+      "sha256": "c631d626cb3bdbbe9ec271a2a76fd7c25d9ffd772f6c6d5c6a37405398ad2195",
+      "expected_positions": 10,
+      "matches": 0,
+      "rate": 0.0,
+      "displayed_rows": 13,
+      "unmapped_rows": 13,
+      "statuses": {
+        "MANUAL_REVIEW_REQUIRED": 13
+      },
+      "defects": [
+        {
+          "document_id": "ABC-002_SIM-QAF01-1F-01",
+          "position_id": "QAF/QAF01/1/01",
+          "label": "QAF01-1F-01",
+          "issue": "",
+          "read_label": false,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-QAF01-1F-02",
+          "position_id": "QAF/QAF01/1/02",
+          "label": "QAF01-1F-02",
+          "issue": "",
+          "read_label": false,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-QAF01-1F-03",
+          "position_id": "QAF/QAF01/1/03",
+          "label": "QAF01-1F-03",
+          "issue": "",
+          "read_label": false,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-QAF01-2F-01",
+          "position_id": "QAF/QAF01/2/01",
+          "label": "QAF01-2F-01",
+          "issue": "",
+          "read_label": false,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-QAF01-2F-02",
+          "position_id": "QAF/QAF01/2/02",
+          "label": "QAF01-2F-02",
+          "issue": "",
+          "read_label": false,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-QAF02-1F-01",
+          "position_id": "QAF/QAF02/1/01",
+          "label": "QAF02-1F-01",
+          "issue": "",
+          "read_label": false,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-QAF02-1F-02",
+          "position_id": "QAF/QAF02/1/02",
+          "label": "QAF02-1F-02",
+          "issue": "",
+          "read_label": false,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-QAF02-1F-03",
+          "position_id": "QAF/QAF02/1/03",
+          "label": "QAF02-1F-03",
+          "issue": "",
+          "read_label": false,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-QAF02-2F-01",
+          "position_id": "QAF/QAF02/2/01",
+          "label": "QAF02-2F-01",
+          "issue": "",
+          "read_label": false,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-QAF02-2F-02",
+          "position_id": "QAF/QAF02/2/02",
+          "label": "QAF02-2F-02",
+          "issue": "",
+          "read_label": false,
+          "localized": false,
+          "reasons": []
+        }
+      ],
+      "seconds": 9.52
+    },
+    {
+      "image": "QAG_rack_labels.png",
+      "title": "테스트 14 · 포장 팔레트 사선",
+      "sha256": "17972a67dc11aef93c8a60ab87c34b39dc4df92e7cd56f4c20d41f2890095bab",
+      "expected_positions": 4,
+      "matches": 0,
+      "rate": 0.0,
+      "displayed_rows": 2,
+      "unmapped_rows": 2,
+      "statuses": {
+        "MANUAL_REVIEW_REQUIRED": 2
+      },
+      "defects": [
+        {
+          "document_id": "ABC-002_SIM-QAG01-2F-01",
+          "position_id": "QAG/QAG01/2/01",
+          "label": "QAG01-2F-01",
+          "issue": "",
+          "read_label": false,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-QAG01-2F-02",
+          "position_id": "QAG/QAG01/2/02",
+          "label": "QAG01-2F-02",
+          "issue": "",
+          "read_label": false,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-QAG02-2F-01",
+          "position_id": "QAG/QAG02/2/01",
+          "label": "QAG02-2F-01",
+          "issue": "",
+          "read_label": false,
+          "localized": false,
+          "reasons": []
+        },
+        {
+          "document_id": "ABC-002_SIM-QAG02-2F-02",
+          "position_id": "QAG/QAG02/2/02",
+          "label": "QAG02-2F-02",
+          "issue": "",
+          "read_label": false,
+          "localized": false,
+          "reasons": []
+        }
+      ],
+      "seconds": 3.38
+    }
+  ],
+  "total": 109,
+  "matched": 57,
+  "rate": 52.29
+}

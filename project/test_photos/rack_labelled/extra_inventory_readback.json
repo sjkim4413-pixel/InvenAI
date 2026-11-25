@@ -1,0 +1,756 @@
+[
+  [
+    "ABC-002_SIM-QAE01-5F-01",
+    {
+      "companyCode": "ABC-002",
+      "warehouse": "AI 실사 추가 테스트 창고",
+      "zone": "QAE구역",
+      "rack": "QAE01",
+      "rackId": "QAE구역 QAE01",
+      "tier": "5단",
+      "side": "01",
+      "location": "QAE01-5F-01",
+      "itemCode": "SIM-QAE01-5F-01",
+      "itemName": "흰색 쿠쿠 포장 묶음",
+      "quantity": 1,
+      "quantityUnit": "PACKAGING_GROUP",
+      "status": "NORMAL",
+      "isTestData": true,
+      "dataSource": "SIMULATED_AI_IMAGE_ERP",
+      "photoReference": "QAE_rack_labels.png",
+      "photoLocationLabel": "QAE01-5F-01",
+      "photoLabelIssue": "",
+      "sourcePhotos": [
+        "KakaoTalk_20261103_153240227_01.jpg"
+      ],
+      "updatedAtTimestamp": 1795243998745,
+      "updatedAt": "2026-11-21T06:53:18.765Z",
+      "photoSha256": "81428e4cbc26878232d2ecb23b17da1e8fd041b68dbe190b84fafed4bf4c51c4"
+    }
+  ],
+  [
+    "ABC-002_SIM-QAE02-5F-01",
+    {
+      "companyCode": "ABC-002",
+      "warehouse": "AI 실사 추가 테스트 창고",
+      "zone": "QAE구역",
+      "rack": "QAE02",
+      "rackId": "QAE구역 QAE02",
+      "tier": "5단",
+      "side": "01",
+      "location": "QAE02-5F-01",
+      "itemCode": "SIM-QAE02-5F-01",
+      "itemName": "흰색 생활가전 포장 묶음",
+      "quantity": 1,
+      "quantityUnit": "PACKAGING_GROUP",
+      "status": "NORMAL",
+      "isTestData": true,
+      "dataSource": "SIMULATED_AI_IMAGE_ERP",
+      "photoReference": "QAE_rack_labels.png",
+      "photoLocationLabel": "QAE02-5F-01",
+      "photoLabelIssue": "",
+      "sourcePhotos": [
+        "KakaoTalk_20261103_153240227_01.jpg"
+      ],
+      "updatedAtTimestamp": 1795243998745,
+      "updatedAt": "2026-11-21T06:53:18.765Z",
+      "photoSha256": "81428e4cbc26878232d2ecb23b17da1e8fd041b68dbe190b84fafed4bf4c51c4"
+    }
+  ],
+  [
+    "ABC-002_SIM-QAE02-5F-02",
+    {
+      "companyCode": "ABC-002",
+      "warehouse": "AI 실사 추가 테스트 창고",
+      "zone": "QAE구역",
+      "rack": "QAE02",
+      "rackId": "QAE구역 QAE02",
+      "tier": "5단",
+      "side": "02",
+      "location": "QAE02-5F-02",
+      "itemCode": "SIM-QAE02-5F-02",
+      "itemName": "공구 장난감 포장 묶음",
+      "quantity": 1,
+      "quantityUnit": "PACKAGING_GROUP",
+      "status": "NORMAL",
+      "isTestData": true,
+      "dataSource": "SIMULATED_AI_IMAGE_ERP",
+      "photoReference": "QAE_rack_labels.png",
+      "photoLocationLabel": "QAE02-5F-02",
+      "photoLabelIssue": "",
+      "sourcePhotos": [
+        "KakaoTalk_20261103_153240227_01.jpg"
+      ],
+      "updatedAtTimestamp": 1795243998745,
+      "updatedAt": "2026-11-21T06:53:18.765Z",
+      "photoSha256": "81428e4cbc26878232d2ecb23b17da1e8fd041b68dbe190b84fafed4bf4c51c4"
+    }
+  ],
+  [
+    "ABC-002_SIM-QAE01-4F-01",
+    {
+      "companyCode": "ABC-002",
+      "warehouse": "AI 실사 추가 테스트 창고",
+      "zone": "QAE구역",
+      "rack": "QAE01",
+      "rackId": "QAE구역 QAE01",
+      "tier": "4단",
+      "side": "01",
+      "location": "QAE01-4F-01",
+      "itemCode": "SIM-QAE01-4F-01",
+      "itemName": "필립스 토스터 포장 묶음",
+      "quantity": 1,
+      "quantityUnit": "PACKAGING_GROUP",
+      "status": "NORMAL",
+      "isTestData": true,
+      "dataSource": "SIMULATED_AI_IMAGE_ERP",
+      "photoReference": "QAE_rack_labels.png",
+      "photoLocationLabel": "QAE01-4F-01",
+      "photoLabelIssue": "",
+      "sourcePhotos": [
+        "KakaoTalk_20261103_153240227_01.jpg"
+      ],
+      "updatedAtTimestamp": 1795243998745,
+      "updatedAt": "2026-11-21T06:53:18.765Z",
+      "photoSha256": "81428e4cbc26878232d2ecb23b17da1e8fd041b68dbe190b84fafed4bf4c51c4"
+    }
+  ],
+  [
+    "ABC-002_SIM-QAE02-4F-01",
+    {
+      "companyCode": "ABC-002",
+      "warehouse": "AI 실사 추가 테스트 창고",
+      "zone": "QAE구역",
+      "rack": "QAE02",
+      "rackId": "QAE구역 QAE02",
+      "tier": "4단",
+      "side": "01",
+      "location": "QAE02-4F-01",
+      "itemCode": "SIM-QAE02-4F-01",
+      "itemName": "블랙앤데커 전기그릴 포장 묶음",
+      "quantity": 1,
+      "quantityUnit": "PACKAGING_GROUP",
+      "status": "NORMAL",
+      "isTestData": true,
+      "dataSource": "SIMULATED_AI_IMAGE_ERP",
+      "photoReference": "QAE_rack_labels.png",
+      "photoLocationLabel": "QAE02-4F-01",
+      "photoLabelIssue": "",
+      "sourcePhotos": [
+        "KakaoTalk_20261103_153240227_01.jpg"
+      ],
+      "updatedAtTimestamp": 1795243998745,
+      "updatedAt": "2026-11-21T06:53:18.765Z",
+      "photoSha256": "81428e4cbc26878232d2ecb23b17da1e8fd041b68dbe190b84fafed4bf4c51c4"
+    }
+  ],
+  [
+    "ABC-002_SIM-QAE02-4F-02",
+    {
+      "companyCode": "ABC-002",
+      "warehouse": "AI 실사 추가 테스트 창고",
+      "zone": "QAE구역",
+      "rack": "QAE02",
+      "rackId": "QAE구역 QAE02",
+      "tier": "4단",
+      "side": "02",
+      "location": "QAE02-4F-02",
+      "itemCode": "SIM-QAE02-4F-02",
+      "itemName": "분홍색 미용기기 포장 묶음",
+      "quantity": 1,
+      "quantityUnit": "PACKAGING_GROUP",
+      "status": "NORMAL",
+      "isTestData": true,
+      "dataSource": "SIMULATED_AI_IMAGE_ERP",
+      "photoReference": "QAE_rack_labels.png",
+      "photoLocationLabel": "QAE02-4F-02",
+      "photoLabelIssue": "",
+      "sourcePhotos": [
+        "KakaoTalk_20261103_153240227_01.jpg"
+      ],
+      "updatedAtTimestamp": 1795243998745,
+      "updatedAt": "2026-11-21T06:53:18.765Z",
+      "photoSha256": "81428e4cbc26878232d2ecb23b17da1e8fd041b68dbe190b84fafed4bf4c51c4"
+    }
+  ],
+  [
+    "ABC-002_SIM-QAE01-3F-01",
+    {
+      "companyCode": "ABC-002",
+      "warehouse": "AI 실사 추가 테스트 창고",
+      "zone": "QAE구역",
+      "rack": "QAE01",
+      "rackId": "QAE구역 QAE01",
+      "tier": "3단",
+      "side": "01",
+      "location": "QAE01-3F-01",
+      "itemCode": "SIM-QAE01-3F-01",
+      "itemName": "흰색 토스터 포장 묶음",
+      "quantity": 1,
+      "quantityUnit": "PACKAGING_GROUP",
+      "status": "NORMAL",
+      "isTestData": true,
+      "dataSource": "SIMULATED_AI_IMAGE_ERP",
+      "photoReference": "QAE_rack_labels.png",
+      "photoLocationLabel": "QAE01-3F-01",
+      "photoLabelIssue": "",
+      "sourcePhotos": [
+        "KakaoTalk_20261103_153240227_01.jpg"
+      ],
+      "updatedAtTimestamp": 1795243998745,
+      "updatedAt": "2026-11-21T06:53:18.765Z",
+      "photoSha256": "81428e4cbc26878232d2ecb23b17da1e8fd041b68dbe190b84fafed4bf4c51c4"
+    }
+  ],
+  [
+    "ABC-002_SIM-QAE02-3F-01",
+    {
+      "companyCode": "ABC-002",
+      "warehouse": "AI 실사 추가 테스트 창고",
+      "zone": "QAE구역",
+      "rack": "QAE02",
+      "rackId": "QAE구역 QAE02",
+      "tier": "3단",
+      "side": "01",
+      "location": "QAE02-3F-01",
+      "itemCode": "SIM-QAE02-3F-01",
+      "itemName": "테팔 차 포트 포장 묶음",
+      "quantity": 1,
+      "quantityUnit": "PACKAGING_GROUP",
+      "status": "NORMAL",
+      "isTestData": true,
+      "dataSource": "SIMULATED_AI_IMAGE_ERP",
+      "photoReference": "QAE_rack_labels.png",
+      "photoLocationLabel": "QAE02-3F-01",
+      "photoLabelIssue": "",
+      "sourcePhotos": [
+        "KakaoTalk_20261103_153240227_01.jpg"
+      ],
+      "updatedAtTimestamp": 1795243998745,
+      "updatedAt": "2026-11-21T06:53:18.765Z",
+      "photoSha256": "81428e4cbc26878232d2ecb23b17da1e8fd041b68dbe190b84fafed4bf4c51c4"
+    }
+  ],
+  [
+    "ABC-002_SIM-QAE02-3F-02",
+    {
+      "companyCode": "ABC-002",
+      "warehouse": "AI 실사 추가 테스트 창고",
+      "zone": "QAE구역",
+      "rack": "QAE02",
+      "rackId": "QAE구역 QAE02",
+      "tier": "3단",
+      "side": "02",
+      "location": "QAE02-3F-02",
+      "itemCode": "SIM-QAE02-3F-02",
+      "itemName": "필립스 전기주전자 포장 묶음",
+      "quantity": 1,
+      "quantityUnit": "PACKAGING_GROUP",
+      "status": "NORMAL",
+      "isTestData": true,
+      "dataSource": "SIMULATED_AI_IMAGE_ERP",
+      "photoReference": "QAE_rack_labels.png",
+      "photoLocationLabel": "QAE02-3F-02",
+      "photoLabelIssue": "",
+      "sourcePhotos": [
+        "KakaoTalk_20261103_153240227_01.jpg"
+      ],
+      "updatedAtTimestamp": 1795243998745,
+      "updatedAt": "2026-11-21T06:53:18.765Z",
+      "photoSha256": "81428e4cbc26878232d2ecb23b17da1e8fd041b68dbe190b84fafed4bf4c51c4"
+    }
+  ],
+  [
+    "ABC-002_SIM-QAE01-1F-01",
+    {
+      "companyCode": "ABC-002",
+      "warehouse": "AI 실사 추가 테스트 창고",
+      "zone": "QAE구역",
+      "rack": "QAE01",
+      "rackId": "QAE구역 QAE01",
+      "tier": "1단",
+      "side": "01",
+      "location": "QAE01-1F-01",
+      "itemCode": "SIM-QAE01-1F-01",
+      "itemName": "블랙앤데커 믹서기 포장 묶음",
+      "quantity": 1,
+      "quantityUnit": "PACKAGING_GROUP",
+      "status": "NORMAL",
+      "isTestData": true,
+      "dataSource": "SIMULATED_AI_IMAGE_ERP",
+      "photoReference": "QAE_rack_labels.png",
+      "photoLocationLabel": "QAE01-1F-01",
+      "photoLabelIssue": "",
+      "sourcePhotos": [
+        "KakaoTalk_20261103_153240227_01.jpg"
+      ],
+      "updatedAtTimestamp": 1795243998745,
+      "updatedAt": "2026-11-21T06:53:18.765Z",
+      "photoSha256": "81428e4cbc26878232d2ecb23b17da1e8fd041b68dbe190b84fafed4bf4c51c4"
+    }
+  ],
+  [
+    "ABC-002_SIM-QAE02-1F-01",
+    {
+      "companyCode": "ABC-002",
+      "warehouse": "AI 실사 추가 테스트 창고",
+      "zone": "QAE구역",
+      "rack": "QAE02",
+      "rackId": "QAE구역 QAE02",
+      "tier": "1단",
+      "side": "01",
+      "location": "QAE02-1F-01",
+      "itemCode": "SIM-QAE02-1F-01",
+      "itemName": "필립스 녹색 믹서기 포장 묶음",
+      "quantity": 1,
+      "quantityUnit": "PACKAGING_GROUP",
+      "status": "NORMAL",
+      "isTestData": true,
+      "dataSource": "SIMULATED_AI_IMAGE_ERP",
+      "photoReference": "QAE_rack_labels.png",
+      "photoLocationLabel": "QAE02-1F-01",
+      "photoLabelIssue": "",
+      "sourcePhotos": [
+        "KakaoTalk_20261103_153240227_01.jpg"
+      ],
+      "updatedAtTimestamp": 1795243998745,
+      "updatedAt": "2026-11-21T06:53:18.765Z",
+      "photoSha256": "81428e4cbc26878232d2ecb23b17da1e8fd041b68dbe190b84fafed4bf4c51c4"
+    }
+  ],
+  [
+    "ABC-002_SIM-QAE02-1F-02",
+    {
+      "companyCode": "ABC-002",
+      "warehouse": "AI 실사 추가 테스트 창고",
+      "zone": "QAE구역",
+      "rack": "QAE02",
+      "rackId": "QAE구역 QAE02",
+      "tier": "1단",
+      "side": "02",
+      "location": "QAE02-1F-02",
+      "itemCode": "SIM-QAE02-1F-02",
+      "itemName": "주황색 전기주전자 포장 묶음",
+      "quantity": 1,
+      "quantityUnit": "PACKAGING_GROUP",
+      "status": "NORMAL",
+      "isTestData": true,
+      "dataSource": "SIMULATED_AI_IMAGE_ERP",
+      "photoReference": "QAE_rack_labels.png",
+      "photoLocationLabel": "QAE02-1F-02",
+      "photoLabelIssue": "",
+      "sourcePhotos": [
+        "KakaoTalk_20261103_153240227_01.jpg"
+      ],
+      "updatedAtTimestamp": 1795243998745,
+      "updatedAt": "2026-11-21T06:53:18.765Z",
+      "photoSha256": "81428e4cbc26878232d2ecb23b17da1e8fd041b68dbe190b84fafed4bf4c51c4"
+    }
+  ],
+  [
+    "ABC-002_SIM-QAF01-2F-01",
+    {
+      "companyCode": "ABC-002",
+      "warehouse": "AI 실사 추가 테스트 창고",
+      "zone": "QAF구역",
+      "rack": "QAF01",
+      "rackId": "QAF구역 QAF01",
+      "tier": "2단",
+      "side": "01",
+      "location": "QAF01-2F-01",
+      "itemCode": "SIM-QAF01-2F-01",
+      "itemName": "공구 놀이 세트",
+      "quantity": 1,
+      "quantityUnit": "PACKAGING_GROUP",
+      "status": "NORMAL",
+      "isTestData": true,
+      "dataSource": "SIMULATED_AI_IMAGE_ERP",
+      "photoReference": "QAF_rack_labels.png",
+      "photoLocationLabel": "QAF01-2F-01",
+      "photoLabelIssue": "",
+      "sourcePhotos": [
+        "KakaoTalk_20261103_153240227_10.jpg"
+      ],
+      "updatedAtTimestamp": 1795243998745,
+      "updatedAt": "2026-11-21T06:53:18.765Z",
+      "photoSha256": "6f7177b21e1ec22b8b4a6426fa76bd3c4f401734c64ee472c0143b229e4516f8"
+    }
+  ],
+  [
+    "ABC-002_SIM-QAF01-2F-02",
+    {
+      "companyCode": "ABC-002",
+      "warehouse": "AI 실사 추가 테스트 창고",
+      "zone": "QAF구역",
+      "rack": "QAF01",
+      "rackId": "QAF구역 QAF01",
+      "tier": "2단",
+      "side": "02",
+      "location": "QAF01-2F-02",
+      "itemCode": "SIM-QAF01-2F-02",
+      "itemName": "뽑기 놀이 장난감",
+      "quantity": 1,
+      "quantityUnit": "PACKAGING_GROUP",
+      "status": "NORMAL",
+      "isTestData": true,
+      "dataSource": "SIMULATED_AI_IMAGE_ERP",
+      "photoReference": "QAF_rack_labels.png",
+      "photoLocationLabel": "QAF01-2F-02",
+      "photoLabelIssue": "",
+      "sourcePhotos": [
+        "KakaoTalk_20261103_153240227_10.jpg"
+      ],
+      "updatedAtTimestamp": 1795243998745,
+      "updatedAt": "2026-11-21T06:53:18.765Z",
+      "photoSha256": "6f7177b21e1ec22b8b4a6426fa76bd3c4f401734c64ee472c0143b229e4516f8"
+    }
+  ],
+  [
+    "ABC-002_SIM-QAF02-2F-01",
+    {
+      "companyCode": "ABC-002",
+      "warehouse": "AI 실사 추가 테스트 창고",
+      "zone": "QAF구역",
+      "rack": "QAF02",
+      "rackId": "QAF구역 QAF02",
+      "tier": "2단",
+      "side": "01",
+      "location": "QAF02-2F-01",
+      "itemCode": "SIM-QAF02-2F-01",
+      "itemName": "주차장 놀이 세트",
+      "quantity": 1,
+      "quantityUnit": "PACKAGING_GROUP",
+      "status": "NORMAL",
+      "isTestData": true,
+      "dataSource": "SIMULATED_AI_IMAGE_ERP",
+      "photoReference": "QAF_rack_labels.png",
+      "photoLocationLabel": "QAF02-2F-01",
+      "photoLabelIssue": "",
+      "sourcePhotos": [
+        "KakaoTalk_20261103_153240227_10.jpg"
+      ],
+      "updatedAtTimestamp": 1795243998745,
+      "updatedAt": "2026-11-21T06:53:18.765Z",
+      "photoSha256": "6f7177b21e1ec22b8b4a6426fa76bd3c4f401734c64ee472c0143b229e4516f8"
+    }
+  ],
+  [
+    "ABC-002_SIM-QAF02-2F-02",
+    {
+      "companyCode": "ABC-002",
+      "warehouse": "AI 실사 추가 테스트 창고",
+      "zone": "QAF구역",
+      "rack": "QAF02",
+      "rackId": "QAF구역 QAF02",
+      "tier": "2단",
+      "side": "02",
+      "location": "QAF02-2F-02",
+      "itemCode": "SIM-QAF02-2F-02",
+      "itemName": "워터 놀이 세트",
+      "quantity": 1,
+      "quantityUnit": "PACKAGING_GROUP",
+      "status": "NORMAL",
+      "isTestData": true,
+      "dataSource": "SIMULATED_AI_IMAGE_ERP",
+      "photoReference": "QAF_rack_labels.png",
+      "photoLocationLabel": "QAF02-2F-02",
+      "photoLabelIssue": "",
+      "sourcePhotos": [
+        "KakaoTalk_20261103_153240227_10.jpg"
+      ],
+      "updatedAtTimestamp": 1795243998745,
+      "updatedAt": "2026-11-21T06:53:18.765Z",
+      "photoSha256": "6f7177b21e1ec22b8b4a6426fa76bd3c4f401734c64ee472c0143b229e4516f8"
+    }
+  ],
+  [
+    "ABC-002_SIM-QAF01-1F-01",
+    {
+      "companyCode": "ABC-002",
+      "warehouse": "AI 실사 추가 테스트 창고",
+      "zone": "QAF구역",
+      "rack": "QAF01",
+      "rackId": "QAF구역 QAF01",
+      "tier": "1단",
+      "side": "01",
+      "location": "QAF01-1F-01",
+      "itemCode": "SIM-QAF01-1F-01",
+      "itemName": "분홍색 생일 놀이 세트",
+      "quantity": 1,
+      "quantityUnit": "PACKAGING_GROUP",
+      "status": "NORMAL",
+      "isTestData": true,
+      "dataSource": "SIMULATED_AI_IMAGE_ERP",
+      "photoReference": "QAF_rack_labels.png",
+      "photoLocationLabel": "QAF01-1F-01",
+      "photoLabelIssue": "",
+      "sourcePhotos": [
+        "KakaoTalk_20261103_153240227_10.jpg"
+      ],
+      "updatedAtTimestamp": 1795243998745,
+      "updatedAt": "2026-11-21T06:53:18.765Z",
+      "photoSha256": "6f7177b21e1ec22b8b4a6426fa76bd3c4f401734c64ee472c0143b229e4516f8"
+    }
+  ],
+  [
+    "ABC-002_SIM-QAF01-1F-02",
+    {
+      "companyCode": "ABC-002",
+      "warehouse": "AI 실사 추가 테스트 창고",
+      "zone": "QAF구역",
+      "rack": "QAF01",
+      "rackId": "QAF구역 QAF01",
+      "tier": "1단",
+      "side": "02",
+      "location": "QAF01-1F-02",
+      "itemCode": "SIM-QAF01-1F-02",
+      "itemName": "사파리 동물 알 장난감",
+      "quantity": 1,
+      "quantityUnit": "PACKAGING_GROUP",
+      "status": "NORMAL",
+      "isTestData": true,
+      "dataSource": "SIMULATED_AI_IMAGE_ERP",
+      "photoReference": "QAF_rack_labels.png",
+      "photoLocationLabel": "QAF01-1F-02",
+      "photoLabelIssue": "",
+      "sourcePhotos": [
+        "KakaoTalk_20261103_153240227_10.jpg"
+      ],
+      "updatedAtTimestamp": 1795243998745,
+      "updatedAt": "2026-11-21T06:53:18.765Z",
+      "photoSha256": "6f7177b21e1ec22b8b4a6426fa76bd3c4f401734c64ee472c0143b229e4516f8"
+    }
+  ],
+  [
+    "ABC-002_SIM-QAF01-1F-03",
+    {
+      "companyCode": "ABC-002",
+      "warehouse": "AI 실사 추가 테스트 창고",
+      "zone": "QAF구역",
+      "rack": "QAF01",
+      "rackId": "QAF구역 QAF01",
+      "tier": "1단",
+      "side": "03",
+      "location": "QAF01-1F-03",
+      "itemCode": "SIM-QAF01-1F-03",
+      "itemName": "바다 동물 알 장난감",
+      "quantity": 1,
+      "quantityUnit": "PACKAGING_GROUP",
+      "status": "NORMAL",
+      "isTestData": true,
+      "dataSource": "SIMULATED_AI_IMAGE_ERP",
+      "photoReference": "QAF_rack_labels.png",
+      "photoLocationLabel": "QAF01-1F-03",
+      "photoLabelIssue": "",
+      "sourcePhotos": [
+        "KakaoTalk_20261103_153240227_10.jpg"
+      ],
+      "updatedAtTimestamp": 1795243998745,
+      "updatedAt": "2026-11-21T06:53:18.765Z",
+      "photoSha256": "6f7177b21e1ec22b8b4a6426fa76bd3c4f401734c64ee472c0143b229e4516f8"
+    }
+  ],
+  [
+    "ABC-002_SIM-QAF02-1F-01",
+    {
+      "companyCode": "ABC-002",
+      "warehouse": "AI 실사 추가 테스트 창고",
+      "zone": "QAF구역",
+      "rack": "QAF02",
+      "rackId": "QAF구역 QAF02",
+      "tier": "1단",
+      "side": "01",
+      "location": "QAF02-1F-01",
+      "itemCode": "SIM-QAF02-1F-01",
+      "itemName": "트럭 자동차 놀이 세트",
+      "quantity": 1,
+      "quantityUnit": "PACKAGING_GROUP",
+      "status": "NORMAL",
+      "isTestData": true,
+      "dataSource": "SIMULATED_AI_IMAGE_ERP",
+      "photoReference": "QAF_rack_labels.png",
+      "photoLocationLabel": "QAF02-1F-01",
+      "photoLabelIssue": "",
+      "sourcePhotos": [
+        "KakaoTalk_20261103_153240227_10.jpg"
+      ],
+      "updatedAtTimestamp": 1795243998745,
+      "updatedAt": "2026-11-21T06:53:18.765Z",
+      "photoSha256": "6f7177b21e1ec22b8b4a6426fa76bd3c4f401734c64ee472c0143b229e4516f8"
+    }
+  ],
+  [
+    "ABC-002_SIM-QAF02-1F-02",
+    {
+      "companyCode": "ABC-002",
+      "warehouse": "AI 실사 추가 테스트 창고",
+      "zone": "QAF구역",
+      "rack": "QAF02",
+      "rackId": "QAF구역 QAF02",
+      "tier": "1단",
+      "side": "02",
+      "location": "QAF02-1F-02",
+      "itemCode": "SIM-QAF02-1F-02",
+      "itemName": "아기 인형 놀이 세트",
+      "quantity": 1,
+      "quantityUnit": "PACKAGING_GROUP",
+      "status": "NORMAL",
+      "isTestData": true,
+      "dataSource": "SIMULATED_AI_IMAGE_ERP",
+      "photoReference": "QAF_rack_labels.png",
+      "photoLocationLabel": "QAF02-1F-02",
+      "photoLabelIssue": "",
+      "sourcePhotos": [
+        "KakaoTalk_20261103_153240227_10.jpg"
+      ],
+      "updatedAtTimestamp": 1795243998745,
+      "updatedAt": "2026-11-21T06:53:18.765Z",
+      "photoSha256": "6f7177b21e1ec22b8b4a6426fa76bd3c4f401734c64ee472c0143b229e4516f8"
+    }
+  ],
+  [
+    "ABC-002_SIM-QAF02-1F-03",
+    {
+      "companyCode": "ABC-002",
+      "warehouse": "AI 실사 추가 테스트 창고",
+      "zone": "QAF구역",
+      "rack": "QAF02",
+      "rackId": "QAF구역 QAF02",
+      "tier": "1단",
+      "side": "03",
+      "location": "QAF02-1F-03",
+      "itemCode": "SIM-QAF02-1F-03",
+      "itemName": "인형의 집 놀이 세트",
+      "quantity": 1,
+      "quantityUnit": "PACKAGING_GROUP",
+      "status": "NORMAL",
+      "isTestData": true,
+      "dataSource": "SIMULATED_AI_IMAGE_ERP",
+      "photoReference": "QAF_rack_labels.png",
+      "photoLocationLabel": "QAF02-1F-03",
+      "photoLabelIssue": "",
+      "sourcePhotos": [
+        "KakaoTalk_20261103_153240227_10.jpg"
+      ],
+      "updatedAtTimestamp": 1795243998745,
+      "updatedAt": "2026-11-21T06:53:18.765Z",
+      "photoSha256": "6f7177b21e1ec22b8b4a6426fa76bd3c4f401734c64ee472c0143b229e4516f8"
+    }
+  ],
+  [
+    "ABC-002_SIM-QAG01-2F-01",
+    {
+      "companyCode": "ABC-002",
+      "warehouse": "AI 실사 추가 테스트 창고",
+      "zone": "QAG구역",
+      "rack": "QAG01",
+      "rackId": "QAG구역 QAG01",
+      "tier": "2단",
+      "side": "01",
+      "location": "QAG01-2F-01",
+      "itemCode": "SIM-QAG01-2F-01",
+      "itemName": "흰색 식품 포장 팔레트",
+      "quantity": 1,
+      "quantityUnit": "PACKAGING_GROUP",
+      "status": "NORMAL",
+      "isTestData": true,
+      "dataSource": "SIMULATED_AI_IMAGE_ERP",
+      "photoReference": "QAG_rack_labels.png",
+      "photoLocationLabel": "QAG01-2F-01",
+      "photoLabelIssue": "",
+      "sourcePhotos": [
+        "KakaoTalk_20261103_153240227_13.jpg"
+      ],
+      "updatedAtTimestamp": 1795243998745,
+      "updatedAt": "2026-11-21T06:53:18.765Z",
+      "photoSha256": "81ca235cefe448f638941eb577e2da951996d854a0c18d3bd944804d7ce2dca8"
+    }
+  ],
+  [
+    "ABC-002_SIM-QAG01-2F-02",
+    {
+      "companyCode": "ABC-002",
+      "warehouse": "AI 실사 추가 테스트 창고",
+      "zone": "QAG구역",
+      "rack": "QAG01",
+      "rackId": "QAG구역 QAG01",
+      "tier": "2단",
+      "side": "02",
+      "location": "QAG01-2F-02",
+      "itemCode": "SIM-QAG01-2F-02",
+      "itemName": "녹색 식품 포장 팔레트",
+      "quantity": 1,
+      "quantityUnit": "PACKAGING_GROUP",
+      "status": "NORMAL",
+      "isTestData": true,
+      "dataSource": "SIMULATED_AI_IMAGE_ERP",
+      "photoReference": "QAG_rack_labels.png",
+      "photoLocationLabel": "QAG01-2F-02",
+      "photoLabelIssue": "",
+      "sourcePhotos": [
+        "KakaoTalk_20261103_153240227_13.jpg"
+      ],
+      "updatedAtTimestamp": 1795243998745,
+      "updatedAt": "2026-11-21T06:53:18.765Z",
+      "photoSha256": "81ca235cefe448f638941eb577e2da951996d854a0c18d3bd944804d7ce2dca8"
+    }
+  ],
+  [
+    "ABC-002_SIM-QAG02-2F-01",
+    {
+      "companyCode": "ABC-002",
+      "warehouse": "AI 실사 추가 테스트 창고",
+      "zone": "QAG구역",
+      "rack": "QAG02",
+      "rackId": "QAG구역 QAG02",
+      "tier": "2단",
+      "side": "01",
+      "location": "QAG02-2F-01",
+      "itemCode": "SIM-QAG02-2F-01",
+      "itemName": "보라색 포장 팔레트",
+      "quantity": 1,
+      "quantityUnit": "PACKAGING_GROUP",
+      "status": "NORMAL",
+      "isTestData": true,
+      "dataSource": "SIMULATED_AI_IMAGE_ERP",
+      "photoReference": "QAG_rack_labels.png",
+      "photoLocationLabel": "QAG02-2F-01",
+      "photoLabelIssue": "",
+      "sourcePhotos": [
+        "KakaoTalk_20261103_153240227_13.jpg"
+      ],
+      "updatedAtTimestamp": 1795243998745,
+      "updatedAt": "2026-11-21T06:53:18.765Z",
+      "photoSha256": "81ca235cefe448f638941eb577e2da951996d854a0c18d3bd944804d7ce2dca8"
+    }
+  ],
+  [
+    "ABC-002_SIM-QAG02-2F-02",
+    {
+      "companyCode": "ABC-002",
+      "warehouse": "AI 실사 추가 테스트 창고",
+      "zone": "QAG구역",
+      "rack": "QAG02",
+      "rackId": "QAG구역 QAG02",
+      "tier": "2단",
+      "side": "02",
+      "location": "QAG02-2F-02",
+      "itemCode": "SIM-QAG02-2F-02",
+      "itemName": "흰색 포장 팔레트",
+      "quantity": 1,
+      "quantityUnit": "PACKAGING_GROUP",
+      "status": "NORMAL",
+      "isTestData": true,
+      "dataSource": "SIMULATED_AI_IMAGE_ERP",
+      "photoReference": "QAG_rack_labels.png",
+      "photoLocationLabel": "QAG02-2F-02",
+      "photoLabelIssue": "",
+      "sourcePhotos": [
+        "KakaoTalk_20261103_153240227_13.jpg"
+      ],
+      "updatedAtTimestamp": 1795243998745,
+      "updatedAt": "2026-11-21T06:53:18.765Z",
+      "photoSha256": "81ca235cefe448f638941eb577e2da951996d854a0c18d3bd944804d7ce2dca8"
+    }
+  ]
+]

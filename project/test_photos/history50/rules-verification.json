@@ -1,0 +1,154 @@
+{
+  "emulatorOnly": true,
+  "passed": true,
+  "cases": 29,
+  "auditStockUnchanged": true,
+  "fullReworkCycleEvents": 5,
+  "checks": [
+    {
+      "case": "linked finding without event rejected",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "event without finding rejected",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "atomic finding and event",
+      "status": 200,
+      "allowed": true
+    },
+    {
+      "case": "company history list allowed",
+      "status": 200,
+      "allowed": true
+    },
+    {
+      "case": "cross-company history list blocked",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "anonymous history blocked",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "event immutable",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "event delete blocked",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "actor spoof",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "wrong source",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "wrong destination",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "wrong SKU",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "wrong warehouse",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "wrong event type",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "wrong prior status",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "wrong note",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "test flag spoof",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "unknown quantity field",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "QA cannot impersonate loader relocation",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "cross-company transition blocked",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "atomic relocation report",
+      "status": 200,
+      "allowed": true
+    },
+    {
+      "case": "loader cannot approve own report",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "atomic QA rework request",
+      "status": 200,
+      "allowed": true
+    },
+    {
+      "case": "second relocation report",
+      "status": 200,
+      "allowed": true
+    },
+    {
+      "case": "atomic QA approval",
+      "status": 200,
+      "allowed": true
+    },
+    {
+      "case": "late duplicate history without transition blocked",
+      "status": 403,
+      "allowed": false
+    },
+    {
+      "case": "compatibility with old stock-only report",
+      "status": 200,
+      "allowed": true
+    },
+    {
+      "case": "reported relocation location and quantity",
+      "status": 200,
+      "allowed": true
+    },
+    {
+      "case": "invented relocation destination",
+      "status": 403,
+      "allowed": false
+    }
+  ]
+}

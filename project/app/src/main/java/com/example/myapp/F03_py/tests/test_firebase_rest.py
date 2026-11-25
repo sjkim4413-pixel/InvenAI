@@ -21,7 +21,6 @@ class FirebaseRestUpload(unittest.TestCase):
         temporary = tempfile.TemporaryDirectory()
         self.addCleanup(temporary.cleanup)
         self.root = Path(temporary.name)
-        self.enterContext(patch.dict('os.environ', {'IVENAI_F04_DIR': str(self.root / 'missing-f04')}))
         self.enterContext(patch.object(api.app.state, 'upload_dir', self.root / 'uploads'))
         self.enterContext(patch.object(firebase, 'firebase_config', return_value=('test-project', 'test-key')))
         self.client = TestClient(api.app)
@@ -29,7 +28,8 @@ class FirebaseRestUpload(unittest.TestCase):
         self.auth_status = 200
         self.auth_body = {'users': [{'localId': 'signed-user', 'validSince': '100'}]}
         self.profile_status = 200
-        self.profile_body = {'fields': {'companyCode': {'stringValue': 'ABC-002'}}}
+        self.profile_body = {'fields': {'companyCode': {'stringValue': 'ABC-002'},
+                                        'role': {'stringValue': 'QA'}}}
         self.inventory_company = 'ABC-002'
         claims = {'sub': 'signed-user', 'aud': 'test-project',
                   'iss': 'https://securetoken.google.com/test-project', 'iat': 200}
@@ -46,7 +46,7 @@ class FirebaseRestUpload(unittest.TestCase):
             self.assertEqual(json.loads(request.content), {'idToken': self.token})
             return httpx.Response(self.auth_status, json=self.auth_body)
         self.assertEqual(request.headers['Authorization'], self.headers['Authorization'])
-        if request.url.path.endswith('/users/signed-user'):
+        if request.url.path.endswith('/warehouseMemberships/signed-user'):
             return httpx.Response(self.profile_status, json=self.profile_body)
         self.assertTrue(request.url.path.endswith('/documents:runQuery'))
         query = json.loads(request.content)['structuredQuery']
@@ -88,6 +88,11 @@ class FirebaseRestUpload(unittest.TestCase):
     def test_profile_denial_returns_403_before_upload(self):
         self.profile_status = 403
         self.profile_body = {'error': {'message': 'PERMISSION_DENIED'}}
+        self.assertEqual(self.upload().status_code, 403)
+        self.assertFalse(list(self.root.rglob('*.upload.json')))
+
+    def test_incomplete_membership_is_rejected_before_upload(self):
+        del self.profile_body['fields']['role']
         self.assertEqual(self.upload().status_code, 403)
         self.assertFalse(list(self.root.rglob('*.upload.json')))
 

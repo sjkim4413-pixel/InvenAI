@@ -1,0 +1,2236 @@
+[
+  {
+    "image": "276ec63e-e08f-4915-b585-582e9529bdaa.png",
+    "width": 1086,
+    "height": 1448,
+    "sha256": "2b73ea27aa8261481562c50a1c6be64a48633c02ddf824f68ef8ca23ea7c5b51",
+    "source_sha256": "13895cbb919aec19ee8487ad8ef427bfceb3b567240f3321c5eb3fdfbe39a22e",
+    "rows": [
+      {
+        "document_id": "ABC-002_SIM-AI01-P01",
+        "itemCode": "SIM-AI01-P01",
+        "location": "A01-5F",
+        "label_bbox": [
+          0.09116,
+          0.269337,
+          0.175875,
+          0.289365
+        ],
+        "load_bbox": [
+          0.075506,
+          0.187845,
+          0.230203,
+          0.26933701657458564
+        ],
+        "font_size": 23,
+        "original_label": "A01-5F",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI01-P02",
+        "itemCode": "SIM-AI01-P02",
+        "location": "A02-5F",
+        "label_bbox": [
+          0.244936,
+          0.265193,
+          0.32965,
+          0.287293
+        ],
+        "load_bbox": [
+          0.230203,
+          0.147099,
+          0.361878,
+          0.26519337016574585
+        ],
+        "font_size": 23,
+        "original_label": "A02-5F",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI01-P03",
+        "itemCode": "SIM-AI01-P03",
+        "location": "A03-5F",
+        "label_bbox": [
+          0.405157,
+          0.25,
+          0.489871,
+          0.270028
+        ],
+        "load_bbox": [
+          0.375691,
+          0.138122,
+          0.533149,
+          0.25
+        ],
+        "font_size": 23,
+        "original_label": "A03-5F",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI01-P04",
+        "itemCode": "SIM-AI01-P04",
+        "location": "A04-5F",
+        "label_bbox": [
+          0.593002,
+          0.243785,
+          0.677716,
+          0.263812
+        ],
+        "load_bbox": [
+          0.547882,
+          0.122928,
+          0.723757,
+          0.24378453038674033
+        ],
+        "font_size": 23,
+        "original_label": "A04-5F",
+        "original_issue": "사진 내 중복"
+      },
+      {
+        "document_id": "ABC-002_SIM-AI01-P05",
+        "itemCode": "SIM-AI01-P05",
+        "location": "A05-5F",
+        "label_bbox": [
+          0.804788,
+          0.236878,
+          0.889503,
+          0.256906
+        ],
+        "load_bbox": [
+          0.72744,
+          0.122928,
+          0.939227,
+          0.23687845303867403
+        ],
+        "font_size": 23,
+        "original_label": "A04-5F",
+        "original_issue": "사진 내 중복"
+      },
+      {
+        "document_id": "ABC-002_SIM-AI01-P06",
+        "itemCode": "SIM-AI01-P06",
+        "location": "A01-4F",
+        "label_bbox": [
+          0.071823,
+          0.400552,
+          0.156538,
+          0.42058
+        ],
+        "load_bbox": [
+          0.047882,
+          0.309392,
+          0.207182,
+          0.4005524861878453
+        ],
+        "font_size": 23,
+        "original_label": "A01-4F",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI01-P07",
+        "itemCode": "SIM-AI01-P07",
+        "location": "A02-4F",
+        "label_bbox": [
+          0.224678,
+          0.397099,
+          0.309392,
+          0.417127
+        ],
+        "load_bbox": [
+          0.208103,
+          0.283149,
+          0.348987,
+          0.39709944751381215
+        ],
+        "font_size": 23,
+        "original_label": "A02-4F",
+        "original_issue": "사진 내 중복"
+      },
+      {
+        "document_id": "ABC-002_SIM-AI01-P08",
+        "itemCode": "SIM-AI01-P08",
+        "location": "A03-4F",
+        "label_bbox": [
+          0.405157,
+          0.392265,
+          0.489871,
+          0.412293
+        ],
+        "load_bbox": [
+          0.372928,
+          0.290746,
+          0.529466,
+          0.39226519337016574
+        ],
+        "font_size": 23,
+        "original_label": "A02-4F",
+        "original_issue": "사진 내 중복"
+      },
+      {
+        "document_id": "ABC-002_SIM-AI01-P09",
+        "itemCode": "SIM-AI01-P09",
+        "location": "A04-4F",
+        "label_bbox": [
+          0.594843,
+          0.390193,
+          0.679558,
+          0.410221
+        ],
+        "load_bbox": [
+          0.554328,
+          0.265884,
+          0.729282,
+          0.39019337016574585
+        ],
+        "font_size": 23,
+        "original_label": "A03-3F",
+        "original_issue": "선반 단수와 다름"
+      },
+      {
+        "document_id": "ABC-002_SIM-AI01-P10",
+        "itemCode": "SIM-AI01-P10",
+        "location": "A05-4F",
+        "label_bbox": [
+          0.824125,
+          0.38674,
+          0.90884,
+          0.406768
+        ],
+        "load_bbox": [
+          0.754144,
+          0.252762,
+          0.958564,
+          0.3867403314917127
+        ],
+        "font_size": 23,
+        "original_label": "A04-4F",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI01-P11",
+        "itemCode": "SIM-AI01-P11",
+        "location": "A01-2F",
+        "label_bbox": [
+          0.046041,
+          0.553177,
+          0.130755,
+          0.573204
+        ],
+        "load_bbox": [
+          0.022099,
+          0.428867,
+          0.188766,
+          0.5531767955801105
+        ],
+        "font_size": 23,
+        "original_label": "A01-2F",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI01-P12",
+        "itemCode": "SIM-AI01-P12",
+        "location": "A02-2F",
+        "label_bbox": [
+          0.207182,
+          0.555249,
+          0.291897,
+          0.575276
+        ],
+        "load_bbox": [
+          0.188766,
+          0.433702,
+          0.337017,
+          0.5552486187845304
+        ],
+        "font_size": 23,
+        "original_label": "A02-2F",
+        "original_issue": "사진 내 중복"
+      },
+      {
+        "document_id": "ABC-002_SIM-AI01-P13",
+        "itemCode": "SIM-AI01-P13",
+        "location": "A03-2F",
+        "label_bbox": [
+          0.392265,
+          0.558011,
+          0.47698,
+          0.578039
+        ],
+        "load_bbox": [
+          0.356354,
+          0.449586,
+          0.530387,
+          0.5580110497237569
+        ],
+        "font_size": 23,
+        "original_label": "A02-2F",
+        "original_issue": "사진 내 중복"
+      },
+      {
+        "document_id": "ABC-002_SIM-AI01-P14",
+        "itemCode": "SIM-AI01-P14",
+        "location": "A04-2F",
+        "label_bbox": [
+          0.594843,
+          0.561464,
+          0.679558,
+          0.581492
+        ],
+        "load_bbox": [
+          0.550645,
+          0.44268,
+          0.728361,
+          0.56146408839779
+        ],
+        "font_size": 23,
+        "original_label": "A03-2F",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI01-P15",
+        "itemCode": "SIM-AI01-P15",
+        "location": "A05-2F",
+        "label_bbox": [
+          0.828729,
+          0.56768,
+          0.913444,
+          0.587707
+        ],
+        "load_bbox": [
+          0.753223,
+          0.437155,
+          0.976059,
+          0.5676795580110497
+        ],
+        "font_size": 23,
+        "original_label": "A04-2F",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI01-P16",
+        "itemCode": "SIM-AI01-P16",
+        "location": "A01-1F",
+        "label_bbox": [
+          0.020258,
+          0.689227,
+          0.104972,
+          0.709254
+        ],
+        "load_bbox": [
+          0,
+          0.573895,
+          0.163904,
+          0.6892265193370166
+        ],
+        "font_size": 23,
+        "original_label": "A01-1F",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI01-P17",
+        "itemCode": "SIM-AI01-P17",
+        "location": "A02-1F",
+        "label_bbox": [
+          0.202578,
+          0.700276,
+          0.287293,
+          0.720304
+        ],
+        "load_bbox": [
+          0.171271,
+          0.575967,
+          0.339779,
+          0.7002762430939227
+        ],
+        "font_size": 23,
+        "original_label": "A02-1F",
+        "original_issue": "사진 내 중복"
+      },
+      {
+        "document_id": "ABC-002_SIM-AI01-P18",
+        "itemCode": "SIM-AI01-P18",
+        "location": "A03-1F",
+        "label_bbox": [
+          0.390424,
+          0.709945,
+          0.475138,
+          0.729972
+        ],
+        "load_bbox": [
+          0.341621,
+          0.586326,
+          0.517495,
+          0.7099447513812155
+        ],
+        "font_size": 23,
+        "original_label": "A02-1F",
+        "original_issue": "사진 내 중복"
+      },
+      {
+        "document_id": "ABC-002_SIM-AI01-P19",
+        "itemCode": "SIM-AI01-P19",
+        "location": "A04-1F",
+        "label_bbox": [
+          0.618785,
+          0.722376,
+          0.703499,
+          0.742403
+        ],
+        "load_bbox": [
+          0.570902,
+          0.603591,
+          0.751381,
+          0.7223756906077348
+        ],
+        "font_size": 23,
+        "original_label": "A03-1F",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI01-P20",
+        "itemCode": "SIM-AI01-P20",
+        "location": "A05-1F",
+        "label_bbox": [
+          0.844383,
+          0.736188,
+          0.929098,
+          0.756215
+        ],
+        "load_bbox": [
+          0.767035,
+          0.592541,
+          0.993554,
+          0.7361878453038674
+        ],
+        "font_size": 23,
+        "original_label": "A04-1F",
+        "original_issue": ""
+      }
+    ]
+  },
+  {
+    "image": "31940782-2973-4e71-9765-5ba1d3d0b20b.png",
+    "width": 1087,
+    "height": 1447,
+    "sha256": "2bfc0cb2bae68d2224b326bda41d5d1d5939ad3726cad4f7e806272bc372473d",
+    "source_sha256": "4cf6f1c804e771a1216e6546b05125510d101a1e64f43b30fc0b5566a40e106b",
+    "rows": [
+      {
+        "document_id": "ABC-002_SIM-AI02-P01",
+        "itemCode": "SIM-AI02-P01",
+        "location": "A01-5F",
+        "label_bbox": [
+          0.090156,
+          0.176918,
+          0.174793,
+          0.196959
+        ],
+        "load_bbox": [
+          0.031279,
+          0.033172,
+          0.25207,
+          0.1769177608845888
+        ],
+        "font_size": 23,
+        "original_label": "A01-5F",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI02-P02",
+        "itemCode": "SIM-AI02-P02",
+        "location": "A02-5F",
+        "label_bbox": [
+          0.329347,
+          0.176918,
+          0.413983,
+          0.196959
+        ],
+        "load_bbox": [
+          0.267709,
+          0.049067,
+          0.482981,
+          0.1769177608845888
+        ],
+        "font_size": 23,
+        "original_label": "A02-5F",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI02-P03",
+        "itemCode": "SIM-AI02-P03",
+        "location": "A03-5F",
+        "label_bbox": [
+          0.566697,
+          0.176918,
+          0.651334,
+          0.196959
+        ],
+        "load_bbox": [
+          0.49678,
+          0.044229,
+          0.715731,
+          0.1769177608845888
+        ],
+        "font_size": 23,
+        "original_label": "A03-5F",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI02-P04",
+        "itemCode": "SIM-AI02-P04",
+        "location": "A04-5F",
+        "label_bbox": [
+          0.799448,
+          0.174153,
+          0.884085,
+          0.194195
+        ],
+        "load_bbox": [
+          0.715731,
+          0.066344,
+          0.957682,
+          0.1741534208707671
+        ],
+        "font_size": 23,
+        "original_label": "A04-5F",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI02-P05",
+        "itemCode": "SIM-AI02-P05",
+        "location": "A01-4F",
+        "label_bbox": [
+          0.093836,
+          0.382861,
+          0.178473,
+          0.402903
+        ],
+        "load_bbox": [
+          0.022999,
+          0.252246,
+          0.263109,
+          0.38286109191430545
+        ],
+        "font_size": 23,
+        "original_label": "A01-4F",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI02-P06",
+        "itemCode": "SIM-AI02-P06",
+        "location": "A02-4F",
+        "label_bbox": [
+          0.330267,
+          0.382861,
+          0.414903,
+          0.402903
+        ],
+        "load_bbox": [
+          0.263109,
+          0.279889,
+          0.479301,
+          0.38286109191430545
+        ],
+        "font_size": 23,
+        "original_label": "A02-4F",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI02-P07",
+        "itemCode": "SIM-AI02-P07",
+        "location": "A03-4F",
+        "label_bbox": [
+          0.581417,
+          0.381479,
+          0.666053,
+          0.40152
+        ],
+        "load_bbox": [
+          0.50138,
+          0.250864,
+          0.724011,
+          0.38147892190739463
+        ],
+        "font_size": 23,
+        "original_label": "A03-4F",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI02-P08",
+        "itemCode": "SIM-AI02-P08",
+        "location": "A04-4F",
+        "label_bbox": [
+          0.811408,
+          0.378715,
+          0.896044,
+          0.398756
+        ],
+        "load_bbox": [
+          0.724011,
+          0.256393,
+          0.966881,
+          0.37871458189357293
+        ],
+        "font_size": 23,
+        "original_label": "A04-4F",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI02-P09",
+        "itemCode": "SIM-AI02-P09",
+        "location": "A01-3F",
+        "label_bbox": [
+          0.086477,
+          0.529371,
+          0.171113,
+          0.549413
+        ],
+        "load_bbox": [
+          0.00736,
+          0.427782,
+          0.25759,
+          0.5293711126468555
+        ],
+        "font_size": 23,
+        "original_label": "A01-3F",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI02-P10",
+        "itemCode": "SIM-AI02-P10",
+        "location": "A02-3F",
+        "label_bbox": [
+          0.329347,
+          0.526607,
+          0.413983,
+          0.546648
+        ],
+        "load_bbox": [
+          0.25759,
+          0.429855,
+          0.483901,
+          0.5266067726330339
+        ],
+        "font_size": 23,
+        "original_label": "A02-3F",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI02-P11",
+        "itemCode": "SIM-AI02-P11",
+        "location": "A03-3F",
+        "label_bbox": [
+          0.586937,
+          0.525225,
+          0.671573,
+          0.545266
+        ],
+        "load_bbox": [
+          0.50874,
+          0.432619,
+          0.74057,
+          0.525224602626123
+        ],
+        "font_size": 23,
+        "original_label": "A03-3F",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI02-P12",
+        "itemCode": "SIM-AI02-P12",
+        "location": "A04-3F",
+        "label_bbox": [
+          0.831647,
+          0.525225,
+          0.916283,
+          0.545266
+        ],
+        "load_bbox": [
+          0.74057,
+          0.443677,
+          0.9908,
+          0.525224602626123
+        ],
+        "font_size": 23,
+        "original_label": "A04-3F",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI02-P13",
+        "itemCode": "SIM-AI02-P13",
+        "location": "A01-2F",
+        "label_bbox": [
+          0.060718,
+          0.642709,
+          0.145354,
+          0.662751
+        ],
+        "load_bbox": [
+          0,
+          0.592951,
+          0.25115,
+          0.6427090532135452
+        ],
+        "font_size": 23,
+        "original_label": "A01-2F",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI02-P14",
+        "itemCode": "SIM-AI02-P14",
+        "location": "A02-2F",
+        "label_bbox": [
+          0.265869,
+          0.64962,
+          0.350506,
+          0.669661
+        ],
+        "load_bbox": [
+          0.25115,
+          0.568072,
+          0.366145,
+          0.6496199032480995
+        ],
+        "font_size": 23,
+        "original_label": "A02-2F",
+        "original_issue": "사진 내 중복"
+      },
+      {
+        "document_id": "ABC-002_SIM-AI02-P15",
+        "itemCode": "SIM-AI02-P15",
+        "location": "A03-2F",
+        "label_bbox": [
+          0.383625,
+          0.64962,
+          0.468261,
+          0.669661
+        ],
+        "load_bbox": [
+          0.366145,
+          0.568072,
+          0.484821,
+          0.6496199032480995
+        ],
+        "font_size": 23,
+        "original_label": "A02-2F",
+        "original_issue": "사진 내 중복"
+      },
+      {
+        "document_id": "ABC-002_SIM-AI02-P16",
+        "itemCode": "SIM-AI02-P16",
+        "location": "A04-2F",
+        "label_bbox": [
+          0.588776,
+          0.63718,
+          0.673413,
+          0.657222
+        ],
+        "load_bbox": [
+          0.5023,
+          0.58604,
+          0.75069,
+          0.6371803731859018
+        ],
+        "font_size": 23,
+        "original_label": "A03-2F",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI02-P17",
+        "itemCode": "SIM-AI02-P17",
+        "location": "A05-2F",
+        "label_bbox": [
+          0.827967,
+          0.636489,
+          0.912603,
+          0.656531
+        ],
+        "load_bbox": [
+          0.75437,
+          0.583967,
+          1,
+          0.6364892881824464
+        ],
+        "font_size": 23,
+        "original_label": "A04-2F",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI02-P18",
+        "itemCode": "SIM-AI02-P18",
+        "location": "A01-1F",
+        "label_bbox": [
+          0.047838,
+          0.854872,
+          0.132475,
+          0.874914
+        ],
+        "load_bbox": [
+          0,
+          0.667588,
+          0.25207,
+          0.8548721492743607
+        ],
+        "font_size": 23,
+        "original_label": "A01-1F",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI02-P19",
+        "itemCode": "SIM-AI02-P19",
+        "location": "A02-1F",
+        "label_bbox": [
+          0.325667,
+          0.852799,
+          0.410304,
+          0.87284
+        ],
+        "load_bbox": [
+          0.25207,
+          0.665515,
+          0.49586,
+          0.8527988942639945
+        ],
+        "font_size": 23,
+        "original_label": "A02-1F",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI02-P20",
+        "itemCode": "SIM-AI02-P20",
+        "location": "A03-1F",
+        "label_bbox": [
+          0.609016,
+          0.850035,
+          0.693652,
+          0.870076
+        ],
+        "load_bbox": [
+          0.517939,
+          0.691085,
+          0.766329,
+          0.8500345542501728
+        ],
+        "font_size": 23,
+        "original_label": "A03-1F",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI02-P21",
+        "itemCode": "SIM-AI02-P21",
+        "location": "A04-1F",
+        "label_bbox": [
+          0.860166,
+          0.84727,
+          0.944802,
+          0.867312
+        ],
+        "load_bbox": [
+          0.766329,
+          0.664824,
+          1,
+          0.8472702142363511
+        ],
+        "font_size": 23,
+        "original_label": "A04-1F",
+        "original_issue": ""
+      }
+    ]
+  },
+  {
+    "image": "7be725d7-e159-47a9-884d-1535aace4a93.png",
+    "width": 1373,
+    "height": 1086,
+    "sha256": "c565698885dce0e9c2488b3fa54fba167064fc53be4870a7cd6242f9857dfa18",
+    "source_sha256": "f596e9c1934bfa15a77d2d335e3433380dfd1bfb92f464a3be6a50eb15a1749b",
+    "rows": [
+      {
+        "document_id": "ABC-002_SIM-AI03-P01",
+        "itemCode": "SIM-AI03-P01",
+        "location": "A01-5F",
+        "label_bbox": [
+          0.075018,
+          0.167587,
+          0.142025,
+          0.194291
+        ],
+        "load_bbox": [
+          0.055353,
+          0.049724,
+          0.171158,
+          0.16758747697974216
+        ],
+        "font_size": 23,
+        "original_label": "A01-5F-01",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P02",
+        "itemCode": "SIM-AI03-P02",
+        "location": "A02-5F",
+        "label_bbox": [
+          0.190823,
+          0.168508,
+          0.25783,
+          0.195212
+        ],
+        "load_bbox": [
+          0.171886,
+          0.053407,
+          0.287691,
+          0.1685082872928177
+        ],
+        "font_size": 23,
+        "original_label": "A01-5F-03",
+        "original_issue": "사진 내 중복"
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P03",
+        "itemCode": "SIM-AI03-P03",
+        "location": "A03-5F",
+        "label_bbox": [
+          0.305899,
+          0.171271,
+          0.372906,
+          0.197974
+        ],
+        "load_bbox": [
+          0.289876,
+          0.044199,
+          0.400583,
+          0.1712707182320442
+        ],
+        "font_size": 23,
+        "original_label": "A01-5F-03",
+        "original_issue": "사진 내 중복"
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P04",
+        "itemCode": "SIM-AI03-P04",
+        "location": "A04-5F",
+        "label_bbox": [
+          0.423161,
+          0.172192,
+          0.490168,
+          0.198895
+        ],
+        "load_bbox": [
+          0.402768,
+          0.067219,
+          0.508376,
+          0.1721915285451197
+        ],
+        "font_size": 23,
+        "original_label": "A02-5F-02",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P05",
+        "itemCode": "SIM-AI03-P05",
+        "location": "A05-5F",
+        "label_bbox": [
+          0.542607,
+          0.175875,
+          0.609614,
+          0.202578
+        ],
+        "load_bbox": [
+          0.517116,
+          0.064457,
+          0.621267,
+          0.17587476979742173
+        ],
+        "font_size": 23,
+        "original_label": "A03-5F-01",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P06",
+        "itemCode": "SIM-AI03-P06",
+        "location": "A06-5F",
+        "label_bbox": [
+          0.660597,
+          0.178637,
+          0.727604,
+          0.205341
+        ],
+        "load_bbox": [
+          0.622724,
+          0.093002,
+          0.747269,
+          0.17863720073664824
+        ],
+        "font_size": 23,
+        "original_label": "A03-5F-02",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P07",
+        "itemCode": "SIM-AI03-P07",
+        "location": "A07-5F",
+        "label_bbox": [
+          0.772032,
+          0.180479,
+          0.839039,
+          0.207182
+        ],
+        "load_bbox": [
+          0.748725,
+          0.066298,
+          0.855062,
+          0.18047882136279927
+        ],
+        "font_size": 23,
+        "original_label": "A04-5F-01",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P08",
+        "itemCode": "SIM-AI03-P08",
+        "location": "A08-5F",
+        "label_bbox": [
+          0.885652,
+          0.185083,
+          0.952658,
+          0.211786
+        ],
+        "load_bbox": [
+          0.85579,
+          0.062615,
+          0.975965,
+          0.1850828729281768
+        ],
+        "font_size": 23,
+        "original_label": "A04-5F-02",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P09",
+        "itemCode": "SIM-AI03-P09",
+        "location": "A01-4F",
+        "label_bbox": [
+          0.06118,
+          0.3407,
+          0.128186,
+          0.367403
+        ],
+        "load_bbox": [
+          0.03496,
+          0.221915,
+          0.159505,
+          0.3406998158379374
+        ],
+        "font_size": 23,
+        "original_label": "A01-4F-01",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P10",
+        "itemCode": "SIM-AI03-P10",
+        "location": "A02-4F",
+        "label_bbox": [
+          0.182083,
+          0.343462,
+          0.24909,
+          0.370166
+        ],
+        "load_bbox": [
+          0.159505,
+          0.231123,
+          0.272396,
+          0.3434622467771639
+        ],
+        "font_size": 23,
+        "original_label": "A01-4F-02",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P11",
+        "itemCode": "SIM-AI03-P11",
+        "location": "A03-4F",
+        "label_bbox": [
+          0.305171,
+          0.347145,
+          0.372178,
+          0.373849
+        ],
+        "load_bbox": [
+          0.281865,
+          0.232965,
+          0.402039,
+          0.34714548802946593
+        ],
+        "font_size": 23,
+        "original_label": "A02-4F-01",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P12",
+        "itemCode": "SIM-AI03-P12",
+        "location": "A04-4F",
+        "label_bbox": [
+          0.423889,
+          0.348066,
+          0.490896,
+          0.37477
+        ],
+        "load_bbox": [
+          0.402039,
+          0.259669,
+          0.508376,
+          0.34806629834254144
+        ],
+        "font_size": 23,
+        "original_label": "A02-4F-02",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P13",
+        "itemCode": "SIM-AI03-P13",
+        "location": "A05-4F",
+        "label_bbox": [
+          0.544792,
+          0.350829,
+          0.611799,
+          0.377532
+        ],
+        "load_bbox": [
+          0.517116,
+          0.242173,
+          0.626366,
+          0.35082872928176795
+        ],
+        "font_size": 23,
+        "original_label": "A03-4F-01",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P14",
+        "itemCode": "SIM-AI03-P14",
+        "location": "A06-4F",
+        "label_bbox": [
+          0.659141,
+          0.35267,
+          0.726147,
+          0.379374
+        ],
+        "load_bbox": [
+          0.627094,
+          0.253223,
+          0.747997,
+          0.35267034990791896
+        ],
+        "font_size": 23,
+        "original_label": "A03-4F-02",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P15",
+        "itemCode": "SIM-AI03-P15",
+        "location": "A07-4F",
+        "label_bbox": [
+          0.780044,
+          0.354512,
+          0.84705,
+          0.381215
+        ],
+        "load_bbox": [
+          0.751639,
+          0.255985,
+          0.868172,
+          0.35451197053406996
+        ],
+        "font_size": 23,
+        "original_label": "A04-4F-01",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P16",
+        "itemCode": "SIM-AI03-P16",
+        "location": "A08-4F",
+        "label_bbox": [
+          0.890022,
+          0.356354,
+          0.957028,
+          0.383057
+        ],
+        "load_bbox": [
+          0.868172,
+          0.257827,
+          0.975237,
+          0.356353591160221
+        ],
+        "font_size": 23,
+        "original_label": "A04-4F-02",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P17",
+        "itemCode": "SIM-AI03-P17",
+        "location": "A01-3F",
+        "label_bbox": [
+          0.0437,
+          0.475138,
+          0.110706,
+          0.501842
+        ],
+        "load_bbox": [
+          0.024763,
+          0.43186,
+          0.140568,
+          0.47513812154696133
+        ],
+        "font_size": 23,
+        "original_label": "A01-3F-01",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P18",
+        "itemCode": "SIM-AI03-P18",
+        "location": "A02-3F",
+        "label_bbox": [
+          0.173343,
+          0.476059,
+          0.24035,
+          0.502762
+        ],
+        "load_bbox": [
+          0.140568,
+          0.410681,
+          0.2622,
+          0.47605893186003684
+        ],
+        "font_size": 23,
+        "original_label": "A01-3F-02",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P19",
+        "itemCode": "SIM-AI03-P19",
+        "location": "A03-3F",
+        "label_bbox": [
+          0.304443,
+          0.47698,
+          0.371449,
+          0.503683
+        ],
+        "load_bbox": [
+          0.276766,
+          0.394107,
+          0.396213,
+          0.47697974217311234
+        ],
+        "font_size": 23,
+        "original_label": "A02-3F-01",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P20",
+        "itemCode": "SIM-AI03-P20",
+        "location": "A04-3F",
+        "label_bbox": [
+          0.426803,
+          0.477901,
+          0.493809,
+          0.504604
+        ],
+        "load_bbox": [
+          0.396213,
+          0.395948,
+          0.506919,
+          0.47790055248618785
+        ],
+        "font_size": 23,
+        "original_label": "A02-3F-02",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P21",
+        "itemCode": "SIM-AI03-P21",
+        "location": "A05-3F",
+        "label_bbox": [
+          0.546249,
+          0.477901,
+          0.613256,
+          0.504604
+        ],
+        "load_bbox": [
+          0.516387,
+          0.398711,
+          0.634377,
+          0.47790055248618785
+        ],
+        "font_size": 23,
+        "original_label": "A03-3F-01",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P22",
+        "itemCode": "SIM-AI03-P22",
+        "location": "A06-3F",
+        "label_bbox": [
+          0.664239,
+          0.47698,
+          0.731245,
+          0.503683
+        ],
+        "load_bbox": [
+          0.634377,
+          0.407919,
+          0.749454,
+          0.47697974217311234
+        ],
+        "font_size": 23,
+        "original_label": "A03-3F-02",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P23",
+        "itemCode": "SIM-AI03-P23",
+        "location": "A07-3F",
+        "label_bbox": [
+          0.786599,
+          0.478821,
+          0.853605,
+          0.505525
+        ],
+        "load_bbox": [
+          0.757465,
+          0.416206,
+          0.87764,
+          0.47882136279926335
+        ],
+        "font_size": 23,
+        "original_label": "A04-3F-01",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P24",
+        "itemCode": "SIM-AI03-P24",
+        "location": "A08-3F",
+        "label_bbox": [
+          0.901675,
+          0.478821,
+          0.968682,
+          0.505525
+        ],
+        "load_bbox": [
+          0.87764,
+          0.409761,
+          0.986162,
+          0.47882136279926335
+        ],
+        "font_size": 23,
+        "original_label": "A04-3F-02",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P25",
+        "itemCode": "SIM-AI03-P25",
+        "location": "A01-2F",
+        "label_bbox": [
+          0.045157,
+          0.56814,
+          0.112163,
+          0.594843
+        ],
+        "load_bbox": [
+          0.009468,
+          0.515654,
+          0.13984,
+          0.5681399631675875
+        ],
+        "font_size": 23,
+        "original_label": "A01-2F-01",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P26",
+        "itemCode": "SIM-AI03-P26",
+        "location": "A02-2F",
+        "label_bbox": [
+          0.164603,
+          0.56814,
+          0.23161,
+          0.594843
+        ],
+        "load_bbox": [
+          0.143481,
+          0.522099,
+          0.254916,
+          0.5681399631675875
+        ],
+        "font_size": 23,
+        "original_label": "A01-2F-02",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P27",
+        "itemCode": "SIM-AI03-P27",
+        "location": "A03-2F",
+        "label_bbox": [
+          0.291333,
+          0.569061,
+          0.358339,
+          0.595764
+        ],
+        "load_bbox": [
+          0.267298,
+          0.519337,
+          0.388201,
+          0.569060773480663
+        ],
+        "font_size": 23,
+        "original_label": "A01-2F-03",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P28",
+        "itemCode": "SIM-AI03-P28",
+        "location": "A04-2F",
+        "label_bbox": [
+          0.391843,
+          0.569982,
+          0.450109,
+          0.594843
+        ],
+        "load_bbox": [
+          0.391114,
+          0.510129,
+          0.451566,
+          0.5699815837937385
+        ],
+        "font_size": 20,
+        "original_label": "A02-2F-01",
+        "original_issue": "사진 내 중복"
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P29",
+        "itemCode": "SIM-AI03-P29",
+        "location": "A05-2F",
+        "label_bbox": [
+          0.457393,
+          0.569982,
+          0.515659,
+          0.594843
+        ],
+        "load_bbox": [
+          0.451566,
+          0.510129,
+          0.508376,
+          0.5699815837937385
+        ],
+        "font_size": 20,
+        "original_label": "A02-2F-02",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P30",
+        "itemCode": "SIM-AI03-P30",
+        "location": "A06-2F",
+        "label_bbox": [
+          0.544064,
+          0.569061,
+          0.611071,
+          0.595764
+        ],
+        "load_bbox": [
+          0.517116,
+          0.529466,
+          0.627094,
+          0.569060773480663
+        ],
+        "font_size": 23,
+        "original_label": "A02-2F-01",
+        "original_issue": "사진 내 중복"
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P31",
+        "itemCode": "SIM-AI03-P31",
+        "location": "A07-2F",
+        "label_bbox": [
+          0.633649,
+          0.570902,
+          0.691187,
+          0.594843
+        ],
+        "load_bbox": [
+          0.635106,
+          0.53407,
+          0.696286,
+          0.570902394106814
+        ],
+        "font_size": 19,
+        "original_label": "A03-2F-02",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P32",
+        "itemCode": "SIM-AI03-P32",
+        "location": "A08-2F",
+        "label_bbox": [
+          0.697742,
+          0.570902,
+          0.75528,
+          0.594843
+        ],
+        "load_bbox": [
+          0.696286,
+          0.532228,
+          0.758922,
+          0.570902394106814
+        ],
+        "font_size": 19,
+        "original_label": "A03-2F-03",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P33",
+        "itemCode": "SIM-AI03-P33",
+        "location": "A09-2F",
+        "label_bbox": [
+          0.789512,
+          0.570902,
+          0.856519,
+          0.597606
+        ],
+        "load_bbox": [
+          0.765477,
+          0.536832,
+          0.873999,
+          0.570902394106814
+        ],
+        "font_size": 23,
+        "original_label": "A03-2F-01",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P34",
+        "itemCode": "SIM-AI03-P34",
+        "location": "A10-2F",
+        "label_bbox": [
+          0.905317,
+          0.570902,
+          0.972323,
+          0.597606
+        ],
+        "load_bbox": [
+          0.873999,
+          0.530387,
+          1,
+          0.570902394106814
+        ],
+        "font_size": 23,
+        "original_label": "A04-2F-02",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P35",
+        "itemCode": "SIM-AI03-P35",
+        "location": "A01-1F",
+        "label_bbox": [
+          0.02622,
+          0.747698,
+          0.093227,
+          0.774401
+        ],
+        "load_bbox": [
+          0,
+          0.598527,
+          0.127458,
+          0.7476979742173112
+        ],
+        "font_size": 23,
+        "original_label": "A01-1F-01",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P36",
+        "itemCode": "SIM-AI03-P36",
+        "location": "A02-1F",
+        "label_bbox": [
+          0.154406,
+          0.747698,
+          0.221413,
+          0.774401
+        ],
+        "load_bbox": [
+          0.127458,
+          0.605893,
+          0.252731,
+          0.7476979742173112
+        ],
+        "font_size": 23,
+        "original_label": "A01-1F-02",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P37",
+        "itemCode": "SIM-AI03-P37",
+        "location": "A03-1F",
+        "label_bbox": [
+          0.293518,
+          0.747698,
+          0.360524,
+          0.774401
+        ],
+        "load_bbox": [
+          0.257101,
+          0.596685,
+          0.390386,
+          0.7476979742173112
+        ],
+        "font_size": 23,
+        "original_label": "A01-1F-03",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P38",
+        "itemCode": "SIM-AI03-P38",
+        "location": "A04-1F",
+        "label_bbox": [
+          0.418063,
+          0.747698,
+          0.485069,
+          0.774401
+        ],
+        "load_bbox": [
+          0.390386,
+          0.598527,
+          0.507647,
+          0.7476979742173112
+        ],
+        "font_size": 23,
+        "original_label": "A02-1F-02",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P39",
+        "itemCode": "SIM-AI03-P39",
+        "location": "A05-1F",
+        "label_bbox": [
+          0.547706,
+          0.747698,
+          0.614712,
+          0.774401
+        ],
+        "load_bbox": [
+          0.516387,
+          0.612339,
+          0.640932,
+          0.7476979742173112
+        ],
+        "font_size": 23,
+        "original_label": "A03-1F-01",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P40",
+        "itemCode": "SIM-AI03-P40",
+        "location": "A06-1F",
+        "label_bbox": [
+          0.672979,
+          0.747698,
+          0.739985,
+          0.774401
+        ],
+        "load_bbox": [
+          0.641661,
+          0.598527,
+          0.760379,
+          0.7476979742173112
+        ],
+        "font_size": 23,
+        "original_label": "A03-1F-02",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P41",
+        "itemCode": "SIM-AI03-P41",
+        "location": "A07-1F",
+        "label_bbox": [
+          0.799709,
+          0.747698,
+          0.866715,
+          0.774401
+        ],
+        "load_bbox": [
+          0.760379,
+          0.599448,
+          0.879097,
+          0.7476979742173112
+        ],
+        "font_size": 23,
+        "original_label": "A04-1F-01",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-AI03-P42",
+        "itemCode": "SIM-AI03-P42",
+        "location": "A08-1F",
+        "label_bbox": [
+          0.919155,
+          0.745856,
+          0.986162,
+          0.77256
+        ],
+        "load_bbox": [
+          0.879097,
+          0.605893,
+          1,
+          0.7458563535911602
+        ],
+        "font_size": 23,
+        "original_label": "A04-1F-02",
+        "original_issue": ""
+      }
+    ]
+  },
+  {
+    "image": "QAE_rack_labels.png",
+    "width": 1650,
+    "height": 2200,
+    "sha256": "81428e4cbc26878232d2ecb23b17da1e8fd041b68dbe190b84fafed4bf4c51c4",
+    "source_sha256": "a98cd15ffaaf5dac971ebe39a713191931153a3b4a5472d109abba69e2998d17",
+    "rows": [
+      {
+        "document_id": "ABC-002_SIM-QAE01-1F-01",
+        "itemCode": "SIM-QAE01-1F-01",
+        "location": "QAE01-1F-01",
+        "label_bbox": [
+          0.155758,
+          0.959091,
+          0.310909,
+          0.976818
+        ],
+        "load_bbox": [
+          0.107619,
+          0.797143,
+          0.368571,
+          0.9590909090909091
+        ],
+        "font_size": 34,
+        "original_label": "QAE01-1F-01",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-QAE01-3F-01",
+        "itemCode": "SIM-QAE01-3F-01",
+        "location": "QAE01-3F-01",
+        "label_bbox": [
+          0.227273,
+          0.664545,
+          0.382424,
+          0.682273
+        ],
+        "load_bbox": [
+          0.228571,
+          0.578571,
+          0.375238,
+          0.6645454545454546
+        ],
+        "font_size": 34,
+        "original_label": "QAE01-3F-01",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-QAE01-4F-01",
+        "itemCode": "SIM-QAE01-4F-01",
+        "location": "QAE01-4F-01",
+        "label_bbox": [
+          0.165455,
+          0.551818,
+          0.320606,
+          0.569545
+        ],
+        "load_bbox": [
+          0.150476,
+          0.451429,
+          0.371429,
+          0.5518181818181818
+        ],
+        "font_size": 34,
+        "original_label": "QAE01-4F-01",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-QAE01-5F-01",
+        "itemCode": "SIM-QAE01-5F-01",
+        "location": "QAE01-5F-01",
+        "label_bbox": [
+          0.160606,
+          0.375455,
+          0.315758,
+          0.393182
+        ],
+        "load_bbox": [
+          0.102857,
+          0.242857,
+          0.371429,
+          0.37545454545454543
+        ],
+        "font_size": 34,
+        "original_label": "QAE01-5F-01",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-QAE02-1F-01",
+        "itemCode": "SIM-QAE02-1F-01",
+        "location": "QAE02-1F-01",
+        "label_bbox": [
+          0.46,
+          0.959091,
+          0.615152,
+          0.976818
+        ],
+        "load_bbox": [
+          0.400952,
+          0.797857,
+          0.675238,
+          0.9590909090909091
+        ],
+        "font_size": 34,
+        "original_label": "QAE02-1F-01",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-QAE02-1F-02",
+        "itemCode": "SIM-QAE02-1F-02",
+        "location": "QAE02-1F-02",
+        "label_bbox": [
+          0.784848,
+          0.959091,
+          0.94,
+          0.976818
+        ],
+        "load_bbox": [
+          0.711429,
+          0.807143,
+          0.995238,
+          0.9590909090909091
+        ],
+        "font_size": 34,
+        "original_label": "QAE02-1F-02",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-QAE02-3F-01",
+        "itemCode": "SIM-QAE02-3F-01",
+        "location": "QAE02-3F-01",
+        "label_bbox": [
+          0.46,
+          0.664545,
+          0.615152,
+          0.682273
+        ],
+        "load_bbox": [
+          0.401905,
+          0.604286,
+          0.677143,
+          0.6645454545454546
+        ],
+        "font_size": 34,
+        "original_label": "QAE02-3F-01",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-QAE02-3F-02",
+        "itemCode": "SIM-QAE02-3F-02",
+        "location": "QAE02-3F-02",
+        "label_bbox": [
+          0.765455,
+          0.664545,
+          0.920606,
+          0.682273
+        ],
+        "load_bbox": [
+          0.713333,
+          0.574286,
+          0.992381,
+          0.6645454545454546
+        ],
+        "font_size": 34,
+        "original_label": "QAE02-3F-02",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-QAE02-4F-01",
+        "itemCode": "SIM-QAE02-4F-01",
+        "location": "QAE02-4F-01",
+        "label_bbox": [
+          0.464848,
+          0.551818,
+          0.62,
+          0.569545
+        ],
+        "load_bbox": [
+          0.411429,
+          0.400714,
+          0.677143,
+          0.5518181818181818
+        ],
+        "font_size": 34,
+        "original_label": "QAE02-4F-01",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-QAE02-4F-02",
+        "itemCode": "SIM-QAE02-4F-02",
+        "location": "QAE02-4F-02",
+        "label_bbox": [
+          0.765455,
+          0.551818,
+          0.920606,
+          0.569545
+        ],
+        "load_bbox": [
+          0.712381,
+          0.401429,
+          0.968571,
+          0.5518181818181818
+        ],
+        "font_size": 34,
+        "original_label": "QAE02-4F-02",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-QAE02-5F-01",
+        "itemCode": "SIM-QAE02-5F-01",
+        "location": "QAE02-5F-01",
+        "label_bbox": [
+          0.451515,
+          0.375455,
+          0.606667,
+          0.393182
+        ],
+        "load_bbox": [
+          0.404762,
+          0.217143,
+          0.653333,
+          0.37545454545454543
+        ],
+        "font_size": 34,
+        "original_label": "QAE02-5F-01",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-QAE02-5F-02",
+        "itemCode": "SIM-QAE02-5F-02",
+        "location": "QAE02-5F-02",
+        "label_bbox": [
+          0.765455,
+          0.375455,
+          0.920606,
+          0.393182
+        ],
+        "load_bbox": [
+          0.710476,
+          0.243571,
+          0.959048,
+          0.37545454545454543
+        ],
+        "font_size": 34,
+        "original_label": "QAE02-5F-02",
+        "original_issue": ""
+      }
+    ]
+  },
+  {
+    "image": "QAF_rack_labels.png",
+    "width": 2200,
+    "height": 1650,
+    "sha256": "6f7177b21e1ec22b8b4a6426fa76bd3c4f401734c64ee472c0143b229e4516f8",
+    "source_sha256": "c631d626cb3bdbbe9ec271a2a76fd7c25d9ffd772f6c6d5c6a37405398ad2195",
+    "rows": [
+      {
+        "document_id": "ABC-002_SIM-QAF01-1F-01",
+        "itemCode": "SIM-QAF01-1F-01",
+        "location": "QAF01-1F-01",
+        "label_bbox": [
+          0.045909,
+          0.746667,
+          0.161364,
+          0.770303
+        ],
+        "load_bbox": [
+          0.0,
+          0.380952,
+          0.206429,
+          0.7466666666666667
+        ],
+        "font_size": 34,
+        "original_label": "QAF01-1F-01",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-QAF01-1F-02",
+        "itemCode": "SIM-QAF01-1F-02",
+        "location": "QAF01-1F-02",
+        "label_bbox": [
+          0.217273,
+          0.746667,
+          0.332727,
+          0.770303
+        ],
+        "load_bbox": [
+          0.197857,
+          0.393333,
+          0.345714,
+          0.7466666666666667
+        ],
+        "font_size": 34,
+        "original_label": "QAF01-1F-02",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-QAF01-1F-03",
+        "itemCode": "SIM-QAF01-1F-03",
+        "location": "QAF01-1F-03",
+        "label_bbox": [
+          0.356364,
+          0.746667,
+          0.471818,
+          0.770303
+        ],
+        "load_bbox": [
+          0.34,
+          0.385714,
+          0.486429,
+          0.7466666666666667
+        ],
+        "font_size": 34,
+        "original_label": "QAF01-1F-03",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-QAF01-2F-01",
+        "itemCode": "SIM-QAF01-2F-01",
+        "location": "QAF01-2F-01",
+        "label_bbox": [
+          0.074545,
+          0.310303,
+          0.19,
+          0.333939
+        ],
+        "load_bbox": [
+          0.03,
+          0.075238,
+          0.242143,
+          0.3103030303030303
+        ],
+        "font_size": 34,
+        "original_label": "QAF01-2F-01",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-QAF01-2F-02",
+        "itemCode": "SIM-QAF01-2F-02",
+        "location": "QAF01-2F-02",
+        "label_bbox": [
+          0.313636,
+          0.310303,
+          0.429091,
+          0.333939
+        ],
+        "load_bbox": [
+          0.247143,
+          0.146667,
+          0.482857,
+          0.3103030303030303
+        ],
+        "font_size": 34,
+        "original_label": "QAF01-2F-02",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-QAF02-1F-01",
+        "itemCode": "SIM-QAF02-1F-01",
+        "location": "QAF02-1F-01",
+        "label_bbox": [
+          0.56,
+          0.746667,
+          0.675455,
+          0.770303
+        ],
+        "load_bbox": [
+          0.524286,
+          0.385714,
+          0.719286,
+          0.7466666666666667
+        ],
+        "font_size": 34,
+        "original_label": "QAF02-1F-01",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-QAF02-1F-02",
+        "itemCode": "SIM-QAF02-1F-02",
+        "location": "QAF02-1F-02",
+        "label_bbox": [
+          0.713636,
+          0.746667,
+          0.829091,
+          0.770303
+        ],
+        "load_bbox": [
+          0.712857,
+          0.424762,
+          0.861429,
+          0.7466666666666667
+        ],
+        "font_size": 34,
+        "original_label": "QAF02-1F-02",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-QAF02-1F-03",
+        "itemCode": "SIM-QAF02-1F-03",
+        "location": "QAF02-1F-03",
+        "label_bbox": [
+          0.870909,
+          0.746667,
+          0.986364,
+          0.770303
+        ],
+        "load_bbox": [
+          0.802143,
+          0.345714,
+          1.0,
+          0.7466666666666667
+        ],
+        "font_size": 34,
+        "original_label": "QAF02-1F-03",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-QAF02-2F-01",
+        "itemCode": "SIM-QAF02-2F-01",
+        "location": "QAF02-2F-01",
+        "label_bbox": [
+          0.567273,
+          0.305455,
+          0.682727,
+          0.329091
+        ],
+        "load_bbox": [
+          0.515714,
+          0.058095,
+          0.760714,
+          0.3054545454545455
+        ],
+        "font_size": 34,
+        "original_label": "QAF02-2F-01",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-QAF02-2F-02",
+        "itemCode": "SIM-QAF02-2F-02",
+        "location": "QAF02-2F-02",
+        "label_bbox": [
+          0.778182,
+          0.305455,
+          0.893636,
+          0.329091
+        ],
+        "load_bbox": [
+          0.749286,
+          0.084762,
+          0.914286,
+          0.3054545454545455
+        ],
+        "font_size": 34,
+        "original_label": "QAF02-2F-02",
+        "original_issue": ""
+      }
+    ]
+  },
+  {
+    "image": "QAG_rack_labels.png",
+    "width": 2200,
+    "height": 1650,
+    "sha256": "81ca235cefe448f638941eb577e2da951996d854a0c18d3bd944804d7ce2dca8",
+    "source_sha256": "17972a67dc11aef93c8a60ab87c34b39dc4df92e7cd56f4c20d41f2890095bab",
+    "rows": [
+      {
+        "document_id": "ABC-002_SIM-QAG01-2F-01",
+        "itemCode": "SIM-QAG01-2F-01",
+        "location": "QAG01-2F-01",
+        "label_bbox": [
+          0.241364,
+          0.86303,
+          0.359091,
+          0.886667
+        ],
+        "load_bbox": [
+          0.105714,
+          0.161905,
+          0.441429,
+          0.863030303030303
+        ],
+        "font_size": 34,
+        "original_label": "QAG01-2F-01",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-QAG01-2F-02",
+        "itemCode": "SIM-QAG01-2F-02",
+        "location": "QAG01-2F-02",
+        "label_bbox": [
+          0.541364,
+          0.86303,
+          0.659091,
+          0.886667
+        ],
+        "load_bbox": [
+          0.428571,
+          0.398095,
+          0.71,
+          0.863030303030303
+        ],
+        "font_size": 34,
+        "original_label": "QAG01-2F-02",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-QAG02-2F-01",
+        "itemCode": "SIM-QAG02-2F-01",
+        "location": "QAG02-2F-01",
+        "label_bbox": [
+          0.741364,
+          0.86303,
+          0.859091,
+          0.886667
+        ],
+        "load_bbox": [
+          0.691429,
+          0.538095,
+          0.882143,
+          0.863030303030303
+        ],
+        "font_size": 34,
+        "original_label": "QAG02-2F-01",
+        "original_issue": ""
+      },
+      {
+        "document_id": "ABC-002_SIM-QAG02-2F-02",
+        "itemCode": "SIM-QAG02-2F-02",
+        "location": "QAG02-2F-02",
+        "label_bbox": [
+          0.876818,
+          0.870303,
+          0.994545,
+          0.893939
+        ],
+        "load_bbox": [
+          0.831429,
+          0.522857,
+          0.978571,
+          0.8703030303030304
+        ],
+        "font_size": 34,
+        "original_label": "QAG02-2F-02",
+        "original_issue": ""
+      }
+    ]
+  }
+]

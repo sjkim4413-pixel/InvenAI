@@ -1,0 +1,32 @@
+[
+  {
+    "suite": "com.example.myapp.AuditTestImagesTest",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0
+  },
+  {
+    "suite": "com.example.myapp.AuditTestScopeTest",
+    "tests": 2,
+    "failures": 0,
+    "errors": 0
+  },
+  {
+    "suite": "com.example.myapp.F03ResponseTest",
+    "tests": 5,
+    "failures": 0,
+    "errors": 0
+  },
+  {
+    "suite": "com.example.myapp.ManualAuditReviewTest",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0
+  },
+  {
+    "suite": "com.example.myapp.WarehouseFlowTest",
+    "tests": 4,
+    "failures": 0,
+    "errors": 0
+  }
+]

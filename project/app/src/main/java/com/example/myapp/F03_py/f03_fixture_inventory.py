@@ -83,7 +83,7 @@ def additional_fixture_photo(upload,company,warehouse_id):
     try:
         photos=json.loads(path.read_text(encoding='utf-8'))
         if not isinstance(photos,dict) or any(
-            not re.fullmatch(r'QA[A-D](?:_closeup)?_rack_labels\.png',name)
+            not re.fullmatch(r'QA[A-Z](?:_closeup)?_rack_labels\.png',name)
             or not isinstance(digest,str) or not re.fullmatch(r'[a-f0-9]{64}',digest)
             for name,digest in photos.items()
         ) or len(set(photos.values()))!=len(photos):

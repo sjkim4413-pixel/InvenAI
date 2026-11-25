@@ -1,0 +1,284 @@
+[
+  {
+    "image": "train/reference-1-full.jpg",
+    "source": "276ec63e-e08f-4915-b585-582e9529bdaa.png",
+    "label_text_masked": true,
+    "scope": "reference_scene_training"
+  },
+  {
+    "image": "train/reference-1-5F.jpg",
+    "source": "276ec63e-e08f-4915-b585-582e9529bdaa.png",
+    "label_text_masked": true,
+    "scope": "reference_scene_training"
+  },
+  {
+    "image": "train/reference-1-4F.jpg",
+    "source": "276ec63e-e08f-4915-b585-582e9529bdaa.png",
+    "label_text_masked": true,
+    "scope": "reference_scene_training"
+  },
+  {
+    "image": "train/reference-1-2F.jpg",
+    "source": "276ec63e-e08f-4915-b585-582e9529bdaa.png",
+    "label_text_masked": true,
+    "scope": "reference_scene_training"
+  },
+  {
+    "image": "train/reference-1-1F.jpg",
+    "source": "276ec63e-e08f-4915-b585-582e9529bdaa.png",
+    "label_text_masked": true,
+    "scope": "reference_scene_training"
+  },
+  {
+    "image": "train/reference-2-full.jpg",
+    "source": "31940782-2973-4e71-9765-5ba1d3d0b20b.png",
+    "label_text_masked": true,
+    "scope": "reference_scene_training"
+  },
+  {
+    "image": "train/reference-2-5F.jpg",
+    "source": "31940782-2973-4e71-9765-5ba1d3d0b20b.png",
+    "label_text_masked": true,
+    "scope": "reference_scene_training"
+  },
+  {
+    "image": "train/reference-2-1F.jpg",
+    "source": "31940782-2973-4e71-9765-5ba1d3d0b20b.png",
+    "label_text_masked": true,
+    "scope": "reference_scene_training"
+  },
+  {
+    "image": "train/reference-2-2F.jpg",
+    "source": "31940782-2973-4e71-9765-5ba1d3d0b20b.png",
+    "label_text_masked": true,
+    "scope": "reference_scene_training"
+  },
+  {
+    "image": "train/reference-2-4F.jpg",
+    "source": "31940782-2973-4e71-9765-5ba1d3d0b20b.png",
+    "label_text_masked": true,
+    "scope": "reference_scene_training"
+  },
+  {
+    "image": "train/reference-2-3F.jpg",
+    "source": "31940782-2973-4e71-9765-5ba1d3d0b20b.png",
+    "label_text_masked": true,
+    "scope": "reference_scene_training"
+  },
+  {
+    "image": "train/reference-3-full.jpg",
+    "source": "7be725d7-e159-47a9-884d-1535aace4a93.png",
+    "label_text_masked": true,
+    "scope": "reference_scene_training"
+  },
+  {
+    "image": "train/reference-3-5F.jpg",
+    "source": "7be725d7-e159-47a9-884d-1535aace4a93.png",
+    "label_text_masked": true,
+    "scope": "reference_scene_training"
+  },
+  {
+    "image": "train/reference-3-1F.jpg",
+    "source": "7be725d7-e159-47a9-884d-1535aace4a93.png",
+    "label_text_masked": true,
+    "scope": "reference_scene_training"
+  },
+  {
+    "image": "train/reference-3-2F.jpg",
+    "source": "7be725d7-e159-47a9-884d-1535aace4a93.png",
+    "label_text_masked": true,
+    "scope": "reference_scene_training"
+  },
+  {
+    "image": "train/reference-3-4F.jpg",
+    "source": "7be725d7-e159-47a9-884d-1535aace4a93.png",
+    "label_text_masked": true,
+    "scope": "reference_scene_training"
+  },
+  {
+    "image": "train/reference-3-3F.jpg",
+    "source": "7be725d7-e159-47a9-884d-1535aace4a93.png",
+    "label_text_masked": true,
+    "scope": "reference_scene_training"
+  },
+  {
+    "image": "train/reference-4-full.jpg",
+    "source": "QAE_rack_labels.png",
+    "label_text_masked": true,
+    "scope": "reference_scene_training"
+  },
+  {
+    "image": "train/reference-4-5F.jpg",
+    "source": "QAE_rack_labels.png",
+    "label_text_masked": true,
+    "scope": "reference_scene_training"
+  },
+  {
+    "image": "train/reference-4-4F.jpg",
+    "source": "QAE_rack_labels.png",
+    "label_text_masked": true,
+    "scope": "reference_scene_training"
+  },
+  {
+    "image": "train/reference-4-1F.jpg",
+    "source": "QAE_rack_labels.png",
+    "label_text_masked": true,
+    "scope": "reference_scene_training"
+  },
+  {
+    "image": "train/reference-4-3F.jpg",
+    "source": "QAE_rack_labels.png",
+    "label_text_masked": true,
+    "scope": "reference_scene_training"
+  },
+  {
+    "image": "train/reference-5-full.jpg",
+    "source": "QAF_rack_labels.png",
+    "label_text_masked": true,
+    "scope": "reference_scene_training"
+  },
+  {
+    "image": "train/reference-5-1F.jpg",
+    "source": "QAF_rack_labels.png",
+    "label_text_masked": true,
+    "scope": "reference_scene_training"
+  },
+  {
+    "image": "train/reference-5-2F.jpg",
+    "source": "QAF_rack_labels.png",
+    "label_text_masked": true,
+    "scope": "reference_scene_training"
+  },
+  {
+    "image": "train/reference-6-full.jpg",
+    "source": "QAG_rack_labels.png",
+    "label_text_masked": true,
+    "scope": "reference_scene_training"
+  },
+  {
+    "image": "train/reference-6-2F.jpg",
+    "source": "QAG_rack_labels.png",
+    "label_text_masked": true,
+    "scope": "reference_scene_training"
+  },
+  {
+    "image": "train/independent-0.jpg",
+    "source": "C:\\Users\\user\\.codex\\visualizations\\2026\\11\\17\\01a1e6ee-0137-7f33-ba70-31280f447a98\\model-improvement37\\expanded-dataset\\images\\train\\pet-row-09.jpg",
+    "scope": "existing_independent_dataset"
+  },
+  {
+    "image": "train/independent-1.jpg",
+    "source": "C:\\Users\\user\\.codex\\visualizations\\2026\\11\\17\\01a1e6ee-0137-7f33-ba70-31280f447a98\\model-improvement37\\expanded-dataset\\images\\train\\pet-aisle-b-clear.jpg",
+    "scope": "existing_independent_dataset"
+  },
+  {
+    "image": "train/independent-2.jpg",
+    "source": "C:\\Users\\user\\.codex\\visualizations\\2026\\11\\17\\01a1e6ee-0137-7f33-ba70-31280f447a98\\model-improvement37\\expanded-dataset\\images\\train\\pet-row-03.jpg",
+    "scope": "existing_independent_dataset"
+  },
+  {
+    "image": "train/independent-3.jpg",
+    "source": "C:\\Users\\user\\.codex\\visualizations\\2026\\11\\17\\01a1e6ee-0137-7f33-ba70-31280f447a98\\model-improvement37\\expanded-dataset\\images\\train\\pet-aisle-b-blue.jpg",
+    "scope": "existing_independent_dataset"
+  },
+  {
+    "image": "train/independent-4.jpg",
+    "source": "C:\\Users\\user\\.codex\\visualizations\\2026\\11\\17\\01a1e6ee-0137-7f33-ba70-31280f447a98\\model-improvement37\\expanded-dataset\\images\\train\\pet-aisle-a-empty.jpg",
+    "scope": "existing_independent_dataset"
+  },
+  {
+    "image": "train/independent-5.jpg",
+    "source": "C:\\Users\\user\\.codex\\visualizations\\2026\\11\\17\\01a1e6ee-0137-7f33-ba70-31280f447a98\\model-improvement37\\expanded-dataset\\images\\train\\home-fragrance-trays-close.jpg",
+    "scope": "existing_independent_dataset"
+  },
+  {
+    "image": "train/independent-6.jpg",
+    "source": "C:\\Users\\user\\.codex\\visualizations\\2026\\11\\17\\01a1e6ee-0137-7f33-ba70-31280f447a98\\model-improvement37\\expanded-dataset\\images\\train\\KakaoTalk_20261103_153333499_03-shallow.jpg",
+    "scope": "existing_independent_dataset"
+  },
+  {
+    "image": "train/independent-7.jpg",
+    "source": "C:\\Users\\user\\.codex\\visualizations\\2026\\11\\17\\01a1e6ee-0137-7f33-ba70-31280f447a98\\model-improvement37\\expanded-dataset\\images\\train\\pet-aisle-a-blue.jpg",
+    "scope": "existing_independent_dataset"
+  },
+  {
+    "image": "train/independent-8.jpg",
+    "source": "C:\\Users\\user\\.codex\\visualizations\\2026\\11\\17\\01a1e6ee-0137-7f33-ba70-31280f447a98\\model-improvement37\\expanded-dataset\\images\\train\\bag-aisle-wide-2f.jpg",
+    "scope": "existing_independent_dataset"
+  },
+  {
+    "image": "train/independent-9.jpg",
+    "source": "C:\\Users\\user\\.codex\\visualizations\\2026\\11\\17\\01a1e6ee-0137-7f33-ba70-31280f447a98\\model-improvement37\\expanded-dataset\\images\\train\\KakaoTalk_20261103_153333499_01-angled.jpg",
+    "scope": "existing_independent_dataset"
+  },
+  {
+    "image": "train/independent-10.jpg",
+    "source": "C:\\Users\\user\\.codex\\visualizations\\2026\\11\\17\\01a1e6ee-0137-7f33-ba70-31280f447a98\\model-improvement37\\expanded-dataset\\images\\train\\fragrance-empty-beam.jpg",
+    "scope": "existing_independent_dataset"
+  },
+  {
+    "image": "train/independent-11.jpg",
+    "source": "C:\\Users\\user\\.codex\\visualizations\\2026\\11\\17\\01a1e6ee-0137-7f33-ba70-31280f447a98\\model-improvement37\\expanded-dataset\\images\\train\\home-fragrance-trays-front.jpg",
+    "scope": "existing_independent_dataset"
+  },
+  {
+    "image": "train/independent-12.jpg",
+    "source": "C:\\Users\\user\\.codex\\visualizations\\2026\\11\\17\\01a1e6ee-0137-7f33-ba70-31280f447a98\\model-improvement37\\expanded-dataset\\images\\train\\pet-aisle-a-pale.jpg",
+    "scope": "existing_independent_dataset"
+  },
+  {
+    "image": "train/independent-13.jpg",
+    "source": "C:\\Users\\user\\.codex\\visualizations\\2026\\11\\17\\01a1e6ee-0137-7f33-ba70-31280f447a98\\model-improvement37\\expanded-dataset\\images\\train\\bags-roll-trays.jpg",
+    "scope": "existing_independent_dataset"
+  },
+  {
+    "image": "train/independent-14.jpg",
+    "source": "C:\\Users\\user\\.codex\\visualizations\\2026\\11\\17\\01a1e6ee-0137-7f33-ba70-31280f447a98\\model-improvement37\\expanded-dataset\\images\\train\\pet-row-06.jpg",
+    "scope": "existing_independent_dataset"
+  },
+  {
+    "image": "train/independent-15.jpg",
+    "source": "C:\\Users\\user\\.codex\\visualizations\\2026\\11\\17\\01a1e6ee-0137-7f33-ba70-31280f447a98\\model-improvement37\\expanded-dataset\\images\\train\\KakaoTalk_20261103_153333499_09-pallets.jpg",
+    "scope": "existing_independent_dataset"
+  },
+  {
+    "image": "train/independent-16.jpg",
+    "source": "C:\\Users\\user\\.codex\\visualizations\\2026\\11\\17\\01a1e6ee-0137-7f33-ba70-31280f447a98\\model-improvement37\\expanded-dataset\\images\\train\\bag-aisle-angled-2f.jpg",
+    "scope": "existing_independent_dataset"
+  },
+  {
+    "image": "train/independent-17.jpg",
+    "source": "C:\\Users\\user\\.codex\\visualizations\\2026\\11\\17\\01a1e6ee-0137-7f33-ba70-31280f447a98\\model-improvement37\\expanded-dataset\\images\\train\\pet-08-middle.jpg",
+    "scope": "existing_independent_dataset"
+  },
+  {
+    "image": "train/independent-18.jpg",
+    "source": "C:\\Users\\user\\.codex\\visualizations\\2026\\11\\17\\01a1e6ee-0137-7f33-ba70-31280f447a98\\model-improvement37\\expanded-dataset\\images\\train\\pet-aisle-c-clear.jpg",
+    "scope": "existing_independent_dataset"
+  },
+  {
+    "image": "train/independent-19.jpg",
+    "source": "C:\\Users\\user\\.codex\\visualizations\\2026\\11\\17\\01a1e6ee-0137-7f33-ba70-31280f447a98\\model-improvement37\\expanded-dataset\\images\\train\\bags-empty-beam.jpg",
+    "scope": "existing_independent_dataset"
+  },
+  {
+    "image": "val/independent-0.jpg",
+    "source": "C:\\Users\\user\\.codex\\visualizations\\2026\\11\\17\\01a1e6ee-0137-7f33-ba70-31280f447a98\\model-improvement37\\expanded-dataset\\images\\val\\KakaoTalk_20261103_153431134_04-floor-pallets.jpg",
+    "scope": "existing_independent_dataset"
+  },
+  {
+    "image": "val/independent-1.jpg",
+    "source": "C:\\Users\\user\\.codex\\visualizations\\2026\\11\\17\\01a1e6ee-0137-7f33-ba70-31280f447a98\\model-improvement37\\expanded-dataset\\images\\val\\KakaoTalk_20261103_153431134_04-shallow.jpg",
+    "scope": "existing_independent_dataset"
+  },
+  {
+    "image": "val/independent-2.jpg",
+    "source": "C:\\Users\\user\\.codex\\visualizations\\2026\\11\\17\\01a1e6ee-0137-7f33-ba70-31280f447a98\\model-improvement37\\expanded-dataset\\images\\val\\cosmetics-trays-second-heldout.jpg",
+    "scope": "existing_independent_dataset"
+  },
+  {
+    "image": "val/independent-3.jpg",
+    "source": "C:\\Users\\user\\.codex\\visualizations\\2026\\11\\17\\01a1e6ee-0137-7f33-ba70-31280f447a98\\model-improvement37\\expanded-dataset\\images\\val\\cosmetics-trays-heldout.jpg",
+    "scope": "existing_independent_dataset"
+  }
+]
